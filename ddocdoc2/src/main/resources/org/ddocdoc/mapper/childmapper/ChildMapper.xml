@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ddocdoc.mapper.childmapper.ChildMapper">
+
+	<!-- 아이 정보 리스트 -->
+	<select id="childList" resultType="org.ddocdoc.vo.childvo.ChildVO">
+		select * from dd_child
+		where cus_num = #{cus_num}
+	</select>
+
+	<select id="getTime" resultType="String">
+		select sysdate from dual
+	</select>
+	
+</mapper>
