@@ -114,7 +114,7 @@ font-family: 'Sunflower', sans-serif;
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">아이관리 <span class="caret"></span></a>
                                 <div class="dropdown-menu">
                                     <ul>
-                                        <li><a href="/child/childList/{'+${cus_num }+'}">아이관리</a></li>
+                                        <li><a href="/child/childList?cus_num=${cus_num }">아이관리</a></li>
                                         <li><a href="/DDOCDOC/Customer/detailCustomer.do">성장관리</a></li>
                                         <li><a href="/DDOCDOC/Customer/detailCustomer.do">예방접종</a></li>
                                         <li><a href="/DDOCDOC/Customer/detailCustomer.do">건강검진</a></li>
@@ -179,22 +179,42 @@ font-family: 'Sunflower', sans-serif;
             </div>
         </section>
         
-        <label id="intro" style="display: flex; justify-content: center; margin-top: 50px; margin-bottom: 0; font-size: 24px;">아이의 이름을 눌러 건강피드를 관리해보세요!</label><br>
-        <section  class="company-description" style="display: flex; justify-content: center; margin-top: 15px; margin-bottom: 80px;">
-        	<div>
-	        	<p class="p">MyChild</p>
-					<table class="table table-hover" align="center" style="width: 400px; text-align: center; font-size: 20px; margin-bottom: 0;font-weight: 600;" id = "table1">
-					<c:forEach var="ChildVO" items="${childList}" >
-						<tr>
-							<td style="text-align : center;"><a href="/child/childDetail?ch_num=${ChildVO.ch_num}&cus_name=${cus_name}&cus_num=${cus_num}">${ChildVO.ch_name }</a></td>
-							<td style="text-align : center;">${ChildVO.ch_birth }</td>
-						</tr>
-					</c:forEach>
-					
-				</table>
-	          <hr style="margin-top: 3px;">
-          </div>
+        
+		<section id="btn" class="company-description" style="display: flex; justify-content: flex-end; padding-right: 700px; margin-top: 60px; margin-bottom: 0;">
+			<button class="btn btn-default"><a href="/child/childList?cus_num=${cus_num }&cus_name=${cus_name}" style="font-size: 18px;">목록으로 돌아가기</a></button>&nbsp
+			<button class="btn btn-default"><a href="/child/childUpdate?ch_num=${childVO.ch_num}&cus_name=${cus_name }&cus_num=${cus_num}" style="font-size: 18px;">수정</a></button>&nbsp
+			<button class="btn btn-default"><a href="/child/childDelete?ch_num=${childVO.ch_num}&cus_name=${cus_name }&cus_num=${cus_num}" style="font-size: 18px;">삭제</a></button>
+		</section>
+		<br>
+        <section  class="company-description" style="margin-top: 0;">
+		 <div style="display: flex; justify-content: center; width: 500px; padding: 30px; margin-left: 37%;" class="panel panel-default">
+			 <img alt="" src="/resources/images/dechild.jpg" style="width: 180px; height: 150px;">
+			  <div style="font-size: 25px; margin-left: 20px; font-weight: 500;" id="childIntro">
+						이름 : ${childVO.ch_name} <br>
+						나이 : ${childVO.ch_age} <br>
+						생일 : ${childVO.ch_birth}<br>
+						성별 : ${childVO.ch_gender}<br>
+			  </div>
+		 </div>
         </section>
+
+		<section id="btn" class="company-description" style="display: flex; justify-content: center; margin-bottom: 80px; margin-top: 50px; margin-left: 30px;">
+		
+			<form action="/child/child" method="post">
+				<input type="hidden" name="cus_name" value="${cus_name}">
+				<input type="hidden" name="ch_num" value="${childVO.ch_num}">
+				<input type="hidden" name="ch_name" value="${childVO.ch_name}">
+				<input type = "submit" value="성장 관리" class="btn btn-default btn-lg" style="font-size: 30px; margin-right: 30px; width: 140px;">
+			</form>
+			
+			<form action="/DDOCDOC/Inject/InjectListAction.do" method="post">
+				<input type="hidden" name="cus_name" value="${cus_name}">
+				<input type="hidden" name="ch_num" value="${childVO.ch_num}">
+				<input type="hidden" name="ch_name" value="${childVO.ch_name}">
+				<input type = "submit" value="예방접종" class="btn btn-default btn-lg" style="font-size: 30px; margin-right: 20px; width: 140px;">
+			</form>
+		
+		</section>
 
 <!--
             ==================================================

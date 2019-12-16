@@ -23,7 +23,7 @@ public class ChildMapperTest {
 	private ChildMapper mapper;
 	
 	//아이리스트 테스트
-	@Test
+/*	@Test
 	public void test() {
 		
 		String ch_num = "C001";
@@ -32,6 +32,15 @@ public class ChildMapperTest {
 		list.forEach(i -> log.info(list));
 
 	
-	}
+	}*/
+	
+/*	@Test
+	public void childDetail(){
+		String ch_num = "CH00190";
+		
+		ChildVO cvo = mapper.childDetail(ch_num);
+		
+		log.info(cvo);
+	}*/
 
 }
