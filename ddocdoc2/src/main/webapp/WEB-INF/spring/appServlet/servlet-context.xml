@@ -30,13 +30,16 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-
+	
+	<!-- 톰캣이 알아서 뷰 처리 -->
+	<mvc:annotation-driven />
+	<mvc:default-servlet-handler />
+	
+	<!-- 컨트롤러 -->
 	<context:component-scan base-package="org.ddocdoc.controller" />
 	<context:component-scan base-package="org.ddocdoc.controller.childcontroller" />
 	<context:component-scan base-package="org.ddocdoc.controller.hospitalcontroller" />
 
 
-	<mvc:annotation-driven />
-	<mvc:default-servlet-handler />
 
 </beans:beans>
