@@ -13,9 +13,19 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("/hospital/*")
 @AllArgsConstructor
 public class HospitalController {
-
+	
+	// list
 	@GetMapping("/hospitalList")
-	public void hospitalList(){
+	public String hospitalList(){
 		log.info("hospitalList");
+		
+		return "/hospital/hospitalList";
+	}
+	
+	// insert
+	@GetMapping("/hospitalInsert")
+	public String hospitalInsert(){
+		log.info("hospitalInset...form");
+		return "/hospital/hospitalInsert";
 	}
 }

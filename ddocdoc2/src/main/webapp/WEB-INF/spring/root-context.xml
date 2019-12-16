@@ -36,9 +36,11 @@
 	
 	<!-- 서비스 -->
 	<context:component-scan base-package="org.ddocdoc.service.childservice"/>
+	<context:component-scan base-package="org.ddocdoc.service.hospitalservice"/>
 	
 	<!-- 매퍼 -->
 	<mybatis-spring:scan base-package="org.ddocdoc.mapper.childmapper"/>
+	<mybatis-spring:scan base-package="org.ddocdoc.mapper.hospitalmapper"/>
 	
 	
 	
