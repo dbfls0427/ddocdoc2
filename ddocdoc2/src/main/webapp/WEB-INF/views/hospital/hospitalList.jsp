@@ -160,7 +160,7 @@
 
           <!-- Topbar Search -->
           <span>
-              <img src="../images/logo.png" alt="logo">
+              <img src="/resources/images/logo.png" alt="logo">
           </span>
 
           <!-- Topbar Navbar -->
@@ -184,7 +184,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">똑닥 어드민</span>
-                <img class="img-profile rounded-circle" src="../img/smlogo.PNG" alt="smlogo">
+                <img class="img-profile rounded-circle" src="/resources/img/smlogo.PNG" alt="smlogo">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
