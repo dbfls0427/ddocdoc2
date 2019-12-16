@@ -2,8 +2,8 @@ package org.ddocdoc.mapper.childmapper;
 
 import java.util.List;
 
+
 import org.ddocdoc.vo.childvo.ChildVO;
-import org.springframework.stereotype.Repository;
 
 public interface ChildMapper {
 

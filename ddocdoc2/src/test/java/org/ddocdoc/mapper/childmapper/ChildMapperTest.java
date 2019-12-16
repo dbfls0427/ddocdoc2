@@ -10,7 +10,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -24,15 +23,15 @@ public class ChildMapperTest {
 	private ChildMapper mapper;
 	
 	//아이리스트 테스트
-/*	@Test
+	@Test
 	public void test() {
 		
-		String ch_num = "COO1";
+		String ch_num = "C001";
 		List<ChildVO> list = mapper.childList(ch_num);
 		
 		list.forEach(i -> log.info(list));
 
 	
-	}*/
+	}
 
 }
