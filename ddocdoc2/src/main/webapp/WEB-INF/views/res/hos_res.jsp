@@ -154,23 +154,23 @@
 
 	 <section class="company-description" style="margin-top: 50px; display: flex; justify-content: center; margin-bottom: 60px;">
 	 
-		<form action="hos_res_action.do" method = "post" style="width: 35%;">
+		<form action="/customer/hospitalRes" method="post" style="width: 35%;">
 			<label>진료 종류</label>
-			<select name="res_type" class="form-control">
+			<select name="hos_res_type" class="form-control">
 				      <option value="일반진료">일반진료</option>
 				      <option value="수액">수액</option>
 			    </select>
 			<br>
 			<label>진료 증상</label>
-			 <input type = "text" name = "res_sym" class="form-control"><br>
+			 <input type = "text" name = "hos_res_sym" class="form-control"><br>
 			<label>메모</label><br>
-			<input type = "text" name = "res_memo" class="form-control"><br>
+			<input type = "text" name = "hos_res_memo" class="form-control"><br>
 		  	<label>예약 날짜</label><br>
-		  	<input type="text" id="datepickers" name = "res_date" class="form-control"/>
+		  	<input type="text" id="datepickers" name = "hos_res_date" class="form-control"/>
 		  	<br>
 		 	<label>진료 시간</label>
 		 	<br>
-			 <select name="res_time" class="form-control">
+			 <select name="hos_res_time" class="form-control">
 				      <option value="09:00">09:00</option>
 				      <option value="09:30">09:30</option>
 				      <option value="10:00">10:00</option>
@@ -191,8 +191,10 @@
 				      <option value="17:30">17:30</option>
 				      <option value="18:00">18:00</option>
 			    </select><br>
-			<input type = "hidden" name = "cus_num" value = ${cus_num }><br>
+			<input type = "hidden" name = "cus_num" value = ${customer.cus_num }><br>
 			<input type = "hidden" name = "hos_name" value = ${hos_name }><br>
+			<input type = "hidden" name = "hos_acpt" value = "예약 접수 대기 중"><br>
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			<div style="display: flex; justify-content: center;">
 				<input type = "submit" value = "예약" class="btn btn-warning btn-lg">
 			</div>

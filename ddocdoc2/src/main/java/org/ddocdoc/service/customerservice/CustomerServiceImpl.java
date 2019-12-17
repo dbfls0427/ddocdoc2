@@ -3,6 +3,7 @@ package org.ddocdoc.service.customerservice;
 import org.ddocdoc.mapper.customermapper.CustomerMapper;
 import org.ddocdoc.vo.customervo.CustomerAuthVO;
 import org.ddocdoc.vo.customervo.CustomerVO;
+import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +41,21 @@ public class CustomerServiceImpl implements CustomerService {
 		return customer;
 	}
 
+	@Override
+	public String selectHosNum(String hos_name) {
+		System.out.println("서비스에서 : " + hos_name);
+		
+		return mapper.selectHosNum(hos_name);
+	}
+
+	@Override
+	public void insertHospitalRes(HospitalResVO hospitalresVO) {
+		mapper.insertHospitalRes(hospitalresVO);
+		
+		
+	}
+	
+	
 	
 	
 	

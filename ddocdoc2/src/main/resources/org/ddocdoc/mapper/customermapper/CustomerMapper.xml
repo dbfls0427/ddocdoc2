@@ -29,13 +29,13 @@
 	select * from dd_customer where cus_id = #{cus_id}
 	</select>
 	
-	 <insert id="insertHospitalRes" parameterType="HospitalResVO">
+	 <insert id="insertHospitalRes" parameterType="org.ddocdoc.vo.hospitalresvo.HospitalResVO">
 	insert into dd_hos_res values('RES00'||hos_res_seq.nextval, #{hos_res_type}, #{hos_res_sym}, #{hos_res_memo}, to_date(#{hos_res_date},'mm/dd/yyyy'), #{hos_res_time}, #{cus_num}, #{hos_num}, #{hos_acpt})
 	</insert>
 	
-	<!-- <select id="selectHosNum" parameterType="String" resultType="String">
+	 <select id="selectHosNum" parameterType="String" resultType="String">
 	select hos_num from dd_hospital where hos_name = #{hos_name, jdbcType=VARCHAR}
-	</select> -->
+	</select>
 	
 	
 	 <!-- 예약 리스트 -->

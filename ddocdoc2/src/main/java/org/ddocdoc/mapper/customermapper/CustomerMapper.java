@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.ddocdoc.vo.customervo.CustomerAuthVO;
 import org.ddocdoc.vo.customervo.CustomerVO;
+import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
 import org.ddocdoc.vo.loginvo.LoginVO;
 
 public interface CustomerMapper {
@@ -15,7 +16,7 @@ public interface CustomerMapper {
 	
 	String cusNumSelect(String cus_id);
 	
-	/*// 병원 번호 출력
+	// 병원 번호 출력
 	String selectHosNum(String hos_name);
 	
 	// 병원 예약 입력
@@ -23,7 +24,7 @@ public interface CustomerMapper {
 	
 	// 예약 목록 리스트
 	List<HospitalResVO> resList(String cus_num);
-	
+	/*
 	// 병원 정보 추출
 	HospitalVO detailHospital(String hos_num);
 	

@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.ddocdoc.service.customerservice.CustomerService;
 import org.ddocdoc.vo.customervo.CustomerVO;
+import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -79,7 +80,20 @@ public class CustomerController {
 	@GetMapping("/hospitalResForm")
 	public String hospitalResForm(@RequestParam String cus_num, @RequestParam String hos_name, Model model){
 		model.addAttribute("customer", allCustomer);
+		model.addAttribute("hos_name", hos_name);
 		return "/res/hos_res";
+	}
+	
+	//병원 예약
+	@PostMapping("/hospitalRes")
+	public String hospitalRes(HospitalResVO hospitalresVO, @RequestParam String hos_name, Model model){
+		System.out.println("000000000000000000000000000");
+		System.out.println(hos_name);
+		String hos_num = service.selectHosNum(hos_name);
+		hospitalresVO.setHos_num(hos_num);
+		service.insertHospitalRes(hospitalresVO);
+		model.addAttribute("customer", allCustomer);
+		return "/login/loginSuccess";
 	}
 	
 }
