@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ddocdoc.mapper.heightmapper.HeightMapper">
+
+	<!-- 아이 키 전체리스트 -->
+	<select id="heightList" parameterType="String" resultType="org.ddocdoc.vo.heightvo.HeightVO">
+		select /*+INDEX(dd_child_height child_height_pk) */ * 
+		from dd_child_height
+		where ch_num = #{ch_num}
+	</select>
+	
+	<!-- 아이 키 등록 -->
+	<insert id="heightInsert" parameterType="org.ddocdoc.vo.heightvo.HeightVO">
+		insert into dd_child_height
+		values('HE00'||height_seq.nextval, #{he_height}, #{ch_num}, #{he_date})
+	</insert>
+	
+	<!-- 아이 키 상세 -->
+	<select id="heightDetail" parameterType="String" resultType="org.ddocdoc.vo.heightvo.HeightVO">
+		select * from dd_child_height
+		where he_num = #{he_num}
+	</select>
+	
+	<!-- 아이 키 삭제 -->
+	<delete id="heightDelete" parameterType="String">
+		delete from dd_child_height
+		where he_num = #{he_num}
+	</delete>
+
+</mapper>

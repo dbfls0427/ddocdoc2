@@ -64,9 +64,6 @@ a:visited {
 	color: black;
 	text-decoration: none;
 }
-/*  .kidsbtn{
- 	font-family: 
- } */
 hr {
 	height: 1px;
 	background-color: #ffe307;
@@ -82,13 +79,13 @@ tr:nth-child(2n) {
 	background-color: #FFFFA5;
 }
 
-#intro {
+/* #intro {
 	font-family: 'Stylish', sans-serif;
 }
 
 #table1 {
 	font-family: 'Sunflower', sans-serif;
-}
+} */
 </style>
 <link
 	href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
