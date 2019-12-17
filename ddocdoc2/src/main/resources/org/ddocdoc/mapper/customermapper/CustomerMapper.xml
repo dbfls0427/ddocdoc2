@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="org.ddocdoc.mapper.customermapper.CustomerMapper">
+	<cache />
+	
+	<insert id="insertCustomer" parameterType="org.ddocdoc.vo.customervo.CustomerVO">
+	insert into dd_customer values('C00' || customer_seq.nextval, #{cus_id, jdbcType=VARCHAR}, #{cus_pw, jdbcType=VARCHAR}, #{cus_name, jdbcType=VARCHAR}, #{cus_addr, jdbcType=VARCHAR}, #{cus_email, jdbcType=VARCHAR}, '05/03/23')
+	
+	</insert>
+	
+	<!-- <select id="customerDetail" parameterType="String" resultType="org.ddocdoc.vo.customervo.CustomerVO">
+		select * from dd_customer where cus_num=#{cus_num}
+	</select>
+ -->
+	<select id="loginCustomer" parameterType="String" resultType="org.ddocdoc.vo.customervo.CustomerVO">
+	select * from dd_customer where cus_id = #{cus_id}
+	</select>
+	
+	<!-- <insert id="insertHospitalRes" parameterType="HospitalResVO">
+	insert into dd_hos_res values('RES00'||hos_res_seq.nextval, #{hos_res_type}, #{hos_res_sym}, #{hos_res_memo}, to_date(#{hos_res_date},'mm/dd/yyyy'), #{hos_res_time}, #{cus_num}, #{hos_num}, #{hos_acpt})
+	</insert>
+	
+	<select id="selectHosNum" parameterType="String" resultType="String">
+	select hos_num from dd_hospital where hos_name = #{hos_name, jdbcType=VARCHAR}
+	</select>
+	
+	
+	예약 리스트
+	<select id="resList" parameterType="String" resultType="HospitalResVO">
+	select * from dd_hos_res where cus_num = #{cus_num}
+	order by hos_res_num
+	
+	</select>
+	
+	병원 정보 추출
+	<select id="detailHospital" parameterType="String" resultType="HospitalVO">
+		select * from dd_hospital where hos_num = #{hos_num}
+	</select>
+	
+	병원 이름 추출
+	<select id = "detailNameHospital" parameterType="String" resultType="String">
+	select b.hos_name 
+	from dd_hos_res a, dd_hospital b
+	where a.hos_num = b.hos_num
+	and a.cus_num like #{cus_num}
+	order by hos_res_num
+	</select>
+	
+	예약 상세내용
+	<select id="detailRes" parameterType="String" resultType="HospitalResVO">
+	select * from dd_hos_res where hos_res_num = #{hos_res_num}
+	</select>
+	
+	예약 취소
+	<delete id="deleteRes" parameterType="String">
+	delete from dd_hos_res where hos_res_num = #{hos_res_num}
+	</delete>
+	
+	
+
+	대기번호 감소
+	<update id="decreaseWait" parameterType="String">
+		update dd_hospital set hos_wait = hos_wait - 1
+		where hos_num like #{hos_num}
+	</update>
+	
+	대기번호 조회
+	<select id="detailWait" parameterType="String" resultType="int">
+	select res_wait from dd_res_wait where hos_res_num = #{hos_res_num}
+	</select>
+	
+	마이페이지 수정
+	<update id="customerUpdate" parameterType="org.ddocdoc.vo.customervo.CustomerVO">
+		update dd_customer set cus_pw = #{cus_pw}, cus_name = #{cus_name}, cus_addr = #{cus_addr}, cus_email = #{cus_email}, cus_birth = '05/03/23'
+		where cus_num = #{cus_num}
+	</update>
+	
+	회원탈퇴
+	<delete id="customerDelete" parameterType="String">
+		delete from dd_customer where cus_num = #{cus_num} 
+	</delete>
+	
+	
+	처방전 보기
+	<select id="presRealDetail" parameterType="String" resultType="PresVO">
+		SELECT * FROM (SELECT * FROM dd_pres where hos_res_num = #{hos_res_num} ORDER BY pres_num DESC) WHERE ROWNUM = 1
+	</select>
+	
+	
+	처방전 약 명세 리스트
+	<select id="cusPresDetailList" parameterType="String" resultType="PresDetailVO">
+		select * from dd_pre_detail where pres_num=#{pres_num}
+		order by cus_num
+	</select>
+	
+	처방전 약 명세 약 이름 
+	<select id="cusPresDetailMedName" parameterType="String" resultType="String">
+		select a.med_name from dd_medicine a, dd_pre_detail b
+		where a.med_num = b.med_num
+		and b.pres_num = #{pres_num}
+		order by b.cus_num
+	</select>
+	
+	결제하기
+	<insert id="insertPay" parameterType="PayVO">
+	insert into dd_pay values('PAY00'|| pay_seq.nextval, #{pay_type}, #{cus_num}, #{pres_num})
+	</insert>
+	
+	결제완료로 업데이트
+	<update id="updatePay" parameterType="String">
+		update dd_pres set pay_check = '결제 완료'
+		where pres_num = #{pres_num}
+	</update>
+	
+	처방전 결제 여부 추출
+	<select id="selectPayCheck" parameterType="String" resultType="String">
+		select pay_check from dd_pres where pres_num = #{pres_num}
+	</select>
+	
+	약 가격 추출
+	<select id="selectPayPrice" parameterType="String" resultType="int">
+	select sum(a.med_price * b.med_count) from dd_medicine a, dd_pre_detail b
+	where a.med_num = b.med_num
+	and b.hos_res_num = #{hos_res_num}
+	</select>
+	
+	
+	약국번호 가져오기
+	<select id="selectPharNum" parameterType="String" resultType="String">
+	select phar_num from dd_pharmacy where phar_name = #{phar_name, jdbcType=VARCHAR}
+	</select>
+	
+	약국 예약하기
+	<insert id="insertPharRes" parameterType="PharResVO">
+	insert into dd_phar_res values('PHRES00'||phar_res_seq.nextval, #{phar_res_time}, #{phar_res_memo}, #{cus_num}, #{phar_num})
+	</insert>
+	
+	약국 예약 리스트
+	<select id="pharResList" parameterType="String" resultType="PharResVO">
+	select * from dd_phar_res where cus_num = #{cus_num}
+	order by phar_res_num
+	</select>
+	
+	약국 이름 추출
+	<select id = "detailNamePharmacy" parameterType="String" resultType="String">
+	select b.phar_name 
+	from dd_phar_res a, dd_pharmacy b
+	where a.phar_num = b.phar_num
+	and a.cus_num like #{cus_num}
+	order by phar_res_num
+	</select>
+	
+	
+	약국 예약 상세내용
+	<select id="pharResDetail" parameterType="String" resultType="PharResVO">
+	select * from dd_phar_res where phar_res_num = #{phar_res_num}
+	</select>
+	
+	약국 이름 추출
+	<select id="selectPharmacyName" parameterType="String" resultType="String">
+	select phar_name from dd_pharmacy
+	where phar_num = #{phar_num}
+	</select>
+	
+	
+	약국 대기번호 증가
+	<update id="increasePharResWait" parameterType="String">
+		update dd_pharmacy set phar_wait = phar_wait + 1
+		where phar_num like #{phar_num}
+	</update>  
+
+	대기번호 조회
+	<select id="detailPharWait" parameterType="String" resultType="int">
+	select phar_wait from dd_pharmacy where phar_num = #{phar_num}
+	</select>
+		
+	리뷰 등록
+	<insert id="reviewInsert" parameterType="ReviewVO">
+		insert into dd_review (rv_num, rv_title, rv_writer, rv_content, rv_date, rv_count, cus_num)
+		values (
+		'R00' || review_seq.nextval
+		, #{rv_title, jdbcType=VARCHAR}
+		, #{rv_writer, jdbcType=VARCHAR}
+		, #{rv_content, jdbcType=VARCHAR}
+		, sysdate
+		, 0 
+		, #{cus_num})
+	</insert>
+	
+	리뷰 상세
+	<select id="reviewDetail" resultType="ReviewVO" parameterType="string">
+		select*from dd_review
+		where rv_num = #{rv_num}
+	</select>
+	
+	
+	리뷰 리스트
+	<select id="reviewList" resultType="ReviewVO" parameterType="String">
+		select*from dd_review
+		where cus_num=#{cus_num}
+	</select>
+	
+	리뷰 수정 
+	<update id="reviewUpdate" parameterType="ReviewVO">
+		update dd_review
+		set rv_title = #{rv_title, jdbcType=VARCHAR}, rv_writer =#{rv_writer, jdbcType=VARCHAR}, rv_content = #{rv_content, jdbcType=VARCHAR}
+		where rv_num = #{rv_num}	
+	</update>
+	
+	리뷰 삭제
+	<delete id="reviewDelete" parameterType="String">
+		delete from dd_review
+		where rv_num = #{rv_num}
+	</delete>
+		
+		
+	조회 수 증가
+	<update id="increaseHits" parameterType="String" >
+		update dd_review set rv_count = rv_count +1
+		where rv_num = #{rv_num}
+	</update>
+	
+	게시글 조회 수 조회
+	<select id="detailHits" parameterType="String" resultType="int">
+		select rv_count from dd_review where rv_num=#{rv_num}
+	</select>
+	
+	예약 접수 확인
+	<select id="checkResAcpt" parameterType="String" resultType="String">
+		select hos_res_acpt from dd_hos_res where hos_res_num=#{hos_res_num}
+	</select> -->
+		
+		
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

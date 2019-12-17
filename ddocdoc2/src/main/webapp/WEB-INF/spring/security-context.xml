@@ -7,12 +7,15 @@
 
 
 		<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+		<bean id="customLoginSuccess" class="org.ddocdoc.security.CustomLoginSuccessHandler"/>
 		
 	<security:http>
 	
 		<security:intercept-url pattern="/customer/hosSearch" access="hasRole('ROLE_MEMBER')"/>
-	
-		<security:form-login login-page="/customer/loginForm"/>
+		
+		
+		
+		<security:form-login login-page="/customer/loginForm" authentication-success-handler-ref="customLoginSuccess"/>
 		
 		<security:access-denied-handler error-page="/"/> <!-- 에러발생시 -->
 	</security:http>

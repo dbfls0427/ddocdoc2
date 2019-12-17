@@ -21,20 +21,20 @@
         <!-- Template CSS Files
         ================================================== -->
         <!-- Twitter Bootstrs CSS -->
-        <link rel="stylesheet" href="../plugins/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/bootstrap/bootstrap.min.css">
         <!-- Ionicons Fonts Css -->
-        <link rel="stylesheet" href="../plugins/ionicons/ionicons.min.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/ionicons/ionicons.min.css">
         <!-- animate css -->
-        <link rel="stylesheet" href="../plugins/animate-css/animate.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/animate-css/animate.css">
         <!-- Hero area slider css-->
-        <link rel="stylesheet" href="../plugins/slider/slider.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/slider/slider.css">
         <!-- owl craousel css -->
-        <link rel="stylesheet" href="../plugins/owl-carousel/owl.carousel.css">
-        <link rel="stylesheet" href="../plugins/owl-carousel/owl.theme.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/owl-carousel/owl.carousel.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/owl-carousel/owl.theme.css">
         <!-- Fancybox -->
-        <link rel="stylesheet" href="../plugins/facncybox/jquery.fancybox.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/facncybox/jquery.fancybox.css">
         <!-- template main css file -->
-        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
         
     	
         
@@ -45,7 +45,9 @@
     
         
         </style>
-        
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous"></script>
         
     </head>
     <body>
@@ -69,7 +71,7 @@
                     <!-- logo -->
                     <div class="navbar-brand">
                         <a href="success.do" >
-                            <img src="../images/logo.png" alt="">
+                            <img src="/resources/images/logo.png" alt="">
                         </a>
                     </div>
                     <!-- /logo -->
@@ -179,7 +181,7 @@ ${customer.cus_name }
                  <figure class="wow fadeInLeft animated portfolio-item" data-wow-duration="500ms" data-wow-delay="0ms">
                     <div class="img-wrapper">
                         <!--  <img src="../images/portfolio/item-1.jpg" class="img-responsive" alt="this is a title" > -->
-                        <img src="../images/portfolio/info.jpg" class="img-responsive" alt="this is a information" style="width: 262.5px; height: 175px;">
+                        <img src="/resources/images/portfolio/info.jpg" class="img-responsive" alt="this is a information" style="width: 262.5px; height: 175px;">
                     </div>
                     <figcaption>
                         <h4>
@@ -200,7 +202,7 @@ ${customer.cus_name }
                 <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="300ms">
                     <div class="img-wrapper">
                         <!-- <img src="../images/portfolio/item-2.jpg" class="img-responsive" alt="this is a title" > -->
-                        <img src="../images/portfolio/schedule.jpg" class="img-responsive" alt="this is a schedule">
+                        <img src="/resources/images/portfolio/schedule.jpg" class="img-responsive" alt="this is a schedule">
                     </div>
                     <figcaption>
                         <h4>
@@ -220,7 +222,7 @@ ${customer.cus_name }
                 <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="300ms">
                     <div class="img-wrapper">
                        <!-- <img src="../images/portfolio/item-3.jpg" class="img-responsive" alt="" > -->
-                        <img src="../images/portfolio/child.jpg" class="img-responsive" alt="child care" >
+                        <img src="/resources/images/portfolio/child.jpg" class="img-responsive" alt="child care" >
                     </div>
                     <figcaption>
                         <h4>
@@ -240,7 +242,7 @@ ${customer.cus_name }
                 <figure class="wow fadeInLeft animated" data-wow-duration="500ms" data-wow-delay="600ms">
                     <div class="img-wrapper">
                          <!--<img src="../images/portfolio/item-4.jpg" class="img-responsive" alt="" >-->
-                        <img src="../images/portfolio/mypage.jpg" class="img-responsive" alt="mypage" >
+                        <img src="/resources/images/portfolio/mypage.jpg" class="img-responsive" alt="mypage" >
                     </div>
                     <figcaption>
                         <h4>
@@ -307,21 +309,21 @@ ${customer.cus_name }
 	<!-- Template Javascript Files
 	================================================== -->
 	<!-- jquery -->
-	<script src="../plugins/jQurey/jquery.min.js"></script>
+	<script src="<c:url value="/resources/plugins/jQuery/jquery.min.js" />"></script>
 	<!-- Form Validation -->
-    <script src="../plugins/form-validation/jquery.form.js"></script> 
-    <script src="../plugins/form-validation/jquery.validate.min.js"></script>
+    <script src="<c:url value="/resources/plugins/form-validation/jquery.form.js" />"></script>
+    <script src="<c:url value="/resources/plugins/form-validation/jquery.validate.min.js" />"></script>
 	<!-- owl carouserl js -->
-	<script src="../plugins/owl-carousel/owl.carousel.min.js"></script>
+	 <script src="<c:url value="/resources/plugins/owl-carousel/owl.carousel.min.js" />"></script>
 	<!-- bootstrap js -->
-	<script src="../plugins/bootstrap/bootstrap.min.js"></script>
+	 <script src="<c:url value="/resources/plugins/bootstrap/bootstrap.min.js" />"></script>
 	<!-- wow js -->
-	<script src="../plugins/wow-js/wow.min.js"></script>
+	 <script src="<c:url value="/resources/plugins/wow-js/wow.min.js" />"></script>
 	<!-- slider js -->
-	<script src="../plugins/slider/slider.js"></script>
+	 <script src="<c:url value="/resources/plugins/slider/slider.js" />"></script>
 	<!-- Fancybox -->
-	<script src="../plugins/facncybox/jquery.fancybox.js"></script>
+	 <script src="<c:url value="/resources/plugins/facncybox/jquery.fancybox.js" />"></script>
 	<!-- template main js -->
-	<script src="../js/main.js"></script>
+	 <script src="<c:url value="/resources/js/main.js" />"></script>
  	</body>
 </html>
