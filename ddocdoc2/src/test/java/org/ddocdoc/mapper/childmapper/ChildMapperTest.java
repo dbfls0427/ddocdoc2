@@ -22,17 +22,17 @@ public class ChildMapperTest {
 	@Setter(onMethod_ = @Autowired)
 	private ChildMapper mapper;
 	
-	//아이리스트 테스트
-/*	@Test
+	//�븘�씠由ъ뒪�듃 �뀒�뒪�듃
+	@Test
 	public void test() {
 		
-		String ch_num = "C001";
+		String ch_num = "C0062";
 		List<ChildVO> list = mapper.childList(ch_num);
 		
 		list.forEach(i -> log.info(list));
 
 	
-	}*/
+	}
 	
 /*	@Test
 	public void childDetail(){
