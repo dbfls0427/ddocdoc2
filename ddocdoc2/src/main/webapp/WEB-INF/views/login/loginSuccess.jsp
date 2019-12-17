@@ -87,7 +87,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">병원찾기 <span class="caret"></span></a>
                                 <div class="dropdown-menu">
                                     <ul>
-                                        <li><a href="map.do?cus_num=${customer.cus_num }">병원찾기</a></li>
+                                        <li><a href="/customer/hosSearch">병원찾기</a></li>
                                         <li><a href="resList.do">예약내역</a></li>
                                     </ul>
                                 </div>

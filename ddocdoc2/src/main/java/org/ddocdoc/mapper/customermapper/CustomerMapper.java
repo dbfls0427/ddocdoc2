@@ -2,6 +2,7 @@ package org.ddocdoc.mapper.customermapper;
 
 import java.util.List;
 
+import org.ddocdoc.vo.customervo.CustomerAuthVO;
 import org.ddocdoc.vo.customervo.CustomerVO;
 import org.ddocdoc.vo.loginvo.LoginVO;
 
@@ -9,6 +10,10 @@ public interface CustomerMapper {
 	int insertCustomer(CustomerVO customer);
 	
 	CustomerVO loginCustomer(String cus_id);
+	
+	void insertCustomerAuth(CustomerAuthVO cusAuth);
+	
+	String cusNumSelect(String cus_id);
 	
 	/*// 병원 번호 출력
 	String selectHosNum(String hos_name);

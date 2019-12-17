@@ -1,6 +1,7 @@
 package org.ddocdoc.service.customerservice;
 
 import org.ddocdoc.mapper.customermapper.CustomerMapper;
+import org.ddocdoc.vo.customervo.CustomerAuthVO;
 import org.ddocdoc.vo.customervo.CustomerVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,8 +22,15 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public void insertCustomer(CustomerVO customer) {
 		log.info("insert..." + customer);
-		
+
 		mapper.insertCustomer(customer);
+		String cus_num = mapper.cusNumSelect(customer.getCus_id());
+		CustomerAuthVO auth = new CustomerAuthVO();
+		auth.setCus_num(cus_num);
+		auth.setCus_id(customer.getCus_id());
+		auth.setAuth("ROLE_MEMBER");
+		mapper.insertCustomerAuth(auth);
+		
 	}
 
 	@Override
@@ -31,6 +39,9 @@ public class CustomerServiceImpl implements CustomerService {
 		
 		return customer;
 	}
+
+	
+	
 	
 	
 	

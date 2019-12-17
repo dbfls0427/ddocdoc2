@@ -5,12 +5,15 @@ import javax.servlet.http.HttpServletRequest;
 import org.ddocdoc.service.customerservice.CustomerService;
 import org.ddocdoc.vo.customervo.CustomerVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.AllArgsConstructor;
@@ -26,6 +29,9 @@ public class CustomerController {
 	@Setter(onMethod_ = @Autowired)
 	private CustomerService service;
 	
+	@Setter(onMethod_ = @Autowired)
+	private PasswordEncoder pwencoder;
+	
 	public static CustomerVO allCustomer;
 	
 	
@@ -40,9 +46,9 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/hosSearch")
-	public String hosSearch(){
-		
-		return "/search/zz";
+	public String hosSearch(Model model){
+		model.addAttribute("customer", allCustomer);
+		return "/search/hosSearch";
 	}
 	
 	@GetMapping("/loginSuccess")
@@ -52,5 +58,28 @@ public class CustomerController {
 		return "/login/loginSuccess";
 	}
 	
+	@GetMapping("/joinForm")
+	public String joinForm(){
+		return "/login/joinForm";
+	}
+	
+	@PostMapping("/joinAction")
+	public String joinAction(CustomerVO customer){
+		System.out.println("컨트롤러에서 아이디:" + customer.getCus_id());
+		String pw = pwencoder.encode(customer.getCus_pw());
+		
+		customer.setCus_pw(pw);
+		System.out.println("컨트롤러에서 " + customer.getCus_pw());
+		service.insertCustomer(customer);
+		
+		return "/login/loginForm";
+	}
+	
+	//병원 예약 폼
+	@GetMapping("/hospitalResForm")
+	public String hospitalResForm(@RequestParam String cus_num, @RequestParam String hos_name, Model model){
+		model.addAttribute("customer", allCustomer);
+		return "/res/hos_res";
+	}
 	
 }

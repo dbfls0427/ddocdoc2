@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html class="no-js">
-    <head>
-      <!-- Basic Page Needs
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+ <!-- Basic Page Needs
         ================================================== -->
         <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -36,43 +36,23 @@
         <!-- template main css file -->
         <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
         
-        
-        <style type="text/css">
-        	#wrapLoginform {
-				height: 450px;
-			}
-			
-			#loginformdiv {
-				width: 40%; 
-				margin: 0 auto;
-			}
-			
-			#btnsubWrap {
-				text-align: center;
-			}
-			
-			#btnsubWrap input {
-				width: 40%;
-			}
-			
-			#wrapform2{
-				text-align: center;
-			}
-			
-			#wrapform2 input {
-				width: 40%;
-			}
-        
-        </style>
-        
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css" />
+<script type="text/javascript">
+ var j = jQuery.noConflict();
+ j(document).ready(function() {
+	 j("#datepickers").datepicker();
+})
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
 		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 		crossorigin="anonymous"></script>
-    </head>
-    <body>
+</head>
+<body>
 
-
-        <!--
+<!--
         ==================================================
        MENU: Header Section Start
         ================================================== -->
@@ -90,7 +70,7 @@
                     
                     <!-- logo -->
                     <div class="navbar-brand">
-                        <a href="../index.html" >
+                        <a href="success.do" >
                             <img src="/resources/images/logo.png" alt="">
                         </a>
                     </div>
@@ -100,38 +80,63 @@
                 <nav class="collapse navbar-collapse navbar-right" role="navigation">
                     <div class="main-menu">
                         <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <a href="../index.html" >Home</a>
+                           <li>
+                                <a href="success.do" >Home</a>
                             </li>
-                             <li><a href="/DDOCDOC/map/NohosSearch.jsp">병원찾기</a></li>
-                            <li><a href="../child/childPleaseLogin.do">아이관리</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">병원찾기 <span class="caret"></span></a>
+                                <div class="dropdown-menu">
+                                    <ul>
+                                        <li><a href="/customer/hosSearch">병원찾기</a></li>
+                                        <li><a href="../Customer/resList.do">예약내역</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li><a href="/DDOCDOC/child.index.jsp?cus_name=${customer.cus_name }">아이관리</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">QR코드 <span class="caret"></span></a>
                                 <div class="dropdown-menu">
                                     <ul>
-                                        <li><a href="detailCustomer.do">QR코드 발급</a></li>
+                                        <li><a href="/DDOCDOC/Customer/detailCustomer.do">QR코드 발급</a></li>
                                     </ul>
                                 </div>
                             </li>
-                            <li><a href="loginForm.do">로그인</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">후기<span class="caret"></span></a>
+                                <div class="dropdown-menu">
+                                    <ul>
+                                        <li><a href="reviewInsertForm.do">후기 작성</a></li>
+                                        <li><a href="reviewList.do">후기 목록</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">${customer.cus_name } 님 <span class="caret"></span></a>
+                                <div class="dropdown-menu">
+                                    <ul>
+                                        <li><a href="../Customer/myPageForm.do">마이페이지</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li><a href="../Customer/logout.do">로그아웃</a></li>
                         </ul>
                     </div>
                 </nav>
                 <!-- /main nav -->
             </div>
-        </header>
-        
-        
+         </header>
+            
+     
         <!-- 
         ================================================== 
             TITLE: Global Page Section Start
         ================================================== -->
-        <section class="global-page-header" style="background: #ffe307;">
+        <section class="global-page-header" style="padding: 100px 0 10px 0;">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="block">
-                            <h2>LOGIN</h2>
+                            <h2 style="font-size: 35px;">병원 예약</h2>
                             <ol class="breadcrumb">
                                 <li>
                                     <a href="../index.html">
@@ -139,66 +144,64 @@
                                         Home
                                     </a>
                                 </li>
-                                <li class="active">LOGIN</li>
+                               <!--  <li class="active">가까운 병원찾기</li> -->
                             </ol>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
-        
-        
-        
 
-
-		<section class="company-description" id="wrapLoginform">
-		
-			<div class="panel panel-default" id="loginformdiv">
-				<div class="panel-body">
-					<form action="/login" method = "post">
-						<div class="form-group">
-							<label>ID</label>
-							<input type = "text" name = "username" class="form-control input-lg" placeholder="ID">
-						</div>
-						<div class="form-group">
-							<label>Password</label>
-							<input type = "text" name = "password" class="form-control input-lg" placeholder="Password">
-						</div>
-						
-						<div id="btnsubWrap">
-							<input type = "submit" value = "로그인"  class="btn btn-warning btn-lg">
-							<hr>
-						</div>
-						<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
-					</form>
-					<div id="wrapform2">
-						<form action="/customer/joinForm" method = "get">
-							<input type = "submit" value = "회원가입" class="btn btn-default active btn-lg">
-						</form>
-					</div>
-			  		
-			  		<!-- 
-					<form action="login.do" method = "post">
-						ID : <input type = "text" name = "customerID"><br>
-						PW : <input type = "text" name = "customerPW"><br>
-						<input type = "submit" value = "로그인">
-					</form> <br>
-					<form action="join.do" method = "post">
-						<input type = "submit" value = "회원가입">
-					</form>
-					 -->
-			  </div>
+	 <section class="company-description" style="margin-top: 50px; display: flex; justify-content: center; margin-bottom: 60px;">
+	 
+		<form action="hos_res_action.do" method = "post" style="width: 35%;">
+			<label>진료 종류</label>
+			<select name="res_type" class="form-control">
+				      <option value="일반진료">일반진료</option>
+				      <option value="수액">수액</option>
+			    </select>
+			<br>
+			<label>진료 증상</label>
+			 <input type = "text" name = "res_sym" class="form-control"><br>
+			<label>메모</label><br>
+			<input type = "text" name = "res_memo" class="form-control"><br>
+		  	<label>예약 날짜</label><br>
+		  	<input type="text" id="datepickers" name = "res_date" class="form-control"/>
+		  	<br>
+		 	<label>진료 시간</label>
+		 	<br>
+			 <select name="res_time" class="form-control">
+				      <option value="09:00">09:00</option>
+				      <option value="09:30">09:30</option>
+				      <option value="10:00">10:00</option>
+				      <option value="10:30">10:30</option>
+				      <option value="11:00">11:00</option>
+				      <option value="11:30">11:30</option>
+				      <option value="12:00">12:00</option>
+				      <option value="12:30">12:30</option>
+				      <option value="13:00">13:00</option>
+				      <option value="13:30">13:30</option>
+				      <option value="14:00">14:00</option>
+				      <option value="14:30">14:30</option>
+				      <option value="15:00">15:00</option>
+				      <option value="15:30">15:30</option>
+				      <option value="16:00">16:00</option>
+				      <option value="16:30">16:30</option>
+				      <option value="17:00">17:00</option>
+				      <option value="17:30">17:30</option>
+				      <option value="18:00">18:00</option>
+			    </select><br>
+			<input type = "hidden" name = "cus_num" value = ${cus_num }><br>
+			<input type = "hidden" name = "hos_name" value = ${hos_name }><br>
+			<div style="display: flex; justify-content: center;">
+				<input type = "submit" value = "예약" class="btn btn-warning btn-lg">
 			</div>
-		</section>
-		
-		
-		
-		
-
-		
-
-            <!--
+		</form>
+	 
+	 </section>
+	 
+	 
+ <!--
             ==================================================
             Footer Section Start
             ================================================== -->
@@ -259,5 +262,6 @@
 	 <script src="<c:url value="/resources/plugins/facncybox/jquery.fancybox.js" />"></script>
 	<!-- template main js -->
 	 <script src="<c:url value="/resources/js/main.js" />"></script>
- 	</body>
+</body>
+
 </html>

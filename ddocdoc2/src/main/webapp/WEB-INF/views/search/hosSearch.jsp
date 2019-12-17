@@ -1,12 +1,6 @@
-<%@page import="ddocdoc.vo.CustomerVO"%>
-<%@page import="ddocdoc.loginSession.LoginSession"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	String cus_num = request.getParameter("cus_num");
-	request.setAttribute("cus_num", cus_num);
-
-%>    
+    
 
 <!DOCTYPE html>
 <html>
@@ -29,20 +23,20 @@
         <!-- Template CSS Files
         ================================================== -->
         <!-- Twitter Bootstrs CSS -->
-        <link rel="stylesheet" href="../plugins/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/bootstrap/bootstrap.min.css">
         <!-- Ionicons Fonts Css -->
-        <link rel="stylesheet" href="../plugins/ionicons/ionicons.min.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/ionicons/ionicons.min.css">
         <!-- animate css -->
-        <link rel="stylesheet" href="../plugins/animate-css/animate.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/animate-css/animate.css">
         <!-- Hero area slider css-->
-        <link rel="stylesheet" href="../plugins/slider/slider.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/slider/slider.css">
         <!-- owl craousel css -->
-        <link rel="stylesheet" href="../plugins/owl-carousel/owl.carousel.css">
-        <link rel="stylesheet" href="../plugins/owl-carousel/owl.theme.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/owl-carousel/owl.carousel.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/owl-carousel/owl.theme.css">
         <!-- Fancybox -->
-        <link rel="stylesheet" href="../plugins/facncybox/jquery.fancybox.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/facncybox/jquery.fancybox.css">
         <!-- template main css file -->
-        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
         
     <style>
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
@@ -82,6 +76,9 @@
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
 </style>
+ <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous"></script>
 </head>
 <body>
  <!--
@@ -102,7 +99,7 @@
 
 				<!-- logo -->
 				<div class="navbar-brand">
-					<a href="success.do"> <img src="../images/logo.png" alt="">
+					<a href="success.do"> <img src="/resources/images/logo.png" alt="">
 					</a>
 				</div>
 				<!-- /logo -->
@@ -116,7 +113,7 @@
 							data-toggle="dropdown">병원찾기 <span class="caret"></span></a>
 							<div class="dropdown-menu">
 								<ul>
-									<li><a href="map.do?cus_num=${customer.cus_num }">병원찾기</a></li>
+									<li><a href="/customer/hosSearch">병원찾기</a></li>
 									<li><a href="resList.do">예약내역</a></li>
 								</ul>
 							</div></li>
@@ -550,7 +547,7 @@ function displayPagination(pagination) {
 // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
 // 인포윈도우에 장소명을 표시합니다
 function displayInfowindow(marker, title, posit) {
-	 var content = '<div style="padding:5px;">'+title+'<br><a href="../Customer/hos_resform.do?hos_name='+title+'&cus_num=${cus_num}" style="color:blue" target="_blank">접수하기</a> <a href="https://map.kakao.com/link/to/'+title+','+posit.getLat()+','+posit.getLng()+'" style="color:blue" target="_blank">길찾기</a></div>';
+	 var content = '<div style="padding:5px;">'+title+'<br><a href="/customer/hospitalResForm?hos_name='+title+'&cus_num=${customer.cus_num}" style="color:blue" target="_blank">접수하기</a> <a href="https://map.kakao.com/link/to/'+title+','+posit.getLat()+','+posit.getLng()+'" style="color:blue" target="_blank">길찾기</a></div>';
     infowindow.setContent(content);
     infowindow.open(map, marker);
 }
@@ -608,21 +605,21 @@ function removeAllChildNods(el) {
 	<!-- Template Javascript Files
 	================================================== -->
 	<!-- jquery -->
-	<script src="../plugins/jQurey/jquery.min.js"></script>
+	<script src="<c:url value="/resources/plugins/jQuery/jquery.min.js" />"></script>
 	<!-- Form Validation -->
-    <script src="../plugins/form-validation/jquery.form.js"></script> 
-    <script src="../plugins/form-validation/jquery.validate.min.js"></script>
+    <script src="<c:url value="/resources/plugins/form-validation/jquery.form.js" />"></script>
+    <script src="<c:url value="/resources/plugins/form-validation/jquery.validate.min.js" />"></script>
 	<!-- owl carouserl js -->
-	<script src="../plugins/owl-carousel/owl.carousel.min.js"></script>
+	 <script src="<c:url value="/resources/plugins/owl-carousel/owl.carousel.min.js" />"></script>
 	<!-- bootstrap js -->
-	<script src="../plugins/bootstrap/bootstrap.min.js"></script>
+	 <script src="<c:url value="/resources/plugins/bootstrap/bootstrap.min.js" />"></script>
 	<!-- wow js -->
-	<script src="../plugins/wow-js/wow.min.js"></script>
+	 <script src="<c:url value="/resources/plugins/wow-js/wow.min.js" />"></script>
 	<!-- slider js -->
-	<script src="../plugins/slider/slider.js"></script>
+	 <script src="<c:url value="/resources/plugins/slider/slider.js" />"></script>
 	<!-- Fancybox -->
-	<script src="../plugins/facncybox/jquery.fancybox.js"></script>
+	 <script src="<c:url value="/resources/plugins/facncybox/jquery.fancybox.js" />"></script>
 	<!-- template main js -->
-	<script src="../js/main.js"></script>
+	 <script src="<c:url value="/resources/js/main.js" />"></script>
 </body>
 </html>
