@@ -39,6 +39,11 @@
 	<context:component-scan base-package="org.ddocdoc.controller" />
 	<context:component-scan base-package="org.ddocdoc.controller.childcontroller" />
 	<context:component-scan base-package="org.ddocdoc.controller.hospitalcontroller" />
+	
+	<!-- 파일첨부 -->
+    <beans:bean id="multipartResolver"
+        class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
+    </beans:bean>
 
 
 
