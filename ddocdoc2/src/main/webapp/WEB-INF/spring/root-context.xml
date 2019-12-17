@@ -21,7 +21,7 @@
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
 		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE" />
-		<property name="username" value="ddocdoc" />
+		<property name="username" value="project" />
 		<property name="password" value="1234" />
 	</bean>
 	
@@ -37,11 +37,13 @@
 	<!-- 서비스 -->
 	<context:component-scan base-package="org.ddocdoc.service.childservice"/>
 	<context:component-scan base-package="org.ddocdoc.service.hospitalservice"/>
+	<context:component-scan base-package="org.ddocdoc.service.customerservice"/>
+	
 	
 	<!-- 매퍼 -->
 	<mybatis-spring:scan base-package="org.ddocdoc.mapper.childmapper"/>
 	<mybatis-spring:scan base-package="org.ddocdoc.mapper.hospitalmapper"/>
-	
+	<mybatis-spring:scan base-package="org.ddocdoc.mapper.customermapper"/>
 	
 	
 	
