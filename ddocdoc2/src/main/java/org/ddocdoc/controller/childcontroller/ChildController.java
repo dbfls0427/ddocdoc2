@@ -64,6 +64,7 @@ public class ChildController {
 		return "/child/childUpdate";
 	}
 	
+	//아이수정
 	@PostMapping("/childUpdate")
 	public String childUpdate(ChildVO childVO, RedirectAttributes rttr){
 		
@@ -78,6 +79,7 @@ public class ChildController {
 		return "redirect:/child/childList";
 	}
 	
+	//아이삭제
 	@GetMapping("/childDelete")
 	public String childDelete(@RequestParam("ch_num") String ch_num, 
 			@RequestParam("cus_num") String cus_num,
@@ -89,4 +91,7 @@ public class ChildController {
 		
 		return "redirect:/child/childList";
 	}
+	
+	//아이등록
+	
 }
