@@ -20,7 +20,7 @@
   <link href="${pageContext.request.contextPath }/resources/css/sb-admin-2.min.css" rel="stylesheet">
 	
 
-	
+ 
 <style type="text/css">
 .bg-gradient-warning {
     background-color: #ffe208 !important;
@@ -51,17 +51,13 @@
 	width: 30%;
 }
 
-#contentBox1{
-	margin-bottom: 30px; 
-	margin-left:20px; 
-	width:60%;
-}
 
 </style>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-   crossorigin="anonymous"></script>
+
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
 	
 </head>
 <body id="page-top">
@@ -219,96 +215,180 @@
 
         </nav>
         <!-- End of Topbar -->
+		
+		<!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+	    	<div id="boxContent" style="padding:20px;">
+	    		
+				<h3>병원정보 상세보기</h3>
+				<div class="alert alert-warning" role="alert" style="background-color:#fff0c75c;">
+					<div class="table-responsive">
+						<table class="table">
+							<thead class="thead-dark">
+								<tr>
+									<th style="width: 90px;">병원번호</th>
+									<th style="width: 100px;">병원종류</th>
+									<th style="width: 280px;">병원이름</th>
+									<th style="width: 160px;">병원Tel.</th>
+									<th style="width: 240px;">병원주소</th>
+									<th style="width: 90px;">운영시간</th>
+									<th style="width: 640px;">병원정보사항</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">${hospitalvo.hos_num }</th>
+									<td>${hospitalvo.hos_type }</td>
+									<td>${hospitalvo.hos_name }</td>
+									<td>${hospitalvo.hos_tel }</td>
+									<td>${hospitalvo.hos_addr }</td>
+									<td>${hospitalvo.hos_time }</td>
+									<td>${hospitalvo.hos_info }</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
 
-        
-		<!-- Content Row -->
-          <div class="row" style="margin-left:30px;"s>
-          	<h3>병원정보등록</h3>
-          </div>
-          
-          <div class="row" style="margin-left:30px;">
+				<div style="display:flex;">
+					<a href="/DDOCDOC/hospital/hospitalList.do" role="button" class="btn btn-warning btn-sm" style="width:10%;">리스트</a> <br>
+					<a href="/DDOCDOC/hospital/hospitalUpdateForm.do?seq=${hospitalvo.hos_num }" role="button" class="btn btn-outline-secondary btn-sm" style="width: 5%; margin: 0 10px;">수정</a> <br>
+					<a href="/DDOCDOC/hospital/hospitalDelete.do?seq=${hospitalvo.hos_num }" role="button" class="btn btn-outline-danger btn-sm">삭제</a> 
+				</div>
+				<br>
+				<hr>
+				<br>
+				
 	          <!-- DataTales Example -->
-	          <div class="card shadow mb-4" style="width:60%;">
+	          <div class="card shadow mb-4">
 	            <div class="card-header py-3">
-	              <h6 class="m-0 font-weight-bold text-primary">병원 등록</h6>
+	              <h5 class="m-0 font-weight-bold text-primary">예약환자 리스트</h5>
 	            </div>
 	            <div class="card-body">
 	              <div class="table-responsive">
-	              	<form action="/hospital/hospitalInsert" method="post" class="form-group" 
-	              	enctype="multipart/form-data">
-						<div class="form-group">
-						    <label for="exampleSelect1">병원종류</label>
-						    <select class="form-control" id="exampleSelect1"  name="hos_type">
-					      		<option value="내과">내과</option>
-								<option value="정형외과">정형외과</option>
-								<option value="이빈인후과">이비인후과</option>
-								<option value="치과">치과</option>
-								<option value="피부과">피부과</option>
-								<option value="안과">안과</option>
-								<option value="소아과">소아과</option>
-							</select>
-						</div>
-					    <div class="form-group">
-					    	<label>병원이름</label>
-					    	<input type="text" name="hos_name" class="form-control" placeholder="병원이름">
-					  	</div>
-					  	<div class="form-group">
-					    	<label>병원전화번호</label>
-					    	<input type="text" name="hos_tel" class="form-control" placeholder="병원전화번호">
-					  	</div>
-					  	<div class="form-group">
-					    	<label>병원주소</label>
-					    	<input type="text" name="hos_addr" class="form-control" placeholder="병원주소">
-					  	</div>
-					  	<div class="form-group">
-					    	<label>운영시간</label>
-					    	<input type="text" name="hos_time" class="form-control" placeholder="운영시간">
-					  	</div>
-					  	<div class="form-group">
-					    	<label for="exampleTextarea">병원정보사항</label>
-						    <textarea class="form-control" rows="3" name="hos_info"></textarea>
-						 </div>
-						 <div class="form-group">
-					    	<label for="exampleTextarea">병원사진</label>
-						    <input type="file" name="uploadfile" class="form-control" style="min-height:46px;">
-						 	<div class="uploadResult">
-						 		<ul>
-						 		</ul>
-						 	</div>
-						 </div>
-						<div style="display:flex;justify-content:center;">
-							<input type="submit" value="저장" class="btn btn-primary" style="width:25%;">
-						</div>
-					</form>
+	              	<table class="table table-hover">
+	              		<thead>
+							<tr>
+								<th>고객번호</th>
+								<th>진료종류</th>
+								<th>진료증상</th>
+								<th>메모</th>
+								<th>진료날짜</th>
+								<th>진료시간</th>
+								<th>병원예약번호</th>
+								<th>예약접수 </th>
+								<th>예약상태 </th>
+								<th>처방전 </th>
+							</tr>
+						</thead>
+					
+					
+						<c:forEach var="hosresvo" items="${HosResVO }">
+							<tr>
+								<td>${hosresvo.cus_num }</td>
+								<td>${hosresvo.hos_res_type }</td>
+								<td>${hosresvo.hos_res_sym }</td>
+								<td>${hosresvo.hos_res_memo }</td>
+								<td>${hosresvo.hos_res_date }</td>
+								<td>${hosresvo.hos_res_time }</td>
+								<td>${hosresvo.hos_res_num }</td>
+								<td><a href="/DDOCDOC/hospital/boolean_hos_res.do?hos_res_num=${hosresvo.hos_res_num}&seq=${hosresvo.hos_num}">예약</a></td>
+								<td>${hosresvo.hos_acpt }</td>
+								<td><a href="presInsert.do?hos_res_num=${hosresvo.hos_res_num}&cus_num=${hosresvo.cus_num}&hos_num=${hospitalvo.hos_num}">처방전 입력</a><br></td>
+							</tr>
+						</c:forEach>
+					</table>
 				</div>
-			  </div>
-		   </div>
-		</div>
-				
+	              </div>
+	            </div>
+              </div>
+	    	</div><!-- //boxContent -->
+        
+<!-- origin 
+
+<h3>병원정보 상세보기</h3>
+
+<table border="1">
+	<tr>
+		<td>병원번호</td>
+		<td>병원종류</td>
+		<td>병원이름</td>
+		<td>병원전화번호</td>
+		<td>병원주소</td>
+		<td>운영시간</td>
+		<td>병원정보사항</td>
+	</tr>
+		<tr>
+			<td><b>${hospitalvo.hos_num }</b></td>
+			<td>${hospitalvo.hos_type }</td>
+			<td>${hospitalvo.hos_name }</td>
+			<td>${hospitalvo.hos_tel }</td>
+			<td>${hospitalvo.hos_addr }</td>
+			<td>${hospitalvo.hos_time }</td>
+			<td>${hospitalvo.hos_info }</td>
+		</tr>
+
+</table>
+
+<a href="/DDOCDOC/hospital/hospitalList.do">리스트</a> <br>
+ 
+<a href="/DDOCDOC/hospital/hospitalUpdateForm.do?seq=${hospitalvo.hos_num }">수정</a> <br>
+
+<a href="/DDOCDOC/hospital/hospitalDelete.do?seq=${hospitalvo.hos_num }">삭제</a> 
+
+<br><br><br>
+<hr>
+
+<h5>예약환자 리스트</h5>
+!-- <p>현재예약환자 인원수:  <span>    <span>명</p>--
+
+<div style="display:flex;">
+!--  
+	<table border="1">
+		<tr>고객명</tr>
+		<c:forEach var="nameVO" items="${CustomerVO }">
+			<tr>
+				<td>고객이름 ????????${nameVO.cus_name }</td>
+			</tr>
+		</c:forEach>
+	</table>
+--
 
 
-<!-- 
-<form action="/DDOCDOC/hospital/hospitalInsert.do" method="post">
-	병원종류 <select name="hos_type">
-		      <option value="내과">내과</option>
-		      <option value="정형외과">정형외과</option>
-		      <option value="이빈인후과">이비인후과</option>
-		      <option value="치과">치과</option>
-		      <option value="피부과">피부과</option>
-		      <option value="안과">안과</option>
-		      <option value="소아과">소아과</option>
-	    </select><br>
-	병원이름 <input type="text" name="hos_name"><br>
-	병원전화번호 <input type="text" name="hos_tel"><br>
-	병원주소 <input type="text" name="hos_addr"><br>
-	운영시간 <input type="text" name="hos_time"><br>
-	병원정보사항 <textarea rows="4" cols="10" name="hos_info"></textarea>
-
-
-	<input type="submit" value="저장">
-</form>
- -->
-
+	
+	<table border="1">
+		<tr>
+			<td>고객번호</td>
+			<td>진료종류</td>
+			<td>진료증상</td>
+			<td>메모</td>
+			<td>진료날짜</td>
+			<td>진료시간</td>
+			<td>병원예약번호</td>
+			<td> 예약접수 </td>
+			<td> 예약상태 </td>
+			<td> 처방전 </td>
+		</tr>
+	
+	
+		<c:forEach var="hosresvo" items="${HosResVO }">
+			<tr>
+				<td>${hosresvo.cus_num }</td>
+				<td>${hosresvo.hos_res_type }</td>
+				<td>${hosresvo.hos_res_sym }</td>
+				<td>${hosresvo.hos_res_memo }</td>
+				<td>${hosresvo.hos_res_date }</td>
+				<td>${hosresvo.hos_res_time }</td>
+				<td>${hosresvo.hos_res_num }</td>
+				<td><a href="/DDOCDOC/hospital/boolean_hos_res.do?hos_res_num=${hosresvo.hos_res_num}&seq=${hosresvo.hos_num}">예약</a></td>
+				<td>${hosresvo.hos_acpt }</td>
+				<td><a href="presInsert.do?hos_res_num=${hosresvo.hos_res_num}&cus_num=${hosresvo.cus_num}&hos_num=${hospitalvo.hos_num}">처방전 입력</a><br></td>
+			</tr>
+		</c:forEach>
+	</table>
+</div>
+-->
+	
 	
 	 <!-- Footer -->
       <footer class="sticky-footer bg-white">
@@ -351,126 +431,6 @@
   </div>
 	
 
-  <script>
-  $(document).ready(function(e){
-  
-  
-  
-  var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
-  var maxSize = 5242880; //5MB
-
-  function checkExtension(fileName, fileSize){
-    
-    if(fileSize >= maxSize){
-      alert("파일 사이즈 초과");
-      return false;
-    }
-    
-    if(regex.test(fileName)){
-      alert("해당 종류의 파일은 업로드할 수 없습니다.");
-      return false;
-    }
-    return true;
-  }
-  
-  $("input[type='file']").change(function(e){
-	  console.log("111");
-	  var formData = new FormData();
-	  
-	  var inputFile = $("input[name='uploadFile']");
-	  
-//	  var files = inputFile[0].files;
-var files = e.target.files;
-    var filesArr = Array.prototype.slice.call(files);
-
-    filesArr.forEach(function(f) {
-        if(!f.type.match("image.*")) {
-            alert("확장자는 이미지 확장자만 가능합니다.");
-            return;
-        }
-
-        sel_file = f;
-
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            $("#profileImg").attr("src", e.target.result);
-        	$("#profileImg").css("height", "100px")
-        }
-        reader.readAsDataURL(f);
-    });		
-	  var file = files[0]
-      console.log(file)
-	  
-	  formData.append("uploadFile", file);
-	  console.log("222");
-	  console.log(inputFile);
-	  	
-	  /* 
-	  for(var i = 0; i < files.length; i++){
-
-	    if(!checkExtension(files[i].name, files[i].size) ){
-	      return false;
-	    }
-	    formData.append("uploadFile", files[i]);
-	    
-	  }
-	  
- */	  
-	  
-	  $.ajax({
-	    url: '/hospital/uploadAjaxAction',
-	    processData: false,
-	    contentType: false,
-	    data:formData,
-	    type: 'POST',
-	    dataType:'json',
-	      success: function(result){
-	        console.log("-------------------!!");
-	        console.log(result);
-	        showUploadResult(result); //업로드 결과 처리 함수
-	        alert("사진");
-
-	    }
-	  }); //$.ajax
-	    console.log("33333333333");
-	  
-	});
-  
-  
-  
-	function showUploadResult(uploadResultArr){
-	    
-	    if(!uploadResultArr || uploadResultArr.length == 0){ return; }
-	    
-	    var uploadUL = $(".uploadResult ul");
-	    
-	    var str ="";
-	    
-	    $(uploadResultArr).each(function(i, obj){
-	   
-	        
-	        if(obj.image){
-	            var fileCallPath =  encodeURIComponent( obj.uploadPath+ "/s_"+obj.uuid +"_"+obj.fileName);
-	            str += "<li data-path='"+obj.uploadPath+"'";
-	            str +=" data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"'"
-	            str +" ><div>";
-	            str += "<span> "+ obj.fileName+"</span>";
-	            str += "<button type='button' data-file=\'"+fileCallPath+"\' "
-	            str += "data-type='image' class='btn btn-warning btn-circle'><i class='fa fa-times'></i></button><br>";
-	            str += "<img src='/display?fileName="+fileCallPath+"'>";
-	            str += "</div>";
-	            str +"</li>";
-	        }
-
-	    });
-	    
-	    uploadUL.append(str);
-	  }
-  
-  });
-  </script>
-  
-  
   <!-- Bootstrap core JavaScript-->
   <script src="<c:url value="/resources/vendor/jquery/jquery.min.js" />"></script>
   <script src="<c:url value="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js" />"></script>
@@ -488,8 +448,6 @@ var files = e.target.files;
   <!-- Page level custom scripts -->
   <script src="<c:url value="/resources/js/demo/chart-area-demo.js"/>"></script>
   <script src="<c:url value="/resources/js/demo/chart-pie-demo.js"/>"></script>
-	
-  
 	
 
 </body>

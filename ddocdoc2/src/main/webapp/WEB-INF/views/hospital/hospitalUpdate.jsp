@@ -220,22 +220,22 @@
         </nav>
         <!-- End of Topbar -->
 
-        
+       
 		<!-- Content Row -->
           <div class="row" style="margin-left:30px;"s>
-          	<h3>병원정보등록</h3>
+          	<h3>병원정보수정</h3>
           </div>
           
           <div class="row" style="margin-left:30px;">
 	          <!-- DataTales Example -->
 	          <div class="card shadow mb-4" style="width:60%;">
 	            <div class="card-header py-3">
-	              <h6 class="m-0 font-weight-bold text-primary">병원 등록</h6>
+	              <h6 class="m-0 font-weight-bold text-primary">병원 수정</h6>
 	            </div>
 	            <div class="card-body">
 	              <div class="table-responsive">
-	              	<form action="/hospital/hospitalInsert" method="post" class="form-group" 
-	              	enctype="multipart/form-data">
+	              	<form action="/hospital/hospitalUpdate" method="post" class="form-group" enctype="multipart/form-data">
+	              		<input type="hidden" value="${hos_num}" name="hos_num">
 						<div class="form-group">
 						    <label for="exampleSelect1">병원종류</label>
 						    <select class="form-control" id="exampleSelect1"  name="hos_type">
@@ -250,25 +250,25 @@
 						</div>
 					    <div class="form-group">
 					    	<label>병원이름</label>
-					    	<input type="text" name="hos_name" class="form-control" placeholder="병원이름">
+					    	<input type="text" name="hos_name" class="form-control" placeholder="병원이름" value="${ hospitalvo.hos_name}">
 					  	</div>
 					  	<div class="form-group">
 					    	<label>병원전화번호</label>
-					    	<input type="text" name="hos_tel" class="form-control" placeholder="병원전화번호">
+					    	<input type="text" name="hos_tel" class="form-control" placeholder="병원전화번호" value="${hospitalvo.hos_tel }">
 					  	</div>
 					  	<div class="form-group">
 					    	<label>병원주소</label>
-					    	<input type="text" name="hos_addr" class="form-control" placeholder="병원주소">
+					    	<input type="text" name="hos_addr" class="form-control" placeholder="병원주소" value="${hospitalvo.hos_addr }">
 					  	</div>
 					  	<div class="form-group">
 					    	<label>운영시간</label>
-					    	<input type="text" name="hos_time" class="form-control" placeholder="운영시간">
+					    	<input type="text" name="hos_time" class="form-control" placeholder="운영시간" value="${hospitalvo.hos_time }">
 					  	</div>
 					  	<div class="form-group">
 					    	<label for="exampleTextarea">병원정보사항</label>
-						    <textarea class="form-control" rows="3" name="hos_info"></textarea>
-						 </div>
-						 <div class="form-group">
+						    <textarea class="form-control" rows="3" name="hos_info">${hospitalvo.hos_info}</textarea>
+						</div>
+						<div class="form-group">
 					    	<label for="exampleTextarea">병원사진</label>
 						    <input type="file" name="uploadfile" class="form-control" style="min-height:46px;">
 						 	<div class="uploadResult">
@@ -284,11 +284,11 @@
 			  </div>
 		   </div>
 		</div>
-				
 
 
-<!-- 
-<form action="/DDOCDOC/hospital/hospitalInsert.do" method="post">
+<!--  
+<form action="/DDOCDOC/hospital/hospitalUpdate.do" method="post">
+	<input type="hidden" value="${hos_num}" name="hos_num">
 	병원종류 <select name="hos_type">
 		      <option value="내과">내과</option>
 		      <option value="정형외과">정형외과</option>
@@ -307,7 +307,7 @@
 
 	<input type="submit" value="저장">
 </form>
- -->
+-->
 
 	
 	 <!-- Footer -->

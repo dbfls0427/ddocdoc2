@@ -7,7 +7,7 @@
 	<!-- 병원 정보 등록 -->
 	<insert id="hospitalInsert" parameterType="org.ddocdoc.vo.hospitalvo.HospitalVO">
 		insert into dd_hospital values('H00' || hospital_seq.nextval, #{hos_name}, #{hos_tel},
-			#{hos_addr}, #{hos_time}, #{hos_info}, 0, #{hos_type})
+			#{hos_addr}, #{hos_time}, #{hos_info}, 0, #{hos_type}, #{uuid}, #{uploadPath}, #{fileName})
 	</insert>
 	
 	
@@ -15,6 +15,26 @@
 	<select id="hospitalList" resultType="org.ddocdoc.vo.hospitalvo.HospitalVO">
 		select * from dd_hospital
 	</select>
+	
+	<!-- 병원 정보 상세 -->
+    <select id="hospitalDetail" resultType="org.ddocdoc.vo.hospitalvo.HospitalVO" parameterType="String">
+         select * from dd_hospital
+         where hos_num = #{hos_num, jdbcType=VARCHAR}
+    </select>
+    
+    <!-- 병원 정보 수정 -->
+    <update id="hospitalUpdate" parameterType="org.ddocdoc.vo.hospitalvo.HospitalVO">
+         update dd_hospital
+         set  hos_name = #{hos_name}, hos_tel = #{hos_tel}, hos_addr = #{hos_addr}, hos_time = #{hos_time}, hos_info = #{hos_info}, hos_type = #{hos_type},
+                  uuid = #{uuid}, uploadPath = #{uploadPath}, fileName = #{fileName}
+         where hos_num = #{hos_num}
+    </update>
+	
+	<!-- 병원 정보 삭제 -->
+    <delete id="hospitalDelete" parameterType="String">
+         delete from dd_hospital
+         where hos_num = #{hos_num}
+    </delete>
 	
 
 </mapper>

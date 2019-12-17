@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -57,6 +58,10 @@
 }
 
 </style>
+
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
 	
 </head>
 <body id="page-top">
@@ -104,7 +109,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">병원정보:</h6>
             <a class="collapse-item" href="/DDOCDOC/hospital/hospitalList.do?customer=${customer }">병원목록</a>
-            <a class="collapse-item" href="/DDOCDOC/hospital/hospitalInsertForm.do">병원정보입력</a>
+            <a class="collapse-item" href="/DDOCDOC/hospital/hospitalInsert">병원정보입력</a>
             <a class="collapse-item" href="/DDOCDOC/QRCode.jsp">QR CODE</a>
           </div>
         </div>
@@ -225,7 +230,7 @@
           <!-- Content Row -->
           <div class="row" style="display: flex;justify-content: space-between;padding-bottom: 20px;">
           	<h3>병원정보 목록</h3>
-        	<a href="/DDOCDOC/hospital/hospitalInsertForm.do" class="btn btn-secondary" role="button">병원정보 입력</a><br>
+        	<a href="/hospital/hospitalInsert" class="btn btn-secondary" role="button">병원정보 입력</a><br>
           </div>
           
           <div class="row">
@@ -246,7 +251,7 @@
 							<tr>
 								<td>${hospitalvo.hos_num }</td>
 								<td>${hospitalvo.hos_type }</td>
-								<td><a href="/DDOCDOC/hospital/hospitalDetail.do?seq=${hospitalvo.hos_num }">${hospitalvo.hos_name }</a></td>
+								<td><a href="/hospital/hospitalDetail?seq=${hospitalvo.hos_num }">${hospitalvo.hos_name }</a></td>
 							</tr>
 						</c:forEach>
 					</table>
