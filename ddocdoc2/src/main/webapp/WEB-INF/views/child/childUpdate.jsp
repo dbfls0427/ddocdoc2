@@ -114,7 +114,7 @@ font-family: 'Sunflower', sans-serif;
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">아이관리 <span class="caret"></span></a>
                                 <div class="dropdown-menu">
                                     <ul>
-                                        <li><a href="/child/childList/{'+${cus_num }+'}">아이관리</a></li>
+                                        <li><a href="/child/childList?cus_num=${cus_num }">아이관리</a></li>
                                         <li><a href="/DDOCDOC/Customer/detailCustomer.do">성장관리</a></li>
                                         <li><a href="/DDOCDOC/Customer/detailCustomer.do">예방접종</a></li>
                                         <li><a href="/DDOCDOC/Customer/detailCustomer.do">건강검진</a></li>
