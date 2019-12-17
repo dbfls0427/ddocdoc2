@@ -1,9 +1,12 @@
 package org.ddocdoc.service.customerservice;
 
+import java.util.List;
+
 import org.ddocdoc.mapper.customermapper.CustomerMapper;
 import org.ddocdoc.vo.customervo.CustomerAuthVO;
 import org.ddocdoc.vo.customervo.CustomerVO;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
+import org.ddocdoc.vo.pharresvo.PharResVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,6 +56,27 @@ public class CustomerServiceImpl implements CustomerService {
 		mapper.insertHospitalRes(hospitalresVO);
 		
 		
+	}
+
+	@Override
+	public List<HospitalResVO> resList(String cus_num) {
+		
+		return mapper.resList(cus_num);
+	}
+
+	@Override
+	public List<String> detailNameHospital(String cus_num) {
+		return mapper.detailNameHospital(cus_num);
+	}
+
+	@Override
+	public List<PharResVO> pharResList(String cus_num) {
+		return mapper.pharResList(cus_num);
+	}
+
+	@Override
+	public List<String> detailNamePharmacy(String cus_num) {
+		return mapper.detailNamePharmacy(cus_num);
 	}
 	
 	

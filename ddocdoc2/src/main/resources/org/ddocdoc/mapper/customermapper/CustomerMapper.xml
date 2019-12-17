@@ -39,11 +39,10 @@
 	
 	
 	 <!-- 예약 리스트 -->
-	<!-- <select id="resList" parameterType="String" resultType="HospitalResVO">
+	 <select id="resList" parameterType="String" resultType="org.ddocdoc.vo.hospitalresvo.HospitalResVO">
 	select * from dd_hos_res where cus_num = #{cus_num}
 	order by hos_res_num
-	
-	</select>  -->
+	</select>
 	
 	<!-- 병원 정보 추출 -->
 	<!-- <select id="detailHospital" parameterType="String" resultType="HospitalVO">
@@ -51,13 +50,13 @@
 	</select> -->
 	
 	<!-- 병원 이름 추출 -->
-	<!-- <select id = "detailNameHospital" parameterType="String" resultType="String">
+	 <select id = "detailNameHospital" parameterType="String" resultType="String">
 	select b.hos_name 
 	from dd_hos_res a, dd_hospital b
 	where a.hos_num = b.hos_num
 	and a.cus_num like #{cus_num}
 	order by hos_res_num
-	</select> -->
+	</select>
 	
 	<!-- 예약 상세내용 -->
 	<!-- <select id="detailRes" parameterType="String" resultType="HospitalResVO">
@@ -149,19 +148,19 @@
 	</insert> -->
 	
 	<!-- 약국 예약 리스트 -->
-	<!-- <select id="pharResList" parameterType="String" resultType="PharResVO">
+	 <select id="pharResList" parameterType="String" resultType="org.ddocdoc.vo.pharresvo.PharResVO">
 	select * from dd_phar_res where cus_num = #{cus_num}
 	order by phar_res_num
-	</select> -->
+	</select> 
 	
 	<!-- 약국 이름 추출 -->
-	<!-- <select id = "detailNamePharmacy" parameterType="String" resultType="String">
+	<select id = "detailNamePharmacy" parameterType="String" resultType="String">
 	select b.phar_name 
 	from dd_phar_res a, dd_pharmacy b
 	where a.phar_num = b.phar_num
 	and a.cus_num like #{cus_num}
 	order by phar_res_num
-	</select> -->
+	</select>
 	
 	
 	<!-- 약국 예약 상세내용 -->

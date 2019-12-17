@@ -88,7 +88,7 @@
                                 <div class="dropdown-menu">
                                     <ul>
                                         <li><a href="/customer/hosSearch">병원찾기</a></li>
-                                        <li><a href="resList.do">예약내역</a></li>
+                                        <li><a href="/customer/hospitalResList">예약내역</a></li>
                                     </ul>
                                 </div>
                             </li>

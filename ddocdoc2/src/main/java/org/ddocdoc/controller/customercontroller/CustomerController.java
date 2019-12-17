@@ -1,10 +1,13 @@
 package org.ddocdoc.controller.customercontroller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.ddocdoc.service.customerservice.CustomerService;
 import org.ddocdoc.vo.customervo.CustomerVO;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
+import org.ddocdoc.vo.pharresvo.PharResVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -87,13 +90,29 @@ public class CustomerController {
 	//병원 예약
 	@PostMapping("/hospitalRes")
 	public String hospitalRes(HospitalResVO hospitalresVO, @RequestParam String hos_name, Model model){
-		System.out.println("000000000000000000000000000");
 		System.out.println(hos_name);
 		String hos_num = service.selectHosNum(hos_name);
 		hospitalresVO.setHos_num(hos_num);
 		service.insertHospitalRes(hospitalresVO);
 		model.addAttribute("customer", allCustomer);
 		return "/login/loginSuccess";
+	}
+	
+	//예약 리스트
+	@GetMapping("/hospitalResList")
+	public String hospitalResList(Model model){
+		List<HospitalResVO> list = service.resList(allCustomer.getCus_num());
+		List<String> listName = service.detailNameHospital(allCustomer.getCus_num());
+		List<PharResVO> pharList2 = service.pharResList(allCustomer.getCus_num());
+		List<String> pharNameList2 =service.detailNamePharmacy(allCustomer.getCus_num());
+		
+		model.addAttribute("list", list);
+		model.addAttribute("hosName", listName);
+		model.addAttribute("pharList", pharList2);
+		model.addAttribute("pharNameList", pharNameList2);
+		
+		return "/res/resList";
+		
 	}
 	
 }

@@ -6,6 +6,7 @@ import org.ddocdoc.vo.customervo.CustomerAuthVO;
 import org.ddocdoc.vo.customervo.CustomerVO;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
 import org.ddocdoc.vo.loginvo.LoginVO;
+import org.ddocdoc.vo.pharresvo.PharResVO;
 
 public interface CustomerMapper {
 	int insertCustomer(CustomerVO customer);
@@ -24,14 +25,14 @@ public interface CustomerMapper {
 	
 	// 예약 목록 리스트
 	List<HospitalResVO> resList(String cus_num);
-	/*
-	// 병원 정보 추출
-	HospitalVO detailHospital(String hos_num);
+	
+/*	// 병원 정보 추출
+	HospitalVO detailHospital(String hos_num);*/
 	
 	// 병원 이름 추출
 	List<String> detailNameHospital(String cus_num);
 	
-	//예약 상세 내용
+	/*//예약 상세 내용
 	HospitalResVO detailRes(String hos_res_num);
 	
 	//예약 취소
@@ -74,14 +75,14 @@ public interface CustomerMapper {
 	String selectPharNum(String phar_name);
 	
 	//약국 예약하기
-	int insertPharRes(PharResVO pvo);
+	int insertPharRes(PharResVO pvo);*/
 	
 	//약국 예약 리스트
 	List<PharResVO> pharResList(String cus_num);
 	
 	//약국 이름 가져오기
 	List<String> detailNamePharmacy(String cus_num);
-	
+	/*
 	// 약국 예약 상세보기
 	PharResVO pharResDetail(String phar_res_num);
 	
