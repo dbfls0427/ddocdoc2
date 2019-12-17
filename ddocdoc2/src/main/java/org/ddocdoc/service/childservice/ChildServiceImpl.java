@@ -22,8 +22,8 @@ public class ChildServiceImpl implements ChildService {
 	private ChildMapper mapper;
 	
 	@Override
-	public int insertChild(HttpServletRequest request) throws Exception {
-		return 0;
+	public int insertChild(ChildVO childVO) throws Exception {
+		return mapper.insertChild(childVO);
 	}
 
 	@Override

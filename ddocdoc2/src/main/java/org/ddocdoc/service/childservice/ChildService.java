@@ -9,7 +9,7 @@ import org.ddocdoc.vo.childvo.ChildVO;
 public interface ChildService {
 
 	// 아이정보 등록 서비스
-	public int insertChild(HttpServletRequest request) throws Exception;
+	public int insertChild(ChildVO childVO) throws Exception;
 	
 	// 아이정보 상세보기 서비스
 	public ChildVO childDetail(String ch_num);

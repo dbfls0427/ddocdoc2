@@ -93,5 +93,24 @@ public class ChildController {
 	}
 	
 	//아이등록
+	@GetMapping("/childInsert")
+	public String childInsert(@RequestParam("cus_num") String cus_num, Model model){
+		model.addAttribute("cus_num",cus_num);
+		
+		return "/child/childInsert";
+		
+	}
+	
+	@PostMapping("/childInsert")
+	public String childInsert(ChildVO childVO, RedirectAttributes rttr){
+		try {
+			service.insertChild(childVO);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		rttr.addAttribute("cus_num",childVO.getCus_num());
+		return "redirect:/child/childList";
+	}
 	
 }
