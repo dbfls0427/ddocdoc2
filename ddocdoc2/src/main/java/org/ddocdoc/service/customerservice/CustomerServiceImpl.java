@@ -2,6 +2,7 @@ package org.ddocdoc.service.customerservice;
 
 import java.util.List;
 
+import org.ddocdoc.controller.customercontroller.CustomerController;
 import org.ddocdoc.mapper.customermapper.CustomerMapper;
 import org.ddocdoc.vo.customervo.CustomerAuthVO;
 import org.ddocdoc.vo.customervo.CustomerVO;
@@ -96,6 +97,10 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public int customerUpdate(CustomerVO customer) {
+		((CustomerVO)CustomerController.session.getAttribute("customer")).setCus_pw(customer.getCus_pw());
+		((CustomerVO)CustomerController.session.getAttribute("customer")).setCus_name(customer.getCus_name());
+		((CustomerVO)CustomerController.session.getAttribute("customer")).setCus_addr(customer.getCus_addr());
+		((CustomerVO)CustomerController.session.getAttribute("customer")).setCus_email(customer.getCus_email());
 		return mapper.customerUpdate(customer);
 	}
 

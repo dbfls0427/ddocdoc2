@@ -83,7 +83,7 @@
 	
 	<!-- 마이페이지 수정 -->
 	 <update id="customerUpdate" parameterType="org.ddocdoc.vo.customervo.CustomerVO">
-		update dd_customer set cus_pw = #{cus_pw}, cus_name = #{cus_name}, cus_addr = #{cus_addr}, cus_email = #{cus_email}, cus_birth = '05/03/23'
+		update dd_customer set cus_pw = #{cus_pw}, cus_name = #{cus_name}, cus_addr = #{cus_addr}, cus_email = #{cus_email}
 		where cus_num = #{cus_num}
 	</update>
 	

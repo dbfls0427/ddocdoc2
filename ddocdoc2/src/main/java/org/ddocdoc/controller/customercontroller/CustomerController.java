@@ -74,7 +74,6 @@ public class CustomerController {
 	public String joinAction(CustomerVO customer){
 		System.out.println("컨트롤러에서 아이디:" + customer.getCus_id());
 		String pw = pwencoder.encode(customer.getCus_pw());
-		
 		customer.setCus_pw(pw);
 		System.out.println("컨트롤러에서 " + customer.getCus_pw());
 		service.insertCustomer(customer);
@@ -155,6 +154,22 @@ public class CustomerController {
 	public String myPageUpdateForm(Model model){
 		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
 		return "/myPage/myPageUpdateForm";
+	}
+	
+	// 회원 정보 수정
+	@PostMapping("/myPageUpdate")
+	public String myPageUpdate(CustomerVO customer){
+		String pw = pwencoder.encode(customer.getCus_pw());
+		customer.setCus_pw(pw);
+		service.customerUpdate(customer);
+		return "/login/loginSuccess";
+	}
+	
+	// 회원 탈퇴
+	@GetMapping("/myPageDelete")
+	public String myPageDelete(@RequestParam String cus_num){
+		service.customerDelete(cus_num);
+		return "/login/loginForm";
 	}
 	
 	// 어드민 모드

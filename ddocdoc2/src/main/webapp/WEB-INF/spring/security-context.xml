@@ -13,7 +13,6 @@
 	
 		<security:intercept-url pattern="/customer/hosSearch" access="hasRole('ROLE_MEMBER')"/>
 		<security:intercept-url pattern="/customer/loginSuccess" access="hasRole('ROLE_MEMBER')"/>
-		<security:intercept-url pattern="/customer/joinAction" access="hasRole('ROLE_MEMBER')"/>
 		<security:intercept-url pattern="/customer/hospitalResForm" access="hasRole('ROLE_MEMBER')"/>
 		<security:intercept-url pattern="/customer/hospitalRes" access="hasRole('ROLE_MEMBER')"/>
 		<security:intercept-url pattern="/customer/hospitalResList" access="hasRole('ROLE_MEMBER')"/>

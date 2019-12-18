@@ -162,14 +162,14 @@
 
 	<section class="company-description" id="wrapjoin">
 	<div id="joinformdiv">
-		<form action="customerMypageUpdate.do" method="post">
+		<form action="/customer/myPageUpdate" method="post">
 			<input type="hidden" name="cus_num" value="${customer.cus_num }"><br>
 			<div class="form-group">
-				<label>ID</label><br><h3> ${customer.cus_id }</h3>
+				<input type="text" class="form-control input-lg" name = "cus_id" value=${customer.cus_id } readonly/>
 			</div>
 			<div class="form-group">
 				<label>PW</label> <input type="text" name="cus_pw"
-					class="form-control input-lg" placeholder="Passward" value=${customer.cus_pw }>
+					class="form-control input-lg" placeholder="Passward">
 			</div>
 			<div class="form-group">
 				<label>이름</label> <input type="text" name="cus_name"
@@ -183,14 +183,15 @@
 				<label>이메일</label> <input type="text" name="cus_email"
 					class="form-control input-lg" placeholder="이메일" value=${customer.cus_email }>
 			</div>
-			<div class="form-group">
+			<%-- <div class="form-group">
 				<label>생년월일</label> <input type="text" name="cus_birth"
 					class="form-control input-lg" placeholder="생년월일" value=${customer.cus_birth }>
-			</div>
+			</div> --%>
 			<hr>
 			<div class="wrapbtnform">
 				<input type="submit" class="btn btn-warning" value="수정">
 			</div>
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		</form>
 
 
