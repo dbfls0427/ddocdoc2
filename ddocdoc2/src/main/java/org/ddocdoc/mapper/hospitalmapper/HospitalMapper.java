@@ -10,7 +10,7 @@ public interface HospitalMapper {
 	int hospitalInsert(HospitalVO hospitalVO);
 	
 	// list
-	List<HospitalVO> hospitalList(String hos_num);
+	List<HospitalVO> hospitalList();
 	
 	// detail
 	HospitalVO hospitalDetail(String hos_num);

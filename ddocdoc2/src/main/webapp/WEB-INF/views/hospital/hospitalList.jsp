@@ -251,7 +251,10 @@
 							<tr>
 								<td>${hospitalvo.hos_num }</td>
 								<td>${hospitalvo.hos_type }</td>
+								<!-- 
 								<td><a href="/hospital/hospitalDetail?seq=${hospitalvo.hos_num }">${hospitalvo.hos_name }</a></td>
+								 -->
+								<td><a href='/hospital/hospitalDetail?hos_num=<c:out value="${hospitalvo.hos_num }" />'>${hospitalvo.hos_name }</a></td>
 							</tr>
 						</c:forEach>
 					</table>
