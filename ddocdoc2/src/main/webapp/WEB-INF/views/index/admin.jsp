@@ -20,7 +20,7 @@
   <link href="${pageContext.request.contextPath }/resources/css/sb-admin-2.min.css" rel="stylesheet">
 	
 
- 
+
 <style type="text/css">
 .bg-gradient-warning {
     background-color: #ffe208 !important;
@@ -70,7 +70,7 @@
     <ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/DDOCDOC/Customer/adminModeAction.do">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/customer/admin">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -82,7 +82,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="/DDOCDOC/Customer/adminModeAction.do">
+        <a class="nav-link" href="/customer/admin">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -104,9 +104,9 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">병원정보:</h6>
-            <a class="collapse-item" href="/DDOCDOC/hospital/hospitalList.do?customer=${customer }">병원목록</a>
-            <a class="collapse-item" href="/DDOCDOC/hospital/hospitalInsertForm.do">병원정보입력</a>
-            <a class="collapse-item" href="/DDOCDOC/QRCode.jsp">QR CODE</a>
+            <a class="collapse-item" href='/hospital/hospitalList?customer=${customer }'>병원목록</a>
+            <a class="collapse-item" href="/hospital/hospitalInsert">병원정보입력</a>
+            <a class="collapse-item" href="/QRCode.jsp">QR CODE</a>
           </div>
         </div>
       </li>
@@ -128,8 +128,8 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">약국정보:</h6>
-            <a class="collapse-item" href="/DDOCDOC/pharmacy/pharmacyList.do">약국목록</a>
-            <a class="collapse-item" href="/DDOCDOC/pharmacy/pharmacyInsertForm.do">약국정보입력</a>
+            <a class="collapse-item" href="/pharmacy/pharmacyList">약국목록</a>
+            <a class="collapse-item" href="/pharmacy/pharmacyInsertForm">약국정보입력</a>
           </div>
         </div>
       </li>
@@ -215,197 +215,112 @@
 
         </nav>
         <!-- End of Topbar -->
-		
-		<!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-	    	<div id="boxContent" style="padding:20px;">
-	    		
-				<h3>병원정보 상세보기</h3>
-				<div class="alert alert-warning" role="alert" style="background-color:#fff0c75c;">
-					<div class="table-responsive">
-						<table class="table">
-							<thead class="thead-dark">
-								<tr>
-									<th style="width: 100px;">병원번호</th>
-									<th style="width: 100px;">병원종류</th>
-									<th style="width: 280px;">병원이름</th>
-									<th style="width: 160px;">병원Tel.</th>
-									<th style="width: 240px;">병원주소</th>
-									<th style="width: 100px;">운영시간</th>
-									<th style="width: 600px;">병원정보사항</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th scope="row"><c:out value="${hospitalvo.hos_num }"/></th>
-									<td><c:out value="${hospitalvo.hos_type }"/></td>
-									<td><c:out value="${hospitalvo.hos_name }"/></td>
-									<td><c:out value="${hospitalvo.hos_tel }"/></td>
-									<td><c:out value="${hospitalvo.hos_addr }"/></td>
-									<td><c:out value="${hospitalvo.hos_time }"/></td>
-									<td><c:out value="${hospitalvo.hos_info }"/></td>
-								</tr>
-								<%-- 
-								<tr>
-									<th scope="row">${hospitalvo.hos_num }</th>
-									<td>${hospitalvo.hos_type }</td>
-									<td>${hospitalvo.hos_name }</td>
-									<td>${hospitalvo.hos_tel }</td>
-									<td>${hospitalvo.hos_addr }</td>
-									<td>${hospitalvo.hos_time }</td>
-									<td>${hospitalvo.hos_info }</td>
-								</tr>
-								 --%>
-							</tbody>
-						</table>
-					</div>
-				</div>
 
-				<div style="display:flex;">
-					<a href="/hospital/hospitalList" role="button" class="btn btn-warning btn-sm" style="width:10%;">리스트</a> <br>
-					<a role="button" class="btn btn-outline-secondary btn-sm" style="width: 5%; margin: 0 10px;" href='/hospital/hospitalUpdate?hos_num=<c:out value="${hospitalvo.hos_num }" />'>수정</a> <br>
-					<a role="button" class="btn btn-outline-danger btn-sm" href='/hospital/hospitalDelete?hos_num=<c:out value="${hospitalvo.hos_num }" />'>삭제</a> 
-				</div>
-				<br>
-				<hr>
-				<br>
-				
-	          <!-- DataTales Example -->
-	          <div class="card shadow mb-4">
-	            <div class="card-header py-3">
-	              <h5 class="m-0 font-weight-bold text-primary">예약환자 리스트</h5>
-	            </div>
-	            <div class="card-body">
-	              <div class="table-responsive">
-	              	<table class="table table-hover">
-	              		<thead>
-							<tr>
-								<th>고객번호</th>
-								<th>진료종류</th>
-								<th>진료증상</th>
-								<th>메모</th>
-								<th>진료날짜</th>
-								<th>진료시간</th>
-								<th>병원예약번호</th>
-								<th>예약접수 </th>
-								<th>예약상태 </th>
-								<th>처방전 </th>
-							</tr>
-						</thead>
-					
-					
-						<c:forEach var="hosresvo" items="${HosResVO }">
-							<tr>
-								<td><c:out value="${hosresvo.cus_num }" /></td>
-								<td><c:out value="${hosresvo.hos_res_type }" /></td>
-								<td><c:out value="${hosresvo.hos_res_sym }" /></td>
-								<td><c:out value="${hosresvo.hos_res_memo }" /></td>
-								<td><c:out value="${hosresvo.hos_res_date }" /></td>
-								<td><c:out value="${hosresvo.hos_res_time }" /></td>
-								<td><c:out value="${hosresvo.hos_res_num }" /></td>
-								<td><a href='/hospital/boolean_hos_res?hos_res_num=<c:out value="${hosresvo.hos_res_num}" />&hos_num=<c:out value="${hosresvo.hos_num}" />'>예약</a></td>
-								<td><c:out value="${hosresvo.hos_acpt }" /></td>
-								<td><a href='presInsert?hos_res_num=<c:out value="${hosresvo.hos_res_num}" />&cus_num=<c:out value="${hosresvo.cus_num}" />&hos_num=<c:out value="${hospitalvo.hos_num}" />'>처방전 입력</a><br></td>
-							</tr>
-						</c:forEach>
-					</table>
-				</div>
-	              </div>
-	            </div>
-              </div>
-	    	</div><!-- //boxContent -->
         
-<!-- origin 
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
 
-<h3>병원정보 상세보기</h3>
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
 
-<table border="1">
-	<tr>
-		<td>병원번호</td>
-		<td>병원종류</td>
-		<td>병원이름</td>
-		<td>병원전화번호</td>
-		<td>병원주소</td>
-		<td>운영시간</td>
-		<td>병원정보사항</td>
-	</tr>
-		<tr>
-			<td><b>${hospitalvo.hos_num }</b></td>
-			<td>${hospitalvo.hos_type }</td>
-			<td>${hospitalvo.hos_name }</td>
-			<td>${hospitalvo.hos_tel }</td>
-			<td>${hospitalvo.hos_addr }</td>
-			<td>${hospitalvo.hos_time }</td>
-			<td>${hospitalvo.hos_info }</td>
-		</tr>
+          	
+          </div>
 
-</table>
+          <!-- Content Row -->
+          <div class="row" style="margin-bottom: 30px;">
 
-<a href="/DDOCDOC/hospital/hospitalList.do">리스트</a> <br>
- 
-<a href="/DDOCDOC/hospital/hospitalUpdateForm.do?seq=${hospitalvo.hos_num }">수정</a> <br>
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-6">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">병원정보</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+	                      <a href="/hospital/hospitalList?customer=${customer }" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm tobtnfromicon">
+	                      	<i class="fas fa-ambulance"></i> 병원관리
+	                      </a>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-<a href="/DDOCDOC/hospital/hospitalDelete.do?seq=${hospitalvo.hos_num }">삭제</a> 
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-6">
+              <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">약국정보</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+	                      <a href="/pharmacy/pharmacyList" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm tobtnfromicon">
+	                      	<i class="fas fa-clinic-medical"></i> 약국관리
+	                      </a>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-<br><br><br>
-<hr>
+          <!-- Content Row -->
 
-<h5>예약환자 리스트</h5>
-!-- <p>현재예약환자 인원수:  <span>    <span>명</p>--
+          <div class="row">
 
-<div style="display:flex;">
-!--  
-	<table border="1">
-		<tr>고객명</tr>
-		<c:forEach var="nameVO" items="${CustomerVO }">
-			<tr>
-				<td>고객이름 ????????${nameVO.cus_name }</td>
-			</tr>
-		</c:forEach>
-	</table>
---
+            <!-- Area Chart -->
+            <div class="col-xl-12">
+              <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">똑닥 병원 어드민</h6>
+                  <div class="dropdown no-arrow">
+                  	<!-- 
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Dropdown Header:</div>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                     -->
+                  </div>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                  <div class="chart-area" style="height:22.5rem;">
+                  	<img src="/resources/img/front_hos.jpg" alt="front" style="width: 100%;height: 100%;">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> <!-- //row -->
 
+        </div>
+        <!-- /.container-fluid -->
 
-	
-	<table border="1">
-		<tr>
-			<td>고객번호</td>
-			<td>진료종류</td>
-			<td>진료증상</td>
-			<td>메모</td>
-			<td>진료날짜</td>
-			<td>진료시간</td>
-			<td>병원예약번호</td>
-			<td> 예약접수 </td>
-			<td> 예약상태 </td>
-			<td> 처방전 </td>
-		</tr>
-	
-	
-		<c:forEach var="hosresvo" items="${HosResVO }">
-			<tr>
-				<td>${hosresvo.cus_num }</td>
-				<td>${hosresvo.hos_res_type }</td>
-				<td>${hosresvo.hos_res_sym }</td>
-				<td>${hosresvo.hos_res_memo }</td>
-				<td>${hosresvo.hos_res_date }</td>
-				<td>${hosresvo.hos_res_time }</td>
-				<td>${hosresvo.hos_res_num }</td>
-				<td><a href="/DDOCDOC/hospital/boolean_hos_res.do?hos_res_num=${hosresvo.hos_res_num}&seq=${hosresvo.hos_num}">예약</a></td>
-				<td>${hosresvo.hos_acpt }</td>
-				<td><a href="presInsert.do?hos_res_num=${hosresvo.hos_res_num}&cus_num=${hosresvo.cus_num}&hos_num=${hospitalvo.hos_num}">처방전 입력</a><br></td>
-			</tr>
-		</c:forEach>
-	</table>
-</div>
--->
+      </div>
+      <!-- End of Main Content -->
+
 	
 	
 	 <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; LEE MINHYE 2019</span>
+            <span>Copyright &copy; <a href="mailto:amydreamsu@gmail.com">LEE MINHYE</a> 2019</span>
           </div>
         </div>
       </footer>
@@ -435,7 +350,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="/DDOCDOC/index.html">Logout</a>
+          <a class="btn btn-primary" href="/customer/index">Logout</a>
         </div>
       </div>
     </div>

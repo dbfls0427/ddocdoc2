@@ -157,4 +157,10 @@ public class CustomerController {
 		return "/myPage/myPageUpdateForm";
 	}
 	
+	// ¾îµå¹Î ¸ðµå
+	@GetMapping("/admin")
+	public String admin(){
+		return "/index/admin";
+	}
+	
 }
