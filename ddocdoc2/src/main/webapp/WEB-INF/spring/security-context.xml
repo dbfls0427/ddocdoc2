@@ -18,11 +18,14 @@
 		<security:intercept-url pattern="/customer/hospitalResList" access="hasRole('ROLE_MEMBER')"/>
 		
 		
-		
+		<!-- child -->
 		<security:intercept-url pattern="/child/childList" access="hasRole('ROLE_MEMBER')"/>
 		<security:intercept-url pattern="/child/childDetail" access="hasRole('ROLE_MEMBER')"/>
 		<security:intercept-url pattern="/child/childUpdate" access="hasRole('ROLE_MEMBER')"/>
 		<security:intercept-url pattern="/child/childInsert" access="hasRole('ROLE_MEMBER')"/>
+		
+		<!-- child height -->
+		<security:intercept-url pattern="/height/heightList" access="hasRole('ROLE_MEMBER')"/>
 		
 		
 		

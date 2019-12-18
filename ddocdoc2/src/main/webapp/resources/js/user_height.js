@@ -7,9 +7,10 @@ var heightService = (function(){
 	}
 	
 	function list(param, callback, error){
-		
-		$.getJSON("/height/list/" + param + ".json", function(data){
+		console.log("param : " + param.ch_num);
+		j.getJSON("/heightAjax/list/" + param.ch_num + ".json", function(data){
 			if(callback){
+				console.log(data);
 				callback(data);
 			}
 		}).fail(function(xhr,status,err){
