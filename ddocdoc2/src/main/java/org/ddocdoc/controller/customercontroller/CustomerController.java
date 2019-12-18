@@ -104,6 +104,7 @@ public class CustomerController {
 	//예약 리스트
 	@GetMapping("/hospitalResList")
 	public String hospitalResList(Model model){
+		System.out.println("dddd" + ((CustomerVO)session.getAttribute("customer")).getCus_num());
 		List<HospitalResVO> list = service.resList(((CustomerVO)session.getAttribute("customer")).getCus_num());
 		List<String> listName = service.detailNameHospital(((CustomerVO)session.getAttribute("customer")).getCus_num());
 		List<PharResVO> pharList2 = service.pharResList(((CustomerVO)session.getAttribute("customer")).getCus_num());
