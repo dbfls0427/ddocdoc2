@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.ddocdoc.service.customerservice.CustomerService;
 import org.ddocdoc.vo.customervo.CustomerVO;
@@ -39,8 +40,8 @@ public class CustomerController {
 	@Setter(onMethod_ = @Autowired)
 	private PasswordEncoder pwencoder;
 	
-	public static CustomerVO allCustomer;
-	
+	public static HttpSession session;
+		
 	
 	@GetMapping("/index")
 	public String index(){
@@ -54,14 +55,13 @@ public class CustomerController {
 	
 	@GetMapping("/hosSearch")
 	public String hosSearch(Model model){
-		model.addAttribute("customer", allCustomer);
+		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
 		return "/search/hosSearch";
 	}
 	
 	@GetMapping("/loginSuccess")
-	public String loginSuccess(@RequestParam String cus_id, Model model){
-		allCustomer = service.loginCustomer(cus_id);
-		model.addAttribute("customer", allCustomer);
+	public String loginSuccess( Model model){
+		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
 		return "/login/loginSuccess";
 	}
 	
@@ -85,7 +85,7 @@ public class CustomerController {
 	//병원 예약 폼
 	@GetMapping("/hospitalResForm")
 	public String hospitalResForm(@RequestParam String cus_num, @RequestParam String hos_name, Model model){
-		model.addAttribute("customer", allCustomer);
+		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
 		model.addAttribute("hos_name", hos_name);
 		return "/res/hos_res";
 	}
@@ -97,23 +97,23 @@ public class CustomerController {
 		String hos_num = service.selectHosNum(hos_name);
 		hospitalresVO.setHos_num(hos_num);
 		service.insertHospitalRes(hospitalresVO);
-		model.addAttribute("customer", allCustomer);
+		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
 		return "/login/loginSuccess";
 	}
 	
 	//예약 리스트
 	@GetMapping("/hospitalResList")
 	public String hospitalResList(Model model){
-		List<HospitalResVO> list = service.resList(allCustomer.getCus_num());
-		List<String> listName = service.detailNameHospital(allCustomer.getCus_num());
-		List<PharResVO> pharList2 = service.pharResList(allCustomer.getCus_num());
-		List<String> pharNameList2 =service.detailNamePharmacy(allCustomer.getCus_num());
+		List<HospitalResVO> list = service.resList(((CustomerVO)session.getAttribute("customer")).getCus_num());
+		List<String> listName = service.detailNameHospital(((CustomerVO)session.getAttribute("customer")).getCus_num());
+		List<PharResVO> pharList2 = service.pharResList(((CustomerVO)session.getAttribute("customer")).getCus_num());
+		List<String> pharNameList2 =service.detailNamePharmacy(((CustomerVO)session.getAttribute("customer")).getCus_num());
 		
 		model.addAttribute("list", list);
 		model.addAttribute("hosName", listName);
 		model.addAttribute("pharList", pharList2);
 		model.addAttribute("pharNameList", pharNameList2);
-		model.addAttribute("customer", allCustomer);
+		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
 		
 		return "/res/resList";
 		
@@ -134,7 +134,7 @@ public class CustomerController {
 		}else{
 			int count = service.detailWait(hos_res_num);
 			model.addAttribute("res", res);
-			model.addAttribute("cus_name", allCustomer.getCus_name());
+			model.addAttribute("cus_name", ((CustomerVO)session.getAttribute("customer")).getCus_name());
 			model.addAttribute("count", count);
 			return "/res/resDetail";
 		}
@@ -145,8 +145,15 @@ public class CustomerController {
 	// 마이페이지 폼
 	@GetMapping("/myPageForm")
 	public String myPageForm(Model model){
-		model.addAttribute("customer", allCustomer);
+		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
 		return "/myPage/myPageForm";
+	}
+	
+	// 회원 수정 폼
+	@GetMapping("/myPageUpdateForm")
+	public String myPageUpdateForm(Model model){
+		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
+		return "/myPage/myPageUpdateForm";
 	}
 	
 }

@@ -161,7 +161,7 @@
 
 		<div class="btn-group" role="group" aria-label="...">
 
-			<form action="customerUpdateForm.do" method="post">
+			<form action="/customer/myPageUpdateForm" method="post">
 				<input type="hidden" name="cus_num" value="${customer.cus_num}">
 				<input type="submit" value="개인 정보 수정" class="btn btn-warning"
 					style="height: 150px; width: 150px;">
