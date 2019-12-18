@@ -18,9 +18,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -73,16 +76,22 @@ public class HospitalController {
 	*/
 	
 	// insert
-	@PostMapping("/hospitalInsert")
-	public String hospitalRegister(HospitalVO hospitalVO, RedirectAttributes rttr){
-		log.info("register: "+ hospitalVO);
+	@RequestMapping(value="/hospitalInsert" , method = {RequestMethod.POST})
+	public String hospitalInsert(HospitalVO hospitalVO, RedirectAttributes rttr){
+		System.out.println("왜왜오애왜");
+
+		log.info("insert~~~~: "+ hospitalVO);
+		
+		
 		try {
 			service.hospitalInsert(hospitalVO);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		rttr.addAttribute("hos_num", hospitalVO.getHos_num());
+		
+		
+//		rttr.addFlashAttribute("hos_num", hospitalVO.getHos_num());
 		
 		return "redirect:/hospital/hospitalList";
 		
@@ -92,7 +101,7 @@ public class HospitalController {
 	@GetMapping("/hospitalDetail")
 	public String hospitalDetail(@RequestParam("hos_num") String hos_num, Model model){
 		log.info("hospital Detail");
-		model.addAttribute("hos_num", service.hospitalDetail(hos_num));
+		model.addAttribute("hospitalvo", service.hospitalDetail(hos_num));
 		
 		return "/hospital/hospitalDetail";
 	}
@@ -108,9 +117,10 @@ public class HospitalController {
 		
 		return "/hospital/hospitalUpdate";
 	}
-		
+	
+	
 	// update
-	@PostMapping("/hospitalUpdate")
+	@RequestMapping(value="/hospitalUpdate" , method = {RequestMethod.POST})
 	public String hospitalUpdate(HospitalVO hospitalVO, RedirectAttributes rttr){
 		
 		try {
@@ -119,16 +129,17 @@ public class HospitalController {
 			e.printStackTrace();
 		}
 		
-		rttr.addAttribute("hos_num", hospitalVO.getHos_num());
+		rttr.addFlashAttribute("hos_num", hospitalVO.getHos_num());
 		
 		return "redirect:/hospital/hospitalList";
 	}
 	
+	
 	// delete
-	@GetMapping("/childDelete")
+	@GetMapping("/hospitalDelete")
 	public String hospitalDelete(@RequestParam("hos_num") String hos_num, 
 			RedirectAttributes rttr){
-		
+		        
 		service.hospitalDelete(hos_num);
 		
 		rttr.addAttribute("hos_num", hos_num);
@@ -205,7 +216,11 @@ public class HospitalController {
 		return new ResponseEntity<>(list, HttpStatus.OK);
 	}
 
-	
+	@GetMapping("/QRCode")
+	public String QRCode(){
+		log.info("qr~~~~~~~~~~~~~~~~~~~~~~");
+		return "/QRCode";
+	}
 	
 	
 }

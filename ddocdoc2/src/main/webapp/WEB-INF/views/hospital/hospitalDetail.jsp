@@ -51,6 +51,12 @@
 	width: 30%;
 }
 
+.scroll-to-top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 </style>
 
@@ -70,7 +76,7 @@
     <ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/DDOCDOC/Customer/adminModeAction.do">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/customer/admin">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -82,7 +88,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="/DDOCDOC/Customer/adminModeAction.do">
+        <a class="nav-link" href="/customer/admin">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -104,9 +110,9 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">병원정보:</h6>
-            <a class="collapse-item" href="/DDOCDOC/hospital/hospitalList.do?customer=${customer }">병원목록</a>
-            <a class="collapse-item" href="/DDOCDOC/hospital/hospitalInsertForm.do">병원정보입력</a>
-            <a class="collapse-item" href="/DDOCDOC/QRCode.jsp">QR CODE</a>
+            <a class="collapse-item" href="/hospital/hospitalList?customer=${customer }">병원목록</a>
+            <a class="collapse-item" href="/hospital/hospitalInsert">병원정보입력</a>
+            <a class="collapse-item" href="/hospital/QRCode">QR CODE</a>
           </div>
         </div>
       </li>
@@ -128,8 +134,8 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">약국정보:</h6>
-            <a class="collapse-item" href="/DDOCDOC/pharmacy/pharmacyList.do">약국목록</a>
-            <a class="collapse-item" href="/DDOCDOC/pharmacy/pharmacyInsertForm.do">약국정보입력</a>
+            <a class="collapse-item" href="/pharmacy/pharmacyList">약국목록</a>
+            <a class="collapse-item" href="/pharmacy/pharmacyInsert">약국정보입력</a>
           </div>
         </div>
       </li>
@@ -405,7 +411,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; LEE MINHYE 2019</span>
+            <span>Copyright &copy; <a href="mailto:amydreamsu@gmail.com">LEE MINHYE</a> 2019</span>
           </div>
         </div>
       </footer>

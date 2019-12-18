@@ -25,8 +25,8 @@
     <!-- 병원 정보 수정 -->
     <update id="hospitalUpdate" parameterType="org.ddocdoc.vo.hospitalvo.HospitalVO">
          update dd_hospital
-         set  hos_name = #{hos_name}, hos_tel = #{hos_tel}, hos_addr = #{hos_addr}, hos_time = #{hos_time}, hos_info = #{hos_info}, hos_type = #{hos_type},
-                  uuid = #{uuid}, uploadPath = #{uploadPath}, fileName = #{fileName}
+         set  hos_name = #{hos_name, jdbcType=VARCHAR}, hos_tel = #{hos_tel, jdbcType=VARCHAR}, hos_addr = #{hos_addr, jdbcType=VARCHAR}, hos_time = #{hos_time, jdbcType=VARCHAR}, hos_info = #{hos_info, jdbcType=VARCHAR}, hos_type = #{hos_type, jdbcType=VARCHAR},
+                  uuid = #{uuid, jdbcType=VARCHAR}, uploadPath = #{uploadPath, jdbcType=VARCHAR}, fileName = #{fileName, jdbcType=VARCHAR}
          where hos_num = #{hos_num}
     </update>
 	
