@@ -183,6 +183,7 @@ font-family: 'Sunflower', sans-serif;
 <section id="forming"  class="company-description" style="display: flex; justify-content: center; margin-bottom: 50px;font-size: 18px;">
 	<form action="/child/childInsert" method="post" style="width: 450px;">
 		<input type="hidden" name="cus_num" value="${customer.cus_num }"><br>
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		<label>아이이름</label><br>
 		<input type="text" name="ch_name" class="form-control"><br>
 		<label>생년월일</label><br>

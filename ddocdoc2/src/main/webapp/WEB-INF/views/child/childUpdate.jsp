@@ -183,6 +183,7 @@ font-family: 'Sunflower', sans-serif;
 <section id="forming" class="company-description" style="display: flex; justify-content: center;margin-top: 40px; font-size: 20px; margin-bottom: 70px;">
 			<form action="childUpdate" method="post" style="width: 500px;">
 				<input type="hidden" name="cus_num" value="${customer.cus_num }"><br>
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				<input type="hidden" name="ch_num" value="${ch_num }"><br>
 				<label>이름</label><br>
 				<input type="text" name="ch_name" value="${childvo.ch_name }" class="form-control"><br>
@@ -190,7 +191,7 @@ font-family: 'Sunflower', sans-serif;
 				<input type="text" name="ch_age" value="${childvo.ch_age }" class="form-control"><br>
 				<label>생년월일</label><br>
 				<div style="display: flex">
-					<input type="text" name="ch_birth" value="${childvo.ch_birth }" id="datepicker_kid2" class="form-control"  style="width: 450px; margin-right: 10px;"><br>
+					<input type="date" name="ch_birth" value="${childvo.ch_birth }" id="datepicker_kid2" class="form-control"  style="width: 450px; margin-right: 10px;"><br>
 				</div>
 				<br>
 				<label>성별</label><br>
