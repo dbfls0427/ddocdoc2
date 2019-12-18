@@ -78,6 +78,31 @@ public class CustomerServiceImpl implements CustomerService {
 	public List<String> detailNamePharmacy(String cus_num) {
 		return mapper.detailNamePharmacy(cus_num);
 	}
+
+	@Override
+	public HospitalResVO detailRes(String hos_res_num) {
+		return mapper.detailRes(hos_res_num);
+	}
+
+	@Override
+	public String checkResAcpt(String hos_res_num) {
+		return mapper.checkResAcpt(hos_res_num);
+	}
+
+	@Override
+	public int detailWait(String hos_res_num) {
+		return mapper.detailWait(hos_res_num);
+	}
+
+	@Override
+	public int customerUpdate(CustomerVO customer) {
+		return mapper.customerUpdate(customer);
+	}
+
+	@Override
+	public int customerDelete(String cus_num) {
+		return mapper.customerDelete(cus_num);
+	}
 	
 	
 	

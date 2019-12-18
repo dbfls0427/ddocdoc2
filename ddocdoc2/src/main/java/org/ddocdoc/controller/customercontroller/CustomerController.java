@@ -1,8 +1,11 @@
 package org.ddocdoc.controller.customercontroller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.ddocdoc.service.customerservice.CustomerService;
 import org.ddocdoc.vo.customervo.CustomerVO;
@@ -110,9 +113,40 @@ public class CustomerController {
 		model.addAttribute("hosName", listName);
 		model.addAttribute("pharList", pharList2);
 		model.addAttribute("pharNameList", pharNameList2);
+		model.addAttribute("customer", allCustomer);
 		
 		return "/res/resList";
 		
+	}
+	
+	//예약 상세보기
+	@GetMapping("/hospitalResDetail")
+	public String hospitalResDetail(@RequestParam String hos_res_num, Model model,HttpServletResponse response) throws IOException{
+		HospitalResVO res = service.detailRes(hos_res_num);
+		String check = service.checkResAcpt(hos_res_num);
+		
+		if(check.equals("예약 접수 대기 중")){
+			response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('예약 접수가 아직 되지 않아 대기번호 발급이 안되었습니다. 접수가 완료될 때 까지 잠시만 기다려주세요.'); location.href='/customer/hospitalResList';</script>");
+            out.flush();
+			return null;
+		}else{
+			int count = service.detailWait(hos_res_num);
+			model.addAttribute("res", res);
+			model.addAttribute("cus_name", allCustomer.getCus_name());
+			model.addAttribute("count", count);
+			return "/res/resDetail";
+		}
+		
+		
+	}
+	
+	// 마이페이지 폼
+	@GetMapping("/myPageForm")
+	public String myPageForm(Model model){
+		model.addAttribute("customer", allCustomer);
+		return "/myPage/myPageForm";
 	}
 	
 }

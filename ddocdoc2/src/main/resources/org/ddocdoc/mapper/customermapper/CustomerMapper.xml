@@ -59,9 +59,9 @@
 	</select>
 	
 	<!-- 예약 상세내용 -->
-	<!-- <select id="detailRes" parameterType="String" resultType="HospitalResVO">
+	 <select id="detailRes" parameterType="String" resultType="org.ddocdoc.vo.hospitalresvo.HospitalResVO">
 	select * from dd_hos_res where hos_res_num = #{hos_res_num}
-	</select> -->
+	</select>
 	
 	<!-- 예약 취소 -->
 	<!-- <delete id="deleteRes" parameterType="String">
@@ -77,20 +77,20 @@
 	</update> -->
 	
 	<!-- 대기번호 조회 -->
-	<!-- <select id="detailWait" parameterType="String" resultType="int">
+	 <select id="detailWait" parameterType="String" resultType="int">
 	select res_wait from dd_res_wait where hos_res_num = #{hos_res_num}
-	</select> -->
+	</select> 
 	
 	<!-- 마이페이지 수정 -->
-	<!-- <update id="customerUpdate" parameterType="org.ddocdoc.vo.customervo.CustomerVO">
+	 <update id="customerUpdate" parameterType="org.ddocdoc.vo.customervo.CustomerVO">
 		update dd_customer set cus_pw = #{cus_pw}, cus_name = #{cus_name}, cus_addr = #{cus_addr}, cus_email = #{cus_email}, cus_birth = '05/03/23'
 		where cus_num = #{cus_num}
-	</update> -->
+	</update>
 	
 	<!-- 회원탈퇴 -->
-	<!-- <delete id="customerDelete" parameterType="String">
+	 <delete id="customerDelete" parameterType="String">
 		delete from dd_customer where cus_num = #{cus_num} 
-	</delete> -->
+	</delete>
 	
 	
 	<!-- 처방전 보기 -->
@@ -238,9 +238,9 @@
 	</select> -->
 	
 	<!-- 예약 접수 확인 -->
-	<!-- <select id="checkResAcpt" parameterType="String" resultType="String">
+	 <select id="checkResAcpt" parameterType="String" resultType="String">
 		select hos_res_acpt from dd_hos_res where hos_res_num=#{hos_res_num}
-	</select> -->
+	</select>
 		
 		
 </mapper>

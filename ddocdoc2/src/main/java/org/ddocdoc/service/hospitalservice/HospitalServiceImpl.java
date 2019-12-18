@@ -1,4 +1,4 @@
-package org.ddocdoc.service.hospitalservice;
+/*package org.ddocdoc.service.hospitalservice;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,7 +13,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @Service
 @AllArgsConstructor
-public class HospitalServiceImpl implements HosptialService {
+public class HospitalServiceImpl implements HospitalService {
 	
 	@Setter(onMethod_ = @Autowired)
 	private HospitalMapper mapper;
@@ -25,3 +25,4 @@ public class HospitalServiceImpl implements HosptialService {
 	}
 
 }
+*/

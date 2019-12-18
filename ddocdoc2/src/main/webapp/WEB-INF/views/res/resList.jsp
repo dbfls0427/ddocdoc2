@@ -67,10 +67,17 @@
 	 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
 		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 		crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript">
+		var error = $(".error");
+		if(error.val() == 'error'){
+			alert("대기번호 발급 실패");
+		}
+		</script>
         
     </head>
     <body>
-		
+		<input type="hidden" value=${error} class="error"/>
         <!--
         ==================================================
        MENU: Header Section Start
@@ -133,7 +140,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">${customer.cus_name } 님 <span class="caret"></span></a>
                                 <div class="dropdown-menu">
                                     <ul>
-                                        <li><a href="myPageForm.do">마이페이지</a></li>
+                                        <li><a href="/customer/myPageForm">마이페이지</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -183,7 +190,7 @@
 		<c:forEach var="resVO" items="${list }" varStatus="status">
 			<tr>
 				<td style="text-align : center;">${resVO.hos_res_num }</td>
-				<td style="text-align : center;"><a href = "detailRes.do?hos_res_num=${resVO.hos_res_num}">${hosName[status.index] }</td>
+				<td style="text-align : center;"><a href = "/customer/hospitalResDetail?hos_res_num=${resVO.hos_res_num}">${hosName[status.index] }</td>
 				<td style="text-align : center;">${fn:substring(resVO.hos_res_date,0,10) }</td>
 				<td style="text-align : center;"><button class="btn btn-warning"><a class="aa" href = "presDetail.do?hos_res_num=${resVO.hos_res_num }&hos_num=${resVO.hos_num}">처방전 보기</a></button></td>
 				

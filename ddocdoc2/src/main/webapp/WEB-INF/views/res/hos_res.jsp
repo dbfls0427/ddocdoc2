@@ -114,7 +114,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">${customer.cus_name } 님 <span class="caret"></span></a>
                                 <div class="dropdown-menu">
                                     <ul>
-                                        <li><a href="../Customer/myPageForm.do">마이페이지</a></li>
+                                        <li><a href="/customer/myPageForm">마이페이지</a></li>
                                     </ul>
                                 </div>
                             </li>

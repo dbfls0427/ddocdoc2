@@ -32,4 +32,18 @@ public interface CustomerService {
 	//약국 이름 가져오기
 	public List<String> detailNamePharmacy(String cus_num);
 	
+	//예약 상세 내용
+	public HospitalResVO detailRes(String hos_res_num);
+
+	// 예약 접수 확인
+	public String checkResAcpt(String hos_res_num);
+	
+	// 대기번호 조회
+	public int detailWait(String hos_res_num);
+	
+	// 마이페이지 수정
+	public int customerUpdate(CustomerVO customer);
+	
+	// 회원 탈퇴
+	public int customerDelete(String cus_num);
 }

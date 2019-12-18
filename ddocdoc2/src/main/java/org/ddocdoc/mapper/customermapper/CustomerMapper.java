@@ -32,14 +32,14 @@ public interface CustomerMapper {
 	// 병원 이름 추출
 	List<String> detailNameHospital(String cus_num);
 	
-	/*//예약 상세 내용
+	//예약 상세 내용
 	HospitalResVO detailRes(String hos_res_num);
 	
 	//예약 취소
-	int deleteRes(String hos_res_num);
+//	int deleteRes(String hos_res_num);
 	
 	// 예약 취소할 때 대기번호 감소
-	int decreaseWait(String hos_num);
+//	int decreaseWait(String hos_num);
 	
 	// 대기번호 조회
 	int detailWait(String hos_res_num);
@@ -49,7 +49,7 @@ public interface CustomerMapper {
 	
 	// 회원 탈퇴
 	int customerDelete(String cus_num);
-	
+	/*
 	// 처방전 보기
 	PresVO presRealDetail(String hos_res_num);
 	
@@ -115,12 +115,12 @@ public interface CustomerMapper {
 	
 	// 게시글 조회 수 조회
 	int detailHits(String rv_num);
-	
+	*/
 	// 예약 접수 확인
 	String checkResAcpt(String hos_res_num);
 	
 	// 회원 상세정보
-	CustomerVO customerDetail(String cus_num);*/
+//	CustomerVO customerDetail(String cus_num);
 	
 
 }
