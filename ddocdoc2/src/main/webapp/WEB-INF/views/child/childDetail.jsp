@@ -124,7 +124,7 @@ font-family: 'Sunflower', sans-serif;
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">아이관리 <span class="caret"></span></a>
                                 <div class="dropdown-menu">
                                     <ul>
-                                        <li><a href="/child/childList?cus_num=${cus_num }">아이관리</a></li>
+                                        <li><a href="/child/childList">아이관리</a></li>
                                         <li><a href="/DDOCDOC/Customer/detailCustomer.do">성장관리</a></li>
                                         <li><a href="/DDOCDOC/Customer/detailCustomer.do">예방접종</a></li>
                                         <li><a href="/DDOCDOC/Customer/detailCustomer.do">건강검진</a></li>
@@ -149,7 +149,7 @@ font-family: 'Sunflower', sans-serif;
                                 </div>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">${cus_name } 님 <span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">${customer.cus_name } 님 <span class="caret"></span></a>
                                 <div class="dropdown-menu">
                                     <ul>
                                         <li><a href="../Customer/myPageForm.do">마이페이지</a></li>
@@ -192,14 +192,12 @@ font-family: 'Sunflower', sans-serif;
         <section id="btn" class="company-description" style="display: flex; justify-content: center; margin-top: 80px; margin-left: 30px; margin-bottom : 30px">
 		 <div style="display: flex; justify-content: center;">
 			<form action="/height/heightList" method="post">
-				<input type="hidden" name="cus_name" value="${cus_name}">
 				<input type="hidden" name="ch_num" value="${childVO.ch_num}">
 				<input type="hidden" name="ch_name" value="${childVO.ch_name}">
 				<input type = "submit" value="성장 관리" class="btn btn-default btn-lg" style="font-size: 20px; margin-right: 30px; width: 140px;">
 			</form>
 			
 			<form action="/DDOCDOC/Inject/InjectListAction.do" method="post">
-				<input type="hidden" name="cus_name" value="${cus_name}">
 				<input type="hidden" name="ch_num" value="${childVO.ch_num}">
 				<input type="hidden" name="ch_name" value="${childVO.ch_name}">
 				<input type = "submit" value="예방접종" class="btn btn-default btn-lg" style="font-size: 20px; margin-right: 20px; width: 140px;">
@@ -213,7 +211,7 @@ font-family: 'Sunflower', sans-serif;
 		 <div style="display: flex; justify-content: center; width: 500px; padding: 30px; margin-left: 37%;">
 			 <i class="fas fa-user-friends fa-7x" style="padding-right: 30px;"></i>
 			  <div style="font-size: 25px; margin-left: 20px;" id="childIntro">
-						 <label>${childVO.ch_name} / ${childVO.ch_gender}</label> <a href="/child/childList?cus_num=${cus_num }&cus_name=${cus_name}" style="font-size: 18px;"><i class="fas fa-chevron-circle-down fa-lg" title="목록보기"></i></a><br>
+						 <label>${childVO.ch_name} / ${childVO.ch_gender}</label> <a href="/child/childList" style="font-size: 18px;"><i class="fas fa-chevron-circle-down fa-lg" title="목록보기"></i></a><br>
 						 <label>${childVO.ch_birth}</label>
 						 <label>(${childVO.ch_age}세)</label> <br>
 			  </div>
@@ -222,8 +220,8 @@ font-family: 'Sunflower', sans-serif;
 
 		<br>
 		<section id="btn" class="company-description" style="display: flex; justify-content: flex-end; padding-right: 700px; margin-top: 0; margin-bottom: 100px;">
-			<button class="btn btn-default"><a href="/child/childUpdate?ch_num=${childVO.ch_num}&cus_name=${cus_name }&cus_num=${cus_num}" style="font-size: 18px;">수정</a></button>&nbsp
-			<button class="btn btn-default"><a href="/child/childDelete?ch_num=${childVO.ch_num}&cus_name=${cus_name }&cus_num=${cus_num}" style="font-size: 18px;">삭제</a></button>
+			<button class="btn btn-default"><a href="/child/childUpdate?ch_num=${childVO.ch_num}" style="font-size: 18px;">수정</a></button>&nbsp
+			<button class="btn btn-default"><a href="/child/childDelete?ch_num=${childVO.ch_num}" style="font-size: 18px;">삭제</a></button>
 		</section>
 		
 

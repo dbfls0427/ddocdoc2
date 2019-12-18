@@ -114,7 +114,7 @@ font-family: 'Sunflower', sans-serif;
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">아이관리 <span class="caret"></span></a>
                                 <div class="dropdown-menu">
                                     <ul>
-                                        <li><a href="/child/childList?cus_num=${cus_num }">아이관리</a></li>
+                                        <li><a href="/child/childList">아이관리</a></li>
                                         <li><a href="/DDOCDOC/Customer/detailCustomer.do">성장관리</a></li>
                                         <li><a href="/DDOCDOC/Customer/detailCustomer.do">예방접종</a></li>
                                         <li><a href="/DDOCDOC/Customer/detailCustomer.do">건강검진</a></li>
@@ -139,7 +139,7 @@ font-family: 'Sunflower', sans-serif;
                                 </div>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">${cus_name } 님 <span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">${customer.cus_name } 님 <span class="caret"></span></a>
                                 <div class="dropdown-menu">
                                     <ul>
                                         <li><a href="../Customer/myPageForm.do">마이페이지</a></li>
@@ -182,7 +182,7 @@ font-family: 'Sunflower', sans-serif;
         
 <section id="forming" class="company-description" style="display: flex; justify-content: center;margin-top: 40px; font-size: 20px; margin-bottom: 70px;">
 			<form action="childUpdate" method="post" style="width: 500px;">
-				<input type="hidden" name="cus_num" value="${cus_num }"><br>
+				<input type="hidden" name="cus_num" value="${customer.cus_num }"><br>
 				<input type="hidden" name="ch_num" value="${ch_num }"><br>
 				<label>이름</label><br>
 				<input type="text" name="ch_name" value="${childvo.ch_name }" class="form-control"><br>

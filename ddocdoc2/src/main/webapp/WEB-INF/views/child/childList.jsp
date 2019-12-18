@@ -160,7 +160,7 @@ tr:nth-child(2n) {
 							data-toggle="dropdown">아이관리 <span class="caret"></span></a>
 							<div class="dropdown-menu">
 								<ul>
-									<li><a href="/child/childList?cus_num=${cus_num }">아이관리</a></li>
+									<li><a href="/child/childList">아이관리</a></li>
 									<li><a href="/DDOCDOC/Customer/detailCustomer.do">성장관리</a></li>
 									<li><a href="/DDOCDOC/Customer/detailCustomer.do">예방접종</a></li>
 									<li><a href="/DDOCDOC/Customer/detailCustomer.do">건강검진</a></li>
@@ -183,7 +183,7 @@ tr:nth-child(2n) {
 								</ul>
 							</div></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown">${cus_name } 님 <span class="caret"></span></a>
+							data-toggle="dropdown">${customer.cus_name } 님 <span class="caret"></span></a>
 							<div class="dropdown-menu">
 								<ul>
 									<li><a href="../Customer/myPageForm.do">마이페이지</a></li>
@@ -227,7 +227,7 @@ tr:nth-child(2n) {
 		style="display: flex; justify-content: center; margin-top: 15px; margin-bottom: 80px;">
 		<div>
 			<div style="display: flex;">
-			<a href="/child/childInsert?cus_num=${cus_num }" style="margin-left: 80%; ">
+			<a href="/child/childInsert" style="margin-left: 80%; ">
 				<i class="fas fa-plus-circle fa-3x"
 					id="circle" title="아이등록"
 					style="margin-bottom: 10px; color: #f13ea1;"></i>
@@ -239,7 +239,7 @@ tr:nth-child(2n) {
 				<c:forEach var="ChildVO" items="${childList}">
 					<tr>
 						<td style="text-align: center;"><a
-							href="/child/childDetail?ch_num=${ChildVO.ch_num}&cus_name=${cus_name}&cus_num=${cus_num}">${ChildVO.ch_name }</a></td>
+							href="/child/childDetail?ch_num=${ChildVO.ch_num}">${ChildVO.ch_name }</a></td>
 						<td style="text-align: center;">${ChildVO.ch_birth }</td>
 					</tr>
 				</c:forEach>

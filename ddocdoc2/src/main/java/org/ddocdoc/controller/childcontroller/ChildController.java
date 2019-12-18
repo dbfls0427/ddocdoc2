@@ -1,7 +1,9 @@
 package org.ddocdoc.controller.childcontroller;
 
+import org.ddocdoc.controller.customercontroller.CustomerController;
 import org.ddocdoc.service.childservice.ChildService;
 import org.ddocdoc.vo.childvo.ChildVO;
+import org.ddocdoc.vo.customervo.CustomerVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,10 +28,10 @@ public class ChildController {
 	
 	//아이 목록
 	@GetMapping("/childList")
-	public String childList(@RequestParam("cus_num") String cus_num, Model model){
+	public String childList(Model model){
 		log.info("child list!!");
-		model.addAttribute("childList", service.childList(cus_num));
-		model.addAttribute("cus_num", cus_num);
+		model.addAttribute("childList", service.childList(((CustomerVO)CustomerController.session.getAttribute("customer")).getCus_num()));
+		model.addAttribute("customer",(CustomerVO)CustomerController.session.getAttribute("customer"));
 		
 		return "/child/childList";
 	}
@@ -37,14 +39,11 @@ public class ChildController {
 	//아이상세
 	@GetMapping("/childDetail")
 	public String childDetail(@RequestParam("ch_num") String ch_num, 
-			@RequestParam("cus_name") String cus_name,
-			@RequestParam("cus_num") String cus_num,
 			Model model){
 		log.info("child detail!!!");
 
 		model.addAttribute("childVO", service.childDetail(ch_num));
-		model.addAttribute("cus_name", cus_name);
-		model.addAttribute("cus_num", cus_num);
+		model.addAttribute("customer", (CustomerVO)CustomerController.session.getAttribute("customer"));
 		
 		return "/child/childDetail";
 	}
@@ -52,14 +51,11 @@ public class ChildController {
 	//아이수정폼
 	@GetMapping("/childUpdate")
 	public String childUpdate(@RequestParam("ch_num") String ch_num,
-			@RequestParam("cus_name") String cus_name,
-			@RequestParam("cus_num") String cus_num,
 			Model model){
 		
-		model.addAttribute("cus_num",cus_num);
 		model.addAttribute("ch_num",ch_num);
-		model.addAttribute("cus_name" , cus_name);
 		model.addAttribute("childvo", service.childDetail(ch_num));
+		model.addAttribute("customer", (CustomerVO)CustomerController.session.getAttribute("customer"));
 		
 		return "/child/childUpdate";
 	}
@@ -74,7 +70,7 @@ public class ChildController {
 			e.printStackTrace();
 		}
 		
-		rttr.addAttribute("cus_num", childVO.getCus_num());
+		rttr.addAttribute("customer", (CustomerVO)CustomerController.session.getAttribute("customer"));
 		
 		return "redirect:/child/childList";
 	}
@@ -82,20 +78,20 @@ public class ChildController {
 	//아이삭제
 	@GetMapping("/childDelete")
 	public String childDelete(@RequestParam("ch_num") String ch_num, 
-			@RequestParam("cus_num") String cus_num,
 			RedirectAttributes rttr){
 		
 		service.deleteChild(ch_num);
 		
-		rttr.addAttribute("cus_num", cus_num);
+		rttr.addAttribute("customer", (CustomerVO)CustomerController.session.getAttribute("customer"));
 		
 		return "redirect:/child/childList";
 	}
 	
 	//아이등록
 	@GetMapping("/childInsert")
-	public String childInsert(@RequestParam("cus_num") String cus_num, Model model){
-		model.addAttribute("cus_num",cus_num);
+	public String childInsert(Model model){
+		System.out.println("컨트롤러에서 " + ((CustomerVO)CustomerController.session.getAttribute("customer")).getCus_num());
+		model.addAttribute("customer", (CustomerVO)CustomerController.session.getAttribute("customer"));
 		
 		return "/child/childInsert";
 		
@@ -104,12 +100,14 @@ public class ChildController {
 	@PostMapping("/childInsert")
 	public String childInsert(ChildVO childVO, RedirectAttributes rttr){
 		try {
+			System.out.println("000000000000000000000");
 			service.insertChild(childVO);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		rttr.addAttribute("cus_num",childVO.getCus_num());
+		rttr.addAttribute("customer", (CustomerVO)CustomerController.session.getAttribute("customer"));
+		
 		return "redirect:/child/childList";
 	}
 	

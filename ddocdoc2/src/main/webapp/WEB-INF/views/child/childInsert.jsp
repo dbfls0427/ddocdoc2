@@ -139,7 +139,7 @@ font-family: 'Sunflower', sans-serif;
                                 </div>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">${cus_name } 님 <span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">${customer.cus_name } 님 <span class="caret"></span></a>
                                 <div class="dropdown-menu">
                                     <ul>
                                         <li><a href="../Customer/myPageForm.do">마이페이지</a></li>
@@ -181,10 +181,8 @@ font-family: 'Sunflower', sans-serif;
         
         
 <section id="forming"  class="company-description" style="display: flex; justify-content: center; margin-bottom: 50px;font-size: 18px;">
-
 	<form action="/child/childInsert" method="post" style="width: 450px;">
-		<input type="hidden" name = "cus_name" value="${cus_name }">
-		<input type="hidden" name="cus_num" value="${cus_num }"><br>
+		<input type="hidden" name="cus_num" value="${customer.cus_num }"><br>
 		<label>아이이름</label><br>
 		<input type="text" name="ch_name" class="form-control"><br>
 		<label>생년월일</label><br>
