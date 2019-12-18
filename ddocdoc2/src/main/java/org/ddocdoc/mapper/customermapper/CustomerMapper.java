@@ -120,7 +120,7 @@ public interface CustomerMapper {
 	String checkResAcpt(String hos_res_num);
 	
 	// 회원 상세정보
-//	CustomerVO customerDetail(String cus_num);
+	CustomerVO customerDetail(String cus_num);
 	
 
 }

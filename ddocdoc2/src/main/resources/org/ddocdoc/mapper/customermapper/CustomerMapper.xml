@@ -21,10 +21,10 @@
 		select cus_num from dd_customer where cus_id = #{cus_id}
 	</select> 
 	
-	<!-- <select id="customerDetail" parameterType="String" resultType="org.ddocdoc.vo.customervo.CustomerVO">
+	 <select id="customerDetail" parameterType="String" resultType="org.ddocdoc.vo.customervo.CustomerVO">
 		select * from dd_customer where cus_num=#{cus_num}
 	</select>
- -->
+
 	<select id="loginCustomer" parameterType="String" resultType="org.ddocdoc.vo.customervo.CustomerVO">
 	select * from dd_customer where cus_id = #{cus_id}
 	</select>

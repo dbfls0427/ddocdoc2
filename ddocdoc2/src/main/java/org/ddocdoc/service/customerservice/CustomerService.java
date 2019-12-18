@@ -46,4 +46,7 @@ public interface CustomerService {
 	
 	// È¸¿ø Å»Åð
 	public int customerDelete(String cus_num);
+	
+	// È¸¿ø »ó¼¼
+	public CustomerVO customerDetail(String cus_num);
 }

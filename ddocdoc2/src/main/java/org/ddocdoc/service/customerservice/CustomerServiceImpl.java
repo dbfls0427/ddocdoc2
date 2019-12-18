@@ -108,6 +108,11 @@ public class CustomerServiceImpl implements CustomerService {
 	public int customerDelete(String cus_num) {
 		return mapper.customerDelete(cus_num);
 	}
+
+	@Override
+	public CustomerVO customerDetail(String cus_num) {
+		return mapper.customerDetail(cus_num);
+	}
 	
 	
 	

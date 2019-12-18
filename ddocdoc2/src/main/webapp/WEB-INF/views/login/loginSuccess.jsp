@@ -97,7 +97,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">QR코드 <span class="caret"></span></a>
                                 <div class="dropdown-menu">
                                     <ul>
-                                        <li><a href="detailCustomer.do">QR코드 발급</a></li>
+                                        <li><a href="/customer/customerDetail?cus_num=${customer.cus_num}">QR코드 발급</a></li>
                                     </ul>
                                 </div>
                             </li>

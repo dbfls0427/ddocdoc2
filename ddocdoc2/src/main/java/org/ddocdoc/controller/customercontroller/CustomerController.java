@@ -178,4 +178,12 @@ public class CustomerController {
 		return "/index/admin";
 	}
 	
+	// 회원 상세
+	@GetMapping("/customerDetail")
+	public String customerDetail(@RequestParam String cus_num, Model model){
+		service.customerDetail(cus_num);
+		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
+		return "/myPage/detailCustomer";
+	}
+	
 }
