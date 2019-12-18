@@ -1,33 +1,45 @@
 package org.ddocdoc.controller.heightcontroller;
 
+import java.util.List;
+
 import org.ddocdoc.controller.customercontroller.CustomerController;
+import org.ddocdoc.service.heightservice.HeightService;
 import org.ddocdoc.vo.childvo.ChildVO;
 import org.ddocdoc.vo.customervo.CustomerVO;
+import org.ddocdoc.vo.heightvo.HeightVO;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
-@Controller
 @RequestMapping("/height/*")
+@RestController
 @Log4j
 @AllArgsConstructor
 public class HeightController {
 	
-	@GetMapping("/heightList")
-	public String heightList(ChildVO childVO, Model model){
-		log.info("heightList에서 " + childVO.getCh_num());
-		log.info("heightList에서 " + childVO.getCh_name());
+	private HeightService service;
+	
+	//list
+	@GetMapping(value = "/list/{ch_num}",
+			produces= {MediaType.APPLICATION_XML_VALUE,
+					   MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<List<HeightVO>> heightList(@PathVariable("ch_num") String ch_num){
 		
-		model.addAttribute("ch_num", childVO.getCh_num());
-		model.addAttribute("ch_name", childVO.getCh_name());
-		/*model.addAttribute("cus_name", CustomerController.allCustomer.getCus_name());*/
+		log.info("height list!!!");
 		
-		return "/height/heightList";
+		return new ResponseEntity<>(service.heightList(ch_num), HttpStatus.OK);
 	}
+	
 	
 
 }

@@ -192,12 +192,14 @@ font-family: 'Sunflower', sans-serif;
         <section id="btn" class="company-description" style="display: flex; justify-content: center; margin-top: 80px; margin-left: 30px; margin-bottom : 30px">
 		 <div style="display: flex; justify-content: center;">
 			<form action="/height/heightList" method="post">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				<input type="hidden" name="ch_num" value="${childVO.ch_num}">
 				<input type="hidden" name="ch_name" value="${childVO.ch_name}">
 				<input type = "submit" value="성장 관리" class="btn btn-default btn-lg" style="font-size: 20px; margin-right: 30px; width: 140px;">
 			</form>
 			
 			<form action="/DDOCDOC/Inject/InjectListAction.do" method="post">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				<input type="hidden" name="ch_num" value="${childVO.ch_num}">
 				<input type="hidden" name="ch_name" value="${childVO.ch_name}">
 				<input type = "submit" value="예방접종" class="btn btn-default btn-lg" style="font-size: 20px; margin-right: 20px; width: 140px;">
