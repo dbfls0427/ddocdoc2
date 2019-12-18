@@ -8,18 +8,18 @@ import org.ddocdoc.vo.hospitalvo.HospitalVO;
 
 public interface HospitalService {
 
-	// insert
-	public int hospitalInsert(HospitalVO hospital);
-	
-	// list
-	public List<HospitalVO> hospitalList(String hos_num);
-	
-	// detail
-	public HospitalVO hospitalDetail(String hos_num);
-	
-	// update
-	public int hospitalUpdate(HospitalVO hospitalVO);
-	
-	// delete
-	public int hospitalDelete(String hos_num);
+   // insert
+   public int hospitalInsert(HospitalVO hospital);
+   
+   // list
+   public List<HospitalVO> hospitalList();
+   
+   // detail
+   public HospitalVO hospitalDetail(String hos_num);
+   
+   // update
+   public int hospitalUpdate(HospitalVO hospitalVO);
+   
+   // delete
+   public int hospitalDelete(String hos_num);
 }
