@@ -30,7 +30,7 @@
 		
 		
 		<security:form-login login-page="/customer/loginForm" authentication-success-handler-ref="customLoginSuccess"/>
-		
+		<security:logout logout-url="/customer/logout" invalidate-session="true"/>
 		<security:access-denied-handler error-page="/"/> <!-- 에러발생시 -->
 	</security:http>
 

@@ -186,4 +186,10 @@ public class CustomerController {
 		return "/myPage/detailCustomer";
 	}
 	
+	// 회원 로그아웃
+	@GetMapping("/logout")
+	public String logout(){
+		return "/index/index";
+	}
+	
 }

@@ -118,7 +118,7 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li><a href="logout.do">로그아웃</a></li>
+                            <li><a href="/customer/logout">로그아웃</a></li>
                         </ul>
                     </div>
                 </nav>
