@@ -9,9 +9,13 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.MediaType;
+import org.ddocdoc.controller.customercontroller.CustomerController;
 import org.ddocdoc.service.hospitalservice.HospitalService;
 import org.ddocdoc.vo.childvo.ChildVO;
+import org.ddocdoc.vo.customervo.CustomerVO;
+import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
 import org.ddocdoc.vo.hospitalvo.HospitalVO;
+import org.ddocdoc.vo.hospitalwaitvo.HospitalWaitVO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -38,6 +42,7 @@ import oracle.net.ano.Service;
 public class HospitalController {
 	
 	private HospitalService service;
+	
 	
 	// list
 	@GetMapping("/hospitalList")
@@ -103,6 +108,15 @@ public class HospitalController {
 		log.info("hospital Detail");
 		model.addAttribute("hospitalvo", service.hospitalDetail(hos_num));
 		
+		// 병원 예약 환자 리스트
+		List<HospitalResVO> hospitalresVO = service.hosResList(hos_num);
+		
+		for(int i = 0; i < hospitalresVO.size(); i++) {
+			System.out.println("detailaction에서 " + hospitalresVO.get(i).getHos_res_num() + hospitalresVO.get(i).getHos_acpt());
+		}
+		
+		model.addAttribute("hospitalresVO", hospitalresVO);
+		
 		return "/hospital/hospitalDetail";
 	}
 	
@@ -142,7 +156,7 @@ public class HospitalController {
 		        
 		service.hospitalDelete(hos_num);
 		
-		rttr.addAttribute("hos_num", hos_num);
+		rttr.addFlashAttribute("hos_num", hos_num);
 		
 		return "redirect:/hospital/hospitalList";
 	}
@@ -220,6 +234,24 @@ public class HospitalController {
 	public String QRCode(){
 		log.info("qr~~~~~~~~~~~~~~~~~~~~~~");
 		return "/QRCode";
+	}
+	
+	// 예약 완료
+	@GetMapping("/booleanHosRes")
+	public String booleanHosRes(@RequestParam String cus_num, @RequestParam String hos_res_num, @RequestParam String hos_num, RedirectAttributes rttr){
+		service.booleanHosRes(hos_res_num);
+		service.increaseWait(hos_num);
+		
+		HospitalWaitVO waitVO = new HospitalWaitVO();
+		waitVO.setCus_num(cus_num);
+		waitVO.setHos_num(hos_num);
+		waitVO.setHos_res_num(hos_res_num);
+		waitVO.setRes_wait(service.hospitalWait(hos_num));
+		service.insertWaitData(waitVO);
+		
+		rttr.addAttribute("hos_num", hos_num);
+		
+		return "redirect:/hospital/hospitalDetail";
 	}
 	
 	

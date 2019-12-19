@@ -124,6 +124,8 @@ public class CustomerController {
 	public String hospitalResDetail(@RequestParam String hos_res_num, Model model,HttpServletResponse response) throws IOException{
 		HospitalResVO res = service.detailRes(hos_res_num);
 		String check = service.checkResAcpt(hos_res_num);
+		System.out.println("커스토머 컨트롤러에서 hos_res_num : " + hos_res_num);
+		System.out.println("check" + check);
 		
 		if(check.equals("예약 접수 대기 중")){
 			response.setContentType("text/html; charset=UTF-8");

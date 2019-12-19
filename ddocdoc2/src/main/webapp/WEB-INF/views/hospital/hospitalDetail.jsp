@@ -300,7 +300,7 @@
 						</thead>
 					
 					
-						<c:forEach var="hosresvo" items="${HosResVO }">
+						<c:forEach var="hosresvo" items="${hospitalresVO }">
 							<tr>
 								<td><c:out value="${hosresvo.cus_num }" /></td>
 								<td><c:out value="${hosresvo.hos_res_type }" /></td>
@@ -309,7 +309,7 @@
 								<td><c:out value="${hosresvo.hos_res_date }" /></td>
 								<td><c:out value="${hosresvo.hos_res_time }" /></td>
 								<td><c:out value="${hosresvo.hos_res_num }" /></td>
-								<td><a href='/hospital/boolean_hos_res?hos_res_num=<c:out value="${hosresvo.hos_res_num}" />&hos_num=<c:out value="${hosresvo.hos_num}" />'>예약</a></td>
+								<td><a href='/hospital/booleanHosRes?hos_res_num=<c:out value="${hosresvo.hos_res_num}" />&hos_num=<c:out value="${hosresvo.hos_num}" />&cus_num=<c:out value="${hosresvo.cus_num }" />'>예약</a></td>
 								<td><c:out value="${hosresvo.hos_acpt }" /></td>
 								<td><a href='presInsert?hos_res_num=<c:out value="${hosresvo.hos_res_num}" />&cus_num=<c:out value="${hosresvo.cus_num}" />&hos_num=<c:out value="${hospitalvo.hos_num}" />'>처방전 입력</a><br></td>
 							</tr>

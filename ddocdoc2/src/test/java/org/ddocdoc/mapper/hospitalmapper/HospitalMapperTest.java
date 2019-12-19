@@ -23,14 +23,23 @@ public class HospitalMapperTest {
 	@Setter(onMethod_=@Autowired)
 	private HospitalMapper mapper;
 	
+	@Test
+	public void testResList(){
+		String hos_num = "H0022";
+		log.info("예약환자리스트~~~~~~~~mapper 테스트~확인!");
+		mapper.hosResList(hos_num);
+	}
 	
+	
+	
+	/*
 	@Test
 	public void testDelete(){
-		String hos_num = "H0063";
+		String hos_num = "H0066";
 		log.info("삭제");
 		mapper.hospitalDelete(hos_num);
 	}
-	
+	*/
 	
 	/*
 	@Test
@@ -39,13 +48,13 @@ public class HospitalMapperTest {
 		
 		HospitalVO hospitalVO = new HospitalVO();
 		hospitalVO.setHos_num(hos_num);
-		hospitalVO.setHos_name("3수정테스트하아");
+		hospitalVO.setHos_name("1-1수정테스트하아");
 		hospitalVO.setHos_tel("1111112");
 		hospitalVO.setHos_addr("2");
 		hospitalVO.setHos_time("3");
 		hospitalVO.setHos_info("lllll");
 		hospitalVO.setHos_type("d");
-		hospitalVO.setUuid("5");
+//		hospitalVO.setUuid("5");
 		hospitalVO.setUploadPath("33");
 		hospitalVO.setFileName("f");
 		
@@ -68,8 +77,7 @@ public class HospitalMapperTest {
 	@Test
 	public void test() {
 		
-		String hos_num = "H0021";
-		List<HospitalVO> list = mapper.hospitalList(hos_num);
+		List<HospitalVO> list = mapper.hospitalList();
 		
 		list.forEach(i -> log.info(list));
 		log.info("리스트 하아");
@@ -77,7 +85,7 @@ public class HospitalMapperTest {
 	}
 	*/
 	
-	/*
+/*	
 	@Test
 	public void testinsertHospital(){
 		
@@ -98,7 +106,7 @@ public class HospitalMapperTest {
 		
 		log.info("병원 새로 등록2");
 	}
-	*/
 	
+	*/
 	
 }

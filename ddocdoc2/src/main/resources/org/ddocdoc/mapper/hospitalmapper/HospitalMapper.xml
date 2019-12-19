@@ -36,5 +36,35 @@
          where hos_num = #{hos_num}
     </delete>
 	
+	<!-- 병원 예약 환자 리스트 -->
+	<select id="hosResList" resultType="org.ddocdoc.vo.hospitalresvo.HospitalResVO" parameterType="String">
+		select hos_res_num, hos_res_type, hos_res_sym, hos_res_memo, hos_res_date, hos_res_time, cus_num, hos_num, hos_res_acpt as hos_acpt
+		from dd_hos_res
+		where hos_num = #{hos_num, jdbcType=VARCHAR} 
+	</select>
+	
+	<!-- 병원 예약 접수 -->
+	<update id="booleanHosRes" parameterType="String">
+		update dd_hos_res 
+		set hos_res_acpt = '예약 접수 완료' 
+		where hos_res_num = #{hos_res_num, jdbcType=VARCHAR}
+	</update> 
+	
+	<!-- 대기번호 증가 -->
+	<update id="increaseWait" parameterType="String">
+		update dd_hospital set hos_wait = hos_wait + 1
+		where hos_num like #{hos_num}
+	</update>  
+	
+	<!-- 해당 병원 대기번호 발급 -->
+	<select id="hospitalWait" parameterType="String" resultType="int" >
+		select hos_wait from dd_hospital
+		where hos_num = #{hos_num}
+	</select>
+	
+	<!-- 대기번호 데이터 저장 -->
+	<insert id="insertWaitData" parameterType = "org.ddocdoc.vo.hospitalwaitvo.HospitalWaitVO" > 
+		insert into dd_res_wait values(#{cus_num}, #{hos_num}, #{res_wait} ,#{hos_res_num})
+	</insert>
 
 </mapper>
