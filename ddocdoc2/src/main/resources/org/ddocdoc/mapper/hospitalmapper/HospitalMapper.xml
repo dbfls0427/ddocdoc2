@@ -66,5 +66,44 @@
 	<insert id="insertWaitData" parameterType = "org.ddocdoc.vo.hospitalwaitvo.HospitalWaitVO" > 
 		insert into dd_res_wait values(#{cus_num}, #{hos_num}, #{res_wait} ,#{hos_res_num})
 	</insert>
+	
+	
+	<!-- 약 리스트 -->
+	<select id="medicineList" resultType="org.ddocdoc.vo.medicinevo.MedicineVO">
+		select * from dd_medicine
+	</select>
+	
+	<!-- 처방전 약 명세 저장 -->
+	<insert id="insertPreDetail" parameterType="org.ddocdoc.vo.presdetailvo.PresDetailVO">
+		insert into dd_pre_detail values(#{med_num}, #{cus_num}, #{med_count}, #{hos_res_num}, #{pres_num})
+	</insert>
+	
+	<!-- 처방전 약 명세 리스트 -->
+	<select id="presDetailList" parameterType="String" resultType="org.ddocdoc.vo.presdetailvo.PresDetailVO">
+		select * from dd_pre_detail where pres_num=#{pres_num}
+		order by cus_num
+	</select>
+	
+	<!-- 처방전 약 명세 약 이름  -->
+	<select id="presDetailMedName" parameterType="String" resultType="String">
+		select a.med_name from dd_medicine a, dd_pre_detail b
+		where a.med_num = b.med_num
+		and b.pres_num = #{pres_num}
+		order by b.cus_num
+	</select>
+	
+	<!-- 버튼:처방전입력 클릭시 처방전 테이블에 값생성 -->
+	<insert id="insertPres" parameterType="org.ddocdoc.vo.presvo.PresVO">
+		insert into dd_pres values('P00' || pres_seq.nextval, SYSDATE, 3, #{cus_num}, #{hos_num}, #{hos_res_num}, '미결제')
+	</insert>
+	
+	<!-- <insert id="insertPres" parameterType="org.ddocdoc.vo.presvo.PresVO">
+		insert into dd_pres values('P00' || pres_seq.nextval, SYSDATE, 3, #{cus_num}, #{hos_num}, '미결제', #{hos_res_num})
+	</insert> -->
+	
+	<!-- presDetail -->
+	<select id="presDetail" resultType="org.ddocdoc.vo.presvo.PresVO" >
+		SELECT * FROM (SELECT * FROM dd_pres ORDER BY pres_num DESC) WHERE ROWNUM = 1
+	</select>
 
 </mapper>

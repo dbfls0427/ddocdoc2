@@ -8,6 +8,9 @@ import org.ddocdoc.mapper.hospitalmapper.HospitalMapper;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
 import org.ddocdoc.vo.hospitalvo.HospitalVO;
 import org.ddocdoc.vo.hospitalwaitvo.HospitalWaitVO;
+import org.ddocdoc.vo.medicinevo.MedicineVO;
+import org.ddocdoc.vo.presdetailvo.PresDetailVO;
+import org.ddocdoc.vo.presvo.PresVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -71,6 +74,36 @@ public class HospitalServiceImpl implements HospitalService {
 	@Override
 	public int insertWaitData(HospitalWaitVO waitVO) {
 		return mapper.insertWaitData(waitVO);
+	}
+
+	@Override
+	public List<MedicineVO> medicineList() {
+		return mapper.medicineList();
+	}
+
+	@Override
+	public int insertPreDetail(PresDetailVO presDetail) {
+		return mapper.insertPreDetail(presDetail);
+	}
+
+	@Override
+	public List<PresDetailVO> presDetailList(String pres_num) {
+		return mapper.presDetailList(pres_num);
+	}
+
+	@Override
+	public List<String> presDetailMedName(String pres_num) {
+		return mapper.presDetailMedName(pres_num);
+	}
+
+	@Override
+	public int insertPres(PresVO presVO) {
+		return mapper.insertPres(presVO);
+	}
+
+	@Override
+	public PresVO presDetail() {
+		return mapper.presDetail();
 	}
 
 }

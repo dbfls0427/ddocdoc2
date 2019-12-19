@@ -5,6 +5,9 @@ import java.util.List;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
 import org.ddocdoc.vo.hospitalvo.HospitalVO;
 import org.ddocdoc.vo.hospitalwaitvo.HospitalWaitVO;
+import org.ddocdoc.vo.medicinevo.MedicineVO;
+import org.ddocdoc.vo.presdetailvo.PresDetailVO;
+import org.ddocdoc.vo.presvo.PresVO;
 
 public interface HospitalMapper {
 
@@ -37,4 +40,24 @@ public interface HospitalMapper {
 
 	// 대기번호 데이터 저장
 	int insertWaitData(HospitalWaitVO waitVO);
+
+	//
+	
+	// 약 리스트
+	List<MedicineVO> medicineList();
+
+	// 처방전 명세 입력
+	int insertPreDetail(PresDetailVO presDetail);
+
+	// 처방전 약 명세 리스트
+	List<PresDetailVO> presDetailList(String pres_num);
+
+	// 처방전 약 명세 약 이름
+	List<String> presDetailMedName(String pres_num);
+
+	// 처방전 입력
+	int insertPres(PresVO presVO);
+
+	// presDetail
+	PresVO presDetail();
 }

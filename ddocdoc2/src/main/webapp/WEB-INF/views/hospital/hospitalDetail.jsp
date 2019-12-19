@@ -311,7 +311,8 @@
 								<td><c:out value="${hosresvo.hos_res_num }" /></td>
 								<td><a href='/hospital/booleanHosRes?hos_res_num=<c:out value="${hosresvo.hos_res_num}" />&hos_num=<c:out value="${hosresvo.hos_num}" />&cus_num=<c:out value="${hosresvo.cus_num }" />'>예약</a></td>
 								<td><c:out value="${hosresvo.hos_acpt }" /></td>
-								<td><a href='presInsert?hos_res_num=<c:out value="${hosresvo.hos_res_num}" />&cus_num=<c:out value="${hosresvo.cus_num}" />&hos_num=<c:out value="${hospitalvo.hos_num}" />'>처방전 입력</a><br></td>
+								<td><a href='/hospital/presInsert?hos_res_num=<c:out value="${hosresvo.hos_res_num}" />&cus_num=<c:out value="${hosresvo.cus_num}" />&hos_num=<c:out value="${hospitalvo.hos_num}" />'>처방전 입력</a><br></td>
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 							</tr>
 						</c:forEach>
 					</table>

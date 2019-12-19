@@ -45,9 +45,9 @@
 	</select>
 	
 	<!-- 병원 정보 추출 -->
-	<!-- <select id="detailHospital" parameterType="String" resultType="HospitalVO">
+	 <select id="detailHospital" parameterType="String" resultType="org.ddocdoc.vo.hospitalvo.HospitalVO">
 		select * from dd_hospital where hos_num = #{hos_num}
-	</select> -->
+	</select>
 	
 	<!-- 병원 이름 추출 -->
 	 <select id = "detailNameHospital" parameterType="String" resultType="String">
@@ -94,47 +94,47 @@
 	
 	
 	<!-- 처방전 보기 -->
-	<!-- <select id="presRealDetail" parameterType="String" resultType="PresVO">
+	 <select id="presRealDetail" parameterType="String" resultType="org.ddocdoc.vo.presvo.PresVO">
 		SELECT * FROM (SELECT * FROM dd_pres where hos_res_num = #{hos_res_num} ORDER BY pres_num DESC) WHERE ROWNUM = 1
-	</select> -->
+	</select>
 	
 	
 	<!-- 처방전 약 명세 리스트 -->
-	<!-- <select id="cusPresDetailList" parameterType="String" resultType="PresDetailVO">
+	 <select id="cusPresDetailList" parameterType="String" resultType="org.ddocdoc.vo.presdetailvo.PresDetailVO">
 		select * from dd_pre_detail where pres_num=#{pres_num}
 		order by cus_num
-	</select> -->
+	</select> 
 	
 	<!-- 처방전 약 명세 약 이름  -->
-	<!-- <select id="cusPresDetailMedName" parameterType="String" resultType="String">
+	 <select id="cusPresDetailMedName" parameterType="String" resultType="String">
 		select a.med_name from dd_medicine a, dd_pre_detail b
 		where a.med_num = b.med_num
 		and b.pres_num = #{pres_num}
 		order by b.cus_num
-	</select> -->
+	</select> 
 	
 	<!-- 결제하기 -->
-	<!-- <insert id="insertPay" parameterType="PayVO">
+	 <insert id="insertPay" parameterType="org.ddocdoc.vo.payvo.PayVO">
 	insert into dd_pay values('PAY00'|| pay_seq.nextval, #{pay_type}, #{cus_num}, #{pres_num})
-	</insert> -->
+	</insert>
 	
 	<!-- 결제완료로 업데이트 -->
-	<!-- <update id="updatePay" parameterType="String">
+	 <update id="updatePay" parameterType="String">
 		update dd_pres set pay_check = '결제 완료'
 		where pres_num = #{pres_num}
-	</update> -->
+	</update>
 	
 	<!-- 처방전 결제 여부 추출 -->
-	<!-- <select id="selectPayCheck" parameterType="String" resultType="String">
+	 <select id="selectPayCheck" parameterType="String" resultType="String">
 		select pay_check from dd_pres where pres_num = #{pres_num}
-	</select> -->
+	</select>
 	
 	<!-- 약 가격 추출 -->
-	<!-- <select id="selectPayPrice" parameterType="String" resultType="int">
+	 <select id="selectPayPrice" parameterType="String" resultType="int">
 	select sum(a.med_price * b.med_count) from dd_medicine a, dd_pre_detail b
 	where a.med_num = b.med_num
 	and b.hos_res_num = #{hos_res_num}
-	</select> -->
+	</select> 
 	
 	
 	<!-- 약국번호 가져오기 -->

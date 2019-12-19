@@ -11,7 +11,10 @@ import javax.servlet.http.HttpSession;
 import org.ddocdoc.service.customerservice.CustomerService;
 import org.ddocdoc.vo.customervo.CustomerVO;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
+import org.ddocdoc.vo.hospitalvo.HospitalVO;
 import org.ddocdoc.vo.pharresvo.PharResVO;
+import org.ddocdoc.vo.presdetailvo.PresDetailVO;
+import org.ddocdoc.vo.presvo.PresVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -192,6 +195,39 @@ public class CustomerController {
 	@GetMapping("/logout")
 	public String logout(){
 		return "/index/index";
+	}
+	
+	
+	// 처방전 상세보기
+	@GetMapping("/presDetail")
+	public String presDetail(@RequestParam String hos_res_num, @RequestParam String hos_num, HttpServletResponse response, Model model) throws IOException{
+		PresVO pres = service.presRealDetail(hos_res_num);
+		if(pres == null) {
+			response.setContentType("text/html; charset=UTF-8");
+		     PrintWriter writer = response.getWriter();
+		     writer.println("<script>alert('처방전이 등록되지 않았습니다. 진료 현황을 확인해주세요.'); location.href='/customer/hospitalResList';</script>");
+		     writer.flush();
+			return null;
+		}
+		
+		String pres_num = pres.getPres_num();
+		List<PresDetailVO> list = service.cusPresDetailList(pres_num);
+		List<String> list2 = service.cusPresDetailMedName(pres_num);
+		String check = service.selectPayCheck(pres_num);
+		int price = service.selectPayPrice(hos_res_num);
+		
+		HospitalVO hos = service.detailHospital(hos_num);
+		String hos_name = hos.getHos_name();
+		
+		model.addAttribute("pres", pres);
+		model.addAttribute("cus_name", ((CustomerVO)session.getAttribute("customer")).getCus_name());
+		model.addAttribute("hos_name", hos_name);
+		model.addAttribute("list", list);
+		model.addAttribute("list2", list2);
+		model.addAttribute("check", check);
+		model.addAttribute("price", price);
+		
+		return "/pres/presDetail";
 	}
 	
 }

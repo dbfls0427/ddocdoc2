@@ -16,6 +16,9 @@ import org.ddocdoc.vo.customervo.CustomerVO;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
 import org.ddocdoc.vo.hospitalvo.HospitalVO;
 import org.ddocdoc.vo.hospitalwaitvo.HospitalWaitVO;
+import org.ddocdoc.vo.medicinevo.MedicineVO;
+import org.ddocdoc.vo.presdetailvo.PresDetailVO;
+import org.ddocdoc.vo.presvo.PresVO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -252,6 +255,58 @@ public class HospitalController {
 		rttr.addAttribute("hos_num", hos_num);
 		
 		return "redirect:/hospital/hospitalDetail";
+	}
+	
+	// 처방전 입력 폼
+	@GetMapping("/presInsertForm")
+	public String presInsertForm(@RequestParam String hos_res_num, @RequestParam String hos_num, @RequestParam String cus_num, Model model){
+		PresVO pres = service.presDetail();
+		String pres_num = pres.getPres_num();
+		List<MedicineVO> medicinevo = service.medicineList();
+		
+		model.addAttribute("medicinevo", medicinevo);
+		model.addAttribute("hos_res_num", hos_res_num);
+		model.addAttribute("pres_num", pres_num);
+		
+		return "/pres/presInsertForm";
+	}
+	
+	// 처방전 입력
+	@GetMapping("/presInsert")
+	public String presInsert(PresVO pres, @RequestParam String hos_res_num, @RequestParam String hos_num, @RequestParam String cus_num,RedirectAttributes rttr){
+		pres.setCus_num(cus_num);
+		pres.setHos_num(hos_num);
+		pres.setHos_res_num(hos_res_num);
+		service.insertPres(pres);
+		
+		rttr.addAttribute("hos_res_num", hos_res_num);
+		rttr.addAttribute("cus_num", cus_num);
+		rttr.addAttribute("hos_num", hos_num);
+		return "redirect:/hospital/presInsertForm";
+		
+	}
+	
+	// 처방전 약 입력
+	@PostMapping("/medicineInsert")
+	public String medicineInsert(PresDetailVO presDetail, @RequestParam String hos_res_num, @RequestParam int med_count,
+			@RequestParam String pres_num, @RequestParam String med_num, Model model){
+			String cus_num = ((CustomerVO)CustomerController.session.getAttribute("customer")).getCus_num();
+			presDetail.setCus_num(cus_num);
+			List<MedicineVO> medicinevo = service.medicineList();
+			service.insertPreDetail(presDetail);
+			
+			List<PresDetailVO> list = service.presDetailList(pres_num);
+			List<String> list2 = service.presDetailMedName(pres_num);
+			
+			model.addAttribute("medicine", presDetail);
+			model.addAttribute("list", list);
+			model.addAttribute("medName", list2);
+			model.addAttribute("hos_res_num", hos_res_num);
+			model.addAttribute("medicinevo", medicinevo);
+			model.addAttribute("hos_res_num", hos_res_num);
+			model.addAttribute("pres_num", pres_num);
+					
+		return "/pres/presInsertForm";
 	}
 	
 	

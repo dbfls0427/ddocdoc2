@@ -7,7 +7,11 @@ import org.ddocdoc.mapper.customermapper.CustomerMapper;
 import org.ddocdoc.vo.customervo.CustomerAuthVO;
 import org.ddocdoc.vo.customervo.CustomerVO;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
+import org.ddocdoc.vo.hospitalvo.HospitalVO;
+import org.ddocdoc.vo.payvo.PayVO;
 import org.ddocdoc.vo.pharresvo.PharResVO;
+import org.ddocdoc.vo.presdetailvo.PresDetailVO;
+import org.ddocdoc.vo.presvo.PresVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -112,6 +116,46 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public CustomerVO customerDetail(String cus_num) {
 		return mapper.customerDetail(cus_num);
+	}
+
+	@Override
+	public PresVO presRealDetail(String hos_res_num) {
+		return mapper.presRealDetail(hos_res_num);
+	}
+
+	@Override
+	public List<PresDetailVO> cusPresDetailList(String pres_num) {
+		return mapper.cusPresDetailList(pres_num);
+	}
+
+	@Override
+	public List<String> cusPresDetailMedName(String pres_num) {
+		return mapper.cusPresDetailMedName(pres_num);
+	}
+
+	@Override
+	public int insertPay(PayVO pay) {
+		return mapper.insertPay(pay);
+	}
+
+	@Override
+	public int updatePay(String pres_num) {
+		return mapper.updatePay(pres_num);
+	}
+
+	@Override
+	public String selectPayCheck(String pres_num) {
+		return mapper.selectPayCheck(pres_num);
+	}
+
+	@Override
+	public int selectPayPrice(String hos_res_num) {
+		return mapper.selectPayPrice(hos_res_num);
+	}
+
+	@Override
+	public HospitalVO detailHospital(String hos_num) {
+		return mapper.detailHospital(hos_num);
 	}
 	
 	

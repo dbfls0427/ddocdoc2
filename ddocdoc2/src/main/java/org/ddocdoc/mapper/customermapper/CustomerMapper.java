@@ -5,8 +5,12 @@ import java.util.List;
 import org.ddocdoc.vo.customervo.CustomerAuthVO;
 import org.ddocdoc.vo.customervo.CustomerVO;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
+import org.ddocdoc.vo.hospitalvo.HospitalVO;
 import org.ddocdoc.vo.loginvo.LoginVO;
+import org.ddocdoc.vo.payvo.PayVO;
 import org.ddocdoc.vo.pharresvo.PharResVO;
+import org.ddocdoc.vo.presdetailvo.PresDetailVO;
+import org.ddocdoc.vo.presvo.PresVO;
 
 public interface CustomerMapper {
 	int insertCustomer(CustomerVO customer);
@@ -26,8 +30,8 @@ public interface CustomerMapper {
 	// 예약 목록 리스트
 	List<HospitalResVO> resList(String cus_num);
 	
-/*	// 병원 정보 추출
-	HospitalVO detailHospital(String hos_num);*/
+// 병원 정보 추출
+	HospitalVO detailHospital(String hos_num);
 	
 	// 병원 이름 추출
 	List<String> detailNameHospital(String cus_num);
@@ -49,7 +53,7 @@ public interface CustomerMapper {
 	
 	// 회원 탈퇴
 	int customerDelete(String cus_num);
-	/*
+	
 	// 처방전 보기
 	PresVO presRealDetail(String hos_res_num);
 	
@@ -70,7 +74,7 @@ public interface CustomerMapper {
 	
 	// 약 가격 추출
 	int selectPayPrice(String hos_res_num);
-	
+	/*
 	//약국 번호 출력
 	String selectPharNum(String phar_name);
 	
