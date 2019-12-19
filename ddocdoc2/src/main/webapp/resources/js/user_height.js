@@ -2,8 +2,26 @@ console.log("user_height.js !!!!")
 
 var heightService = (function(){
 
-	function insert(height, callback, error){
-		
+	function insert(queryString, callback, error){
+/*		console.log("height!!!!" + he_height);
+		console.log(he_date);
+		console.log(cus_num);*/
+		console.log(queryString);
+		j.ajax({
+			type : 'POST',
+			url : '/heightAjax/insert',
+			data : queryString,
+			success : function(result, status, xhr){
+				if(callback){
+					callback(result);
+				}
+			},
+			error : function(xhr, status, er){
+				if(error){
+					console.log("에러임듕 ㅠㅠㅠ");
+				}
+			}
+		});
 	}
 	
 	function list(param, callback, error){
@@ -21,7 +39,42 @@ var heightService = (function(){
 		});
 		
 	}
+	
+	function dTime(timeValue) {
+		var today = new Date();
+
+		var gap = today.getTime() - timeValue;
+
+		var dateObj = new Date(timeValue);
+		var str = "";
+
+		if (gap < (1000 * 60 * 60 * 24)) {
+
+			var hh = dateObj.getHours();
+			var mi = dateObj.getMinutes();
+			var ss = dateObj.getSeconds();
+
+			return [ (hh > 9 ? '' : '0') + hh, ':', (mi > 9 ? '' : '0') + mi,
+					':', (ss > 9 ? '' : '0') + ss ].join('');
+
+		} else {
+			var yy = dateObj.getFullYear();
+			var mm = dateObj.getMonth() + 1; // getMonth() is zero-based
+			var dd = dateObj.getDate();
+
+			return [ yy, '/', (mm > 9 ? '' : '0') + mm, '/',
+					(dd > 9 ? '' : '0') + dd ].join('');
+		}
+	}
+	;
+	
+	
+	
+	
+	
 	return {
-		list: list
+		list: list,
+		dTime : dTime,
+		insert : insert
 		}
 })();

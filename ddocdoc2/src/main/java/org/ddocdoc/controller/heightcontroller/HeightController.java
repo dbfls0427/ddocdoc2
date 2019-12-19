@@ -38,6 +38,13 @@ public class HeightController {
 				
 	}
 	
+	//insert
+	@GetMapping("/heightInsert")
+	public void heightInsert(@RequestParam("ch_num") String ch_num, Model model){
+		model.addAttribute("customer", (CustomerVO) CustomerController.session.getAttribute("customer"));
+		model.addAttribute("ch_num", ch_num);
+	}
+	
 	
 
 }
