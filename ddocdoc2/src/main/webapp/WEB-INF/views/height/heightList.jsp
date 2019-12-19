@@ -27,22 +27,20 @@
 var j = jQuery.noConflict();
 j(document).ready(function(){
 	var num = '<c:out value="${ch_num }"/>';
-/* 	var csrf = '<c:out value="${_csrf.token}"/>';
-	var csrfName = '<c:out value="${_csrf.parameterName}"/>'; */
+ 	var csrf = '<c:out value="${_csrf.token}"/>';
+	var csrfName = '<c:out value="${_csrf.parameterName}"/>';
 	
 	showList();
 	
 	function showList(){
 		heightService.list({ch_num : num}, function(list){
 			var str = "";
-			
 			for(var i=0, len = list.length || 0; i<len; i++){
-				str += "<tr>"
-				str += "<td style = 'text-align : center;'><a class='aa' href='/height/detail'>" + list[i].he_height + "</a></td>";
+				str += "<tr data-rno = '"+list[i].he_num+"'>"
+				str += "<td style = 'text-align : center;' data-rno='"+list[i].he_num+"'>" + list[i].he_height + "</td>";
 				str += "<td style = 'text-align : center;'>" + heightService.dTime(list[i].he_date) + "</td>";
 				str += "</tr>";
 				console.log(list[i]);
-				
 				console.log(str);
 			}
 		j("table").append(str);
@@ -57,6 +55,7 @@ j(document).ready(function(){
 	j('#circle').mouseleave(function(){
 		j(this).css("color","#f13ea1");
 	});
+
 	
 	var modal = j("#myModal");
 	var modalHeight = modal.find("input[name='he_height']");
@@ -66,7 +65,22 @@ j(document).ready(function(){
 	var modalRemoveBtn = j('#modalRemoveBtn');
 	var modalRegisterBtn = j('#modalRegisterBtn');
 	
+	
+	j('#circle').on("click", function(e){
+		modal.find("input").val("");
+		modal.find("button[id != 'modalCloseBtn']").hide();
+		
+		modalRegisterBtn.show();
+		var inputData = "<input type='hidden' name='ch_num' value='"+num+"'/>"
+		inputData += "<input type='hidden' name='"+csrfName+"' value='"+csrf+"'/>"
+		j('#datepicker').after(inputData);
+		jQuery(".modal").modal("show");
+		
+	});
+	
+	
 	modalRegisterBtn.click(function(){
+		
 		var queryString = j("#testForm").serialize();
 		alert(queryString);
 		
@@ -74,10 +88,70 @@ j(document).ready(function(){
 			alert(result);
 			
 			modal.find("input").val("");
+			
 			/* modal.modal("hide"); */
-			j("#myModal").modal("hide");
+			jQuery("#myModal").modal("hide");
+			
+			location.href="/height/heightList?ch_num=" + num;
+			
 		});
 	});
+	
+	modalRemoveBtn.click(function(){
+		var update = "";
+		var he_num = modal.data("he_num");
+
+		
+		jQuery("#datepicker").val(heightService.dTime(modal.data("he_date")));
+		console.log(jQuery("#datepicker").val());
+		
+		heightService.remove(he_num, function(result){
+			alert(result);
+			jQuery(".modal").modal("hide");
+			location.href="/height/heightList?ch_num=" + num;
+		});
+	})
+	
+	modalModBtn.click(function(){
+		console.log(modal.data("he_date"));
+		var updateData = "<input type='hidden' name='he_num' value='"+modal.data("he_num")+"'/>";
+		updateData += "<input type='hidden' name='"+csrfName+"' value='"+csrf+"'/>";
+		console.log(j("#datepicker").val());
+		j("#datepicker").val(modal.data("he_date"));
+		console.log(j("#datepicker").val());
+		j("#testForm").append(updateData);
+		console.log(queryString2);
+		heightService.update(queryString2, function(result){
+			alert(result);
+			jQuery(".modal").modal("hide");
+			location.href="/height/heightList?ch_num=" + num;
+		})
+	})
+	
+	//detail
+	j("#btn2").on("click", "tr", function(e){
+		var he_num = jQuery(this).attr("data-rno");
+		
+		heightService.detail(he_num,function(height){
+			console.log("height디테일 " + heightService.dTime(height.he_date));
+			modalHeight.val(height.he_height);
+			/* modalDate.val(heightService.dTime(height.he_date)).attr("readonly","readonly"); */
+			modalDate.val(heightService.dTime(height.he_date));
+			modal.data("he_num", height.he_num);
+			modal.data("ch_num", height.ch_num);
+			modal.data("he_date", heightService.dTime(height.he_date));
+			console.log("height 디테일2" +heightService.dTime(height.he_date));
+			
+			modalRegisterBtn.hide();
+			modalModBtn.show();
+			modalRemoveBtn.show();
+			
+			jQuery(".modal").modal("show");
+			
+		})
+		
+	});
+
 	
 	//모든 datepicker에 대한 공통 옵션 설정
     j.datepicker.setDefaults({
@@ -279,22 +353,21 @@ j(document).ready(function(){
 		
 </section>
 <div style="display: flex; justify-content : center;">
-	<a data-toggle="modal" data-target="#myModal">
+	<!--  data-toggle="modal" data-target="#myModal" -->
 				<i class="fas fa-plus-circle fa-3x" id="circle" title="키등록"
 			style="margin-bottom: 10px; color: #f13ea1;"></i>
-	</a>
+
 
 </div>
 
-<section id="btn" class="company-description" style="margin-top: 10px; display: flex; justify-content: center; font-weight: 600;">
+<section id="btn2" class="company-description" style="margin-top: 10px; display: flex; justify-content: center; font-weight: 600;">
 		
 	<div style="width:500px;">
 		<table  border="1" class="table table-hover" id="sun" style="font-size: 18px;">
-							<tr>
-								<td style="text-align : center;">등록한 키</td>
-								<td style="text-align : center;">등록 날짜</td>
-							</tr>
-							
+			<tr>
+			<td style = 'text-align : center;'>등록키</td>
+			<td style = 'text-align : center;'>등록일</td>
+			</tr>		
 		</table>
 	</div>
 </section>
@@ -318,14 +391,12 @@ j(document).ready(function(){
 	              </div>      
 	              <div class="form-group">
 	                <label>등록일</label> 
-	                <input type="date" class="form-control" name="he_date" id="datepicker">
-	                <input type="hidden" name="ch_num" value="${ch_num}"/>
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+	                <input type="text" class="form-control" name="he_date" id="datepicker">
 	              </div>
             	</form>
             </div>
 <div class="modal-footer">
-        <button id='modalModBtn' type="button" class="btn btn-warning">Modify</button>
+         <button id='modalModBtn' type="button" class="btn btn-warning">Modify</button>
         <button id='modalRemoveBtn' type="button" class="btn btn-danger">Remove</button>
         <button id='modalRegisterBtn' type="button" class="btn btn-primary">Register</button>
         <button id='modalCloseBtn' type="button" class="btn btn-default">Close</button>

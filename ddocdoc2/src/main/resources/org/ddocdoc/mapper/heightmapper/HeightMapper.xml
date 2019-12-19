@@ -28,5 +28,11 @@
 		delete from dd_child_height
 		where he_num = #{he_num}
 	</delete>
+	
+	<!-- 아이 키 수정 -->
+	<update id="updateChildHeight" parameterType="org.ddocdoc.vo.heightvo.HeightVO">
+		update dd_child_height set he_height = #{he_height}
+		where he_num = #{he_num}
+	</update>
 
 </mapper>

@@ -38,5 +38,10 @@ public class HeightServiceImpl implements HeightService {
 	public int heightDelete(String he_num) {
 		return mapper.heightDelete(he_num);
 	}
+
+	@Override
+	public int updateChildHeight(HeightVO chvo) {
+		return mapper.updateChildHeight(chvo);
+	}
 	 
 }

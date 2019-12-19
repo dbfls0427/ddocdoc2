@@ -17,4 +17,7 @@ public interface HeightMapper {
 	
 	//아이키 삭제
 	int heightDelete(String he_num);
+	
+	//update
+	int updateChildHeight(HeightVO chvo);
 }

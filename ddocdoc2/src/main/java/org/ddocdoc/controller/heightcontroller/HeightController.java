@@ -45,6 +45,13 @@ public class HeightController {
 		model.addAttribute("ch_num", ch_num);
 	}
 	
+	//detail
+	@GetMapping("/heightDetail")
+	public void heightDetail(@RequestParam("he_num") String he_num, Model model){
+		model.addAttribute("he_num",he_num);
+		model.addAttribute("customer", (CustomerVO) CustomerController.session.getAttribute("customer"));
+	}
+	
 	
 
 }

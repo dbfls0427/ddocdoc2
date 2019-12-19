@@ -1,5 +1,6 @@
 package org.ddocdoc.vo.heightvo;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import lombok.AllArgsConstructor;
@@ -9,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class HeightVO {
+public class HeightVO implements Serializable{
 
 	private String he_num;
 	private Double he_height;
