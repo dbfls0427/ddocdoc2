@@ -23,18 +23,26 @@
 	.hasDatepicker{cursor: pointer;}
 </style>
 </head>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
 var j = jQuery.noConflict();
 j(document).ready(function(){
 	var num = '<c:out value="${ch_num }"/>';
  	var csrf = '<c:out value="${_csrf.token}"/>';
 	var csrfName = '<c:out value="${_csrf.parameterName}"/>';
+	var height = "";
+	var date = "";
 	console.log("csrf!!!! " + csrf);
 	console.log(csrfName);
 	
 	showList();
 	
 	function showList(){
+		height = new Array(); //for chart
+		date = new Array();
+		console.log("height초기화 : " + height.length);
+		console.log("date초기화 : " + date.length);
+		
 		heightService.list({ch_num : num}, function(list){
 			var str = "";
 			for(var i=0, len = list.length || 0; i<len; i++){
@@ -42,12 +50,16 @@ j(document).ready(function(){
 				str += "<td style = 'text-align : center;' data-rno='"+list[i].he_num+"'>" + list[i].he_height + "</td>";
 				str += "<td style = 'text-align : center;'>" + heightService.dTime(list[i].he_date) + "</td>";
 				str += "</tr>";
-				console.log(list[i]);
-				console.log(str);
+				
+				//for chart
+				height.push(list[i].he_height);
+				date.push(heightService.dTime(list[i].he_date));
+				console.log(height);
 			}
 		j("table").append(str);
 			
 		});
+		
 	}
 	
 	j('#circle').mouseover(function(){
@@ -58,7 +70,50 @@ j(document).ready(function(){
 		j(this).css("color","#f13ea1");
 	});
 
+
+	//chart start
+	google.charts.load('current', {'packages':['line']});
+	google.charts.setOnLoadCallback(drawChart);
 	
+
+    function drawChart() {
+        var data = new google.visualization.DataTable();
+
+        data.addColumn('string', 'Day');
+        data.addColumn('number', '키');
+
+  		
+        if(height.length <=0) {
+        	return;
+        }
+        for(var i=0; i<height.length; i++){
+   		 
+  	      	data.addRows([
+  	      		[date[i], parseFloat(height[i])]
+  	      	]);
+  	      	
+    	} 
+        var options = {
+        		
+                chart: {
+                  title: '우리아이 성장속도 한눈에 보기'
+                },
+                width: 900,
+                height: 500,
+                axes: {
+                  x: {
+                    0: {side: 'top'}
+                  }
+                }
+          };
+        var chart = new google.charts.Line(document.getElementById('line_top_x'));
+
+         chart.draw(data, google.charts.Line.convertOptions(options));
+    }
+
+	
+	
+	//modal!!!!
 	var modal = j("#myModal");
 	var modalHeight = modal.find("input[name='he_height']");
 	var modalDate = modal.find("input[name='he_date']");
@@ -87,7 +142,6 @@ j(document).ready(function(){
 		alert(queryString);
 		
 		heightService.insert(queryString, function(result){
-			alert(result);
 			
 			modal.find("input").val("");
 			
@@ -375,6 +429,16 @@ j(document).ready(function(){
 	</div>
 </section>
 
+<section id="btn" class="company-description" style="display: flex; justify-content: center; margin-bottom: 100px; font-size: 16px;">
+		<div class="panel panel-default"  style="margin-right: 80px;">
+			<div id="line_top_x" class="panel-body"></div>
+		</div>
+		<div class="panel panel-default">
+			<div id="columnchart_material" style="width: 400px; height: 500px;" class="panel-body"></div>
+		</div>
+		
+		</div>
+</section>
 
 <!-- Modal -->
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
