@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ddocdoc.mapper.pharmacymapper.PharmacyMapper">
+	
+	<!-- 약국  insert  -->
+	<insert id="pharmacyInsert" parameterType="org.ddocdoc.vo.pharmacyvo.PharmacyVO">
+		insert into dd_pharmacy (PHAR_NUM, PHAR_NAME, PHAR_TEL, PHAR_ADDR, PHAR_TIME, PHAR_INFO, PHAR_WAIT) 
+		values('P00' || pharmacy_seq.nextval, #{phar_name}, #{phar_tel}, #{phar_addr}, #{phar_time}, #{phar_info}, 0)
+	</insert>
+	
+	
+	<!-- 약국  list -->
+	<select id="pharmacyList" resultType="org.ddocdoc.vo.pharmacyvo.PharmacyVO">
+		select * from dd_pharmacy
+	</select>
+	
+	<!-- 약국  detail -->
+	<select id="pharmacyDetail" resultType="org.ddocdoc.vo.pharmacyvo.PharmacyVO" parameterType="String">
+		select * from dd_pharmacy 
+		where phar_num = #{phar_num}
+	</select>
+	
+	<!-- 약국 update -->
+	<update id="pharmacyUpdate" parameterType="org.ddocdoc.vo.pharmacyvo.PharmacyVO">
+		update dd_pharmacy
+		set PHAR_NAME = #{PHAR_NAME, jdbcType=VARCHAR}, PHAR_TEL = #{PHAR_TEL, jdbcType=VARCHAR}, PHAR_ADDR = #{PHAR_ADDR, jdbcType=VARCHAR}, PHAR_TIME = #{PHAR_TIME, jdbcType=VARCHAR}, PHAR_INFO = #{PHAR_INFO, jdbcType=VARCHAR}, PHAR_WAIT = #{PHAR_WAIT, jdbcType=NUMERIC}
+		where PHAR_NUM = #{PHAR_NUM}
+	</update>
+	
+	<!-- 약국 delete -->
+	<delete id="pharmacyDelete" parameterType="String">
+		delete from dd_pharmacy 
+		where phar_num = #{phar_num}
+	</delete>
+	
+</mapper>
