@@ -278,7 +278,7 @@
 				<form action="/hospital/medicineInsert" method="post">
 					<input type = "hidden" name = "hos_res_num" value = "${hos_res_num }">
 					<input type = "hidden" name = "pres_num" value = "${pres_num}">		      
-					<div class="alert alert-warning" role="alert" style="width:30%;background-color: #fdf3d880;margin-top: 20px;">
+					<div class="alert alert-warning" role="alert" style="width:34%;background-color: #fdf3d880;margin-top: 20px;">
 					
 						<table border="1">
 							<thead>
