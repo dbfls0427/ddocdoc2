@@ -137,16 +137,6 @@
 	</select> 
 	
 	
-	<!-- 약국번호 가져오기 -->
-	<!-- <select id="selectPharNum" parameterType="String" resultType="String">
-	select phar_num from dd_pharmacy where phar_name = #{phar_name, jdbcType=VARCHAR}
-	</select> -->
-	
-	<!-- 약국 예약하기 -->
-	<!-- <insert id="insertPharRes" parameterType="PharResVO">
-	insert into dd_phar_res values('PHRES00'||phar_res_seq.nextval, #{phar_res_time}, #{phar_res_memo}, #{cus_num}, #{phar_num})
-	</insert> -->
-	
 	<!-- 약국 예약 리스트 -->
 	 <select id="pharResList" parameterType="String" resultType="org.ddocdoc.vo.pharresvo.PharResVO">
 	select * from dd_phar_res where cus_num = #{cus_num}
@@ -162,29 +152,39 @@
 	order by phar_res_num
 	</select>
 	
+	<!-- 약국번호 가져오기 -->
+	<select id="selectPharNum" parameterType="String" resultType="String">
+		select phar_num from dd_pharmacy where phar_name = #{phar_name, jdbcType=VARCHAR}
+	</select>
+	
+	<!-- 약국 예약하기 -->
+	<insert id="insertPharRes" parameterType="org.ddocdoc.vo.pharresvo.PharResVO">
+		insert into dd_phar_res values('PHRES00'||phar_res_seq.nextval, #{phar_res_time, jdbcType=VARCHAR}, #{phar_res_memo, jdbcType=VARCHAR}, #{cus_num, jdbcType=VARCHAR}, #{phar_num, jdbcType=VARCHAR})
+	</insert>
+	
 	
 	<!-- 약국 예약 상세내용 -->
-	<!-- <select id="pharResDetail" parameterType="String" resultType="PharResVO">
-	select * from dd_phar_res where phar_res_num = #{phar_res_num}
-	</select> -->
+	<select id="pharResDetail" parameterType="String" resultType="org.ddocdoc.vo.pharresvo.PharResVO">
+		select * from dd_phar_res where phar_res_num = #{phar_res_num}
+	</select>
 	
 	<!-- 약국 이름 추출 -->
-	<!-- <select id="selectPharmacyName" parameterType="String" resultType="String">
-	select phar_name from dd_pharmacy
-	where phar_num = #{phar_num}
-	</select> -->
+	<select id="selectPharmacyName" parameterType="String" resultType="String">
+		select phar_name from dd_pharmacy
+		where phar_num = #{phar_num}
+	</select>
 	
 	
 	<!-- 약국 대기번호 증가 -->
-	<!-- <update id="increasePharResWait" parameterType="String">
+	<update id="increasePharResWait" parameterType="String">
 		update dd_pharmacy set phar_wait = phar_wait + 1
 		where phar_num like #{phar_num}
-	</update>   -->
+	</update>  
 
 	<!-- 대기번호 조회 -->
-	<!-- <select id="detailPharWait" parameterType="String" resultType="int">
-	select phar_wait from dd_pharmacy where phar_num = #{phar_num}
-	</select> -->
+	<select id="detailPharWait" parameterType="String" resultType="int">
+		select phar_wait from dd_pharmacy where phar_num = #{phar_num}
+	</select>
 		
 	<!-- 리뷰 등록 -->
 	<!-- <insert id="reviewInsert" parameterType="ReviewVO">

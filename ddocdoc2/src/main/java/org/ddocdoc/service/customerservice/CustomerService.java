@@ -85,4 +85,24 @@ public interface CustomerService {
 	
 	// 증상 검색 결과
 	public SymptomDetailVO symptomDetail(String cus_num);
+	
+	//약국 번호 출력
+	public String selectPharNum(String phar_name);
+	
+	//약국 예약하기
+	int insertPharRes(PharResVO pvo);
+		
+	// 약국 예약 상세보기
+	public PharResVO pharResDetail(String phar_res_num);
+	
+	// 약국 이름 추출
+	public String selectPharmacyName(String phar_num);
+	
+	// 약국 대기번호 증가
+	public int increasePharResWait(String phar_res_num);
+	
+	// 약국 대기번호 조회
+	public int detailPharWait(String phar_num);
+	
+	
 }

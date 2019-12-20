@@ -82,7 +82,7 @@ public class CustomerController {
 		return "/login/loginForm";
 	}
 	
-	//���� ���� ��
+	//占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙
 	@GetMapping("/hospitalResForm")
 	public String hospitalResForm(@RequestParam String cus_num, @RequestParam String hos_name, Model model){
 		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
@@ -90,7 +90,7 @@ public class CustomerController {
 		return "/res/hos_res";
 	}
 	
-	//���� ����
+	//占쏙옙占쏙옙 占쏙옙占쏙옙
 	@PostMapping("/hospitalRes")
 	public String hospitalRes(HospitalResVO hospitalresVO, @RequestParam String hos_name, Model model){
 		System.out.println(hos_name);
@@ -101,7 +101,7 @@ public class CustomerController {
 		return "/login/loginSuccess";
 	}
 	
-	//���� ����Ʈ
+	//占쏙옙占쏙옙 占쏙옙占쏙옙트
 	@GetMapping("/hospitalResList")
 	public String hospitalResList(Model model){
 		System.out.println("dddd" + ((CustomerVO)session.getAttribute("customer")).getCus_num());
@@ -120,18 +120,18 @@ public class CustomerController {
 		
 	}
 	
-	//���� �󼼺���
+	//占쏙옙占쏙옙 占쏢세븝옙占쏙옙
 	@GetMapping("/hospitalResDetail")
 	public String hospitalResDetail(@RequestParam String hos_res_num, Model model,HttpServletResponse response) throws IOException{
 		HospitalResVO res = service.detailRes(hos_res_num);
 		String check = service.checkResAcpt(hos_res_num);
-		System.out.println("Ŀ����� ��Ʈ�ѷ����� hos_res_num : " + hos_res_num);
+		System.out.println("커占쏙옙占쏙옙占� 占쏙옙트占싼뤄옙占쏙옙占쏙옙 hos_res_num : " + hos_res_num);
 		System.out.println("check" + check);
 		
-		if(check.equals("예약 접수 대기 중")){
+		if(check.equals("�삁�빟 �젒�닔 ��湲� 以�")){
 			response.setContentType("text/html; charset=UTF-8");
             PrintWriter out = response.getWriter();
-            out.println("<script>alert('예약 접수가 아직 되지 않아 대기번호 발급이 안되었습니다. 접수가 완료될 때 까지 잠시만 기다려주세요.'); location.href='/customer/hospitalResList';</script>");
+            out.println("<script>alert('�삁�빟 �젒�닔媛� �븘吏� �릺吏� �븡�븘 ��湲곕쾲�샇 諛쒓툒�씠 �븞�릺�뿀�뒿�땲�떎. �젒�닔媛� �셿猷뚮맆 �븣 源뚯� �옞�떆留� 湲곕떎�젮二쇱꽭�슂.'); location.href='/customer/hospitalResList';</script>");
             out.flush();
 			return null;
 		}else{
@@ -145,21 +145,21 @@ public class CustomerController {
 		
 	}
 	
-	// ���������� ��
+	// 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙
 	@GetMapping("/myPageForm")
 	public String myPageForm(Model model){
 		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
 		return "/myPage/myPageForm";
 	}
 	
-	// ȸ�� ���� ��
+	// 회占쏙옙 占쏙옙占쏙옙 占쏙옙
 	@GetMapping("/myPageUpdateForm")
 	public String myPageUpdateForm(Model model){
 		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
 		return "/myPage/myPageUpdateForm";
 	}
 	
-	// ȸ�� ���� ����
+	// 회占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙
 	@PostMapping("/myPageUpdate")
 	public String myPageUpdate(CustomerVO customer){
 		String pw = pwencoder.encode(customer.getCus_pw());
@@ -168,20 +168,20 @@ public class CustomerController {
 		return "/login/loginSuccess";
 	}
 	
-	// ȸ�� Ż��
+	// 회占쏙옙 탈占쏙옙
 	@GetMapping("/myPageDelete")
 	public String myPageDelete(@RequestParam String cus_num){
 		service.customerDelete(cus_num);
 		return "/login/loginForm";
 	}
 	
-	// ���� ���
+	// 占쏙옙占쏙옙 占쏙옙占�
 	@GetMapping("/admin")
 	public String admin(){
 		return "/index/admin";
 	}
 	
-	// ȸ�� ��
+	// 회占쏙옙 占쏙옙
 	@GetMapping("/customerDetail")
 	public String customerDetail(@RequestParam String cus_num, Model model){
 		service.customerDetail(cus_num);
@@ -189,21 +189,21 @@ public class CustomerController {
 		return "/myPage/detailCustomer";
 	}
 	
-	// ȸ�� �α׾ƿ�
+	// 회占쏙옙 占싸그아울옙
 	@GetMapping("/logout")
 	public String logout(){
 		return "/index/index";
 	}
 	
 	
-	// ó���� �󼼺���
+	// 처占쏙옙占쏙옙 占쏢세븝옙占쏙옙
 	@GetMapping("/presDetail")
 	public String presDetail(@RequestParam String hos_res_num, @RequestParam String hos_num, HttpServletResponse response, Model model) throws IOException{
 		PresVO pres = service.presRealDetail(hos_res_num);
 		if(pres == null) {
 			response.setContentType("text/html; charset=UTF-8");
 		     PrintWriter writer = response.getWriter();
-		     writer.println("<script>alert('처방전이 등록되지 않았습니다. 진료 현황을 확인해주세요.'); location.href='/customer/hospitalResList';</script>");
+		     writer.println("<script>alert('泥섎갑�쟾�씠 �벑濡앸릺吏� �븡�븯�뒿�땲�떎. 吏꾨즺 �쁽�솴�쓣 �솗�씤�빐二쇱꽭�슂.'); location.href='/customer/hospitalResList';</script>");
 		     writer.flush();
 			return null;
 		}
@@ -233,5 +233,39 @@ public class CustomerController {
 		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
 		return "/game/game";
 	}
+	
+	// map pharmacy
+	@PostMapping("/pharSearch")
+	public String pharSearch(Model model){
+		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
+		return "/search/pharSearch";
+	}
+	
+	// go to Pharmacy Reservation Form
+	@GetMapping("/pharResForm")
+	public String pharResForm(@RequestParam String cus_name, @RequestParam String phar_name, Model model){
+		model.addAttribute("cus_name", cus_name);
+		model.addAttribute("phar_name", phar_name);
+		return "/phar_res/pharResForm";
+	}
+		
+	// Reserve Pharmacy
+	@PostMapping("/pharRes")
+	public String insertPharRes(PharResVO pvo, @RequestParam String cus_num, @RequestParam String phar_name, Model model){
+		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
+		System.out.println(cus_num);
+		model.addAttribute("cus_num", cus_num);
+		model.addAttribute("phar_name", phar_name);
+		String phar_num = service.selectPharNum(phar_name);
+		pvo.setPhar_num(phar_num);
+
+		
+		
+		service.insertPharRes(pvo);
+
+		return "/pres/presDetail";
+	}
+	
+	
 	
 }

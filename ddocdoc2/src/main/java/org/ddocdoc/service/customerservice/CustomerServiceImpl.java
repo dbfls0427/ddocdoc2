@@ -169,6 +169,38 @@ public class CustomerServiceImpl implements CustomerService {
 	public SymptomDetailVO symptomDetail(String cus_num) {
 		return mapper.symptomDetail(cus_num);
 	}
+
+	@Override
+	public int insertPharRes(PharResVO pvo) {
+		return mapper.insertPharRes(pvo);
+	}
+
+	@Override
+	public PharResVO pharResDetail(String phar_res_num) {
+		return mapper.pharResDetail(phar_res_num);
+	}
+
+	@Override
+	public String selectPharmacyName(String phar_num) {
+		return mapper.selectPharmacyName(phar_num);
+	}
+
+	@Override
+	public int increasePharResWait(String phar_res_num) {
+		return mapper.increasePharResWait(phar_res_num);
+	}
+
+	@Override
+	public int detailPharWait(String phar_num) {
+		return mapper.detailPharWait(phar_num);
+	}
+
+	@Override
+	public String selectPharNum(String phar_name) {
+		return mapper.selectPharNum(phar_name);
+	}
+	
+	
 	
 	
 	

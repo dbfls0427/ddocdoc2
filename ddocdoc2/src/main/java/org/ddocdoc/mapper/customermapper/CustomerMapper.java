@@ -32,7 +32,7 @@ public interface CustomerMapper {
 	// 예약 목록 리스트
 	List<HospitalResVO> resList(String cus_num);
 	
-// 병원 정보 추출
+    // 병원 정보 추출
 	HospitalVO detailHospital(String hos_num);
 	
 	// 병원 이름 추출
@@ -49,7 +49,6 @@ public interface CustomerMapper {
 	
 	// 대기번호 조회
 	int detailWait(String hos_res_num);
-	
 	
 	// 마이페이지 수정
 	int customerUpdate(CustomerVO customer);
@@ -77,19 +76,19 @@ public interface CustomerMapper {
 	
 	// 약 가격 추출
 	int selectPayPrice(String hos_res_num);
-	/*
+	
 	//약국 번호 출력
 	String selectPharNum(String phar_name);
 	
 	//약국 예약하기
-	int insertPharRes(PharResVO pvo);*/
+	int insertPharRes(PharResVO pvo);
 	
 	//약국 예약 리스트
 	List<PharResVO> pharResList(String cus_num);
 	
 	//약국 이름 가져오기
 	List<String> detailNamePharmacy(String cus_num);
-	/*
+	
 	// 약국 예약 상세보기
 	PharResVO pharResDetail(String phar_res_num);
 	
@@ -102,6 +101,7 @@ public interface CustomerMapper {
 	// 약국 대기번호 조회
 	int detailPharWait(String phar_num);
 	
+	/*
 	//review create
 	int reviewInsert(ReviewVO ReviewVO);
 		
