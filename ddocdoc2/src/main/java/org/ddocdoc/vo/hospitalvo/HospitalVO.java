@@ -1,5 +1,7 @@
 package org.ddocdoc.vo.hospitalvo;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class HospitalVO {
+public class HospitalVO implements Serializable {
 	private String hos_num;		//병원번호
 	private String hos_name;	//병원이름
 	private String hos_tel;		//병원전화번호

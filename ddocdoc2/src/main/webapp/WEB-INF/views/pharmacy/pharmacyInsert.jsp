@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,12 +92,12 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
-      <!-- Heading -->
+       <!-- Heading -->
       <div class="sidebar-heading">
         	병원
       </div>
 
-     <!-- Nav Item - Pages Collapse Menu -->
+      <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
@@ -145,6 +146,7 @@
 
     </ul>
     <!-- End of Sidebar -->
+
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -282,7 +284,8 @@
   </div>
 	
 
-
+ 
+  
   <!-- Bootstrap core JavaScript-->
   <script src="<c:url value="/resources/vendor/jquery/jquery.min.js" />"></script>
   <script src="<c:url value="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js" />"></script>
@@ -301,6 +304,5 @@
   <script src="<c:url value="/resources/js/demo/chart-area-demo.js"/>"></script>
   <script src="<c:url value="/resources/js/demo/chart-pie-demo.js"/>"></script>
 	
-  
 </body>
 </html>

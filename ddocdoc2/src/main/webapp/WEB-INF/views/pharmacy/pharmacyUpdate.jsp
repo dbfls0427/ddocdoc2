@@ -161,7 +161,7 @@
 
           <!-- Topbar Search -->
           <span>
-              <img src="../images/logo.png" alt="logo">
+              <img src="/resources/images/logo.png" alt="logo">
           </span>
 
           <!-- Topbar Navbar -->
@@ -219,6 +219,7 @@
 <h1>약국 정보 수정</h1>
 <form action="/pharmacy/pharmacyUpdate" method="post">
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+				
 	<input type="hidden" value="${pharmacyvo.phar_num}" name="phar_num"><br>
 
 	약국이름 <input type="text" value="${pharmacyvo.phar_name}" name="phar_name"><br>

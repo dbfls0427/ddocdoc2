@@ -25,8 +25,8 @@
 	<!-- 약국 update -->
 	<update id="pharmacyUpdate" parameterType="org.ddocdoc.vo.pharmacyvo.PharmacyVO">
 		update dd_pharmacy
-		set PHAR_NAME = #{PHAR_NAME, jdbcType=VARCHAR}, PHAR_TEL = #{PHAR_TEL, jdbcType=VARCHAR}, PHAR_ADDR = #{PHAR_ADDR, jdbcType=VARCHAR}, PHAR_TIME = #{PHAR_TIME, jdbcType=VARCHAR}, PHAR_INFO = #{PHAR_INFO, jdbcType=VARCHAR}, PHAR_WAIT = #{PHAR_WAIT, jdbcType=NUMERIC}
-		where PHAR_NUM = #{PHAR_NUM}
+		set phar_name = #{phar_name, jdbcType=VARCHAR}, phar_tel = #{phar_tel, jdbcType=VARCHAR}, phar_addr = #{phar_addr, jdbcType=VARCHAR}, phar_time = #{phar_time, jdbcType=VARCHAR}, phar_info = #{phar_info, jdbcType=VARCHAR}
+		where phar_num = #{phar_num}
 	</update>
 	
 	<!-- 약국 delete -->

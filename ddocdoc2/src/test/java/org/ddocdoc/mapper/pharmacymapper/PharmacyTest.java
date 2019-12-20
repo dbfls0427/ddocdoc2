@@ -27,27 +27,26 @@ public class PharmacyTest {
 		}
 		*/
 		
-/*		
+		
 		@Test
 		public void testUpdate(){
 			String phar_num = "P0083";
 			
 			PharmacyVO pharmacyVO = new PharmacyVO();
+			log.info("수정 야국텟~~~~~~");
 			
 			pharmacyVO.setPhar_num(phar_num);
-//			pharmacyVO.setPhar_name("aa");
+			pharmacyVO.setPhar_name("11aa");
 			pharmacyVO.setPhar_tel("수정텟");
 			pharmacyVO.setPhar_addr("수정텟");
 			pharmacyVO.setPhar_time("수정텟");
 			pharmacyVO.setPhar_info("수정텟");
-			pharmacyVO.setPhar_wait(11);
 			
 			mapper.pharmacyUpdate(pharmacyVO);
-			log.info("수정 야국텟~~~~~~");
 		}
-		*/
 		
 		
+		/*
 		@Test
 		public void testDetail(){
 			String phar_num = "P0082";
@@ -55,6 +54,7 @@ public class PharmacyTest {
 			PharmacyVO pharmacyVO = mapper.pharmacyDetail(phar_num);
 			log.info("야국테스트에서 디테일 데이터~~~");
 		}
+		*/
 		
 		/*
 		@Test
