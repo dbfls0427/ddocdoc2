@@ -86,10 +86,7 @@ public class HospitalController {
 	// insert
 	@RequestMapping(value="/hospitalInsert" , method = {RequestMethod.POST})
 	public String hospitalInsert(HospitalVO hospitalVO, RedirectAttributes rttr){
-		System.out.println("왜왜오애왜");
-
-		log.info("insert~~~~: "+ hospitalVO);
-		
+		log.info("insert~: "+ hospitalVO);
 		
 		try {
 			service.hospitalInsert(hospitalVO);

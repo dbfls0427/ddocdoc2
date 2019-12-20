@@ -88,7 +88,7 @@ font-family: 'Sunflower', sans-serif;
                     
                     <!-- logo -->
                     <div class="navbar-brand">
-                        <a href="/DDOCDOC/Customer/success.do" >
+                        <a href="/customer/index" >
                             <img src="/resources/images/logo.png" alt="">
                         </a>
                     </div>
@@ -188,14 +188,15 @@ font-family: 'Sunflower', sans-serif;
 		<input type="text" name="ch_name" class="form-control"><br>
 		<label>생년월일</label><br>
 		<div style="display: flex">
-			<input type="date" name="ch_birth" id="datepicker_kid" class="form-control" style="width: 450px; margin-right: 10px;"><br>
+			<input type="date" name="ch_birth" id="datepicker_kid2" class="form-control" style="width: 450px; margin-right: 10px;"><br>
+			<input id="checkage" type="hidden" class="inputbox"> 
 		</div><br>
 		<label>나이</label><br>
-		<input type="text" name="ch_age" class="form-control"><br>
+		<input type="text" name="ch_age" class="form-control" id="putage"><br>
 		<label>성별</label><br>
 		<input type="text" name="ch_gender" class="form-control" placeholder="남/여"><br>
 		<div style="display: flex; justify-content: center">
-			<input type="submit" value="저장" class="btn btn-warning btn-lg">
+			<input type="submit" value="저장" class="btn btn-warning btn-lg" id="kidbtn">
 		</div>
 	</form>
 
@@ -207,6 +208,28 @@ font-family: 'Sunflower', sans-serif;
 <script type="text/javascript">
 var j = jQuery.noConflict();
 j(document).ready(function() {
+		   // 생년월일 입력한 값 갖기
+           j("#datepicker_kid2").change(function (){
+               var date = $('#datepicker_kid2').val();
+               $('#checkage').val(date);
+               var urbirth =  $('#checkage').val();
+               
+               var birth = new Date(urbirth);
+               var birthYear = birth.getFullYear();
+               var currentYear = new Date().getFullYear();
+               var age = currentYear - birthYear;
+               if(age>11){
+                  alert("아이등록은 만12세미만이 가능합니다.");
+                  $( "#putage" ).prop( "disabled", true );
+                  $("#kidbtn").prop('disabled', true);
+               } else{
+                  $('#putage').val(age);
+                  $( "#putage" ).prop( "disabled", false );
+                  $("#kidbtn").prop('disabled', false);
+               }
+           });
+		
+	
            //모든 datepicker에 대한 공통 옵션 설정
            j.datepicker.setDefaults({
                dateFormat: 'yy-mm-dd' //Input Display Format 변경
@@ -226,12 +249,18 @@ j(document).ready(function() {
                ,minDate: "-1M" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
                ,maxDate: "+1M" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)                    
            });
-
+           
            //input을 datepicker로 선언
            j("#datepicker_kid2").datepicker();                    
            
            //From의 초기값을 오늘 날짜로 설정
            j('#datepicker_kid2').datepicker('setDate', 'today');
+           
+          
+           
+          
+           
+           
 })
 </script>
 

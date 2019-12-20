@@ -88,7 +88,7 @@ font-family: 'Sunflower', sans-serif;
                     
                     <!-- logo -->
                     <div class="navbar-brand">
-                        <a href="/DDOCDOC/Customer/success.do" >
+                        <a href="/customer/index" >
                             <img src="/resources/images/logo.png" alt="">
                         </a>
                     </div>
@@ -99,7 +99,7 @@ font-family: 'Sunflower', sans-serif;
                     <div class="main-menu">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <a href="/DDOCDOC/Customer/success.do" >Home</a>
+                                <a href="/customer/index" >Home</a>
                             </li>
                              <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">병원찾기 <span class="caret"></span></a>
@@ -167,7 +167,7 @@ font-family: 'Sunflower', sans-serif;
                             <h2>우리아이 관리</h2>
                             <ol class="breadcrumb">
                                 <li>
-                                    <a href="/DDOCDOC/Customer/success.do">
+                                    <a href="/customer/index">
                                         <i class="ion-ios-home"></i>
                                         Home
                                     </a>
@@ -187,16 +187,17 @@ font-family: 'Sunflower', sans-serif;
 				<input type="hidden" name="ch_num" value="${ch_num }"><br>
 				<label>이름</label><br>
 				<input type="text" name="ch_name" value="${childvo.ch_name }" class="form-control"><br>
-				<label>나이</label><br>
-				<input type="text" name="ch_age" value="${childvo.ch_age }" class="form-control"><br>
 				<label>생년월일</label><br>
 				<div style="display: flex">
 					<input type="date" name="ch_birth" value="${childvo.ch_birth }" id="datepicker_kid2" class="form-control"  style="width: 450px; margin-right: 10px;"><br>
+					<input id="checkage" type="hidden" class="inputbox"> 
 				</div>
+				<label>나이</label><br>
+				<input type="text" name="ch_age" value="${childvo.ch_age }" class="form-control" id="putage"><br>
 				<br>
 				<label>성별</label><br>
 				<input type="text" name="ch_gender" value="${childvo.ch_gender }" class="form-control"><br>
-				<input type="submit" value="저장" class="btn btn-warning">
+				<input type="submit" value="저장" class="btn btn-warning" id="kidbtn">
 			</form>
 		</section>
 
@@ -206,6 +207,28 @@ font-family: 'Sunflower', sans-serif;
 <script type="text/javascript">
 var j = jQuery.noConflict();
 j(document).ready(function() {
+			// 생년월일 입력한 값 갖기
+		    j("#datepicker_kid2").change(function (){
+		        var date = $('#datepicker_kid2').val();
+		        $('#checkage').val(date);
+		        var urbirth =  $('#checkage').val();
+		        
+		        var birth = new Date(urbirth);
+		        var birthYear = birth.getFullYear();
+		        var currentYear = new Date().getFullYear();
+		        var age = currentYear - birthYear;
+		        if(age>11){
+		           alert("아이등록은 만12세미만이 가능합니다.");
+		           $( "#putage" ).prop( "disabled", true );
+		           $("#kidbtn").prop('disabled', true);
+		        } else{
+		           $('#putage').val(age);
+		           $( "#putage" ).prop( "disabled", false );
+		           $("#kidbtn").prop('disabled', false);
+		        }
+		    });
+	
+	
            //모든 datepicker에 대한 공통 옵션 설정
            j.datepicker.setDefaults({
                dateFormat: 'yy-mm-dd' //Input Display Format 변경
