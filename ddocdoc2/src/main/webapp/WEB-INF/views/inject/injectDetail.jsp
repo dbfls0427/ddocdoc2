@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <% String cus_name= request.getParameter("cus_name");
-    	request.setAttribute("cus_name", cus_name);
-    %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,12 +16,12 @@
 	.ui-datepicker-trigger{cursor: pointer;}
 	/*datepicer input 롤오버 시 손가락 모양 표시*/
 	.hasDatepicker{cursor: pointer;}
-	#forming{
+/* 	#forming{
 		font-family: 'Jua', sans-serif;
 	}
 	#intro{
 		font-family: 'Jua', sans-serif;
-	}
+	} */
 	img{
 		    height: 32px;
     		margin-left: 5px;
@@ -36,6 +33,16 @@
 	a:link { color : black; text-decoration: none;}
 	a:visited { color: black; text-decoration: none;}
 </style>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	
+	jQuery("#upd").on("click",function(e){
+		var QueryString = jQuery("#updateForm").serialize();
+		location.href="/inject/injectUpdate?"+QueryString;
+	})
+});
+
+</script>
 </head>
 <body>
 <!-- menu module -->
@@ -69,15 +76,16 @@
         
  	<section id="forming"  class="company-description" style="margin-bottom: 50px; font-size: 20px; margin-left: 40%;">
 		<div>
-			<div style="margin-left: 130x; width: 400px;"><label style="font-size: 40px; color: #152571; margin-left: 110px;">${inj_info_name }</label><hr></div>
-			<div><label style="margin-left: 5px">접종시기</label>&nbsp&nbsp<span>${inj_info_date }</span></div>
+			<div style="margin-left: 130x; width: 400px;"><label style="font-size: 40px; color: #152571; margin-left: 110px;">${inj_name }</label><hr></div>
+			<div><label style="margin-left: 5px">접종시기</label>&nbsp&nbsp<span>${infoVO.inj_info_date }</span></div>
 		</div>
-	<form action="updateInjAction.do" method="post" style="margin-bottom: 10px;">
+	<form style="margin-bottom: 10px;" id="updateForm">
 	 <div style="width: 300px">
+	 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		<input type="hidden" name="ch_num" value="${civo.ch_num }">
 		<input type="hidden" name="inj_content" value="${civo.inj_content}">
 		<div style="display: flex; justify-content: center; height: 33px; width: 350px;" >
-			<label style="margin-left: 4px">접종일</label>  &nbsp&nbsp<input type="text" name="inj_date" id="datepicker" value="${civo.inj_date }" style="width: 240px;" class="form-control">
+			<label style="margin-left: 4px">접종일</label>  &nbsp&nbsp<input type="text" name="inj_date" id="datepicker" value="${civo.inj_date }" style="width: 230px;" class="form-control">
 		</div>
 		<script type="text/javascript">
 			var j = jQuery.noConflict();
@@ -110,10 +118,15 @@
 			})
 		</script>
 		<label style="margin-left: 7px">메모</label> <input type="text" name="inj_memo" value="${civo.inj_memo }" class="form-control" style="margin-left: 2px"><br>
-		<input type="submit" value="기록 변경" class="btn btn-default btn-lg" style="margin-left: 260px;">
+		<!-- <input type="submit" value="기록변경" class="btn btn-default btn-lg" style="margin-left: 260px;"> -->
 	</div>
 	</form>
-	<button class="btn btn-default btn-lg" style="margin-left: 260px;width: 100px"><a href="deleteInjAction.do?ch_num=${civo.ch_num }&inj_content=${civo.inj_content}">기록삭제</a></button>
+	<div style="display: flex; justify-content : left;margin-left: 45px;">
+		<div style="display: flex; justify-content : center">
+			<button class="btn btn-default btn-lg" style="width: 80px" id="upd">변경</button>
+			<button class="btn btn-default btn-lg" style="margin-left: 10px;width: 80px"><a href="/inject/injectDelete?ch_num=${civo.ch_num }&inj_content=${civo.inj_content}">삭제</a></button>
+		</div>
+	</div>
  
  </section>
 	

@@ -108,7 +108,7 @@
 	</section>
 
 	<section id="btn" class="company-description" style="margin-bottom: 0; display: flex; justify-content: center">
-		<button class="btn btn-default btn-lg"><a href="../map/injSearch.jsp?cus_name=${cus_name }" id="childHo">가까운 소아과 예약하기</a></button>
+		<button class="btn btn-default btn-lg"><a href="/inject/injSearch" id="childHo">가까운 소아과 예약하기</a></button>
 	</section>
 	<section class="company-description" style="margin-top: 10px; display: flex; justify-content: center; font-weight: 500; font-size: 25px; margin-top: 30px;">
 		<label id="sun" style="padding: 8px ">접종률</label>&nbsp<label id="btn" style="color: #6472dc;font-size: 35px;">${percent }</label><br>
@@ -129,7 +129,7 @@
 									<c:choose>
 										<c:when test="${inj eq list.inj_info_num}">
 											<c:set var="answer" value="접종완료"/>
-											<a href="InjectDetail?ch_num=${ch_num }&inj_content=${list.inj_info_num}&inj_info_name=${list.inj_info_name}&inj_info_date=${list.inj_info_date }&inj_name=${list.inj_info_name }"><c:out value="${answer }"/></a>
+											<a href="/inject/injectDetail?ch_num=${ch_num }&inj_content=${list.inj_info_num}&inj_info_name=${list.inj_info_name}&inj_info_date=${list.inj_info_date }&inj_name=${list.inj_info_name }"><c:out value="${answer }"/></a>
 											<c:set var="loop_flag" value="true"/>
 										</c:when>
 									</c:choose>

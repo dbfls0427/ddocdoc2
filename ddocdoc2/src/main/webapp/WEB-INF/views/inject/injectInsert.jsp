@@ -30,10 +30,7 @@
 </head>
 <body>
 	<%@include file="../includes/menu.jsp" %>
-	 <!-- Custom fonts for this template-->
-	<link
-	href="${pageContext.request.contextPath }/resources/vendor/fontawesome-free/css/all.min.css"
-	rel="stylesheet" type="text/css">
+
         <!-- 
         ================================================== 
             TITLE: Global Page Section Start
@@ -68,7 +65,8 @@
 				<div style="display: flex; justify-content: center; margin-bottom: 20px; margin-top: 10px;">
 					<label id="fsize2">접종시기</label>&nbsp&nbsp<label id="fsize2" style="color: #dc4040;">${infoVO.inj_info_date }</label><br>
 				</div>
-				<form action="InsertInjAction.do" method="post">
+				<form action="/inject/insertInjects" method="post">
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 					<input type="hidden" name="ch_num" value="${ch_num }">
 					<input type="hidden" name="inj_content" value="${inj_content}">
 					<div style="display: flex; justify-content: center">
