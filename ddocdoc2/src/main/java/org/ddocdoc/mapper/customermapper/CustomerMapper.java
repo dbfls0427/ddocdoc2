@@ -48,6 +48,7 @@ public interface CustomerMapper {
 	// 대기번호 조회
 	int detailWait(String hos_res_num);
 	
+	
 	// 마이페이지 수정
 	int customerUpdate(CustomerVO customer);
 	

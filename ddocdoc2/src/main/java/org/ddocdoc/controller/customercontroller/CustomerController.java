@@ -75,16 +75,14 @@ public class CustomerController {
 	
 	@PostMapping("/joinAction")
 	public String joinAction(CustomerVO customer){
-		System.out.println("ÄÁÆ®·Ñ·¯¿¡¼­ ¾ÆÀÌµğ:" + customer.getCus_id());
 		String pw = pwencoder.encode(customer.getCus_pw());
 		customer.setCus_pw(pw);
-		System.out.println("ÄÁÆ®·Ñ·¯¿¡¼­ " + customer.getCus_pw());
 		service.insertCustomer(customer);
 		
 		return "/login/loginForm";
 	}
 	
-	//º´¿ø ¿¹¾à Æû
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	@GetMapping("/hospitalResForm")
 	public String hospitalResForm(@RequestParam String cus_num, @RequestParam String hos_name, Model model){
 		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
@@ -92,7 +90,7 @@ public class CustomerController {
 		return "/res/hos_res";
 	}
 	
-	//º´¿ø ¿¹¾à
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@PostMapping("/hospitalRes")
 	public String hospitalRes(HospitalResVO hospitalresVO, @RequestParam String hos_name, Model model){
 		System.out.println(hos_name);
@@ -103,7 +101,7 @@ public class CustomerController {
 		return "/login/loginSuccess";
 	}
 	
-	//¿¹¾à ¸®½ºÆ®
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	@GetMapping("/hospitalResList")
 	public String hospitalResList(Model model){
 		System.out.println("dddd" + ((CustomerVO)session.getAttribute("customer")).getCus_num());
@@ -122,18 +120,18 @@ public class CustomerController {
 		
 	}
 	
-	//¿¹¾à »ó¼¼º¸±â
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ó¼¼ºï¿½ï¿½ï¿½
 	@GetMapping("/hospitalResDetail")
 	public String hospitalResDetail(@RequestParam String hos_res_num, Model model,HttpServletResponse response) throws IOException{
 		HospitalResVO res = service.detailRes(hos_res_num);
 		String check = service.checkResAcpt(hos_res_num);
-		System.out.println("Ä¿½ºÅä¸Ó ÄÁÆ®·Ñ·¯¿¡¼­ hos_res_num : " + hos_res_num);
+		System.out.println("Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½Ñ·ï¿½ï¿½ï¿½ï¿½ï¿½ hos_res_num : " + hos_res_num);
 		System.out.println("check" + check);
 		
-		if(check.equals("¿¹¾à Á¢¼ö ´ë±â Áß")){
+		if(check.equals("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½")){
 			response.setContentType("text/html; charset=UTF-8");
             PrintWriter out = response.getWriter();
-            out.println("<script>alert('¿¹¾à Á¢¼ö°¡ ¾ÆÁ÷ µÇÁö ¾Ê¾Æ ´ë±â¹øÈ£ ¹ß±ŞÀÌ ¾ÈµÇ¾ú½À´Ï´Ù. Á¢¼ö°¡ ¿Ï·áµÉ ¶§ ±îÁö Àá½Ã¸¸ ±â´Ù·ÁÁÖ¼¼¿ä.'); location.href='/customer/hospitalResList';</script>");
+            out.println("<script>alert('ì˜ˆì•½ ì ‘ìˆ˜ê°€ ì•„ì§ ë˜ì§€ ì•Šì•„ ëŒ€ê¸°ë²ˆí˜¸ ë°œê¸‰ì´ ì•ˆë˜ì—ˆìŠµë‹ˆë‹¤. ì ‘ìˆ˜ê°€ ì™„ë£Œë  ë•Œ ê¹Œì§€ ì ì‹œë§Œ ê¸°ë‹¤ë ¤ì£¼ì„¸ìš”.'); location.href='/customer/hospitalResList';</script>");
             out.flush();
 			return null;
 		}else{
@@ -147,21 +145,21 @@ public class CustomerController {
 		
 	}
 	
-	// ¸¶ÀÌÆäÀÌÁö Æû
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	@GetMapping("/myPageForm")
 	public String myPageForm(Model model){
 		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
 		return "/myPage/myPageForm";
 	}
 	
-	// È¸¿ø ¼öÁ¤ Æû
+	// È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	@GetMapping("/myPageUpdateForm")
 	public String myPageUpdateForm(Model model){
 		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
 		return "/myPage/myPageUpdateForm";
 	}
 	
-	// È¸¿ø Á¤º¸ ¼öÁ¤
+	// È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@PostMapping("/myPageUpdate")
 	public String myPageUpdate(CustomerVO customer){
 		String pw = pwencoder.encode(customer.getCus_pw());
@@ -170,20 +168,20 @@ public class CustomerController {
 		return "/login/loginSuccess";
 	}
 	
-	// È¸¿ø Å»Åğ
+	// È¸ï¿½ï¿½ Å»ï¿½ï¿½
 	@GetMapping("/myPageDelete")
 	public String myPageDelete(@RequestParam String cus_num){
 		service.customerDelete(cus_num);
 		return "/login/loginForm";
 	}
 	
-	// ¾îµå¹Î ¸ğµå
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	@GetMapping("/admin")
 	public String admin(){
 		return "/index/admin";
 	}
 	
-	// È¸¿ø »ó¼¼
+	// È¸ï¿½ï¿½ ï¿½ï¿½
 	@GetMapping("/customerDetail")
 	public String customerDetail(@RequestParam String cus_num, Model model){
 		service.customerDetail(cus_num);
@@ -191,21 +189,21 @@ public class CustomerController {
 		return "/myPage/detailCustomer";
 	}
 	
-	// È¸¿ø ·Î±×¾Æ¿ô
+	// È¸ï¿½ï¿½ ï¿½Î±×¾Æ¿ï¿½
 	@GetMapping("/logout")
 	public String logout(){
 		return "/index/index";
 	}
 	
 	
-	// Ã³¹æÀü »ó¼¼º¸±â
+	// Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ó¼¼ºï¿½ï¿½ï¿½
 	@GetMapping("/presDetail")
 	public String presDetail(@RequestParam String hos_res_num, @RequestParam String hos_num, HttpServletResponse response, Model model) throws IOException{
 		PresVO pres = service.presRealDetail(hos_res_num);
 		if(pres == null) {
 			response.setContentType("text/html; charset=UTF-8");
 		     PrintWriter writer = response.getWriter();
-		     writer.println("<script>alert('Ã³¹æÀüÀÌ µî·ÏµÇÁö ¾Ê¾Ò½À´Ï´Ù. Áø·á ÇöÈ²À» È®ÀÎÇØÁÖ¼¼¿ä.'); location.href='/customer/hospitalResList';</script>");
+		     writer.println("<script>alert('ì²˜ë°©ì „ì´ ë“±ë¡ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤. ì§„ë£Œ í˜„í™©ì„ í™•ì¸í•´ì£¼ì„¸ìš”.'); location.href='/customer/hospitalResList';</script>");
 		     writer.flush();
 			return null;
 		}
@@ -228,6 +226,11 @@ public class CustomerController {
 		model.addAttribute("price", price);
 		
 		return "/pres/presDetail";
+	}
+	
+	@GetMapping("/game")
+	public String game(){
+		return "/game/game";
 	}
 	
 }
