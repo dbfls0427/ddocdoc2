@@ -30,7 +30,7 @@ public class GameController {
 	, produces = {MediaType.TEXT_PLAIN_VALUE})*/
 	
 	@RequestMapping(value = "/symptomInsert", consumes="application/json",produces = {MediaType.TEXT_PLAIN_VALUE}, method = {RequestMethod.POST, RequestMethod.GET})
-	public ResponseEntity<String> symptomInsert(/*@RequestBody */SymptomVO sym){
+	public ResponseEntity<String> symptomInsert(@RequestBody SymptomVO sym ){
 		log.info(sym);
 		
 		int insertCount = service.symptomInsert(sym);

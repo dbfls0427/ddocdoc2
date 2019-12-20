@@ -3,10 +3,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta name="_csrf" th:content="${_csrf.token}"/>
+<meta name="_csrf_header" th:content="${_csrf.headerName}"/>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="/resources/js/game.js"></script>
+<!--  <script src="/resources/js/game.js"></script> -->
 <script type="text/javascript">
 	
 		
@@ -16,6 +18,7 @@
 		var typingIdx=0;
 		var typingTxt=$(".typing-txt").text();
 		var tyInt;
+		
 		
 		typingTxt=typingTxt.split("");
 		var audio = new Audio();
@@ -137,15 +140,46 @@
 				var span = document.getElementsByClassName("close")[0]; 
 				
 				modal.style.display = "block";
-				$(".submit").on("click",function(e){
+				
+				
+				  $(".submit").on("click",function(e){
 					const form = $("form[name=symptomForm]").serializeObject();
 					console.log("여기서는" + form);
 					e.preventDefault();
 					gameAjax.symptomInsert(form, function(result) {
-						alert("success");
+						alert("증상 입력이 정상적으로 완료되었습니다.");
+						var modal = document.getElementById('myModal');
+						modal.style.display = "none";
+						audio.pause();
+						audio.src = "/resources/game/symptom.mp3";
+						audio.play();
+						var selectSymptom = $(".symptom").val();
+						var detailSymptom = $(".detailSymptom").val();
+						console.log(selectSymptom);
+						console.log(detailSymptom);
+						typingTxt = '증상과 고객님의 세부 증상은 다음과 같습니다.\n ';
+						typingTxt += '1. 증상 : ' + selectSymptom + '\n ';
+						typingTxt += '2. 세부증상 : ' + detailSymptom + '\n';
+						typingTxt += ' 증상에 대한 결과가 나오기 전 정확하지 않는 정보일 수도 있습니다. 좀 더 정확한 정보를 위해 온라인으로 병원을 예약하시겠습니까?';
+						
+						typingBool = false;
+						typingIdx = 0;
+						$(".test").remove();
+						if(typingBool==false){
+							typingBool=true;
+							tyInt = setInterval(typing2,80);
+						}
+						var str = '';
+						var inputButton = '<button class = "onlineRes" style="margin-top:30px;">예</button>';
+						var inputButton2 = '<button class = "closeRes" style="margin-top:30px;">아니오</button>';
+						str += inputButton;
+						str += inputButton2;
+						
+						$(".customer").html(str);
+						
 					});
 					
-				});
+				});  
 				
 				// ajax 처리, 모달창 처리
 				span.onclick = function() {
@@ -154,36 +188,14 @@
 				
 			}
 			
-			var str = "<button class = 'test'>다음</button>";
-			$(".customer").html(str);
 			
 		});
 		
 		
-		/* 위에 ajax처리와 모달창 처리 전 임시 이벤트 */
-		
-		$(document).on("click", ".test", function() {
-			audio.pause();
-			audio.src = "/resources/game/symptom.mp3";
-			audio.play();
-			typingTxt = '감기 증상과 고객님의 세부 증상은 ooo으로 나왔습니다. 증상에 대한 결과가 나오기 전 정확하지 않는 정보일 수도 있습니다. 좀 더 정확한 정보를 위해 온라인으로 병원을 예약하시겠습니까?';
-			typingBool = false;
-			typingIdx = 0;
-			$(".test").remove();
-			if(typingBool==false){
-				typingBool=true;
-				
-				tyInt = setInterval(typing2,100);
-			}
-			var str = '';
-			var inputButton = '<button class = "onlineRes" style="margin-top:30px;">예</button>';
-			var inputButton2 = '<button class = "closeRes" style="margin-top:30px;">아니오</button>';
-			str += inputButton;
-			str += inputButton2;
-			
-			$(".customer").html(str);
-			
+		$(document).on("click", ".onlineRes", function() {
+			location.href = "/customer/hosSearch";
 		});
+		
 		
 		
 		/* 여기전까지 음성 인식*/
@@ -211,7 +223,38 @@
 			
 		});
 		
-		
+		var gameAjax = (function() {
+			
+		 	function symptomInsert(form, callback, error) {
+				console.log(form);
+				$.ajax({
+					type : 'POST',
+					url : '/game/symptomInsert',
+					data : JSON.stringify(form),
+					beforeSend : function(xhr) {	
+				            xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+					},
+					contentType : "application/json; charset=utf-8",
+					success : function(result, status, xhr) {
+						if(callback){
+							callback(result);
+						}
+					},
+					error : function(xhr, status, er) {
+						if(error){
+							error(er);
+						}
+					}
+					
+					
+				});
+			}
+			
+			return {
+				symptomInsert : symptomInsert
+				
+			};
+		})();
 	});
 	
 	
@@ -306,16 +349,17 @@
       <!-- Modal content -->
       <div class="modal-content">
         <span class="close">&times;</span>                                                               
-        <form name="symptomForm" class = "symptomForm">
+        <form name="symptomForm" class = "symptomForm" method="post">
         	<input type="hidden" name = "cus_num" value="${customer.cus_num }">
-        	<select name = "symptom">
+        	<select name = "symptom" class = "symptom">
         		<option value="감기">감기</option>
         		<option value="몸살">몸살</option>
         		<option value="설사">설사</option>
         	</select>
-        	<input type="text" name = "detailSymptom" placeholder = "세부증상을 입력해주세요.">
+        	<input type="text" name = "detailSymptom" class = "detailSymptom" placeholder = "세부증상을 입력해주세요.">
+        	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
-        <button class="submit">증상입력</button>
+         <button class="submit">증상입력</button> 
       </div>
  
     </div>

@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SymptomVO implements Serializable{
+	private String sym_num;
 	private String symptom;
 	private String detailSymptom;
 	private String cus_num;

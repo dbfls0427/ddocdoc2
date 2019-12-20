@@ -243,7 +243,7 @@
 	</select>
 		
 	<insert id="symptomInsert" parameterType="org.ddocdoc.vo.symptomvo.SymptomVO">
-		insert into dd_symptom values(#{symptom}, #{detailSymptom}, #{cus_num})
+		insert into dd_symptom values('SY00' || sym_seq.nextval, #{symptom}, #{detailSymptom}, #{cus_num})
 	</insert>
 		
 </mapper>
