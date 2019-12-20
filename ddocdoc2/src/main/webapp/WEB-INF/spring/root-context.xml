@@ -40,6 +40,7 @@
 	<context:component-scan base-package="org.ddocdoc.service.customerservice"/>
 	<context:component-scan base-package="org.ddocdoc.service.heightservice"/>
 	<context:component-scan base-package="org.ddocdoc.service.pharmacyservice"/>
+	<context:component-scan base-package="org.ddocdoc.service.injectservice"/>
 	
 	
 	<!-- 매퍼 -->
@@ -48,6 +49,7 @@
 	<mybatis-spring:scan base-package="org.ddocdoc.mapper.customermapper"/>
 	<mybatis-spring:scan base-package="org.ddocdoc.mapper.heightmapper"/>
 	<mybatis-spring:scan base-package="org.ddocdoc.mapper.pharmacymapper"/>
+	<mybatis-spring:scan base-package="org.ddocdoc.mapper.injectmapper"/>
 	
 	
 	

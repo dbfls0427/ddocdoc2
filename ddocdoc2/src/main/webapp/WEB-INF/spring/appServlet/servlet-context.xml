@@ -42,6 +42,9 @@
 	<context:component-scan base-package="org.ddocdoc.controller.heightcontroller" />
 	<context:component-scan base-package="org.ddocdoc.controller.customercontroller"></context:component-scan>
 	<context:component-scan base-package="org.ddocdoc.controller.gamecontroller"></context:component-scan>
+	<context:component-scan base-package="org.ddocdoc.controller.injectController" />
+	
+	
 	<!-- 파일첨부 -->
     <beans:bean id="multipartResolver"
         class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
