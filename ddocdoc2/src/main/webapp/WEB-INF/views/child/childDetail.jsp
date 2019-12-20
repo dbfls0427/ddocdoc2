@@ -124,10 +124,7 @@ font-family: 'Sunflower', sans-serif;
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">아이관리 <span class="caret"></span></a>
                                 <div class="dropdown-menu">
                                     <ul>
-                                        <li><a href="/child/childList">아이관리</a></li>
-                                        <li><a href="/DDOCDOC/Customer/detailCustomer.do">성장관리</a></li>
-                                        <li><a href="/DDOCDOC/Customer/detailCustomer.do">예방접종</a></li>
-                                        <li><a href="/DDOCDOC/Customer/detailCustomer.do">건강검진</a></li>
+                                        <li><a href="/child/childList?cus_num=${customer.cus_num }">아이관리</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -191,12 +188,13 @@ font-family: 'Sunflower', sans-serif;
         
         <section id="btn" class="company-description" style="display: flex; justify-content: center; margin-top: 80px; margin-left: 30px; margin-bottom : 30px">
 		 <div style="display: flex; justify-content: center;">
-			<form action="/height/heightList" method="post">
+<%-- 			<form action="/height/heightList" method="post">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				<input type="hidden" name="ch_num" value="${childVO.ch_num}">
 				<input type="hidden" name="ch_name" value="${childVO.ch_name}">
 				<input type = "submit" value="성장 관리" class="btn btn-default btn-lg" style="font-size: 20px; margin-right: 30px; width: 140px;">
-			</form>
+			</form> --%>
+			<button class="btn btn-default btn-lg" style="font-size: 20px; margin-right: 30px; width: 140px;"><a href = "/height/heightList?ch_num=${childVO.ch_num }">성장 관리</a></button>
 			
 			<form action="/DDOCDOC/Inject/InjectListAction.do" method="post">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
