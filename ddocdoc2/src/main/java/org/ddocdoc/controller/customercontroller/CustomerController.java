@@ -229,7 +229,8 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/game")
-	public String game(){
+	public String game(Model model){
+		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
 		return "/game/game";
 	}
 	

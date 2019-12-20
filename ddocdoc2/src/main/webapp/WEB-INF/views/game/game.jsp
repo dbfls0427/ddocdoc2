@@ -108,6 +108,24 @@
 			
 		});
 		
+		 jQuery.fn.serializeObject = function() { 
+		      var obj = null; 
+		      try { 
+		          if(this[0].tagName && this[0].tagName.toUpperCase() == "FORM" ) { 
+		              var arr = this.serializeArray(); 
+		              if(arr){ obj = {}; 
+		              jQuery.each(arr, function() { 
+		                  obj[this.name] = this.value; }); 
+		              } 
+		          } 
+		      }catch(e) { 
+		          alert(e.message); 
+		      }finally {} 
+		      return obj; 
+		    };
+
+
+		
 		$(document).on("click", ".menuSubmit2", function() {
 			var menuNum = document.getElementById("menuNum2").value;
 			$('#menuNum2').remove();
@@ -117,8 +135,17 @@
 				typingTxt = '';
 				var modal = document.getElementById('myModal');
 				var span = document.getElementsByClassName("close")[0]; 
-				var form = $(".symptom").seri
+				
 				modal.style.display = "block";
+				$(".submit").on("click",function(e){
+					const form = $("form[name=symptomForm]").serializeObject();
+					console.log("여기서는" + form);
+					e.preventDefault();
+					gameAjax.symptomInsert(form, function(result) {
+						alert("success");
+					});
+					
+				});
 				
 				// ajax 처리, 모달창 처리
 				span.onclick = function() {
@@ -279,15 +306,16 @@
       <!-- Modal content -->
       <div class="modal-content">
         <span class="close">&times;</span>                                                               
-        <form action="" class = "symptom">
-        	<select name = "증상">
+        <form name="symptomForm" class = "symptomForm">
+        	<input type="hidden" name = "cus_num" value="${customer.cus_num }">
+        	<select name = "symptom">
         		<option value="감기">감기</option>
         		<option value="몸살">몸살</option>
         		<option value="설사">설사</option>
         	</select>
         	<input type="text" name = "detailSymptom" placeholder = "세부증상을 입력해주세요.">
-        	<input type="submit" value="증상 입력">
         </form>
+        <button class="submit">증상입력</button>
       </div>
  
     </div>

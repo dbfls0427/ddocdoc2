@@ -242,6 +242,9 @@
 		select hos_res_acpt from dd_hos_res where hos_res_num=#{hos_res_num}
 	</select>
 		
+	<insert id="symptomInsert" parameterType="org.ddocdoc.vo.symptomvo.SymptomVO">
+		insert into dd_symptom values(#{symptom}, #{detailSymptom}, #{cus_num})
+	</insert>
 		
 </mapper>
 
