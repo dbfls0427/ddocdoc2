@@ -10,6 +10,7 @@ import org.ddocdoc.vo.payvo.PayVO;
 import org.ddocdoc.vo.pharresvo.PharResVO;
 import org.ddocdoc.vo.presdetailvo.PresDetailVO;
 import org.ddocdoc.vo.presvo.PresVO;
+import org.ddocdoc.vo.symptomdetailvo.SymptomDetailVO;
 import org.ddocdoc.vo.symptomvo.SymptomVO;
 
 public interface CustomerService {
@@ -81,4 +82,7 @@ public interface CustomerService {
 	
 	// 증상 입력
 	public int symptomInsert(SymptomVO sym);
+	
+	// 증상 검색 결과
+	public SymptomDetailVO symptomDetail(String cus_num);
 }

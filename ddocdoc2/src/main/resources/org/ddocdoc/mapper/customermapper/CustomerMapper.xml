@@ -246,6 +246,9 @@
 		insert into dd_symptom values('SY00' || sym_seq.nextval, #{symptom}, #{detailSymptom}, #{cus_num})
 	</insert>
 		
+	<select id="symptomDetail" resultType="org.ddocdoc.vo.symptomdetailvo.SymptomDetailVO" parameterType="String" >
+	select * from symptomExample where symptomexamplename = (select symptom from (select * from dd_symptom order by rownum desc) where rownum = 1 and cus_num = #{cus_num})
+	</select>
 </mapper>
 
 

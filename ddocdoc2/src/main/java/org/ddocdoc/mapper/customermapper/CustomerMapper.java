@@ -11,6 +11,7 @@ import org.ddocdoc.vo.payvo.PayVO;
 import org.ddocdoc.vo.pharresvo.PharResVO;
 import org.ddocdoc.vo.presdetailvo.PresDetailVO;
 import org.ddocdoc.vo.presvo.PresVO;
+import org.ddocdoc.vo.symptomdetailvo.SymptomDetailVO;
 import org.ddocdoc.vo.symptomvo.SymptomVO;
 
 public interface CustomerMapper {
@@ -131,5 +132,6 @@ public interface CustomerMapper {
 	// 증상 입력
 	int symptomInsert(SymptomVO sym);
 	
-
+	// 증상 검색 결과
+	SymptomDetailVO symptomDetail(String cus_num);
 }

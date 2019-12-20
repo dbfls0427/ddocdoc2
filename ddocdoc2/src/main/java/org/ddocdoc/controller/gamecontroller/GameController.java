@@ -1,11 +1,14 @@
 package org.ddocdoc.controller.gamecontroller;
 
 import org.ddocdoc.service.customerservice.CustomerService;
+import org.ddocdoc.vo.symptomdetailvo.SymptomDetailVO;
 import org.ddocdoc.vo.symptomvo.SymptomVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,5 +41,13 @@ public class GameController {
 		return insertCount == 1 ? new ResponseEntity<>("success", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		
 	}
+	
+	@GetMapping(value = "/{cus_num}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<SymptomDetailVO> symptomDetail(@PathVariable("cus_num") String cus_num){
+		log.info("get : " + cus_num);
+		
+		return new ResponseEntity<SymptomDetailVO>(service.symptomDetail(cus_num), HttpStatus.OK);
+	}
+	
 
 }

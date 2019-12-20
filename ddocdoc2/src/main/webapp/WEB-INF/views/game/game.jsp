@@ -10,7 +10,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <!--  <script src="/resources/js/game.js"></script> -->
 <script type="text/javascript">
-	
+	var resultSymptom;
 		
 		
 	$(function() {
@@ -155,23 +155,25 @@
 						audio.play();
 						var selectSymptom = $(".symptom").val();
 						var detailSymptom = $(".detailSymptom").val();
+						resultSymptom = selectSymptom;
 						console.log(selectSymptom);
 						console.log(detailSymptom);
 						typingTxt = '증상과 고객님의 세부 증상은 다음과 같습니다.\n ';
 						typingTxt += '1. 증상 : ' + selectSymptom + '\n ';
 						typingTxt += '2. 세부증상 : ' + detailSymptom + '\n';
-						typingTxt += ' 증상에 대한 결과가 나오기 전 정확하지 않는 정보일 수도 있습니다. 좀 더 정확한 정보를 위해 온라인으로 병원을 예약하시겠습니까?';
+						typingTxt += '증상 검색에 대한 결과와 치료 방법을 보시겠습니까 ? ';
 						
 						typingBool = false;
 						typingIdx = 0;
 						$(".test").remove();
 						if(typingBool==false){
 							typingBool=true;
-							tyInt = setInterval(typing2,80);
+							tyInt = setInterval(typing2,60);
 						}
 						var str = '';
-						var inputButton = '<button class = "onlineRes" style="margin-top:30px;">예</button>';
-						var inputButton2 = '<button class = "closeRes" style="margin-top:30px;">아니오</button>';
+						
+						var inputButton = '<button class = "closeRes" style="margin-top:50px;">예</button>';
+						var inputButton2 = '<button class = "realcloseRes" style="margin-top:50px;">아니오</button>';
 						str += inputButton;
 						str += inputButton2;
 						
@@ -196,6 +198,13 @@
 			location.href = "/customer/hosSearch";
 		});
 		
+		$(document).on("click", ".realcloseRes", function() {
+			clear();
+			typingBool = false;
+			typingIdx = 0;
+			selectOne();
+			
+		});
 		
 		
 		/* 여기전까지 음성 인식*/
@@ -204,24 +213,41 @@
 			$('onloineRes').remove();
 			$('closeRes').remove();
 			clear();
-			typingTxt = "현재 고객님의 증상에 대한 결과입니다. 고객님의 증상은 감기이며 이러이러한 증상을 나타내고 계십니다. 몸을 따뜻하게 하시고 어떤 어떤 약을 처방받으세요.";
-			typingBool = false;
-			typingIdx = 0;
 			
-			if(typingBool==false){
-				typingBool=true;
+			var cus_num = $(".customerNum").val();
+			
+			
+			gameAjax.symptomDetail(cus_num, function(data) {
 				
-				tyInt = setInterval(typing2,100);
-			}
-			
+				/* 음성 파일 for문으로 돌려서 재생하기 */
+				console.log(data.symptomexampledetail);
+				typingTxt = "고객님의 증상입니다. ";
+				typingTxt += data.symptomexampledetail;
+				typingTxt += " 증상에 대한 치료 방법은 ";
+				typingTxt += data.symptomsolution;
+				typingTxt += "이 정보는 고객님의 상황에 따라 다를 수도 있습니다. 정확한 치료와 판단을 위해 온라인으로 병원을 예약하시겠습니까?";
+				typingBool = false;
+				typingIdx = 0;
+				
+				if(typingBool==false){
+					typingBool=true;
+					
+					tyInt = setInterval(typing2,50);
+				}
+				
+				var str = '';
+				var inputButton = '<button class = "onlineRes" style="margin-top:30px;">예</button>';
+				str += inputButton;
+				$(".customer").html(str);
+			});
 			
 		});
 		
 		
-		/* 온라인 예약 처리 */
-		$(document).on("click", ".onlineRes", function() {
-			
-		});
+		
+		
+		
+		
 		
 		var gameAjax = (function() {
 			
@@ -249,9 +275,25 @@
 					
 				});
 			}
+		 	
+		 	function symptomDetail(cus_num, callback, error) {
+				$.get("/game/" + cus_num + ".json", function(result) {
+					
+					if(callback){
+						callback(result);
+					}
+					
+				}).fail(function(xhr, status, err) {
+					if(error){
+						error();
+					}
+				});
+		 		
+			};
 			
 			return {
-				symptomInsert : symptomInsert
+				symptomInsert : symptomInsert,
+				symptomDetail : symptomDetail
 				
 			};
 		})();
@@ -350,7 +392,7 @@
       <div class="modal-content">
         <span class="close">&times;</span>                                                               
         <form name="symptomForm" class = "symptomForm" method="post">
-        	<input type="hidden" name = "cus_num" value="${customer.cus_num }">
+        	<input type="hidden" name = "cus_num" value="${customer.cus_num }" class = "customerNum">
         	<select name = "symptom" class = "symptom">
         		<option value="감기">감기</option>
         		<option value="몸살">몸살</option>

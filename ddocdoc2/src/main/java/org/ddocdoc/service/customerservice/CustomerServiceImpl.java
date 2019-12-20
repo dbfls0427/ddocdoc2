@@ -12,6 +12,7 @@ import org.ddocdoc.vo.payvo.PayVO;
 import org.ddocdoc.vo.pharresvo.PharResVO;
 import org.ddocdoc.vo.presdetailvo.PresDetailVO;
 import org.ddocdoc.vo.presvo.PresVO;
+import org.ddocdoc.vo.symptomdetailvo.SymptomDetailVO;
 import org.ddocdoc.vo.symptomvo.SymptomVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -162,6 +163,11 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public int symptomInsert(SymptomVO sym) {
 		return mapper.symptomInsert(sym);
+	}
+
+	@Override
+	public SymptomDetailVO symptomDetail(String cus_num) {
+		return mapper.symptomDetail(cus_num);
 	}
 	
 	
