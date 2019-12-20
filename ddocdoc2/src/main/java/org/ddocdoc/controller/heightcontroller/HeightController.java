@@ -1,5 +1,6 @@
 package org.ddocdoc.controller.heightcontroller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.ddocdoc.controller.customercontroller.CustomerController;
@@ -31,10 +32,25 @@ public class HeightController {
 	
 	//list
 	@GetMapping("/heightList")
-	public void heightList(HeightVO heightVO, Model model){
-		model.addAttribute("ch_num", heightVO.getCh_num());
+	public void heightList(ChildVO childVO, Model model){
+		System.out.println("childVO.gender" + childVO.getCh_gender());
+		String gender_tb = "";
+		if(childVO.getCh_gender().equals("남")){
+			gender_tb = "dd_boy_st_height";
+		}else{
+			gender_tb = "dd_girl_st_height";
+		}
+		HashMap<String, String> map= new HashMap<String, String>();
+		map.put("ch_num", childVO.getCh_num());
+		map.put("gender_tb", gender_tb);
+		Float st_height = service.selectStHeight(map);
+		System.out.println("st _height : " + st_height);
+		
+		model.addAttribute("ch_num",childVO.getCh_num());
+		model.addAttribute("ch_name", childVO.getCh_name());
+		model.addAttribute("st_height", st_height);
 		model.addAttribute("customer", (CustomerVO) CustomerController.session.getAttribute("customer"));
-		System.out.println("controller v: " +heightVO.getCh_num());
+		System.out.println("controller v: " +childVO.getCh_num());
 				
 	}
 	

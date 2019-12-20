@@ -1,5 +1,6 @@
 package org.ddocdoc.service.heightservice;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.ddocdoc.mapper.heightmapper.HeightMapper;
@@ -42,6 +43,11 @@ public class HeightServiceImpl implements HeightService {
 	@Override
 	public int updateChildHeight(HeightVO chvo) {
 		return mapper.updateChildHeight(chvo);
+	}
+
+	@Override
+	public Float selectStHeight(HashMap<String, String> map) {
+		return mapper.selectStHeight(map);
 	}
 	 
 }

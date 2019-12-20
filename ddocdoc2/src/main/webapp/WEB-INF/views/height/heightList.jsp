@@ -30,6 +30,10 @@ j(document).ready(function(){
 	var num = '<c:out value="${ch_num }"/>';
  	var csrf = '<c:out value="${_csrf.token}"/>';
 	var csrfName = '<c:out value="${_csrf.parameterName}"/>';
+	var st_height = '<c:out value="${st_height}"/>';
+	var ch_name = '<c:out value="${ch_name}"/>';
+	console.log("이름임" + ch_name);
+	
 	var height = "";
 	var date = "";
 	console.log("csrf!!!! " + csrf);
@@ -110,6 +114,35 @@ j(document).ready(function(){
 
          chart.draw(data, google.charts.Line.convertOptions(options));
     }
+    
+  //빅데이터 그래프
+    google.charts.load('current', {'packages':['bar']});
+    google.charts.setOnLoadCallback(drawChart2);
+
+    
+	function drawChart2() {
+
+		  if(height.length <=0) {
+	        	return;
+	        }
+		  
+	      var data = google.visualization.arrayToDataTable([
+	        ['또래의 평균 키',ch_name, '평균 키'],
+	        ['키 분석', height[height.length-1], st_height]
+	      ]);
+	
+	      var options = {
+	        chart: {
+	          title: ch_name + ' 의 또래 평균 키는 ' + st_height + ' cm입니다',
+	          subtitle: '',
+	        }
+	      };
+	
+	      var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+	
+	      chart.draw(data, google.charts.Bar.convertOptions(options));
+	    }
+    
 
 	
 	
@@ -412,7 +445,7 @@ j(document).ready(function(){
 <div style="display: flex; justify-content : center;">
 	<!--  data-toggle="modal" data-target="#myModal" -->
 				<i class="fas fa-plus-circle fa-3x" id="circle" title="키등록"
-			style="margin-bottom: 10px; color: #f13ea1;"></i>
+			style="margin-bottom: 10px; color: #f13ea1; margin-left: 43%;"></i>
 
 
 </div>

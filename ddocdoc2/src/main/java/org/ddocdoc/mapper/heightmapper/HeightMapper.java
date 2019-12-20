@@ -1,5 +1,6 @@
 package org.ddocdoc.mapper.heightmapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.ddocdoc.vo.heightvo.HeightVO;
@@ -20,4 +21,7 @@ public interface HeightMapper {
 	
 	//update
 	int updateChildHeight(HeightVO chvo);
+	
+	//표준키 가져오기
+	Float selectStHeight(HashMap<String, String> map);
 }

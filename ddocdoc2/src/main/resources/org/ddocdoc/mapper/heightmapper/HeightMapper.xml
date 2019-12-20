@@ -34,5 +34,14 @@
 		update dd_child_height set he_height = #{he_height}
 		where he_num = #{he_num}
 	</update>
+	
+	 <!-- 표준키 가져오기 -->
+ 	<select id="selectStHeight" parameterType="hashmap" resultType="float">
+		select st_height
+		from ${gender_tb}
+		where ( select TRUNC(SYSDATE) - ch_birth
+             from dd_child
+             where ch_num = #{ch_num}) BETWEEN st_min_birth and st_max_birth
+	</select> 
 
 </mapper>
