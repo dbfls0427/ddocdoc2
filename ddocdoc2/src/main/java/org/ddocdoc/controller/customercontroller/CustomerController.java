@@ -128,7 +128,7 @@ public class CustomerController {
 		System.out.println("Ŀ����� ��Ʈ�ѷ����� hos_res_num : " + hos_res_num);
 		System.out.println("check" + check);
 		
-		if(check.equals("���� ���� ��� ��")){
+		if(check.equals("예약 접수 대기 중")){
 			response.setContentType("text/html; charset=UTF-8");
             PrintWriter out = response.getWriter();
             out.println("<script>alert('예약 접수가 아직 되지 않아 대기번호 발급이 안되었습니다. 접수가 완료될 때 까지 잠시만 기다려주세요.'); location.href='/customer/hospitalResList';</script>");
