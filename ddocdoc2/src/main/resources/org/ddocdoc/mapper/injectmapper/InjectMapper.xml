@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="org.ddocdoc.mapper.injectmapper.InjectMapper">
+	<cache />
+	
+	<!-- 접종추천내역 불러오기 -->
+	<select id="selectInjInfo" resultType="org.ddocdoc.vo.injectvo.InjectInfoVO">
+		select * from dd_inject_info
+	</select>
+	
+	<!-- 접종한 내역 불러오기 -->
+	<select id="selectInjList" parameterType="String" resultType="String">
+		select inj_content
+		from dd_child_inject
+		where ch_num = #{ch_num}
+	</select>
+	
+	<!-- 접종 기록하기 -->
+	<insert id="insertInj" parameterType="org.ddocdoc.vo.injectvo.ChildInjectVO">
+		insert into dd_child_inject
+		values('IJEC00'||inject_seq.nextval, #{inj_content}, #{inj_date}, #{ch_num}, #{inj_memo})
+	</insert>
+	
+	<!-- 기록내역 상세보기 -->
+	<select id="selectInjDetail" parameterType="hashmap" resultType="org.ddocdoc.vo.injectvo.ChildInjectVO">
+		select * from dd_child_inject
+	where inj_content= #{inj_content} and ch_num=#{ch_num}
+	</select>
+	
+	<!-- 접종내역 수정 -->
+	<update id="updateInj" parameterType="org.ddocdoc.vo.injectvo.ChildInjectVO">
+		update dd_child_inject
+		set inj_date = #{inj_date}, inj_memo = #{inj_memo}
+		where inj_content = #{inj_content} and ch_num = #{ch_num}
+	</update>
+	
+	<!-- 접종내역 삭제 -->
+	<delete id="deleteInj" parameterType="hashmap">
+		delete from dd_child_inject
+		where inj_content = #{inj_content} and ch_num = #{ch_num}
+	</delete>
+	
+	<!-- 접종률 가져오기 -->
+	<select id="injCount" parameterType="String" resultType="int">
+		select count(*)
+		from dd_child_inject
+		where ch_num = #{ch_num}
+	</select>
+	
+	<!-- 전체접종개수 -->
+	<select id="injTotal" parameterType="String" resultType="int">
+		select count(*)
+		from dd_inject_info
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

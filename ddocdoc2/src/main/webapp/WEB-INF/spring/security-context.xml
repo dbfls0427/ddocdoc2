@@ -27,6 +27,10 @@
 		<!-- child height -->
 		<security:intercept-url pattern="/height/heightList" access="hasRole('ROLE_MEMBER')"/>
 		
+		<!-- child inject -->
+		<security:intercept-url pattern="/inject/injectList" access="hasRole('ROLE_MEMBER')"/>
+		<security:intercept-url pattern="/inject/injectInsert" access="hasRole('ROLE_MEMBER')"/>
+		<security:intercept-url pattern="/inject/injectDetail" access="hasRole('ROLE_MEMBER')"/>
 		
 		
 		<security:form-login login-page="/customer/loginForm" authentication-success-handler-ref="customLoginSuccess"/>

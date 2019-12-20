@@ -189,13 +189,7 @@ font-family: 'Sunflower', sans-serif;
         <section id="btn" class="company-description" style="display: flex; justify-content: center; margin-top: 80px; margin-left: 30px; margin-bottom : 30px">
 		 <div style="display: flex; justify-content: center;">
 			<button class="btn btn-default btn-lg" style="font-size: 20px; margin-right: 30px; width: 140px;"><a href = "/height/heightList?ch_num=${childVO.ch_num }&ch_gender=${childVO.ch_gender}&ch_name=${childVO.ch_name}">성장 관리</a></button>
-			
-			<form action="/DDOCDOC/Inject/InjectListAction.do" method="post">
-				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-				<input type="hidden" name="ch_num" value="${childVO.ch_num}">
-				<input type="hidden" name="ch_name" value="${childVO.ch_name}">
-				<input type = "submit" value="예방접종" class="btn btn-default btn-lg" style="font-size: 20px; margin-right: 20px; width: 140px;">
-			</form>
+			<button class="btn btn-default btn-lg" style="font-size: 20px; margin-right: 30px; width: 140px;"><a href = "/inject/injectList?ch_num=${childVO.ch_num }">예방 접종</a></button>
 		 </div>
 		</section>
 		<div style="width: 800px;margin-left:30%;">
