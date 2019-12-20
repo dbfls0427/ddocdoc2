@@ -29,6 +29,8 @@ j(document).ready(function(){
 	var num = '<c:out value="${ch_num }"/>';
  	var csrf = '<c:out value="${_csrf.token}"/>';
 	var csrfName = '<c:out value="${_csrf.parameterName}"/>';
+	console.log("csrf!!!! " + csrf);
+	console.log(csrfName);
 	
 	showList();
 	
@@ -97,13 +99,29 @@ j(document).ready(function(){
 		});
 	});
 	
+	modalModBtn.click(function(){
+		console.log("data들은 " + jQuery("#testForm").serialize());
+		var modData = "<input type='hidden' name='he_num' value='"+modal.data("he_num")+"'/>";
+		j("#he_height").before(modData);
+		var modData2 = "<input type='hidden' name='"+csrfName+"' value='"+csrf+"'/>";
+		jQuery("#testForm").append(modData2);
+		
+		var queryString2 = jQuery("#testForm").serialize();
+		//특수문자 decode
+		var queryDecode = decodeURIComponent(queryString2);
+		console.log("queryDecode : "+ queryDecode);
+		
+		heightService.update(queryDecode, function(result){
+			alert(result);
+			jQuery(".modal").modal("hide");
+			location.href="/height/heightList?ch_num=" + num;
+		})
+	})
+	
 	modalRemoveBtn.click(function(){
 		var update = "";
 		var he_num = modal.data("he_num");
-
-		
-		jQuery("#datepicker").val(heightService.dTime(modal.data("he_date")));
-		console.log(jQuery("#datepicker").val());
+		console.log(he_num);
 		
 		heightService.remove(he_num, function(result){
 			alert(result);
@@ -111,22 +129,7 @@ j(document).ready(function(){
 			location.href="/height/heightList?ch_num=" + num;
 		});
 	})
-	
-	modalModBtn.click(function(){
-		console.log(modal.data("he_date"));
-		var updateData = "<input type='hidden' name='he_num' value='"+modal.data("he_num")+"'/>";
-		updateData += "<input type='hidden' name='"+csrfName+"' value='"+csrf+"'/>";
-		console.log(j("#datepicker").val());
-		j("#datepicker").val(modal.data("he_date"));
-		console.log(j("#datepicker").val());
-		j("#testForm").append(updateData);
-		console.log(queryString2);
-		heightService.update(queryString2, function(result){
-			alert(result);
-			jQuery(".modal").modal("hide");
-			location.href="/height/heightList?ch_num=" + num;
-		})
-	})
+
 	
 	//detail
 	j("#btn2").on("click", "tr", function(e){

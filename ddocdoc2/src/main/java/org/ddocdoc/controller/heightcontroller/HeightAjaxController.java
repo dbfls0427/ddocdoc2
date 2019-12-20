@@ -54,18 +54,8 @@ public class HeightAjaxController {
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	 
-	//detail
-	 @GetMapping(value = "/{he_num}",
-			 produces = {MediaType.APPLICATION_XML_VALUE,
-					 	 MediaType.APPLICATION_JSON_UTF8_VALUE})
-	 public ResponseEntity<HeightVO> heightDetail(@PathVariable("he_num") String he_num){
-		 log.info("heightDetail : " +he_num);
-		 
-		 return new ResponseEntity<>(service.heightDetail(he_num), HttpStatus.OK);
-	 }
-	 
 	 //update
-	 @RequestMapping(value = ("/{he_num}"),consumes="application/json", produces = {MediaType.TEXT_PLAIN_VALUE}, method = {RequestMethod.PUT, RequestMethod.PATCH})
+	 @RequestMapping(value = ("/update"), produces = {MediaType.TEXT_PLAIN_VALUE}, method = {RequestMethod.POST, RequestMethod.GET})
 	public ResponseEntity<String> heightUpdate(HeightVO chvo){
 		
 		log.info("height update!!!!");
@@ -78,9 +68,19 @@ public class HeightAjaxController {
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	 
+	//detail
+	 @GetMapping(value = "/{he_num}",
+			 produces = {MediaType.APPLICATION_XML_VALUE,
+					 	 MediaType.APPLICATION_JSON_UTF8_VALUE})
+	 public ResponseEntity<HeightVO> heightDetail(@PathVariable("he_num") String he_num){
+		 log.info("heightDetail : " +he_num);
+		 
+		 return new ResponseEntity<>(service.heightDetail(he_num), HttpStatus.OK);
+	 }
+	 
 	 //delete
-	 @DeleteMapping(value = "/{he_num}",
-			 produces = {MediaType.TEXT_PLAIN_VALUE})
+	 @RequestMapping(value = "/delete/{he_num}", produces={MediaType.TEXT_PLAIN_VALUE},
+			 method = {RequestMethod.POST, RequestMethod.GET})
 	 public ResponseEntity<String> heightDelete(@PathVariable("he_num") String he_num){
 		 log.info("heightDelete : " +he_num);
 		

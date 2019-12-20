@@ -3,9 +3,6 @@ console.log("user_height.js !!!!")
 var heightService = (function(){
 
 	function insert(queryString, callback, error){
-/*		console.log("height!!!!" + he_height);
-		console.log(he_date);
-		console.log(cus_num);*/
 		console.log(queryString);
 		j.ajax({
 			type : 'POST',
@@ -19,6 +16,26 @@ var heightService = (function(){
 			error : function(xhr, status, er){
 				if(error){
 					console.log("에러임듕 ㅠㅠㅠ");
+				}
+			}
+		});
+	}
+	
+	function update(queryDecode, callback,error){
+		console.log("height : " +queryDecode);
+		
+		j.ajax({
+			type : 'POST',
+			url : '/heightAjax/update',
+			data : queryDecode,
+			success : function(result, status, xhr){
+				if(callback){
+					callback(result);
+				}
+			},
+			error : function(xhr, status, er){
+				if(error){
+					error(er);
 				}
 			}
 		});
@@ -62,7 +79,7 @@ var heightService = (function(){
 			var mm = dateObj.getMonth() + 1; // getMonth() is zero-based
 			var dd = dateObj.getDate();
 
-			return [ yy, '/', (mm > 9 ? '' : '0') + mm, '/',
+			return [ yy, '-', (mm > 9 ? '' : '0') + mm, '-',
 					(dd > 9 ? '' : '0') + dd ].join('');
 		}
 	}
@@ -80,32 +97,12 @@ var heightService = (function(){
 		});
 		
 	};
-	
-	function update(queryString2, callback,error){
-		console.log("height : " +queryString2);
-		
-		j.ajax({
-			type : 'put',
-			url : '/heightAjax/' + queryString2.he_num,
-			data : JSON.stringify(queryString2),
-			contentType : "application/json; charset=utf-8",
-			success : function(result, status, xhr){
-				if(callback){
-					callback(result);
-				}
-			},
-			error : function(xhr, status, er){
-				if(error){
-					error(er);
-				}
-			}
-		});
-	}
+
 	
 	function remove(he_num, callback, error){
 		j.ajax({
-			type : 'delete',
-			url : '/heightAjax/' + he_num,
+			type : 'GET',
+			url : '/heightAjax/delete/' + he_num,
 			success : function(deleteResult, status, xhr){
 				if(callback){
 					callback(deleteResult);
