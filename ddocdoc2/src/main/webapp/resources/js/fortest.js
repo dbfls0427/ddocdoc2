@@ -47,6 +47,12 @@ var Service = (function() {
 				var finalDate = date3.replace(/S/gi, ":");
 				var min = finalDate.split(":");
 				var finalMin = min[0];
+				var finalSec = min[1];
+				
+				if(finalSec == ""){
+					finalSec = 0;
+				}
+				
 				console.log(finalMin);
 				console.log(item.snippet.thumbnails.high.url);
 				
@@ -54,6 +60,7 @@ var Service = (function() {
 					title : item.snippet.title,
 					id : item.id,
 					duration : finalMin,
+					sec : finalSec,
 					thumbnail : item.snippet.thumbnails.high.url
 				})
 			})//each
@@ -71,7 +78,7 @@ var Service = (function() {
 				str += '<div class="btn-group">';
 				str += '<button type="button" class="btn btn-sm btn-outline-secondary"><a href="https://www.youtube.com/watch?v='+videos[i].id+'">view</a></button>';
 				str += '</div>';
-				str += '<small class="text-muted">'+videos[i].duration+' mins</small>';
+				str += '<small class="text-muted">'+videos[i].duration+' 분  '+videos[i].sec + '초 </small>';
 				str += '</div>';
 				str += '</div>';
 				str += '</div>';
