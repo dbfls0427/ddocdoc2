@@ -109,6 +109,14 @@
                                     </ul>
                                 </div>
                             </li>
+                                <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">똑닥뷰티 <span class="caret"></span></a>
+                                <div class="dropdown-menu">
+                                    <ul>
+                                        <li><a href="/video/beautyVideo">뷰티TV</a></li>
+                                    </ul>
+                                </div>
+                            </li>
 							<li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">후기<span class="caret"></span></a>
                                 <div class="dropdown-menu">
