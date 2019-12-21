@@ -19,7 +19,7 @@
 	<div id="chat" style="width: 400px; height: 400px" class="chatting"></div>
 	<form id="chatForm">
 		<input type="text" id="message" />
-		<button>send</button>
+		<button>전송</button>
 	</form>
 
 	<script>

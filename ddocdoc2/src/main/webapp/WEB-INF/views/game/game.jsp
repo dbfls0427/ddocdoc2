@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -49,8 +49,8 @@
 
 
 
-			
-			typingTxt = '¾î¶² ¸Ş´º¸¦ ¼±ÅÃÇÏ½Ã°Ú½À´Ï±î?<br/>1.Áõ»ó °Ë»ö 2.¿Â¶óÀÎ Áø·á';
+			/* ìŒì„± ê³ ì³ì•¼ ëŒ */
+			typingTxt = 'ì–´ë–¤ ë©”ë‰´ë¥¼ ì„ íƒí•˜ì‹œê² ìŠµë‹ˆê¹Œ? \n 1.ì¦ìƒ ê²€ìƒ‰ 2.ì‚¬ì „ ì˜¨ë¼ì¸ ìƒë‹´';
 			typingBool = false;
 			typingIdx = 0;
 			
@@ -60,7 +60,7 @@
 				tyInt = setInterval(typing2,100);
 			}
 			var inputText = '<input type="text" id="menuNum"/>';
-			var inputButton = '<button class="menuSubmit">ÀÔ·Â</button>';
+			var inputButton = '<button class="menuSubmit">ì…ë ¥</button>';
 			var str = '';
 			
 			str += inputText;
@@ -92,7 +92,7 @@
 				audio.pause();
 				audio.src = "/resources/game/menu1.mp3";
 				audio.play();
-				typingTxt = 'Áõ»ó °Ë»öÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù. ¾î¶² ¸Ş´º¸¦ ¼±ÅÃÇÏ½Ã°Ú½À´Ï±î? \n 1. Áõ»ó ÀÔ·ÂÇÏ±â 2. ¿µ»óÀ¸·Î Áõ»ó °Ë»ö';
+				typingTxt = 'ì¦ìƒ ê²€ìƒ‰ì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤. ì–´ë–¤ ë©”ë‰´ë¥¼ ì„ íƒí•˜ì‹œê² ìŠµë‹ˆê¹Œ? \n 1. ì¦ìƒ ì…ë ¥í•˜ê¸° 2. ì˜ìƒìœ¼ë¡œ ì¦ìƒ ê²€ìƒ‰';
 				typingBool = false;
 				typingIdx = 0;
 				if(typingBool==false){
@@ -101,14 +101,18 @@
 					tyInt = setInterval(typing2,100);
 				}
 				var inputText = '<input type="text" id="menuNum2"/>';
-				var inputButton = '<button class="menuSubmit2">ÀÔ·Â</button>';
+				var inputButton = '<button class="menuSubmit2">ì…ë ¥</button>';
 				var str = '';
 				str += inputText;
 				str += inputButton;
 				$('.customer').html(str);
 				
+				
 			}else if(menuNum == '2'){
-				location.href="/customer/chatting";
+				var cus_num = $(".customerNum").val();
+				gameAjax.notifyInsert(cus_num, function(data) {
+				});
+				alert("ì‚¬ì „ ì˜¨ë¼ì¸ ìƒë‹´ ì˜ˆì•½ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. ë‹´ë‹¹ ì˜ì‚¬ê°€ í™•ì¸í•  ë•Œê¹Œì§€ ê¸°ë‹¤ë ¤ì£¼ì„¸ìš”.");
 			}
 			
 		});
@@ -146,10 +150,10 @@
 				
 				  $(".submit").on("click",function(e){
 					const form = $("form[name=symptomForm]").serializeObject();
-					console.log("¿©±â¼­´Â" + form);
+					console.log("ì—¬ê¸°ì„œëŠ”" + form);
 					e.preventDefault();
 					gameAjax.symptomInsert(form, function(result) {
-						alert("Áõ»ó ÀÔ·ÂÀÌ Á¤»óÀûÀ¸·Î ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+						alert("ì¦ìƒ ì…ë ¥ì´ ì •ìƒì ìœ¼ë¡œ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
 						var modal = document.getElementById('myModal');
 						modal.style.display = "none";
 						audio.pause();
@@ -160,10 +164,10 @@
 						resultSymptom = selectSymptom;
 						console.log(selectSymptom);
 						console.log(detailSymptom);
-						typingTxt = 'Áõ»ó°ú °í°´´ÔÀÇ ¼¼ºÎ Áõ»óÀº ´ÙÀ½°ú °°½À´Ï´Ù.\n ';
-						typingTxt += '1. Áõ»ó : ' + selectSymptom + '\n ';
-						typingTxt += '2. ¼¼ºÎÁõ»ó : ' + detailSymptom + '\n';
-						typingTxt += 'Áõ»ó °Ë»ö¿¡ ´ëÇÑ °á°ú¿Í Ä¡·á ¹æ¹ıÀ» º¸½Ã°Ú½À´Ï±î ? ';
+						typingTxt = 'ì¦ìƒê³¼ ê³ ê°ë‹˜ì˜ ì„¸ë¶€ ì¦ìƒì€ ë‹¤ìŒê³¼ ê°™ìŠµë‹ˆë‹¤.\n ';
+						typingTxt += '1. ì¦ìƒ : ' + selectSymptom + '\n ';
+						typingTxt += '2. ì„¸ë¶€ì¦ìƒ : ' + detailSymptom + '\n';
+						typingTxt += 'ì¦ìƒ ê²€ìƒ‰ì— ëŒ€í•œ ê²°ê³¼ì™€ ì¹˜ë£Œ ë°©ë²•ì„ ë³´ì‹œê² ìŠµë‹ˆê¹Œ ? ';
 						
 						typingBool = false;
 						typingIdx = 0;
@@ -174,8 +178,8 @@
 						}
 						var str = '';
 						
-						var inputButton = '<button class = "closeRes" style="margin-top:50px;">¿¹</button>';
-						var inputButton2 = '<button class = "realcloseRes" style="margin-top:50px;">¾Æ´Ï¿À</button>';
+						var inputButton = '<button class = "closeRes" style="margin-top:50px;">ì˜ˆ</button>';
+						var inputButton2 = '<button class = "realcloseRes" style="margin-top:50px;">ì•„ë‹ˆì˜¤</button>';
 						str += inputButton;
 						str += inputButton2;
 						
@@ -185,7 +189,7 @@
 					
 				});  
 				
-				// ajax Ã³¸®, ¸ğ´ŞÃ¢ Ã³¸®
+				// ajax ì²˜ë¦¬, ëª¨ë‹¬ì°½ ì²˜ë¦¬
 				span.onclick = function() {
 		            modal.style.display = "none";
 		        }
@@ -209,7 +213,7 @@
 		});
 		
 		
-		/* ¿©±âÀü±îÁö À½¼º ÀÎ½Ä*/
+		/* ì—¬ê¸°ì „ê¹Œì§€ ìŒì„± ì¸ì‹*/
 		$(document).on("click", ".closeRes", function() {
 			audio.pause();
 			$('onloineRes').remove();
@@ -221,13 +225,13 @@
 			
 			gameAjax.symptomDetail(cus_num, function(data) {
 				
-				/* À½¼º ÆÄÀÏ for¹®À¸·Î µ¹·Á¼­ Àç»ıÇÏ±â */
+				/* ìŒì„± íŒŒì¼ forë¬¸ìœ¼ë¡œ ëŒë ¤ì„œ ì¬ìƒí•˜ê¸° */
 				console.log(data.symptomexampledetail);
-				typingTxt = "°í°´´ÔÀÇ Áõ»óÀÔ´Ï´Ù. ";
+				typingTxt = "ê³ ê°ë‹˜ì˜ ì¦ìƒì…ë‹ˆë‹¤. ";
 				typingTxt += data.symptomexampledetail;
-				typingTxt += " Áõ»ó¿¡ ´ëÇÑ Ä¡·á ¹æ¹ıÀº ";
+				typingTxt += " ì¦ìƒì— ëŒ€í•œ ì¹˜ë£Œ ë°©ë²•ì€ ";
 				typingTxt += data.symptomsolution;
-				typingTxt += "ÀÌ Á¤º¸´Â °í°´´ÔÀÇ »óÈ²¿¡ µû¶ó ´Ù¸¦ ¼öµµ ÀÖ½À´Ï´Ù. Á¤È®ÇÑ Ä¡·á¿Í ÆÇ´ÜÀ» À§ÇØ ¿Â¶óÀÎÀ¸·Î º´¿øÀ» ¿¹¾àÇÏ½Ã°Ú½À´Ï±î?";
+				typingTxt += "ì´ ì •ë³´ëŠ” ê³ ê°ë‹˜ì˜ ìƒí™©ì— ë”°ë¼ ë‹¤ë¥¼ ìˆ˜ë„ ìˆìŠµë‹ˆë‹¤. ì •í™•í•œ ì¹˜ë£Œì™€ íŒë‹¨ì„ ìœ„í•´ ì˜¨ë¼ì¸ìœ¼ë¡œ ë³‘ì›ì„ ì˜ˆì•½í•˜ì‹œê² ìŠµë‹ˆê¹Œ?";
 				typingBool = false;
 				typingIdx = 0;
 				
@@ -238,7 +242,7 @@
 				}
 				
 				var str = '';
-				var inputButton = '<button class = "onlineRes" style="margin-top:30px;">¿¹</button>';
+				var inputButton = '<button class = "onlineRes" style="margin-top:30px;">ì˜ˆ</button>';
 				str += inputButton;
 				$(".customer").html(str);
 			});
@@ -294,9 +298,25 @@
 		 		
 			};
 			
+			
+			function notifyInsert(cus_num, callback, error) {
+				$.get("/game/notifyInsert/" + cus_num + ".json",function(result){
+					if(callback){
+						callback(result);
+					}
+					
+					
+				}).fail(function(xhr, status, err){
+					if(error){
+						error();
+					}
+				});
+			};
+			
 			return {
 				symptomInsert : symptomInsert,
-				symptomDetail : symptomDetail
+				symptomDetail : symptomDetail,
+				notifyInsert : notifyInsert
 				
 			};
 		})();
@@ -372,7 +392,7 @@
 
 <div>
 <div class="malpoong" style="position: absolute;">
-		<p class="typing-txt">¾î¼­¿À½Ê½Ã¿À. °£´ÜÇÏ°Ô Áõ»ó°ú Áø·á¸¦ º¼ ¼ö ÀÖ´Â ¶È´Ú ¿Â¶óÀÎ Áø·á ½Ã½ºÅÛÀÔ´Ï´Ù.</p>
+		<p class="typing-txt">ì–´ì„œì˜¤ì‹­ì‹œì˜¤. ê°„ë‹¨í•˜ê²Œ ì¦ìƒê³¼ ì§„ë£Œë¥¼ ë³¼ ìˆ˜ ìˆëŠ” ë˜‘ë‹¥ ì˜¨ë¼ì¸ ì§„ë£Œ ì‹œìŠ¤í…œì…ë‹ˆë‹¤.</p>
 		<p class="typing" style="margin-top: 150px; margin-left: 50px"></p>
 		 <!--  <img src="mal.jpg"> -->
 	</div>
@@ -397,24 +417,24 @@
         <form name="symptomForm" class = "symptomForm" method="post">
         	<input type="hidden" name = "cus_num" value="${customer.cus_num }" class = "customerNum">
         	<select name = "symptom" class = "symptom">
-        		<option value="°¨±â">°¨±â</option>
-        		<option value="¸ö»ì">¸ö»ì</option>
-        		<option value="¼³»ç">¼³»ç</option>
+        		<option value="ê°ê¸°">ê°ê¸°</option>
+        		<option value="ëª¸ì‚´">ëª¸ì‚´</option>
+        		<option value="ì„¤ì‚¬">ì„¤ì‚¬</option>
       			
-        		<option value="µÎÅë">µÎÅë</option>
-        		<option value="ºÓÀº¹İÁ¡">ºÓÀº¹İÁ¡</option>
-        		<option value="°¡·Á¿òÁõ">°¡·Á¿òÁõ</option>
-        		<option value="µÎµå·¯±â">µÎµå·¯±â</option>
+        		<option value="ë‘í†µ">ë‘í†µ</option>
+        		<option value="ë¶‰ì€ë°˜ì ">ë¶‰ì€ë°˜ì </option>
+        		<option value="ê°€ë ¤ì›€ì¦">ê°€ë ¤ì›€ì¦</option>
+        		<option value="ë‘ë“œëŸ¬ê¸°">ë‘ë“œëŸ¬ê¸°</option>
         		
-        		<option value="±¸³»¿°">±¸³»¿°</option>
-        		<option value="Ãµ½Ä">Ãµ½Ä</option>
-        		<option value="¾îÁö·³Áõ">¾îÁö·³Áõ</option>
+        		<option value="êµ¬ë‚´ì—¼">êµ¬ë‚´ì—¼</option>
+        		<option value="ì²œì‹">ì²œì‹</option>
+        		<option value="ì–´ì§€ëŸ¼ì¦">ì–´ì§€ëŸ¼ì¦</option>
         		
         	</select>
-        	<input type="text" name = "detailSymptom" class = "detailSymptom" placeholder = "¼¼ºÎÁõ»óÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.">
+        	<input type="text" name = "detailSymptom" class = "detailSymptom" placeholder = "ì„¸ë¶€ì¦ìƒì„ ì…ë ¥í•´ì£¼ì„¸ìš”.">
         	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
-         <button class="submit">Áõ»óÀÔ·Â</button> 
+         <button class="submit">ì¦ìƒì…ë ¥</button> 
       </div>
  
     </div>

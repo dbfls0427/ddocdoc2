@@ -134,4 +134,7 @@ public interface CustomerMapper {
 	
 	// 증상 검색 결과
 	SymptomDetailVO symptomDetail(String cus_num);
+	
+	// 알림기능
+	int notifyInsert(String cus_num);
 }

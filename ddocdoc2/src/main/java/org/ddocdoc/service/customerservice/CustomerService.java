@@ -104,5 +104,8 @@ public interface CustomerService {
 	// 약국 대기번호 조회
 	public int detailPharWait(String phar_num);
 	
+	// 알림기능
+	public int notifyInsert(String cus_num);
+	
 	
 }

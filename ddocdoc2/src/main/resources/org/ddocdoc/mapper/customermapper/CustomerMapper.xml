@@ -249,6 +249,10 @@
 	<select id="symptomDetail" resultType="org.ddocdoc.vo.symptomdetailvo.SymptomDetailVO" parameterType="String" >
 	select * from symptomExample where symptomexamplename = (select symptom from (select * from dd_symptom order by rownum desc) where rownum = 1 and cus_num = #{cus_num})
 	</select>
+	
+	<insert id="notifyInsert" parameterType="String">
+		insert into dd_notify values(notify_seq.nextval, #{cus_num},'확인안함')
+	</insert>
 </mapper>
 
 

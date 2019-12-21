@@ -199,6 +199,11 @@ public class CustomerServiceImpl implements CustomerService {
 	public String selectPharNum(String phar_name) {
 		return mapper.selectPharNum(phar_name);
 	}
+
+	@Override
+	public int notifyInsert(String cus_num) {
+		return mapper.notifyInsert(cus_num);
+	}
 	
 	
 	
