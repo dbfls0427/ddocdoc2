@@ -205,8 +205,10 @@
 	
 	<section class="company-description" style="display: flex; justify-content: center;">
 		<div style="margin-left: 850px; margin-bottom: 100px">
-		<form action="payAction.do" method="post" style="display: flex; justify-content: center;">
+		<form action="/customer/payAction" method="post" style="display: flex; justify-content: center;">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 			<input type="hidden" value = "${pres.pres_num }" name = "pres_num"><br>
+			<input type="hidden" value = "${pres.cus_num }" name = "cus_num"><br>
 			<select name = "pay_type" class="form-control" style="margin-top: 5px;">
 				<option value="카드">카드</option>
 				<option value="계좌이체">계좌이체</option>

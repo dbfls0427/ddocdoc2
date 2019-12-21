@@ -12,6 +12,7 @@ import org.ddocdoc.service.customerservice.CustomerService;
 import org.ddocdoc.vo.customervo.CustomerVO;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
 import org.ddocdoc.vo.hospitalvo.HospitalVO;
+import org.ddocdoc.vo.payvo.PayVO;
 import org.ddocdoc.vo.pharresvo.PharResVO;
 import org.ddocdoc.vo.presdetailvo.PresDetailVO;
 import org.ddocdoc.vo.presvo.PresVO;
@@ -290,7 +291,21 @@ public class CustomerController {
 		return "/chatting/chatting";
 	}
 	
-	
-	
+	// pay
+	@PostMapping("/payAction")
+	public String payAction(@RequestParam String pres_num, @RequestParam String cus_num, @RequestParam String pay_type, Model model){
+		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
+		
+		PayVO pay = new PayVO();
+		pay.setCus_num(cus_num);
+		pay.setPay_type(pay_type);
+		pay.setPres_num(pres_num);
+		
+		service.insertPay(pay);
+		service.updatePay(pres_num);
+		
+		return "/login/loginSuccess";
+		
+	}
 	
 }
