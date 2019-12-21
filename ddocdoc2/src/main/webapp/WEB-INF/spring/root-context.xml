@@ -44,6 +44,7 @@
 	<context:component-scan base-package="org.ddocdoc.service.pharmacyservice"/>
 	<context:component-scan base-package="org.ddocdoc.service.injectservice"/>
 	<context:component-scan base-package="org.ddocdoc.chatting" />
+	<context:component-scan base-package="org.ddocdoc.service.checkupservice"/>
 	
 	<!-- 매퍼 -->
 	<mybatis-spring:scan base-package="org.ddocdoc.mapper.childmapper"/>
@@ -52,6 +53,7 @@
 	<mybatis-spring:scan base-package="org.ddocdoc.mapper.heightmapper"/>
 	<mybatis-spring:scan base-package="org.ddocdoc.mapper.pharmacymapper"/>
 	<mybatis-spring:scan base-package="org.ddocdoc.mapper.injectmapper"/>
+	<mybatis-spring:scan base-package="org.ddocdoc.mapper.checkupmapper"/>
 	
 	
 	
