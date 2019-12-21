@@ -84,6 +84,7 @@ font-family: 'Sunflower', sans-serif;
 		 <div style="display: flex; justify-content: center;">
 			<button class="btn btn-default btn-lg" style="font-size: 20px; margin-right: 30px; width: 140px;"><a href = "/height/heightList?ch_num=${childVO.ch_num }&ch_gender=${childVO.ch_gender}&ch_name=${childVO.ch_name}">성장 관리</a></button>
 			<button class="btn btn-default btn-lg" style="font-size: 20px; margin-right: 30px; width: 140px;"><a href = "/inject/injectList?ch_num=${childVO.ch_num }">예방 접종</a></button>
+			<button class="btn btn-default btn-lg" style="font-size: 20px; width: 140px;"><a href = "/checkup/checkupList?ch_num=${childVO.ch_num }">건강 검진</a></button>
 		 </div>
 		</section>
 		<div style="width: 800px;margin-left:30%;">
