@@ -65,7 +65,7 @@
                             <h2>약국예약</h2>
                             <ol class="breadcrumb">
                                 <li>
-                                    <a href="/DDOCDOC/Customer/success.do">
+                                    <a href="/customer/index">
                                         <i class="ion-ios-home"></i>
                                         Home
                                     </a>
