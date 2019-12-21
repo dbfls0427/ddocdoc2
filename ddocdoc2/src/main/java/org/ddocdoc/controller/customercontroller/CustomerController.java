@@ -284,7 +284,11 @@ public class CustomerController {
 	}
 	
 
-	
+	// chatting
+	@GetMapping("/chatting")
+	public String chatting(){
+		return "/chatting/chatting";
+	}
 	
 	
 	

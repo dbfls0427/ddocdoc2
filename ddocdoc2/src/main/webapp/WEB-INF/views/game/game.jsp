@@ -50,7 +50,7 @@
 
 
 			
-			typingTxt = '어떤 메뉴를 선택하시겠습니까?\n1.증상 검색 2.온라인 진료';
+			typingTxt = '어떤 메뉴를 선택하시겠습니까?<br/>1.증상 검색 2.온라인 진료';
 			typingBool = false;
 			typingIdx = 0;
 			
@@ -68,7 +68,7 @@
 			
 			$('.customer').html(str);
 			
-		}
+		};
 		
 		function typing2() {
 			if(typingIdx<typingTxt.length){
@@ -107,6 +107,8 @@
 				str += inputButton;
 				$('.customer').html(str);
 				
+			}else if(menuNum == '2'){
+				location.href="/customer/chatting";
 			}
 			
 		});
@@ -249,6 +251,7 @@
 		
 		
 		
+		
 		var gameAjax = (function() {
 			
 		 	function symptomInsert(form, callback, error) {
@@ -257,7 +260,7 @@
 					type : 'POST',
 					url : '/game/symptomInsert',
 					data : JSON.stringify(form),
-					beforeSend : function(xhr) {	
+					beforeSend : function(xhr) {
 				            xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
 					},
 					contentType : "application/json; charset=utf-8",
@@ -274,7 +277,7 @@
 					
 					
 				});
-			}
+			};
 		 	
 		 	function symptomDetail(cus_num, callback, error) {
 				$.get("/game/" + cus_num + ".json", function(result) {
@@ -397,6 +400,16 @@
         		<option value="감기">감기</option>
         		<option value="몸살">몸살</option>
         		<option value="설사">설사</option>
+      			
+        		<option value="두통">두통</option>
+        		<option value="붉은반점">붉은반점</option>
+        		<option value="가려움증">가려움증</option>
+        		<option value="두드러기">두드러기</option>
+        		
+        		<option value="구내염">구내염</option>
+        		<option value="천식">천식</option>
+        		<option value="어지럼증">어지럼증</option>
+        		
         	</select>
         	<input type="text" name = "detailSymptom" class = "detailSymptom" placeholder = "세부증상을 입력해주세요.">
         	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
