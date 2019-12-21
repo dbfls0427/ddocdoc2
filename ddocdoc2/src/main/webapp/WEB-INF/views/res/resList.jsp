@@ -217,7 +217,7 @@
 					<c:forEach var="pResVO" items="${pharList }" varStatus="status">
 						<tr>
 							<td style="text-align : center;">${pResVO.phar_res_num }</td>
-							<td style="text-align : center;"><a href = "pharResDetail.do?phar_res_num=${pResVO.phar_res_num}&phar_num=${pResVO.phar_num}">${pharNameList[status.index] }</td>
+							<td style="text-align : center;"><a href = "/customer/pharResDetail?phar_res_num=${pResVO.phar_res_num}&phar_num=${pResVO.phar_num}">${pharNameList[status.index] }</td>
 							<td style="text-align : center;">${pResVO.phar_res_time }</td>
 						</tr>
 					</c:forEach>

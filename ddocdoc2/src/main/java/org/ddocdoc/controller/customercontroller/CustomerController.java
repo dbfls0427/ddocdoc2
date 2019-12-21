@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.AllArgsConstructor;
 import lombok.Setter;
@@ -257,14 +259,33 @@ public class CustomerController {
 		model.addAttribute("cus_num", cus_num);
 		model.addAttribute("phar_name", phar_name);
 		String phar_num = service.selectPharNum(phar_name);
+		// increasePharResWait(phar_num);
+		service.increasePharResWait(phar_num);
 		pvo.setPhar_num(phar_num);
 
-		
-		
 		service.insertPharRes(pvo);
-
-		return "/pres/presDetail";
+		
+		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
+		return "/login/loginSuccess";
 	}
+	
+	// Reservation Pharmacy Detail
+	@GetMapping("/pharResDetail")
+	public String pharResDetail(@RequestParam String phar_num, @RequestParam String phar_res_num, Model model){
+		
+		PharResVO res = service.pharResDetail(phar_res_num);
+		String name = service.selectPharmacyName(phar_num);
+		
+		model.addAttribute("res", res);
+		model.addAttribute("pharName", name);
+		model.addAttribute("phar_wait", service.detailPharWait(phar_num));
+		
+		return "/phar_res/pharDetail";
+	}
+	
+
+	
+	
 	
 	
 	
