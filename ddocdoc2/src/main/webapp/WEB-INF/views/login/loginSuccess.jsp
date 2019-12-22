@@ -118,9 +118,10 @@
                                 </div>
                             </li>
 							<li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">후기<span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">서비스<span class="caret"></span></a>
                                 <div class="dropdown-menu">
                                     <ul>
+                                        <li><a href="/health/healthList">건강정보</a></li>
                                         <li><a href="reviewInsertForm.do">후기 작성</a></li>
                                         <li><a href="reviewList.do">후기 목록</a></li>
                                     </ul>
