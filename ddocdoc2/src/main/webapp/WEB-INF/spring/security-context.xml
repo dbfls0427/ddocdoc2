@@ -17,6 +17,11 @@
 		<security:intercept-url pattern="/customer/hospitalRes" access="hasRole('ROLE_MEMBER')"/>
 		<security:intercept-url pattern="/customer/hospitalResList" access="hasRole('ROLE_MEMBER')"/>
 		
+		<!-- Parmacy Reservation -->
+		<security:intercept-url pattern="/customer/pharSearch" access="hasRole('ROLE_MEMBER')"/>
+		<security:intercept-url pattern="/customer/pharResForm" access="hasRole('ROLE_MEMBER')"/>
+		<security:intercept-url pattern="/customer/pharResDetail" access="hasRole('ROLE_MEMBER')"/>
+		
 		
 		<!-- child -->
 		<security:intercept-url pattern="/child/childList" access="hasRole('ROLE_MEMBER')"/>
@@ -31,6 +36,11 @@
 		<security:intercept-url pattern="/inject/injectList" access="hasRole('ROLE_MEMBER')"/>
 		<security:intercept-url pattern="/inject/injectInsert" access="hasRole('ROLE_MEMBER')"/>
 		<security:intercept-url pattern="/inject/injectDetail" access="hasRole('ROLE_MEMBER')"/>
+		
+		<!-- child checkup -->
+		<security:intercept-url pattern="/checkup/checkupList" access="hasRole('ROLE_MEMBER')"/>
+		<security:intercept-url pattern="/checkup/checkupInsert" access="hasRole('ROLE_MEMBER')"/>
+		<security:intercept-url pattern="/checkup/checkupDetail" access="hasRole('ROLE_MEMBER')"/>
 		
 		
 		<security:form-login login-page="/customer/loginForm" authentication-success-handler-ref="customLoginSuccess"/>
