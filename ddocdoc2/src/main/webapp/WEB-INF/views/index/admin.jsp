@@ -229,7 +229,7 @@
                 	
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   
-                  ${notifyNumList[status.index] } ${notifyvo}님이 ${notifyHosNameList[status.index] }상담신청을 하셨습니다. 상담을 시작하시려면 클릭해주세요.
+                  ${notifyvo}님이 ${notifyHosNameList[status.index] } 상담신청을 하셨습니다. 상담을 시작하시려면 클릭해주세요.
                 </a>
                 </c:forEach>
                 
