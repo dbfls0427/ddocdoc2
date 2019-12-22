@@ -1,5 +1,6 @@
 package org.ddocdoc.service.customerservice;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.ddocdoc.controller.customercontroller.CustomerController;
@@ -201,8 +202,13 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public int notifyInsert(String cus_num) {
-		return mapper.notifyInsert(cus_num);
+	public int notifyInsert(HashMap<String, String> map) {
+		return mapper.notifyInsert(map);
+	}
+
+	@Override
+	public String hospitalOneName(String hos_num) {
+		return mapper.hospitalOneName(hos_num);
 	}
 	
 	

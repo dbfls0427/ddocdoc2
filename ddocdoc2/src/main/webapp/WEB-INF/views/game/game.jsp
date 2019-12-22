@@ -110,9 +110,20 @@
 				
 			}else if(menuNum == '2'){
 				var cus_num = $(".customerNum").val();
-				gameAjax.notifyInsert(cus_num, function(data) {
+				var modal = document.getElementById('myModal2');
+				var span = document.getElementsByClassName("close")[0];
+				gameAjax.hospitalList(function(list) {
+					console.log("dddddddd")
+					var str = '';
+					for(var i = 0, len = list.length||0; i < len; i++){
+						console.log(list[i]);
+						 str += '<a href="/customer/chatting?hos_num='+ list[i].hos_num + '">' + list[i].hos_name + '</a></br>';
+						$(".modal-hospital").html(str); 
+					}
+					modal.style.display = "block";
 				});
-				alert("사전 온라인 상담 예약 완료되었습니다. 담당 의사가 확인할 때까지 기다려주세요.");
+
+				modal.style.display = "none";
 			}
 			
 		});
@@ -313,10 +324,24 @@
 				});
 			};
 			
+			function hospitalList(callback, error) {
+				$.getJSON("/game/hospitalList", function(data) {
+					if(callback){
+						callback(data);
+					}
+				}).fail(function(xhr, status, err) {
+					if(error){
+						error();
+					}
+					
+				})
+			}
+			
 			return {
 				symptomInsert : symptomInsert,
 				symptomDetail : symptomDetail,
-				notifyInsert : notifyInsert
+				notifyInsert : notifyInsert,
+				hospitalList : hospitalList
 				
 			};
 		})();
@@ -361,9 +386,28 @@
             background-color: rgb(0,0,0); /* Fallback color */
             background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
         }
+        .modal2 {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
     
         /* Modal Content/Box */
         .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%; /* Could be more or less, depending on screen size */                          
+        }
+        .modal-hospital {
             background-color: #fefefe;
             margin: 15% auto; /* 15% from the top and centered */
             padding: 20px;
@@ -436,10 +480,21 @@
         </form>
          <button class="submit">증상입력</button> 
       </div>
- 
+ 		
+ 		
+ 		
+ 		
     </div>
 
-
+	<!-- Modal two -->
+ 		<div id = "myModal2" class="modal2">
+ 			 <span class="close">&times;</span> 
+ 			<div class="modal-hospital">
+ 			
+ 			
+ 			</div>
+ 		
+ 		</div>
 
 
 

@@ -1,5 +1,6 @@
 package org.ddocdoc.mapper.customermapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.ddocdoc.vo.customervo.CustomerAuthVO;
@@ -136,5 +137,8 @@ public interface CustomerMapper {
 	SymptomDetailVO symptomDetail(String cus_num);
 	
 	// 알림기능
-	int notifyInsert(String cus_num);
+	int notifyInsert(HashMap<String, String> map);
+	
+	// 병원이름 한개 추출
+	String hospitalOneName(String hos_num);
 }

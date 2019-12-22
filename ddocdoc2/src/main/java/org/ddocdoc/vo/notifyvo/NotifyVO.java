@@ -12,5 +12,6 @@ import lombok.NoArgsConstructor;
 public class NotifyVO implements Serializable{
 	private String not_num;
 	private String cus_num;
+	private String hos_num;
 	private String not_check;
 }

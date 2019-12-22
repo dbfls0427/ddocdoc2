@@ -127,4 +127,14 @@ public class HospitalServiceImpl implements HospitalService {
 		mapper.notifyUpdate(not_num);
 	}
 
+	@Override
+	public List<String> notifyHosNameList() {
+		return mapper.notifyHosNameList();
+	}
+
+	@Override
+	public String chatHosNum(String not_num) {
+		return mapper.chatHosNum(not_num);
+	}
+	
 }

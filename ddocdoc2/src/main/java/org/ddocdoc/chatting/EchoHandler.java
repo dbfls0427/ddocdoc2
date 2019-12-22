@@ -23,13 +23,13 @@ public class EchoHandler extends TextWebSocketHandler {
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 			if(session.getId().equals(oneName)){
 				for(WebSocketSession sess : sessionList){
-					sess.sendMessage(new TextMessage("ÀÇ»ç" + " : " + message.getPayload()));
+					sess.sendMessage(new TextMessage("°í°´´Ô" + " : " + message.getPayload()));
 					System.out.println(session.getId());
 				}
 				return;
 			}else{
 				for(WebSocketSession sess : sessionList){
-					sess.sendMessage(new TextMessage("°í°´´Ô" + " : " + message.getPayload()));
+					sess.sendMessage(new TextMessage("ÀÇ»ç" + " : " + message.getPayload()));
 					System.out.println(session.getId());
 				}
 			}
