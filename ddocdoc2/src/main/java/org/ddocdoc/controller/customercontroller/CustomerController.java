@@ -2,7 +2,9 @@ package org.ddocdoc.controller.customercontroller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -283,7 +285,17 @@ public class CustomerController {
 
 	// chatting
 	@GetMapping("/chatting")
-	public String chatting(){
+	public String chatting(@RequestParam String hos_num, HttpServletResponse response) throws IOException{
+		String cus_num = ((CustomerVO)session.getAttribute("customer")).getCus_num();
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("cus_num", cus_num);
+		map.put("hos_num", hos_num);
+		service.notifyInsert(map);
+		String hos_name = service.hospitalOneName(hos_num);
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter writer = response.getWriter();
+		 writer.println("<script>alert('"+ hos_name + " 병원에 사전 온라인 상담 예약 완료되었습니다. 담당 의사가 확인할 때까지 기다려주세요.');</script>");
+	     writer.flush();
 		return "/chatting/chatting";
 	}
 	

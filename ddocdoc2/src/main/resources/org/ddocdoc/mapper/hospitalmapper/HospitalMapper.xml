@@ -111,10 +111,11 @@
 		select b.cus_name from dd_notify a, dd_customer b
 			where  a.cus_num = b.cus_num
 			and a.not_check = '확인안함'
+			order by a.not_num desc
 	</select>
 	
 	<select id="notifyNumList" resultType="String">
-		select /*+ INDEX_DESC(dd_notify SYS_C007647) */ not_num from dd_notify where not_check = '확인안함'
+		select /*+ INDEX_DESC(dd_notify SYS_C007666) */ not_num from dd_notify where not_check = '확인안함'
 	</select>
 	
 	<!-- 알림 갯수 -->
@@ -127,4 +128,17 @@
 		update dd_notify set not_check = '확인함' where not_num = #{not_num}
 	</update>
 	
+	<!-- 알람에 병원 이름 뜨게하기 -->
+	<select id="notifyHosNameList" resultType="String">
+		select b.hos_name from dd_notify a, dd_hospital b
+		where a.hos_num = b.hos_num
+		and a.not_check = '확인안함'
+		order by a.not_num desc
+	</select>
+	
+	<!-- 채팅에 넘겨줄 hos_num -->
+	<select id="chatHosNum" resultType="String" parameterType="String">
+		select hos_num from dd_notify where not_num = #{not_num}
+		
+	</select>
 </mapper>

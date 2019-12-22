@@ -58,6 +58,11 @@
 	order by hos_res_num
 	</select>
 	
+	<!-- 병원 이름 하나 추출 -->
+	<select id="hospitalOneName" parameterType="String" resultType="String">
+		select hos_name from dd_hospital where hos_num = #{hos_num}
+	</select>
+	
 	<!-- 예약 상세내용 -->
 	 <select id="detailRes" parameterType="String" resultType="org.ddocdoc.vo.hospitalresvo.HospitalResVO">
 	select * from dd_hos_res where hos_res_num = #{hos_res_num}
@@ -251,7 +256,7 @@
 	</select>
 	
 	<insert id="notifyInsert" parameterType="String">
-		insert into dd_notify values(notify_seq.nextval, #{cus_num},'확인안함')
+		insert into dd_notify values(notify_seq.nextval, #{cus_num}, #{hos_num}, '확인안함')
 	</insert>
 </mapper>
 

@@ -1,5 +1,6 @@
 package org.ddocdoc.service.customerservice;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.ddocdoc.vo.customervo.CustomerAuthVO;
@@ -105,7 +106,10 @@ public interface CustomerService {
 	public int detailPharWait(String phar_num);
 	
 	// 알림기능
-	public int notifyInsert(String cus_num);
+	public int notifyInsert(HashMap<String, String> map);
+	
+	// 병원이름 한개 추출
+	public String hospitalOneName(String hos_num);
 	
 	
 }

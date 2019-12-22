@@ -73,4 +73,10 @@ public interface HospitalMapper {
 	
 	// 알림 클릭시
 	void notifyUpdate(String not_num);
+	
+	// 알람에 병원 이름 뜨게하기
+	List<String> notifyHosNameList();
+	
+	// 채팅에 넘겨줄 hos_num
+	String chatHosNum(String not_num);
 }

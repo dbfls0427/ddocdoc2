@@ -309,18 +309,26 @@ public class HospitalController {
 	// 占쏙옙占쏙옙 占쏙옙占�
 		@GetMapping("/admin")
 		public String admin(Model model){
+
 			model.addAttribute("notifyList", service.notifyList());
 			model.addAttribute("count", service.notifyCount());
 			model.addAttribute("notifyNumList", service.notifyNumList());
+			model.addAttribute("notifyHosNameList", service.notifyHosNameList());
 			return "/index/admin";
 		}
 		
 		// alram click
 		@GetMapping("/alramClick")
-		public String alramClick(@RequestParam String not_num){
+		public String alramClick(@RequestParam String not_num, RedirectAttributes rttr){
 			System.out.println("ddddd : " + not_num);
 			service.notifyUpdate(not_num);
-			return "redirect:/customer/chatting";
+			rttr.addAttribute("hos_num", service.chatHosNum(not_num));
+			return "redirect:/hospital/chattingDoctor";
+		}
+		
+		@GetMapping("/chattingDoctor")
+		public String chattingDoctor(@RequestParam String hos_num){
+			return "/chatting/chatting";
 		}
 	
 }
