@@ -54,7 +54,6 @@ public class Health {
 		//System.out.println(elements1.toString());
 		List<String> ele = new ArrayList<>();
 		for(Element element : elements1){
-			System.out.println(element);
 			ele.add(element.toString());
 		}
 		model.addAttribute("ele", ele);
