@@ -108,11 +108,11 @@ public class HospitalController {
 		log.info("hospital Detail");
 		model.addAttribute("hospitalvo", service.hospitalDetail(hos_num));
 		
-		// 병원 예약 환자 리스트
+		// 蹂묒썝 �삁�빟 �솚�옄 由ъ뒪�듃
 		List<HospitalResVO> hospitalresVO = service.hosResList(hos_num);
 		
 		for(int i = 0; i < hospitalresVO.size(); i++) {
-			System.out.println("detailaction에서 " + hospitalresVO.get(i).getHos_res_num() + hospitalresVO.get(i).getHos_acpt());
+			System.out.println("detailaction�뿉�꽌 " + hospitalresVO.get(i).getHos_res_num() + hospitalresVO.get(i).getHos_acpt());
 		}
 		
 		model.addAttribute("hospitalresVO", hospitalresVO);
@@ -236,7 +236,7 @@ public class HospitalController {
 		return "/QRCode";
 	}
 	
-	// 예약 완료
+	// �삁�빟 �셿猷�
 	@GetMapping("/booleanHosRes")
 	public String booleanHosRes(@RequestParam String cus_num, @RequestParam String hos_res_num, @RequestParam String hos_num, RedirectAttributes rttr){
 		service.booleanHosRes(hos_res_num);
@@ -254,7 +254,7 @@ public class HospitalController {
 		return "redirect:/hospital/hospitalDetail";
 	}
 	
-	// 처방전 입력 폼
+	// 泥섎갑�쟾 �엯�젰 �뤌
 	@GetMapping("/presInsertForm")
 	public String presInsertForm(@RequestParam String hos_res_num, @RequestParam String hos_num, @RequestParam String cus_num, Model model){
 		PresVO pres = service.presDetail();
@@ -268,7 +268,7 @@ public class HospitalController {
 		return "/pres/presInsertForm";
 	}
 	
-	// 처방전 입력
+	// 泥섎갑�쟾 �엯�젰
 	@GetMapping("/presInsert")
 	public String presInsert(PresVO pres, @RequestParam String hos_res_num, @RequestParam String hos_num, @RequestParam String cus_num,RedirectAttributes rttr){
 		pres.setCus_num(cus_num);
@@ -283,7 +283,7 @@ public class HospitalController {
 		
 	}
 	
-	// 처방전 약 입력
+	// 泥섎갑�쟾 �빟 �엯�젰
 	@PostMapping("/medicineInsert")
 	public String medicineInsert(PresDetailVO presDetail, @RequestParam String hos_res_num, @RequestParam int med_count,
 			@RequestParam String pres_num, @RequestParam String med_num, Model model){
@@ -306,5 +306,21 @@ public class HospitalController {
 		return "/pres/presInsertForm";
 	}
 	
+	// 占쏙옙占쏙옙 占쏙옙占�
+		@GetMapping("/admin")
+		public String admin(Model model){
+			model.addAttribute("notifyList", service.notifyList());
+			model.addAttribute("count", service.notifyCount());
+			model.addAttribute("notifyNumList", service.notifyNumList());
+			return "/index/admin";
+		}
+		
+		// alram click
+		@GetMapping("/alramClick")
+		public String alramClick(@RequestParam String not_num){
+			System.out.println("ddddd : " + not_num);
+			service.notifyUpdate(not_num);
+			return "redirect:/customer/chatting";
+		}
 	
 }

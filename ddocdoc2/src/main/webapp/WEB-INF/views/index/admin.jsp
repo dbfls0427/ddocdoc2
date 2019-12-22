@@ -51,6 +51,30 @@
 	width: 30%;
 }
 
+ .alramSpan {
+   /*  font-size: .8em;
+    width: 1em;
+    border-radius: 3em;
+    padding: .1em  .2em;
+    line-height: 1.25em;
+    border: 1px solid red;
+    display: inline-block;
+    text-align: center;
+    background-color: red; */
+    width:18px;
+ 	height:18px;
+ 	border-radius:100px;
+ 	-moz-border-radius : 100px;
+ 	-webkit-border-radius : 100px;
+ 	-ms-border-radius :100px;
+ 	-khtml-border-radius : 100px;
+ 	-o-border-radius :100px;
+ 	background:red;
+ 	color:#fff;
+ 	text-align:center;
+ 	font-size: 13px;
+  }
+
 
 </style>
 
@@ -174,8 +198,42 @@
             </li>
 
             <!-- Nav Item - Alerts -->
+            <div class="topbar-divider d-none d-sm-block"></div>
             <li class="nav-item dropdown no-arrow mx-1">
-              
+            	
+               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+               	<div style="position: relative;">
+               	<span class= "alramSpan" style="position: absolute; margin-left: 20px; margin-top: 15px" >${count }</span>
+               	<img src = "/resources/images/Alram.png" width="28" height="28"/>
+   
+				</div>	               
+               </a>
+               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <!--  
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Settings
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Activity Log
+                </a>
+                <div class="dropdown-divider"></div>
+                -->
+                <c:forEach var="notifyvo" items="${notifyList }" varStatus="status">
+                <a class="dropdown-item" href="/hospital/alramClick?not_num=${notifyNumList[status.index] }">
+                	
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  ${notifyvo}님이 상담신청을 하셨습니다. 상담을 시작하시려면 클릭해주세요.
+                </a>
+                </c:forEach>
+                
+                
+              </div>
             </li>
 
 

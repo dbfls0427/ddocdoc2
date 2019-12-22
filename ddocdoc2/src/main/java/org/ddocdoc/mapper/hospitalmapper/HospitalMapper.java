@@ -6,6 +6,7 @@ import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
 import org.ddocdoc.vo.hospitalvo.HospitalVO;
 import org.ddocdoc.vo.hospitalwaitvo.HospitalWaitVO;
 import org.ddocdoc.vo.medicinevo.MedicineVO;
+import org.ddocdoc.vo.notifyvo.NotifyVO;
 import org.ddocdoc.vo.presdetailvo.PresDetailVO;
 import org.ddocdoc.vo.presvo.PresVO;
 
@@ -60,4 +61,16 @@ public interface HospitalMapper {
 
 	// presDetail
 	PresVO presDetail();
+	
+	// 알림 리스트
+	List<String> notifyList();
+	
+	// 알림 갯수
+	int notifyCount();
+	
+	// 알림 넘버
+	List<String> notifyNumList();
+	
+	// 알림 클릭시
+	void notifyUpdate(String not_num);
 }

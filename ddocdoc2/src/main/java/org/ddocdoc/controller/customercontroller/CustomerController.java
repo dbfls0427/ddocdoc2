@@ -178,11 +178,7 @@ public class CustomerController {
 		return "/login/loginForm";
 	}
 	
-	// 占쏙옙占쏙옙 占쏙옙占�
-	@GetMapping("/admin")
-	public String admin(){
-		return "/index/admin";
-	}
+	
 	
 	// 회占쏙옙 占쏙옙
 	@GetMapping("/customerDetail")

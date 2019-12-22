@@ -9,6 +9,7 @@ import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
 import org.ddocdoc.vo.hospitalvo.HospitalVO;
 import org.ddocdoc.vo.hospitalwaitvo.HospitalWaitVO;
 import org.ddocdoc.vo.medicinevo.MedicineVO;
+import org.ddocdoc.vo.notifyvo.NotifyVO;
 import org.ddocdoc.vo.presdetailvo.PresDetailVO;
 import org.ddocdoc.vo.presvo.PresVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,6 +105,26 @@ public class HospitalServiceImpl implements HospitalService {
 	@Override
 	public PresVO presDetail() {
 		return mapper.presDetail();
+	}
+
+	@Override
+	public List<String> notifyList() {
+		return mapper.notifyList();
+	}
+
+	@Override
+	public int notifyCount() {
+		return mapper.notifyCount();
+	}
+
+	@Override
+	public List<String> notifyNumList() {
+		return mapper.notifyNumList();
+	}
+
+	@Override
+	public void notifyUpdate(String not_num) {
+		mapper.notifyUpdate(not_num);
 	}
 
 }
