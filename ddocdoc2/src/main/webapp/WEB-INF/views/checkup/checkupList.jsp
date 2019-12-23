@@ -29,6 +29,7 @@
     background-position: 50% 90%;
     
 }
+
 #back::before{
      content: " ";
     position: absolute;
