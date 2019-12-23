@@ -58,7 +58,6 @@ hr {
 						<li><a href="/customer/loginSuccess"> <i class="ion-ios-home"></i>
 								Home
 						</a></li>
-						<li class="active">QR CODE</li>
 					</ol>
 				</div>
 			</div>
