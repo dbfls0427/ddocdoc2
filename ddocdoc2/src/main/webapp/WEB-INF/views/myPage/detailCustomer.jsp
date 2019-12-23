@@ -21,6 +21,24 @@ hr {
 	color : #ffe307;
 }
 
+#back{
+	background-image: url("https://cdn.ddocdoc.com/collection/fbe5f362bd5c10ec6677f9361a6c809b.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    
+}
+#back::before{
+     content: " ";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
 </style>
 </head>
 <body>
@@ -30,14 +48,14 @@ hr {
         ================================================== 
             TITLE: Global Page Section Start
         ================================================== -->
-	<section class="global-page-header" style="background: #ffe307;">
+	<section class="global-page-header" id="back">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="block">
 					<h2>QR CODE</h2>
 					<ol class="breadcrumb">
-						<li><a href="success.do"> <i class="ion-ios-home"></i>
+						<li><a href="/customer/loginSuccess"> <i class="ion-ios-home"></i>
 								Home
 						</a></li>
 						<li class="active">QR CODE</li>

@@ -58,7 +58,87 @@
 	</style>
     </head>
     <body>
-<%@include file="../includes/menu.jsp" %>
+        <!--
+        ==================================================
+        Header Section Start
+        ================================================== -->
+        <header id="top-bar" class="navbar-fixed-top animated-header">
+            <div class="container">
+                <div class="navbar-header">
+                    <!-- responsive nav button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <!-- /responsive nav button -->
+                    
+                    <!-- logo -->
+                    <div class="navbar-brand">
+                        <a href="index.html" >
+                            <img src="/resources/images/logo.png" alt="">
+                        </a>
+                    </div>
+                    <!-- /logo -->
+                </div>
+ 				<!-- main menu -->
+                <nav class="collapse navbar-collapse navbar-right" role="navigation">
+                    <div class="main-menu">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="/customer/loginSuccess" >Home</a>
+                            </li>
+                             <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">병원찾기 <span class="caret"></span></a>
+                                <div class="dropdown-menu">
+                                    <ul>
+                                        <li><a href="/customer/hosSearch">병원찾기</a></li>
+                                        <li><a href="/customer/hospitalResList">예약내역</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">아이관리 <span class="caret"></span></a>
+                                <div class="dropdown-menu">
+                                    <ul>
+                                        <li><a href="/child/childList">아이관리</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">QR코드 <span class="caret"></span></a>
+                                <div class="dropdown-menu">
+                                    <ul>
+                                        <li><a href="/DDOCDOC/Customer/detailCustomer.do">QR코드 발급</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">똑닥뷰티<span class="caret"></span></a>
+                                <div class="dropdown-menu">
+                                    <ul>
+                                        <li><a href="/video/beautyVideo">뷰티TV</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">서비스<span class="caret"></span></a>
+                                <div class="dropdown-menu">
+                                    <ul>
+                                        <li><a href="/health/healthList">건강정보</a></li>
+                                        <li><a href="../Customer/reviewInsertForm.do">후기 작성</a></li>
+                                        <li><a href="../Customer/reviewList.do">후기 목록</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                             <li><a href="/customer/loginForm">로그인</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- /main nav -->
+            </div>
+        </header>
         
         <!-- 
         ================================================== 
