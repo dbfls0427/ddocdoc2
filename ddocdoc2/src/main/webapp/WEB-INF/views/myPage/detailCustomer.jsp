@@ -53,7 +53,7 @@ hr {
 		<div class="row">
 			<div class="col-md-12">
 				<div class="block">
-					<h2>QR CODE</h2>
+					<h2>QR 코드</h2>
 					<ol class="breadcrumb">
 						<li><a href="/customer/loginSuccess"> <i class="ion-ios-home"></i>
 								Home
