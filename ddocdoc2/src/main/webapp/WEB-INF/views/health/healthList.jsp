@@ -103,7 +103,7 @@ img{
 					<div class="block">
 						<h2>건강정보</h2>
 						<ol class="breadcrumb">
-							<li><a href="/DDOCDOC/Customer/success.do"> <i
+							<li><a href="/customer/loginSuccess"> <i
 									class="ion-ios-home"></i> Home
 							</a></li>
 						</ol>
