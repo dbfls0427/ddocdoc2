@@ -44,6 +44,27 @@
 	})
 	
 	</script>
+	<style type="text/css">
+	#back{
+	background-image: url("http://image.sayup.co.kr/collection/560e3f2ae28282030002edc1/35e3e20e506f7ffd685019e83ff3b0bf.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    
+	}
+	#back::before{
+	     content: " ";
+	    position: absolute;
+	    top: 0px;
+	    left: 0px;
+	    display: block;
+	    width: 100%;
+	    height: 100%;
+	    background: rgba(0, 0, 0, 0.5);
+	}
+	
+	
+	</style>
 	
   </head>
   <body>
@@ -53,14 +74,14 @@
         ================================================== 
             TITLE: Global Page Section Start
         ================================================== -->
-	<section class="global-page-header">
+	<section class="global-page-header" id="back">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="block">
 						<h2>똑닥뷰티 TV</h2>
 						<ol class="breadcrumb">
-							<li><a href="/DDOCDOC/Customer/success.do"> <i
+							<li><a href="/customer/loginSuccess"> <i
 									class="ion-ios-home"></i> Home
 							</a></li>
 						</ol>

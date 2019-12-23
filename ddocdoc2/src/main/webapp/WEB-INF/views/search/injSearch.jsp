@@ -5,7 +5,25 @@
 <head>
  <!-- menu module -->
 <%@include file="../includes/header.jsp" %>
-<!-- end menu module -->
+ <style>
+ #backIM{
+	background-image: url("http://image.sayup.co.kr/collection/55dfee8cde93250300ee2915/9d99e58cde0d1446e3be7e07a496c222.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 42%;
+    
+}
+#backIM::before{
+     content: " ";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+ }
+ </style>
     <style>
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
@@ -54,7 +72,7 @@
         ================================================== 
             TITLE: Global Page Section Start
         ================================================== -->
-        <section class="global-page-header" style="padding: 100px 0 10px 0; background: #ffe307;">
+        <section class="global-page-header" id="backIM">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -62,7 +80,7 @@
                             <h2 style="font-size: 35px;">가까운 소아과찾기</h2>
                             <ol class="breadcrumb">
                                 <li>
-                                    <a href="../Customer/success.do">
+                                    <a href="/customer/loginSuccess">
                                         <i class="ion-ios-home"></i>
                                         Home
                                     </a>

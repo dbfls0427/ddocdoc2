@@ -204,7 +204,7 @@ public class CustomerController {
 		if(pres == null) {
 			response.setContentType("text/html; charset=UTF-8");
 		     PrintWriter writer = response.getWriter();
-		     writer.println("<script>alert('泥섎갑�쟾�씠 �벑濡앸릺吏� �븡�븯�뒿�땲�떎. 吏꾨즺 �쁽�솴�쓣 �솗�씤�빐二쇱꽭�슂.'); location.href='/customer/hospitalResList';</script>");
+		     writer.println("<script>alert('예약 접수가 아직 되지 않아 대기번호 발급이 안되었습니다. 접수가 완료될 때 까지 잠시만 기다려주세요.'); location.href='/customer/hospitalResList';</script>");
 		     writer.flush();
 			return null;
 		}

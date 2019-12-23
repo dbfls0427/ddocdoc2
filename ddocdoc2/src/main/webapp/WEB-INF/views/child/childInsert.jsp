@@ -32,6 +32,24 @@ tr:nth-child(2n) {
 #table1{
 font-family: 'Sunflower', sans-serif;
 }
+
+#back{
+	background-image: url("http://image.sayup.co.kr/collection/55ed39e43dff460300ba2927/f76541f0eb59b97e4c95c33164af6fdd.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    
+}
+#back::before{
+     content: " ";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
 </style>   
  <link href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean" rel="stylesheet">    
 <link href="https://fonts.googleapis.com/css?family=Stylish&display=swap&subset=korean" rel="stylesheet"> 
@@ -49,7 +67,7 @@ font-family: 'Sunflower', sans-serif;
         ================================================== 
             TITLE: Global Page Section Start
         ================================================== -->
-        <section class="global-page-header">
+        <section class="global-page-header" id="back">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -57,7 +75,7 @@ font-family: 'Sunflower', sans-serif;
                             <h2>우리아이 관리</h2>
                             <ol class="breadcrumb">
                                 <li>
-                                    <a href="/DDOCDOC/Customer/success.do">
+                                    <a href="/customer/loginSuccess">
                                         <i class="ion-ios-home"></i>
                                         Home
                                     </a>

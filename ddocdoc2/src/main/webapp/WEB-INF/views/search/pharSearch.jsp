@@ -4,7 +4,25 @@
 <html>
 <head>
 <%@include file="../includes/header.jsp" %>
-		
+ <style>
+ #backIM{
+	background-image: url("http://image.sayup.co.kr/collection/5673593e4e196103009ffce4/a018f2e44ebe10cad27931493e1d2a22.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 85%;
+    
+}
+#backIM::before{
+     content: " ";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+ }
+ </style>		
     <style>
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
@@ -60,7 +78,7 @@
         ================================================== 
             TITLE: Global Page Section Start
         ================================================== -->
-        <section class="global-page-header" style="padding: 100px 0 10px 0; background: #ffe307;">
+        <section class="global-page-header" id="backIM">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -68,7 +86,7 @@
                             <h2 style="font-size: 35px;">가까운 약국찾기</h2>
                             <ol class="breadcrumb">
                                 <li>
-                                    <a href="/customer/index">
+                                    <a href="/customer/loginSuccess">
                                         <i class="ion-ios-home"></i>
                                         Home
                                     </a>

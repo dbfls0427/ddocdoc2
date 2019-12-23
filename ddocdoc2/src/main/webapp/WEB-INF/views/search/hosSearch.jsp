@@ -6,7 +6,25 @@
 <html>
 <head>
   <%@include file="../includes/header.jsp" %>
-        
+ <style>
+ #backIM{
+	background-image: url("https://cdn.ddocdoc.com/collection/16264355525db02ec7732f4ce.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 42%;
+    
+}
+#backIM::before{
+     content: " ";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+ }
+ </style>
     <style>
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
@@ -44,10 +62,13 @@
 #pagination {margin:10px auto;text-align: center;}
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
+
+
 </style>
  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
 		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 		crossorigin="anonymous"></script>
+
 </head>
 <body>
  <%@include file="../includes/menu.jsp" %>
@@ -57,7 +78,7 @@
         ================================================== 
             TITLE: Global Page Section Start
         ================================================== -->
-        <section class="global-page-header" style="padding: 100px 0 10px 0; background: #ffe307;">
+        <section class="global-page-header" id="backIM">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -65,7 +86,7 @@
                             <h2 style="font-size: 35px;">가까운 병원찾기</h2>
                             <ol class="breadcrumb">
                                 <li>
-                                    <a href="../index.html">
+                                    <a href="/customer/loginSuccess">
                                         <i class="ion-ios-home"></i>
                                         Home
                                     </a>

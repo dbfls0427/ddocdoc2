@@ -32,6 +32,25 @@
 			}
 			
 	</style>
+	 <style>
+ #back{
+	background-image: url("http://image.sayup.co.kr/collection/55e643ef59fd6203005da061/0715046b1fa8e2d7540773a896476213.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 42%;
+    
+}
+#back::before{
+     content: " ";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+ }
+ </style>	
 	 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
 		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 		crossorigin="anonymous"></script>
@@ -52,7 +71,7 @@
         ================================================== 
             TITLE: Global Page Section Start
         ================================================== -->
-	<section class="global-page-header" style="background: #ffe307;">
+	<section class="global-page-header" id="back">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">

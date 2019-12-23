@@ -62,7 +62,23 @@ img{
     justify-content: center;
 }
 
- */
+#back{
+	background-image: url("http://image.sayup.co.kr/collection/5615c9d21b45390300d445df/2b7b6df7ba291a8723a5b3daa0d9c48d.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    
+}
+#back::before{
+     content: " ";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
 </style>
 
 <!-- header module -->
@@ -79,7 +95,8 @@ img{
         ================================================== 
             TITLE: Global Page Section Start
         ================================================== -->
-	<section class="global-page-header">
+	<section class="global-page-header" id="back">
+		<!-- <img src="" /> -->
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
