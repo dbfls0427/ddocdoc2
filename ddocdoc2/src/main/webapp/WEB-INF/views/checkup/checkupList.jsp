@@ -22,6 +22,23 @@
 	#chart_div{
 		padding-left: 0
 	}
+	#back{
+	background-image: url("https://cdn.ddocdoc.com/collection/141945158cc83086859cfbbbd.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 90%;
+    
+}
+#back::before{
+     content: " ";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
 </style>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
@@ -90,14 +107,14 @@
         ================================================== 
             TITLE: Global Page Section Start
         ================================================== -->
-	<section class="global-page-header">
+	<section class="global-page-header" id="back">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="block">
 						<h2>건강검진 목록</h2>
 						<ol class="breadcrumb">
-							<li><a href="/customer/index"> 
+							<li><a href="/customer/loginSuccess"> 
 								<i class="ion-ios-home"></i> Home
 							</a></li>
 						</ol>

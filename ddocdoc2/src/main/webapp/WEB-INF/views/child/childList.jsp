@@ -78,7 +78,6 @@ tr:nth-child(2n) {
     background: rgba(0, 0, 0, 0.5);
 }
 </style>
-</style>
 <link
 	href="https://fonts.googleapis.com/css?family=Jua&display=swap&subset=korean"
 	rel="stylesheet">
