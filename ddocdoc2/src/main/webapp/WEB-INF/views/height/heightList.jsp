@@ -6,6 +6,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
+<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
+<script type="text/javascript" src="/resources/js/user_height.js"></script>
+<!-- jQuery -->
+<style>
+	/*datepicer 버튼 롤오버 시 손가락 모양 표시*/
+	.ui-datepicker-trigger{cursor: pointer;}
+	/*datepicer input 롤오버 시 손가락 모양 표시*/
+	.hasDatepicker{cursor: pointer;}
+</style>
 <style type="text/css">
 		 	#back{
 	background-image: url("http://image.sayup.co.kr/contents/55eea504664ef9030088dd63/86539fc50bd7b3ca1cc6027deac9a77e.jpg");
@@ -23,22 +39,6 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-</style>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-	crossorigin="anonymous"></script>
-<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
-
-<script type="text/javascript" src="/resources/js/user_height.js"></script>
-<!-- jQuery -->
-<style>
-	/*datepicer 버튼 롤오버 시 손가락 모양 표시*/
-	.ui-datepicker-trigger{cursor: pointer;}
-	/*datepicer input 롤오버 시 손가락 모양 표시*/
-	.hasDatepicker{cursor: pointer;}
 </style>
 </head>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

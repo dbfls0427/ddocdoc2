@@ -25,6 +25,24 @@
 	text-align: center;
 	margin: 10px 0;
 }
+
+    		 	#back{
+	background-image: url("http://image.sayup.co.kr/contents/5657c30e1adac60300afba48/c90e5039182f9ebc7ca8de8272d63184.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 40%;
+    
+	}
+	#back::before{
+     content: " ";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    }
 </style>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
 		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -38,17 +56,16 @@
         ================================================== 
             TITLE: Global Page Section Start
         ================================================== -->
-	<section class="global-page-header" style="background: #ffe307;">
+	<section class="global-page-header" id="back">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="block">
-					<h2>ADJUST</h2>
+					<h2>My Page</h2>
 					<ol class="breadcrumb">
-						<li><a href="success.do"> <i class="ion-ios-home"></i>
+						<li><a href="/customer/loginSuccess"> <i class="ion-ios-home"></i>
 								Home
 						</a></li>
-						<li class="active">ADJUST</li>
 					</ol>
 				</div>
 			</div>

@@ -35,13 +35,47 @@
     			margin: 10px 0;
         	}
         
+    			 	#back{
+	background-image: url("http://image.sayup.co.kr/contents/5657c3bf1adac60300b0039a/ac75955cd33a3b9c2a9c9f7da2ba1538.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 40%;
     
+	}
+	#back::before{
+     content: " ";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    }
         
         </style>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"
 		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 		crossorigin="anonymous"></script>
-        
+    <style>
+    		 	#back{
+	background-image: url("http://image.sayup.co.kr/contents/5657c29f1adac60300af7145/17027e6391feb9505371a8b4846e0763.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 40%;
+    
+	}
+	#back::before{
+     content: " ";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    
+    </style>    
     </head>
     <body>
 <%@include file="../includes/menu.jsp" %>
@@ -51,7 +85,7 @@
         ================================================== 
             TITLE: Global Page Section Start
         ================================================== -->
-        <section class="global-page-header" style="background: #ffe307;">
+        <section class="global-page-header" id="back">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -59,12 +93,11 @@
                             <h2>JOIN</h2>
                             <ol class="breadcrumb">
                                 <li>
-                                    <a href="../index.html">
+                                    <a href="/index/index">
                                         <i class="ion-ios-home"></i>
                                         Home
                                     </a>
                                 </li>
-                                <li class="active">JOIN</li>
                             </ol>
                         </div>
                     </div>
