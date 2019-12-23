@@ -4,39 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html class="no-js">
-    <head>
-         <!-- Basic Page Needs
-        ================================================== -->
-        <meta charset="utf-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <link rel="icon" href="favicon.ico">
-        <title>ÎòëÎî±</title>
-        <meta name="description" content="">
-        <meta name="keywords" content="">
-        <meta name="author" content="">
-        <!-- Mobile Specific Metas
-        ================================================== -->
-        <meta name="format-detection" content="telephone=no">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        
-        <!-- Template CSS Files
-        ================================================== -->
-        <!-- Twitter Bootstrs CSS -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/bootstrap/bootstrap.min.css">
-        <!-- Ionicons Fonts Css -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/ionicons/ionicons.min.css">
-        <!-- animate css -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/animate-css/animate.css">
-        <!-- Hero area slider css-->
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/slider/slider.css">
-        <!-- owl craousel css -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/owl-carousel/owl.carousel.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/owl-carousel/owl.theme.css">
-        <!-- Fancybox -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/facncybox/jquery.fancybox.css">
-        <!-- template main css file -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/style.css">
+  <%@include file="../includes/header.jsp" %>
         
 	<style type="text/css">
 			hr {
@@ -71,86 +39,14 @@
 	<script type="text/javascript">
 		var error = $(".error");
 		if(error.val() == 'error'){
-			alert("ÎåÄÍ∏∞Î≤àÌò∏ Î∞úÍ∏â Ïã§Ìå®");
+			alert("¥Î±‚π¯»£ πﬂ±ﬁ Ω«∆–");
 		}
 		</script>
         
     </head>
     <body>
 		<input type="hidden" value=${error} class="error"/>
-        <!--
-        ==================================================
-       MENU: Header Section Start
-        ================================================== -->
-        <header id="top-bar" class="navbar-fixed-top animated-header">
-            <div class="container">
-                <div class="navbar-header">
-                    <!-- responsive nav button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    </button>
-                    <!-- /responsive nav button -->
-                    
-                    <!-- logo -->
-                    <div class="navbar-brand">
-                        <a href="success.do" >
-                            <img src="/resources/images/logo.png" alt="">
-                        </a>
-                    </div>
-                    <!-- /logo -->
-                </div>
-                <!-- main menu -->
-                <nav class="collapse navbar-collapse navbar-right" role="navigation">
-                    <div class="main-menu">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <a href="success.do" >Home</a>
-                            </li>
-                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Î≥ëÏõêÏ∞æÍ∏∞ <span class="caret"></span></a>
-                                <div class="dropdown-menu">
-                                    <ul>
-                                        <li><a href="/customer/hosSearch">Î≥ëÏõêÏ∞æÍ∏∞</a></li>
-                                        <li><a href="/customer/hospitalResList">ÏòàÏïΩÎÇ¥Ïó≠</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li><a href="/DDOCDOC/child.index.jsp?cus_name=${customer.cus_name } ">ÏïÑÏù¥Í¥ÄÎ¶¨</a></li>
-                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">QRÏΩîÎìú <span class="caret"></span></a>
-                                <div class="dropdown-menu">
-                                    <ul>
-                                        <li><a href="detailCustomer.do">QRÏΩîÎìú Î∞úÍ∏â</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">ÌõÑÍ∏∞<span class="caret"></span></a>
-                                <div class="dropdown-menu">
-                                    <ul>
-                                        <li><a href="reviewInsertForm.do">ÌõÑÍ∏∞ ÏûëÏÑ±</a></li>
-                                        <li><a href="reviewList.do">ÌõÑÍ∏∞ Î™©Î°ù</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">${customer.cus_name } Îãò <span class="caret"></span></a>
-                                <div class="dropdown-menu">
-                                    <ul>
-                                        <li><a href="/customer/myPageForm">ÎßàÏù¥ÌéòÏù¥ÏßÄ</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li><a href="logout.do">Î°úÍ∑∏ÏïÑÏõÉ</a></li>
-                        </ul>
-                    </div>
-                </nav>
-                <!-- /main nav -->
-            </div>
-        </header>
+  <%@include file="../includes/menu.jsp" %>
         
         <!-- 
         ================================================== 
@@ -180,10 +76,10 @@
 			<p class = "p">Hospital Reservation</p><br>
 			<table class="table table-hover" id = "table1" style="font-size: 18px;">
 		<tr>
-			<td style="text-align : center;">ÏòàÏïΩÎ≤àÌò∏</td>
-			<td style="text-align : center;">Î≥ëÏõêÏù¥Î¶Ñ</td>
-			<td style="text-align : center;">ÏòàÏïΩÎÇ†Ïßú</td>
-			<td style="text-align : center;">Ï≤òÎ∞©Ï†Ñ</td>
+			<td style="text-align : center;">øπæ‡π¯»£</td>
+			<td style="text-align : center;">∫¥ø¯¿Ã∏ß</td>
+			<td style="text-align : center;">øπæ‡≥Ø¬•</td>
+			<td style="text-align : center;">√≥πÊ¿¸</td>
 			
 		</tr>
 		
@@ -192,7 +88,7 @@
 				<td style="text-align : center;">${resVO.hos_res_num }</td>
 				<td style="text-align : center;"><a href = "/customer/hospitalResDetail?hos_res_num=${resVO.hos_res_num}">${hosName[status.index] }</td>
 				<td style="text-align : center;">${fn:substring(resVO.hos_res_date,0,10) }</td>
-				<td style="text-align : center;"><button class="btn btn-warning"><a class="aa" href = "/customer/presDetail?hos_res_num=${resVO.hos_res_num }&hos_num=${resVO.hos_num}">Ï≤òÎ∞©Ï†Ñ Î≥¥Í∏∞</a></button></td>
+				<td style="text-align : center;"><button class="btn btn-warning"><a class="aa" href = "/customer/presDetail?hos_res_num=${resVO.hos_res_num }&hos_num=${resVO.hos_num}">√≥πÊ¿¸ ∫∏±‚</a></button></td>
 				
 			</tr>
 		</c:forEach>
@@ -208,9 +104,9 @@
 				<p class = "p">Pharmacy Reservation</p><br>
 				<table class="table table-hover" id = "table1" style="font-size: 18px;">
 					<tr>
-						<td style="text-align : center;">ÏòàÏïΩÎ≤àÌò∏</td>
-						<td style="text-align : center;">ÏïΩÍµ≠Ïù¥Î¶Ñ</td>
-						<td style="text-align : center;">ÏòàÏïΩÏãúÍ∞Ñ</td>
+						<td style="text-align : center;">øπæ‡π¯»£</td>
+						<td style="text-align : center;">æ‡±π¿Ã∏ß</td>
+						<td style="text-align : center;">øπæ‡Ω√∞£</td>
 			
 					</tr>
 		
@@ -225,68 +121,7 @@
 			
 			</div>
 		</section>
-
-            <!--
-            ==================================================
-            Footer Section Start
-            ================================================== -->
-            <footer id="footer">
-                <div class="container">
-                    <div class="col-md-8">
-                        <p class="copyright">Copyright: <span><script>document.write(new Date().getFullYear())</script></span> Design and Developed by <a href="mailto:amydreamsyou@gmail.com" target="_blank">Lee Min-hye</a>. <br> 
-                            Get More 
-                            <a href="https://themefisher.com/free-bootstrap-templates/" target="_blank">
-                                Free Bootstrap Templates
-                            </a>
-                        </p>
-                    </div>
-                    <div class="col-md-4">
-                        <!-- Social Media -->
-                        <ul class="social">
-                            <li>
-                                <a href="http://wwww.fb.com/themefisher" class="Facebook">
-                                    <i class="ion-social-facebook"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="http://wwww.twitter.com/themefisher" class="Twitter">
-                                    <i class="ion-social-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="Linkedin">
-                                    <i class="ion-social-linkedin"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="http://wwww.fb.com/themefisher" class="Google Plus">
-                                    <i class="ion-social-googleplus"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </footer> <!-- /#footer -->
-
-	<!-- Template Javascript Files
-	================================================== -->
-	<!-- jquery -->
-	<script src="<c:url value="/resources/plugins/jQuery/jquery.min.js" />"></script>
-	<!-- Form Validation -->
-    <script src="<c:url value="/resources/plugins/form-validation/jquery.form.js" />"></script>
-    <script src="<c:url value="/resources/plugins/form-validation/jquery.validate.min.js" />"></script>
-	<!-- owl carouserl js -->
-	 <script src="<c:url value="/resources/plugins/owl-carousel/owl.carousel.min.js" />"></script>
-	<!-- bootstrap js -->
-	 <script src="<c:url value="/resources/plugins/bootstrap/bootstrap.min.js" />"></script>
-	<!-- wow js -->
-	 <script src="<c:url value="/resources/plugins/wow-js/wow.min.js" />"></script>
-	<!-- slider js -->
-	 <script src="<c:url value="/resources/plugins/slider/slider.js" />"></script>
-	<!-- Fancybox -->
-	 <script src="<c:url value="/resources/plugins/facncybox/jquery.fancybox.js" />"></script>
-	<!-- template main js -->
-	 <script src="<c:url value="/resources/js/main.js" />"></script>
+<%@include file="../includes/footer.jsp" %>
  	</body>
 </html>
 
@@ -306,10 +141,10 @@
 <body>
 	<table border = "1">
 		<tr>
-			<td>ÏòàÏïΩÎ≤àÌò∏</td>
-			<td>Î≥ëÏõêÏù¥Î¶Ñ</td>
-			<td>ÏòàÏïΩÎÇ†Ïßú</td>
-			<td>Ï≤òÎ∞©Ï†Ñ</td>
+			<td>øπæ‡π¯»£</td>
+			<td>∫¥ø¯¿Ã∏ß</td>
+			<td>øπæ‡≥Ø¬•</td>
+			<td>√≥πÊ¿¸</td>
 			
 		</tr>
 		
@@ -318,7 +153,7 @@
 				<td>${resVO.hos_res_num }</td>
 				<td><a href = "detailRes.do?hos_res_num=${resVO.hos_res_num}">${hosName[status.index] }</td>
 				<td>${resVO.hos_res_date }</td>
-				<td><button><a href = "presDetail.do?hos_res_num=${resVO.hos_res_num }&hos_num=${resVO.hos_num}">Ï≤òÎ∞©Ï†Ñ Î≥¥Í∏∞</a></button></td>
+				<td><button><a href = "presDetail.do?hos_res_num=${resVO.hos_res_num }&hos_num=${resVO.hos_num}">√≥πÊ¿¸ ∫∏±‚</a></button></td>
 				
 			</tr>
 		</c:forEach>
@@ -327,9 +162,9 @@
 	<hr/>
 		<table border = "1">
 		<tr>
-			<td>ÏòàÏïΩÎ≤àÌò∏</td>
-			<td>ÏïΩÍµ≠Ïù¥Î¶Ñ</td>
-			<td>ÏòàÏïΩÏãúÍ∞Ñ</td>
+			<td>øπæ‡π¯»£</td>
+			<td>æ‡±π¿Ã∏ß</td>
+			<td>øπæ‡Ω√∞£</td>
 			
 		</tr>
 		

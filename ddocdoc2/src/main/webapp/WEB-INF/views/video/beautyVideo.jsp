@@ -58,7 +58,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="block">
-						<h2>똑닥 TV</h2>
+						<h2>똑닥뷰티 TV</h2>
 						<ol class="breadcrumb">
 							<li><a href="/DDOCDOC/Customer/success.do"> <i
 									class="ion-ios-home"></i> Home
