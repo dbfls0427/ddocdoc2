@@ -39,7 +39,7 @@
 	<script type="text/javascript">
 		var error = $(".error");
 		if(error.val() == 'error'){
-			alert("´ë±â¹øÈ£ ¹ß±Þ ½ÇÆÐ");
+			alert("ï¿½ï¿½ï¿½ï¿½È£ ï¿½ß±ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		}
 		</script>
         
@@ -76,10 +76,10 @@
 			<p class = "p">Hospital Reservation</p><br>
 			<table class="table table-hover" id = "table1" style="font-size: 18px;">
 		<tr>
-			<td style="text-align : center;">¿¹¾à¹øÈ£</td>
-			<td style="text-align : center;">º´¿øÀÌ¸§</td>
-			<td style="text-align : center;">¿¹¾à³¯Â¥</td>
-			<td style="text-align : center;">Ã³¹æÀü</td>
+			<td style="text-align : center;">ì˜ˆì•½ë²ˆí˜¸</td>
+			<td style="text-align : center;">ë³‘ì›ì´ë¦„</td>
+			<td style="text-align : center;">ì˜ˆì•½ë‚ ì§œ</td>
+			<td style="text-align : center;">ì²˜ë°©ì „</td>
 			
 		</tr>
 		
@@ -88,7 +88,7 @@
 				<td style="text-align : center;">${resVO.hos_res_num }</td>
 				<td style="text-align : center;"><a href = "/customer/hospitalResDetail?hos_res_num=${resVO.hos_res_num}">${hosName[status.index] }</td>
 				<td style="text-align : center;">${fn:substring(resVO.hos_res_date,0,10) }</td>
-				<td style="text-align : center;"><button class="btn btn-warning"><a class="aa" href = "/customer/presDetail?hos_res_num=${resVO.hos_res_num }&hos_num=${resVO.hos_num}">Ã³¹æÀü º¸±â</a></button></td>
+				<td style="text-align : center;"><button class="btn btn-warning"><a class="aa" href = "/customer/presDetail?hos_res_num=${resVO.hos_res_num }&hos_num=${resVO.hos_num}">ì²˜ë°©ì „ ë³´ê¸°</a></button></td>
 				
 			</tr>
 		</c:forEach>
@@ -104,9 +104,9 @@
 				<p class = "p">Pharmacy Reservation</p><br>
 				<table class="table table-hover" id = "table1" style="font-size: 18px;">
 					<tr>
-						<td style="text-align : center;">¿¹¾à¹øÈ£</td>
-						<td style="text-align : center;">¾à±¹ÀÌ¸§</td>
-						<td style="text-align : center;">¿¹¾à½Ã°£</td>
+						<td style="text-align : center;">ì˜ˆì•½ë²ˆí˜¸</td>
+						<td style="text-align : center;">ì•½êµ­ì´ë¦„</td>
+						<td style="text-align : center;">ì˜ˆì•½ì‹œê°„</td>
 			
 					</tr>
 		
@@ -141,10 +141,10 @@
 <body>
 	<table border = "1">
 		<tr>
-			<td>¿¹¾à¹øÈ£</td>
-			<td>º´¿øÀÌ¸§</td>
-			<td>¿¹¾à³¯Â¥</td>
-			<td>Ã³¹æÀü</td>
+			<td>ï¿½ï¿½ï¿½ï¿½ï¿½È£</td>
+			<td>ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½</td>
+			<td>ï¿½ï¿½ï¿½à³¯Â¥</td>
+			<td>Ã³ï¿½ï¿½ï¿½ï¿½</td>
 			
 		</tr>
 		
@@ -153,7 +153,7 @@
 				<td>${resVO.hos_res_num }</td>
 				<td><a href = "detailRes.do?hos_res_num=${resVO.hos_res_num}">${hosName[status.index] }</td>
 				<td>${resVO.hos_res_date }</td>
-				<td><button><a href = "presDetail.do?hos_res_num=${resVO.hos_res_num }&hos_num=${resVO.hos_num}">Ã³¹æÀü º¸±â</a></button></td>
+				<td><button><a href = "presDetail.do?hos_res_num=${resVO.hos_res_num }&hos_num=${resVO.hos_num}">Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½</a></button></td>
 				
 			</tr>
 		</c:forEach>
@@ -162,9 +162,9 @@
 	<hr/>
 		<table border = "1">
 		<tr>
-			<td>¿¹¾à¹øÈ£</td>
-			<td>¾à±¹ÀÌ¸§</td>
-			<td>¿¹¾à½Ã°£</td>
+			<td>ï¿½ï¿½ï¿½ï¿½ï¿½È£</td>
+			<td>ï¿½à±¹ï¿½Ì¸ï¿½</td>
+			<td>ï¿½ï¿½ï¿½ï¿½Ã°ï¿½</td>
 			
 		</tr>
 		
