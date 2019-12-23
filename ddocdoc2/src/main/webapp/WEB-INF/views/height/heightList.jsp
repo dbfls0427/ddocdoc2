@@ -345,7 +345,7 @@ j(document).ready(function(){
 <div style="display: flex; justify-content : center;">
 	<!--  data-toggle="modal" data-target="#myModal" -->
 				<i class="fas fa-plus-circle fa-3x" id="circle" title="키등록"
-			style="margin-bottom: 10px; color: #f13ea1; margin-left: 43%;"></i>
+			style="margin-bottom: 10px; color: #f13ea1;"></i>
 
 
 </div>
@@ -406,42 +406,7 @@ j(document).ready(function(){
         <!-- /.modal-dialog -->
       </div>
       <!-- /.modal -->
-	<!--
-            ==================================================
-            Footer Section Start
-            ================================================== -->
-	<footer id="footer">
-		<div class="container">
-			<div class="col-md-8">
-				<p class="copyright">
-					Copyright: <span><script>
-						document.write(new Date().getFullYear())
-					</script></span>
-					Design and Developed by <a href="mailto:amydreamsyou@gmail.com"
-						target="_blank">Lee Min-hye</a>. <br> Get More <a
-						href="https://themefisher.com/free-bootstrap-templates/"
-						target="_blank"> Free Bootstrap Templates </a>
-				</p>
-			</div>
-			<div class="col-md-4">
-				<!-- Social Media -->
-				<ul class="social">
-					<li><a href="http://wwww.fb.com/themefisher" class="Facebook">
-							<i class="ion-social-facebook"></i>
-					</a></li>
-					<li><a href="http://wwww.twitter.com/themefisher"
-						class="Twitter"> <i class="ion-social-twitter"></i>
-					</a></li>
-					<li><a href="#" class="Linkedin"> <i
-							class="ion-social-linkedin"></i>
-					</a></li>
-					<li><a href="http://wwww.fb.com/themefisher"
-						class="Google Plus"> <i class="ion-social-googleplus"></i>
-					</a></li>
-				</ul>
-			</div>
-		</div>
-	</footer>
+
 	<%@include file="../includes/footer.jsp" %>
 
 
