@@ -27,14 +27,14 @@
 		font-size: 28px;
 	}
 	
-	 #backIM{
+	 #back{
 	background-image: url("http://image.sayup.co.kr/collection/5673593e4e196103009ffce4/a018f2e44ebe10cad27931493e1d2a22.jpg");
 	background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 85%;
     
 	}
-	#backIM::before{
+	#back::before{
 	     content: " ";
 	    position: absolute;
 	    top: 0px;
@@ -62,12 +62,11 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="block">
-					<h2>Detail Prescription</h2>
+					<h2>처방전 상세</h2>
 					<ol class="breadcrumb">
 						<li><a href="/customer/loginSuccess"> <i class="ion-ios-home"></i>
 								Home
 						</a></li>
-						<li class="active">Detail Prescription</li>
 					</ol>
 				</div>
 			</div>

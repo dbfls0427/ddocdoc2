@@ -37,7 +37,23 @@
 	color : #ffe307;
 	}
 	
-
+	 #back{
+	background-image: url("http://image.sayup.co.kr/collection/5673593e4e196103009ffce4/a018f2e44ebe10cad27931493e1d2a22.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 85%;
+    
+	}
+	#back::before{
+	     content: " ";
+	    position: absolute;
+	    top: 0px;
+	    left: 0px;
+	    display: block;
+	    width: 100%;
+	    height: 100%;
+	    background: rgba(0, 0, 0, 0.5);
+	 }
 </style>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -55,17 +71,17 @@
         ================================================== 
             TITLE: Global Page Section Start
         ================================================== -->
-	<section class="global-page-header" style="background: #ffe307;">
+	<section class="global-page-header" id="back">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="block">
 					<h2>DETAIL PHARMACY</h2>
 					<ol class="breadcrumb">
-						<li><a href="/customer/index"> <i class="ion-ios-home"></i>
+						<li><a href="/customer/loginSuccess"> <i class="ion-ios-home"></i>
 								Home
 						</a></li>
-						<li class="active">Detail Pharmacy</li>
+						<li class="active">약국예약 상세</li>
 					</ol>
 				</div>
 			</div>

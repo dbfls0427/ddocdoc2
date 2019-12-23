@@ -76,12 +76,11 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="block">
-					<h2>RESERVATION</h2>
+					<h2>예약 내역</h2>
 					<ol class="breadcrumb">
 						<li><a href="success.do"> <i class="ion-ios-home"></i>
 								Home
 						</a></li>
-						<li class="active">RESERVATION</li>
 					</ol>
 				</div>
 			</div>

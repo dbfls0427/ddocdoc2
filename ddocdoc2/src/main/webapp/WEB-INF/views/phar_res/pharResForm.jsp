@@ -39,6 +39,23 @@
 /*  	font-family: 'Jua', sans-serif; */
  	font-size: 20px;
  }
+ 	 #back{
+	background-image: url("http://image.sayup.co.kr/collection/5673593e4e196103009ffce4/a018f2e44ebe10cad27931493e1d2a22.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 85%;
+    
+	}
+	#back::before{
+	     content: " ";
+	    position: absolute;
+	    top: 0px;
+	    left: 0px;
+	    display: block;
+	    width: 100%;
+	    height: 100%;
+	    background: rgba(0, 0, 0, 0.5);
+	 }
 </style>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -57,15 +74,15 @@
         ================================================== 
             TITLE: Global Page Section Start
         ================================================== -->
-        <section class="global-page-header">
+        <section class="global-page-header" id="back">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="block">
-                            <h2>약국예약</h2>
+                            <h2>약국 예약</h2>
                             <ol class="breadcrumb">
                                 <li>
-                                    <a href="/customer/index">
+                                    <a href="/customer/loginSuccess">
                                         <i class="ion-ios-home"></i>
                                         Home
                                     </a>

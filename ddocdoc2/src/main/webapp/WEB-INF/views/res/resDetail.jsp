@@ -59,12 +59,11 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="block">
-					<h2>Detail Reservation</h2>
+					<h2>병원예약 상세</h2>
 					<ol class="breadcrumb">
 						<li><a href="success.do"> <i class="ion-ios-home"></i>
 								Home
 						</a></li>
-						<li class="active">Detail Reservation</li>
 					</ol>
 				</div>
 			</div>
