@@ -26,6 +26,24 @@
 	#fsize2{
 		font-size: 25px;
 	}
+	
+	 	#back{
+	background-image: url("http://image.sayup.co.kr/contents/55eead25664ef9030088eb65/e1e79c77609cb2d1c1f4a86d6cc41340.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 40%;
+    
+	}
+	#back::before{
+     content: " ";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+	}
 </style>
 </head>
 <body>
@@ -35,7 +53,7 @@
         ================================================== 
             TITLE: Global Page Section Start
         ================================================== -->
-        <section class="global-page-header">
+        <section class="global-page-header" id="back">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -43,7 +61,7 @@
                             <h2>예방접종 기록</h2>
                             <ol class="breadcrumb">
                                 <li>
-                                    <a href="/DDOCDOC/Customer/success.do">
+                                    <a href="/customer/loginSuccess">
                                         <i class="ion-ios-home"></i>
                                         Home
                                     </a>

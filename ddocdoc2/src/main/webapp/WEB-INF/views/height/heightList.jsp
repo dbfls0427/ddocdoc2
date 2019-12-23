@@ -6,6 +6,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+		 	#back{
+	background-image: url("http://image.sayup.co.kr/contents/55eea504664ef9030088dd63/86539fc50bd7b3ca1cc6027deac9a77e.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 40%;
+    
+	}
+	#back::before{
+     content: " ";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+</style>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
 	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 	crossorigin="anonymous"></script>
@@ -304,14 +322,14 @@ j(document).ready(function(){
         ================================================== 
             TITLE: Global Page Section Start
         ================================================== -->
-	<section class="global-page-header">
+	<section class="global-page-header" id="back">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="block">
-						<h2>우리아이 관리</h2>
+						<h2>성장 관리</h2>
 						<ol class="breadcrumb">
-							<li><a href="/DDOCDOC/Customer/success.do"> <i
+							<li><a href="/customer/loginSuccess"> <i
 									class="ion-ios-home"></i> Home
 							</a></li>
 						</ol>

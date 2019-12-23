@@ -7,7 +7,7 @@
 <%@include file="../includes/header.jsp" %>
  <style>
  #backIM{
-	background-image: url("http://image.sayup.co.kr/collection/55dfee8cde93250300ee2915/9d99e58cde0d1446e3be7e07a496c222.jpg");
+	background-image: url("http://image.sayup.co.kr/collection/55efc470f6f58b0300b3e1c1/40dd16c85e02cdf2ff7151c269bcdd4b.jpg");
 	background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 42%;
