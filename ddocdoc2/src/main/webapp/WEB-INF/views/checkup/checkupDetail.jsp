@@ -53,8 +53,8 @@
 <script type="text/javascript">
 jQuery(document).ready(function(){
 	
-	jQuery("#upd").on("click",function(e){
-		var QueryString = jQuery("#updateForm").serialize();
+	jQuery("#upd2").on("click",function(e){
+		var QueryString = jQuery("#updateForm2").serialize();
 		location.href="/checkup/checkupUpdate?"+QueryString;
 	})
 });
@@ -96,7 +96,7 @@ jQuery(document).ready(function(){
 			<div style="margin-left: 130x; width: 400px;"><label style="font-size: 40px; color: #152571; margin-left: 110px;">${che_name }</label><hr></div>
 			<div><label style="margin-left: 5px">검진시기</label>&nbsp&nbsp<span>${infoVO.che_info_date }</span></div>
 		</div>
-	<form style="margin-bottom: 10px;" id="updateForm">
+	<form style="margin-bottom: 10px;" id="updateForm2">
 	 <div style="width: 300px">
 	 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		<input type="hidden" name="ch_num" value="${ccvo.ch_num }">
@@ -140,8 +140,8 @@ jQuery(document).ready(function(){
 	</form>
 	<div style="display: flex; justify-content : left;margin-left: 45px;">
 		<div style="display: flex; justify-content : center">
-			<button class="btn btn-default btn-lg" style="width: 80px" id="upd">변경</button>
-			<button class="btn btn-default btn-lg" style="margin-left: 10px;width: 80px"><a href="/checkup/checkupDelete?ch_num=${ccvo.ch_num }&cup_content=${ccvo.che_content}">삭제</a></button>
+			<button class="btn btn-default btn-lg" style="width: 80px" id="upd2">변경</button>
+			<button class="btn btn-default btn-lg" style="margin-left: 10px;width: 80px"><a href="/checkup/checkupDelete?ch_num=${ccvo.ch_num }&cup_content=${ccvo.cup_content}">삭제</a></button>
 		</div>
 	</div>
  

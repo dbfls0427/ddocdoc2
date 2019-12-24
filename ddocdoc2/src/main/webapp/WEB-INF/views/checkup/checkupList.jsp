@@ -53,7 +53,7 @@
   		
 	  function drawMultSeries() {
 		  var data = google.visualization.arrayToDataTable([
-	        [' ', '접종률', { role: 'style' },'전체달성',{ role: 'style' }],
+	        [' ', '검진률', { role: 'style' },'전체달성',{ role: 'style' }],
 	        [' ', percent, 'fill-color: #FA5882', 100, 'fill-color: #A4A4A4']
 	      ]);
 	
@@ -61,7 +61,7 @@
 	      var options = {
 	        chartArea: {width: '30%'},
 	        hAxis: {
-	          title: '접종달성 현황',
+	          title: '검진달성 현황',
 	          minValue: 0
 	        }
 	      };

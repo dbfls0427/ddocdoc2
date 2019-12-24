@@ -90,6 +90,7 @@ public class CheckupController {
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("cup_content", cup_content);
 		map.put("ch_num", ch_num);
+		log.info("컨트롤러 검진 나오나");
 		
 		ChildCheckupVO ccvo = service.selectCheDetail(map);
 		

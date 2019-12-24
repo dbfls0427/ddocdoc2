@@ -34,7 +34,7 @@
 	<!-- 검진내역 수정 -->
 	<update id="updateChe" parameterType="org.ddocdoc.vo.checkupvo.ChildCheckupVO">
 		update dd_child_checkup
-		set cup_date = #{cup_date}, che_memo = #{inj_memo}
+		set cup_date = #{cup_date}, che_memo = #{che_memo}
 		where cup_content = #{cup_content} and ch_num = #{ch_num}
 	</update>
 	
