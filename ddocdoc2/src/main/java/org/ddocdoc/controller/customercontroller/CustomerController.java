@@ -97,13 +97,13 @@ public class CustomerController {
 	
 	//占쏙옙占쏙옙 占쏙옙占쏙옙
 	@PostMapping("/hospitalRes")
-	public String hospitalRes(HospitalResVO hospitalresVO, @RequestParam String hos_name, Model model){
+	public String hospitalRes(HospitalResVO hospitalresVO, @RequestParam String hos_name, Model model, RedirectAttributes rttr){
 		System.out.println(hos_name);
 		String hos_num = service.selectHosNum(hos_name);
 		hospitalresVO.setHos_num(hos_num);
 		service.insertHospitalRes(hospitalresVO);
-		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
-		return "/login/loginSuccess";
+		rttr.addFlashAttribute("customer", (CustomerVO)CustomerController.session.getAttribute("customer"));
+		return "redirect:/customer/hospitalResList";
 	}
 	
 	//占쏙옙占쏙옙 占쏙옙占쏙옙트
@@ -252,11 +252,11 @@ public class CustomerController {
 		
 	// Reserve Pharmacy
 	@PostMapping("/pharRes")
-	public String insertPharRes(PharResVO pvo, @RequestParam String cus_num, @RequestParam String phar_name, Model model){
-		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
+	public String insertPharRes(PharResVO pvo, @RequestParam String cus_num, @RequestParam String phar_name, RedirectAttributes rttr){
+		rttr.addFlashAttribute("customer", (CustomerVO)CustomerController.session.getAttribute("customer"));
 		System.out.println(cus_num);
-		model.addAttribute("cus_num", cus_num);
-		model.addAttribute("phar_name", phar_name);
+		rttr.addFlashAttribute("cus_num", cus_num);
+		rttr.addFlashAttribute("phar_name", phar_name);
 		String phar_num = service.selectPharNum(phar_name);
 		// increasePharResWait(phar_num);
 		service.increasePharResWait(phar_num);
@@ -264,8 +264,7 @@ public class CustomerController {
 
 		service.insertPharRes(pvo);
 		
-		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
-		return "/login/loginSuccess";
+		return "redirect:/customer/hospitalResList";
 	}
 	
 	// Reservation Pharmacy Detail
@@ -301,8 +300,9 @@ public class CustomerController {
 	
 	// pay
 	@PostMapping("/payAction")
-	public String payAction(@RequestParam String pres_num, @RequestParam String cus_num, @RequestParam String pay_type, Model model){
-		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
+	public String payAction(@RequestParam String pres_num, @RequestParam String cus_num, @RequestParam String pay_type, RedirectAttributes rttr){
+		//model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
+		rttr.addFlashAttribute("customer", (CustomerVO)CustomerController.session.getAttribute("customer"));
 		
 		PayVO pay = new PayVO();
 		pay.setCus_num(cus_num);
@@ -312,8 +312,7 @@ public class CustomerController {
 		service.insertPay(pay);
 		service.updatePay(pres_num);
 		
-		return "/login/loginSuccess";
-		
+		return "redirect:/customer/hospitalResList";
 	}
 	
 }
