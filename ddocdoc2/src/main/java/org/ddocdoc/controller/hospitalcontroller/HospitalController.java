@@ -1,6 +1,7 @@
 package org.ddocdoc.controller.hospitalcontroller;
 
 import java.io.File;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 //import java.util.ArrayList;
@@ -11,7 +12,6 @@ import java.util.UUID;
 import org.springframework.http.MediaType;
 import org.ddocdoc.controller.customercontroller.CustomerController;
 import org.ddocdoc.service.hospitalservice.HospitalService;
-import org.ddocdoc.vo.attachfilevo.AttachFileVO;
 import org.ddocdoc.vo.childvo.ChildVO;
 import org.ddocdoc.vo.customervo.CustomerVO;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
