@@ -49,10 +49,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 		if(roleNames.contains("ROLE_ADMIN")){
 			response.sendRedirect("/hospital/admin");
 			return;
-		} else{
-			response.sendRedirect("/customer/loginSuccess");
-			return;
-		}
+		} 
 		
 		
 	}

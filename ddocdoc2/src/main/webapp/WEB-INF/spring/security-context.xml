@@ -10,6 +10,11 @@
 		<bean id="customLoginSuccess" class="org.ddocdoc.security.CustomLoginSuccessHandler"/>
 		
 	<security:http>
+		
+		<security:intercept-url pattern="/customer/hosSearch" access="hasRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/customer/hospitalResForm" access="hasRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/customer/hospitalRes" access="hasRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/customer/hospitalResList" access="hasRole('ROLE_ADMIN')"/>
 	
 		<security:intercept-url pattern="/customer/hosSearch" access="hasRole('ROLE_MEMBER')"/>
 		<security:intercept-url pattern="/customer/loginSuccess" access="hasRole('ROLE_MEMBER')"/>
@@ -17,11 +22,7 @@
 		<security:intercept-url pattern="/customer/hospitalRes" access="hasRole('ROLE_MEMBER')"/>
 		<security:intercept-url pattern="/customer/hospitalResList" access="hasRole('ROLE_MEMBER')"/>
 		
-		<security:intercept-url pattern="/customer/loginSuccess" access="hasRole('ROLE_ADMIN')"/>
-		<security:intercept-url pattern="/customer/hosSearch" access="hasRole('ROLE_ADMIN')"/>
-		<security:intercept-url pattern="/customer/hospitalResForm" access="hasRole('ROLE_ADMIN')"/>
-		<security:intercept-url pattern="/customer/hospitalRes" access="hasRole('ROLE_ADMIN')"/>
-		<security:intercept-url pattern="/customer/hospitalResList" access="hasRole('ROLE_ADMIN')"/>
+
 		
 		<!-- Parmacy Reservation -->
 		<security:intercept-url pattern="/customer/pharSearch" access="hasRole('ROLE_MEMBER')"/>
