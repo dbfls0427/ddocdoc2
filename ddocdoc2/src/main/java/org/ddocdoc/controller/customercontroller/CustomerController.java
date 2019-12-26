@@ -133,12 +133,17 @@ public class CustomerController {
 		System.out.println("커占쏙옙占쏙옙占� 占쏙옙트占싼뤄옙占쏙옙占쏙옙 hos_res_num : " + hos_res_num);
 		System.out.println("check" + check);
 		
-		if(check.equals("�삁�빟 �젒�닔 ��湲� 以�")){
+		if(check.equals("예약 접수 대기 중")){
+			model.addAttribute("res", res);
+			model.addAttribute("hos_res_num", hos_res_num);
+			model.addAttribute("cus_name", ((CustomerVO)session.getAttribute("customer")).getCus_name());
 			response.setContentType("text/html; charset=UTF-8");
             PrintWriter out = response.getWriter();
-            out.println("<script>alert('�삁�빟 �젒�닔媛� �븘吏� �릺吏� �븡�븘 ��湲곕쾲�샇 諛쒓툒�씠 �븞�릺�뿀�뒿�땲�떎. �젒�닔媛� �셿猷뚮맆 �븣 源뚯� �옞�떆留� 湲곕떎�젮二쇱꽭�슂.'); location.href='/customer/hospitalResList';</script>");
+//            out.println("<script>alert('예약 접수가 아직 되지 않아 대기번호 발급이 안되었습니다. 접수가 완료될 때 까지 잠시만 기다려주세요.'); location.href='/customer/hospitalResList';</script>");
+            out.println("<script>alert('예약 접수가 아직 되지 않아 대기번호 발급이 안되었습니다. 접수가 완료될 때 까지 잠시만 기다려주세요.');</script>");
             out.flush();
-			return null;
+//			return null;
+			return "/res/resDetail";
 		}else{
 			int count = service.detailWait(hos_res_num);
 			model.addAttribute("res", res);
@@ -225,6 +230,7 @@ public class CustomerController {
 		model.addAttribute("list2", list2);
 		model.addAttribute("check", check);
 		model.addAttribute("price", price);
+		
 		
 		return "/pres/presDetail";
 	}
@@ -313,6 +319,41 @@ public class CustomerController {
 		service.updatePay(pres_num);
 		
 		return "redirect:/customer/hospitalResList";
+	}
+	
+	// delete (cancel) Hospital Reservation
+	@GetMapping("/deleteRes")
+	public String deleteRes(@RequestParam String hos_res_num, @RequestParam String hos_num,RedirectAttributes rttr, HttpServletResponse response) throws IOException{
+		
+		HospitalResVO res = service.detailRes(hos_res_num);
+		rttr.addFlashAttribute("customer", (CustomerVO)CustomerController.session.getAttribute("customer"));
+		rttr.addFlashAttribute("hos_res_num", hos_res_num);
+		rttr.addFlashAttribute("hos_num", hos_num);
+		rttr.addFlashAttribute("res", res);
+		
+		String check = service.checkResAcpt(hos_res_num);
+		System.out.println("check" + check);
+		
+		if(check.equals("예약 접수 대기 중")){
+			log.info("2-111customerController에서  에약접수대중일때 hos_res_numhoS_RES_NUM: "+hos_res_num);
+			response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('예약을 취소합니다.');location.href='/customer/hospitalResList';</script>");
+            out.flush();
+            log.info("3-33customerController 예약접수대기중이면 삭제가 가능토록!");
+            service.deleteRes(hos_res_num);
+            return null;
+		}else{
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter writer = response.getWriter();
+			writer.println("<script>alert('병원에 예약이 완료되었습니다. 병원예약 취소가 불가능합니다.');location.href='/customer/hospitalResList';</script>");
+			writer.flush();
+			 log.info("customerController 예약취소불가라믄 아므것도 안일어나고 걍 리스트화면으로~");
+			return null;
+		}
+		
+		
+	
 	}
 	
 }

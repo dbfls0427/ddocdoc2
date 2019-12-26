@@ -54,7 +54,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public String selectHosNum(String hos_name) {
-		System.out.println("¼­ºñ½º¿¡¼­ : " + hos_name);
+		System.out.println("ï¿½ï¿½ï¿½ñ½º¿ï¿½ï¿½ï¿½ : " + hos_name);
 		
 		return mapper.selectHosNum(hos_name);
 	}
@@ -211,7 +211,10 @@ public class CustomerServiceImpl implements CustomerService {
 		return mapper.hospitalOneName(hos_num);
 	}
 	
-	
+	@Override
+	public int deleteRes(String hos_res_num) {
+		return mapper.deleteRes(hos_res_num);
+	}
 	
 	
 	

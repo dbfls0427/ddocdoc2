@@ -18,98 +18,101 @@ public interface CustomerService {
 
 	public void insertCustomer(CustomerVO customer);
 
-	// ·Î±×ÀÎ ¼¼¼Ç³Ö±â
+	// ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç³Ö±ï¿½
 	public CustomerVO loginCustomer(String cus_id);
 
-	// º´¿ø ¹øÈ£ °¡Á®¿À±â
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public String selectHosNum(String hos_name);
 
-	// º´¿ø ¿¹¾à
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public void insertHospitalRes(HospitalResVO hospitalresVO);
 
-	// ¿¹¾à ¸®½ºÆ®
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	public List<HospitalResVO> resList(String cus_num);
 
-	// º´¿ø ÀÌ¸§ ÃßÃâ
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public List<String> detailNameHospital(String cus_num);
 
-	// ¾à±¹ ¿¹¾à ¸®½ºÆ®
+	// ï¿½à±¹ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	public List<PharResVO> pharResList(String cus_num);
 
-	// ¾à±¹ ÀÌ¸§ °¡Á®¿À±â
+	// ï¿½à±¹ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public List<String> detailNamePharmacy(String cus_num);
 
-	// ¿¹¾à »ó¼¼ ³»¿ë
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public HospitalResVO detailRes(String hos_res_num);
 
-	// ¿¹¾à Á¢¼ö È®ÀÎ
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	public String checkResAcpt(String hos_res_num);
 
-	// ´ë±â¹øÈ£ Á¶È¸
+	// ï¿½ï¿½ï¿½ï¿½È£ ï¿½ï¿½È¸
 	public int detailWait(String hos_res_num);
 
-	// ¸¶ÀÌÆäÀÌÁö ¼öÁ¤
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public int customerUpdate(CustomerVO customer);
 
-	// È¸¿ø Å»Åð
+	// È¸ï¿½ï¿½ Å»ï¿½ï¿½
 	public int customerDelete(String cus_num);
 
-	// È¸¿ø »ó¼¼
+	// È¸ï¿½ï¿½ ï¿½ï¿½
 	public CustomerVO customerDetail(String cus_num);
 
-	// Ã³¹æÀü º¸±â
+	// Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public PresVO presRealDetail(String hos_res_num);
 
-	// Ã³¹æÀü ¾à ¸í¼¼ Á¶È¸ ¸®½ºÆ®
+	// Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½È¸ ï¿½ï¿½ï¿½ï¿½Æ®
 	public List<PresDetailVO> cusPresDetailList(String pres_num);
 
-	// Ã³¹æÀü ¾à ¸í¼¼ ¾à ÀÌ¸§
+	// Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì¸ï¿½
 	public List<String> cusPresDetailMedName(String pres_num);
 
-	// °áÁ¦ ÇÏ±â
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Ï±ï¿½
 	public int insertPay(PayVO pay);
 
-	// °áÁ¦¿Ï·á
+	// ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½
 	public int updatePay(String pres_num);
 
-	// Ã³¹æÀü °áÁ¦ ¿©ºÎ ÃßÃâ
+	// Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public String selectPayCheck(String pres_num);
 
-	// ¾à °¡°Ý ÃßÃâ
+	// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public int selectPayPrice(String hos_res_num);
 
-	// º´¿ø Á¤º¸ ÃßÃâ
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public HospitalVO detailHospital(String hos_num);
 	
-	// Áõ»ó ÀÔ·Â
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
 	public int symptomInsert(SymptomVO sym);
 	
-	// Áõ»ó °Ë»ö °á°ú
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½
 	public SymptomDetailVO symptomDetail(String cus_num);
 	
-	//¾à±¹ ¹øÈ£ Ãâ·Â
+	//ï¿½à±¹ ï¿½ï¿½È£ ï¿½ï¿½ï¿½
 	public String selectPharNum(String phar_name);
 	
-	//¾à±¹ ¿¹¾àÇÏ±â
+	//ï¿½à±¹ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
 	int insertPharRes(PharResVO pvo);
 		
-	// ¾à±¹ ¿¹¾à »ó¼¼º¸±â
+	// ï¿½à±¹ ï¿½ï¿½ï¿½ï¿½ ï¿½ó¼¼ºï¿½ï¿½ï¿½
 	public PharResVO pharResDetail(String phar_res_num);
 	
-	// ¾à±¹ ÀÌ¸§ ÃßÃâ
+	// ï¿½à±¹ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public String selectPharmacyName(String phar_num);
 	
-	// ¾à±¹ ´ë±â¹øÈ£ Áõ°¡
+	// ï¿½à±¹ ï¿½ï¿½ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½
 	public int increasePharResWait(String phar_res_num);
 	
-	// ¾à±¹ ´ë±â¹øÈ£ Á¶È¸
+	// ï¿½à±¹ ï¿½ï¿½ï¿½ï¿½È£ ï¿½ï¿½È¸
 	public int detailPharWait(String phar_num);
 	
-	// ¾Ë¸²±â´É
+	// ï¿½Ë¸ï¿½ï¿½ï¿½ï¿½
 	public int notifyInsert(HashMap<String, String> map);
 	
-	// º´¿øÀÌ¸§ ÇÑ°³ ÃßÃâ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½Ñ°ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public String hospitalOneName(String hos_num);
+	
+	// Cancel Hospital Reservation
+    public int deleteRes(String hos_res_num);
 	
 	
 }

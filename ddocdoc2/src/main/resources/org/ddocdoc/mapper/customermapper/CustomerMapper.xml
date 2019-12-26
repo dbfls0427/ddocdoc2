@@ -69,9 +69,9 @@
 	</select>
 	
 	<!-- 예약 취소 -->
-	<!-- <delete id="deleteRes" parameterType="String">
+	<delete id="deleteRes" parameterType="String">
 	delete from dd_hos_res where hos_res_num = #{hos_res_num}
-	</delete> -->
+	</delete> 
 	
 	
 
@@ -82,9 +82,9 @@
 	</update> -->
 	
 	<!-- 대기번호 조회 -->
-	 <select id="detailWait" parameterType="String" resultType="int">
+	<select id="detailWait" parameterType="String" resultType="int">
 	select res_wait from dd_res_wait where hos_res_num = #{hos_res_num}
-	</select> 
+	</select>
 	
 	<!-- 마이페이지 수정 -->
 	 <update id="customerUpdate" parameterType="org.ddocdoc.vo.customervo.CustomerVO">
