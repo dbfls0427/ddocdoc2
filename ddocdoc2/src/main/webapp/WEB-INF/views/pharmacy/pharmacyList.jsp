@@ -145,6 +145,13 @@
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
+      
+      <li class="nav-item" style="text-align:center;">
+        <a class="btn btn-danger" href="/customer/loginSuccess" style="width:86%; padding-left: 6px;padding-right: 6px;">
+          <span>Go to UserMode</span></a>
+      </li>
+      <hr class="sidebar-divider d-none d-md-block">
+      
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">

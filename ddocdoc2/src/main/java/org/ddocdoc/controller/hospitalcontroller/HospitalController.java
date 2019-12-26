@@ -9,8 +9,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.http.MediaType;
 import org.ddocdoc.controller.customercontroller.CustomerController;
+import org.ddocdoc.service.customerservice.CustomerService;
 import org.ddocdoc.service.hospitalservice.HospitalService;
 import org.ddocdoc.vo.childvo.ChildVO;
 import org.ddocdoc.vo.customervo.CustomerVO;
@@ -42,6 +45,7 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.file.Files;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -49,6 +53,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestHeader;
 
 import lombok.AllArgsConstructor;
+import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import net.coobird.thumbnailator.Thumbnailator;
 import oracle.net.ano.Service;
@@ -59,6 +64,7 @@ import oracle.net.ano.Service;
 @AllArgsConstructor
 public class HospitalController {
 	
+	@Setter(onMethod_ = @Autowired)
 	private HospitalService service;
 	
 	
@@ -243,6 +249,7 @@ public class HospitalController {
 			model.addAttribute("count", service.notifyCount());
 			model.addAttribute("notifyNumList", service.notifyNumList());
 			return "/index/admin";
+			
 		}
 		
 		// alram click
