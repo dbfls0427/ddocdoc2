@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
+<html class="no-js">
+    <head>
+  <%@include file="../includes/header.jsp" %>
 <meta name="_csrf" th:content="${_csrf.token}"/>
 <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
@@ -92,7 +93,7 @@
 				audio.pause();
 				audio.src = "/resources/game/menu1.mp3";
 				audio.play();
-				typingTxt = '증상 검색을 선택하셨습니다. 어떤 메뉴를 선택하시겠습니까? \n 1. 증상 입력하기 2. 영상으로 증상 검색';
+				typingTxt = '증상 검색을 선택하셨습니다. 어떤 메뉴를 선택하시겠습니까? \n 1. 증상을 통한 검색 2. 영상으로 간단히 증상 검색';
 				typingBool = false;
 				typingIdx = 0;
 				if(typingBool==false){
@@ -115,6 +116,7 @@
 				gameAjax.hospitalList(function(list) {
 					console.log("dddddddd")
 					var str = '';
+					str += '상담 신청을 하실 병원을 선택해주세요.</br>';
 					for(var i = 0, len = list.length||0; i < len; i++){
 						console.log(list[i]);
 						 str += '<a href="/customer/chatting?hos_num='+ list[i].hos_num + '">' + list[i].hos_name + '</a></br>';
@@ -175,10 +177,10 @@
 						resultSymptom = selectSymptom;
 						console.log(selectSymptom);
 						console.log(detailSymptom);
-						typingTxt = '증상과 고객님의 세부 증상은 다음과 같습니다.\n ';
-						typingTxt += '1. 증상 : ' + selectSymptom + '\n ';
+						typingTxt = '예상 증상과 고객님의 세부 증상은 다음과 같습니다.\n ';
+						typingTxt += '1. 예상 증상 : ' + selectSymptom + '\n ';
 						typingTxt += '2. 세부증상 : ' + detailSymptom + '\n';
-						typingTxt += '증상 검색에 대한 결과와 치료 방법을 보시겠습니까 ? ';
+						typingTxt += '예상 증상의 치료 방법을 보시겠습니까 ? ';
 						
 						typingBool = false;
 						typingIdx = 0;
@@ -201,14 +203,18 @@
 				});  
 				
 				// ajax 처리, 모달창 처리
-				span.onclick = function() {
-		            modal.style.display = "none";
-		        }
+					span.onclick = function() {
+			            modal.style.display = "none";
+			        }
 				
 			}
 			
 			
 		});
+		
+		
+		
+		
 		
 		
 		$(document).on("click", ".onlineRes", function() {
@@ -238,7 +244,7 @@
 				
 				/* 음성 파일 for문으로 돌려서 재생하기 */
 				console.log(data.symptomexampledetail);
-				typingTxt = "고객님의 증상입니다. ";
+				typingTxt = "고객님의 예상 증상입니다. ";
 				typingTxt += data.symptomexampledetail;
 				typingTxt += " 증상에 대한 치료 방법은 ";
 				typingTxt += data.symptomsolution;
@@ -362,15 +368,33 @@
 		animation-iteration-count:infinite;
 	}
 	
-	
+	.box_malpoong{
+		position: relative;
+	}
 	
 	.malpoong{
-		height : 400px;
-		width : 400px;
-		background-image: url('/resources/game/mal.jpg');
-		background-size: 400px 400px;
-		margin-top: 300px;
-		
+		position: absolute;
+	    top: -50px;
+	    right: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 690px;
+	    background-repeat-y: no-repeat;
+	    background-repeat-x: no-repeat;
+	    background-position: center;
+	    background-size: cover;
+	/* 
+		height : 700px;
+		width : 1000px;
+		background-size: 700px 650px; 
+		 */
+		background-image: url('/resources/game/ddocdoc2.jpg');
+	}
+	
+	#footer{
+	    position: absolute;
+	    bottom: 0px;
+	    width: 100%;
 	}
 	
 	/* The Modal (background) */
@@ -433,24 +457,30 @@
 
 </head>
 <body>
+ <%@include file="../includes/menu.jsp" %>
+<section class="company-description" >
+ 
 
-<div>
-<div class="malpoong" style="position: absolute;">
+<div class="box_malpoong">
+	<div class="malpoong" style="position: absolute;">
+		<div>
 		<p class="typing-txt">어서오십시오. 간단하게 증상과 진료를 볼 수 있는 똑닥 온라인 진료 시스템입니다.</p>
 		<p class="typing" style="margin-top: 150px; margin-left: 50px"></p>
+		 </div>
 		 <!--  <img src="mal.jpg"> -->
 	</div>
-	
-<div class="customer" style="position: absolute; margin-top: 500px; margin-left: 100px">
-
-</div>
-
-<!-- 	<div class="backgroundHospital" style="position: absolute;"> -->
-	 	<img src="/resources/game/hospital.jpg">
 		
-<!-- 	</div> -->
+	<div class="customer" style="position: absolute; margin-top: 500px; margin-left: 100px">
 	
+	</div>
+	
+	<!-- 	<div class="backgroundHospital" style="position: absolute;"> -->
+		 	<!-- <img src="/resources/game/doctor.png" style="width: 400px; height: 400px;"> -->
+			
+	<!-- 	</div> -->
+		
 </div>
+</section>
 
  <!-- The Modal -->
     <div id="myModal" class="modal">
@@ -495,9 +525,12 @@
  			</div>
  		
  		</div>
+ 		
+ 		
 
 
 
 
-</body>
+	<%@include file="../includes/footer.jsp" %>
+ 	</body>
 </html>
