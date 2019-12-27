@@ -1,7 +1,6 @@
 package org.ddocdoc.controller.hospitalcontroller;
 
 import java.io.File;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 //import java.util.ArrayList;
@@ -9,11 +8,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.http.MediaType;
 import org.ddocdoc.controller.customercontroller.CustomerController;
-import org.ddocdoc.service.customerservice.CustomerService;
 import org.ddocdoc.service.hospitalservice.HospitalService;
 import org.ddocdoc.vo.childvo.ChildVO;
 import org.ddocdoc.vo.customervo.CustomerVO;
@@ -38,24 +34,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
-import java.io.FileOutputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.nio.file.Files;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.RequestHeader;
-
 import lombok.AllArgsConstructor;
-import lombok.Setter;
 import lombok.extern.log4j.Log4j;
-import net.coobird.thumbnailator.Thumbnailator;
 import oracle.net.ano.Service;
 
 @Controller
@@ -64,7 +44,6 @@ import oracle.net.ano.Service;
 @AllArgsConstructor
 public class HospitalController {
 	
-	@Setter(onMethod_ = @Autowired)
 	private HospitalService service;
 	
 	
@@ -77,7 +56,17 @@ public class HospitalController {
 		
 		return "/hospital/hospitalList";
 	}
-
+	
+	/*
+	@GetMapping("/hospitalList")
+	public String hospitalList(@RequestParam("hos_num") String hos_num, Model model){
+		log.info("hospitalList~~~~~");
+		
+		model.addAttribute("hospitalList", service.hospitalList(hos_num));
+		model.addAttribute("hos_num", hos_num);
+		return "/hospital/hospitalList";
+	}
+	*/
 	
 	// insert form
 	@GetMapping("/hospitalInsert")
@@ -85,7 +74,14 @@ public class HospitalController {
 		log.info("hospitalInsert...form");
 		return "/hospital/hospitalInsert";
 	}
-	
+	/*
+	@GetMapping("/hospitalInsert")
+	public String hospitalInsert(@RequestParam("hos_num") String hos_num, Model model){
+		log.info("hospitalInsert...form");
+		model.addAttribute("hos_num", hos_num);
+		return "/hospital/hospitalInsert";
+	}
+	*/
 	
 	// insert
 	@RequestMapping(value="/hospitalInsert" , method = {RequestMethod.POST})
@@ -165,6 +161,74 @@ public class HospitalController {
 		return "redirect:/hospital/hospitalList";
 	}
 		
+	
+	
+	// getFolder()
+	private String getFolder() {
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+		Date date = new Date();
+
+		String str = sdf.format(date);
+
+		return str.replace("-", File.separator);
+	}
+	
+	// uploadAjaxAction
+	@PostMapping(value = "/uploadAjaxAction", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ResponseBody
+	public ResponseEntity<List<HospitalVO>> uploadAjaxPost(MultipartFile[] uploadFile) {
+		
+		log.info("_____________----_");
+		
+		List<HospitalVO> list = new ArrayList<>();
+		String uploadFolder = "C:\\upload";
+
+		String uploadFolderPath = getFolder();
+		// make folder --------
+		File uploadPath = new File(uploadFolder, uploadFolderPath);
+
+		if (uploadPath.exists() == false) {
+			uploadPath.mkdirs();
+		}
+		// make yyyy/MM/dd folder
+
+		for (MultipartFile multipartFile : uploadFile) {
+
+			HospitalVO attachDTO = new HospitalVO();
+
+			String uploadFileName = multipartFile.getOriginalFilename();
+
+			// IE has file path
+			uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("\\") + 1);
+			log.info("only file name: " + uploadFileName);
+			attachDTO.setFileName(uploadFileName);
+
+			UUID uuid = UUID.randomUUID();
+
+			uploadFileName = uuid.toString() + "_" + uploadFileName;
+
+			try {
+				File saveFile = new File(uploadPath, uploadFileName);
+				multipartFile.transferTo(saveFile);
+
+				attachDTO.setUuid(uuid.toString());
+				attachDTO.setUploadPath(uploadFolderPath);
+
+				
+
+				// add to List
+				log.info("ddddd"+attachDTO);
+				list.add(attachDTO);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		} // end for
+		return new ResponseEntity<>(list, HttpStatus.OK);
+	}
 
 	@GetMapping("/QRCode")
 	public String QRCode(){
@@ -245,21 +309,26 @@ public class HospitalController {
 	// 占쏙옙占쏙옙 占쏙옙占�
 		@GetMapping("/admin")
 		public String admin(Model model){
+
 			model.addAttribute("notifyList", service.notifyList());
 			model.addAttribute("count", service.notifyCount());
 			model.addAttribute("notifyNumList", service.notifyNumList());
+			model.addAttribute("notifyHosNameList", service.notifyHosNameList());
 			return "/index/admin";
-			
 		}
 		
 		// alram click
 		@GetMapping("/alramClick")
-		public String alramClick(@RequestParam String not_num){
+		public String alramClick(@RequestParam String not_num, RedirectAttributes rttr){
 			System.out.println("ddddd : " + not_num);
 			service.notifyUpdate(not_num);
-			return "redirect:/customer/chatting";
+			rttr.addAttribute("hos_num", service.chatHosNum(not_num));
+			return "redirect:/hospital/chattingDoctor";
 		}
 		
-		
-		
+		@GetMapping("/chattingDoctor")
+		public String chattingDoctor(@RequestParam String hos_num){
+			return "/chatting/chatting";
+		}
+	
 }

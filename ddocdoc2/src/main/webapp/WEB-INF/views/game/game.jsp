@@ -60,8 +60,8 @@
 				
 				tyInt = setInterval(typing2,100);
 			}
-			var inputText = '<input type="text" id="menuNum"/>';
-			var inputButton = '<button class="menuSubmit">입력</button>';
+			var inputText = '<input type="text" id="menuNum" style="margin-top: 150px; margin-left: 600px;"/>';
+			var inputButton = '<button class="menuSubmit" style="margin-top: 150px; margin-left: 10px;">입력</button>';
 			var str = '';
 			
 			str += inputText;
@@ -101,8 +101,8 @@
 					
 					tyInt = setInterval(typing2,100);
 				}
-				var inputText = '<input type="text" id="menuNum2"/>';
-				var inputButton = '<button class="menuSubmit2">입력</button>';
+				var inputText = '<input type="text" id="menuNum2" style="margin-top: 180px; margin-left: 600px;"/>';
+				var inputButton = '<button class="menuSubmit2" style="margin-top: 180px; margin-left: 10px;">입력</button>';
 				var str = '';
 				str += inputText;
 				str += inputButton;
@@ -191,8 +191,8 @@
 						}
 						var str = '';
 						
-						var inputButton = '<button class = "closeRes" style="margin-top:50px;">예</button>';
-						var inputButton2 = '<button class = "realcloseRes" style="margin-top:50px;">아니오</button>';
+						var inputButton = '<button class = "closeRes" style="margin-top: 180px; margin-left: 670px;">예</button>';
+						var inputButton2 = '<button class = "realcloseRes" style="margin-top: 180px; margin-left: 10px;">아니오</button>';
 						str += inputButton;
 						str += inputButton2;
 						
@@ -259,7 +259,7 @@
 				}
 				
 				var str = '';
-				var inputButton = '<button class = "onlineRes" style="margin-top:30px;">예</button>';
+				var inputButton = '<button class = "onlineRes" style="margin-top: 150px; margin-left: 600px;">예</button>';
 				str += inputButton;
 				$(".customer").html(str);
 			});
@@ -463,16 +463,17 @@
 
 <div class="box_malpoong">
 	<div class="malpoong" style="position: absolute;">
-		<div>
+		<div style="margin-left: 490px; margin-top: 150px; height:100px; width: 400px; overflow: auto;">
 		<p class="typing-txt">어서오십시오. 간단하게 증상과 진료를 볼 수 있는 똑닥 온라인 진료 시스템입니다.</p>
-		<p class="typing" style="margin-top: 150px; margin-left: 50px"></p>
+		<p class="typing" style=" margin-left: 50px"></p>
 		 </div>
 		 <!--  <img src="mal.jpg"> -->
 	</div>
 		
-	<div class="customer" style="position: absolute; margin-top: 500px; margin-left: 100px">
+	<div class="customer" style="position: absolute;/*  margin-top: 150px; margin-left: 600px; */">
 	
 	</div>
+
 	
 	<!-- 	<div class="backgroundHospital" style="position: absolute;"> -->
 		 	<!-- <img src="/resources/game/doctor.png" style="width: 400px; height: 400px;"> -->
@@ -496,7 +497,7 @@
         		<option value="설사">설사</option>
       			
         		<option value="두통">두통</option>
-        		<option value="붉은반점">붉은반점</option>
+        		<option value="붉은 반점">붉은 반점</option>
         		<option value="가려움증">가려움증</option>
         		<option value="두드러기">두드러기</option>
         		
