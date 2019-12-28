@@ -258,6 +258,34 @@
 	<insert id="notifyInsert" parameterType="String">
 		insert into dd_notify values(notify_seq.nextval, #{cus_num}, #{hos_num}, '확인안함')
 	</insert>
+	
+	<!-- 커뮤니티 글 목록 -->
+	<select id="comList" resultType="org.ddocdoc.vo.communityvo.CommunityVO">
+		<![CDATA[
+		select * from dd_community where com_num > 0
+		]]>
+	</select>
+	
+	<!-- 커뮤니티 글 입력 -->
+	<insert id="comInsert" parameterType="org.ddocdoc.vo.communityvo.CommunityVO">
+		insert into dd_community values(com_seq.nextval, #{com_title}, #{com_writer, jdbcType=VARCHAR}, #{com_content}, sysdate, 0, 0, 0, #{cus_num})
+	
+	</insert>
+	
+	<!-- 커뮤니티 글 상세 -->
+	<select id="comDetail" resultType="org.ddocdoc.vo.communityvo.CommunityVO" parameterType="String">
+		select * from dd_community where com_num = #{com_num}
+	</select>
+	
+	<!-- 커뮤니티 글 삭제 -->
+	<delete id="comDelete" parameterType="String">
+		delete from dd_community where com_num = #{com_num}
+	</delete>
+	
+	<!-- 커뮤니티 글 수정 -->
+	<update id="comUpdate" parameterType="org.ddocdoc.vo.communityvo.CommunityVO">
+		update dd_community set com_title = #{com_title}, com_content = #{com_content} where com_num = #{com_num}
+	</update>
 </mapper>
 
 

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.ddocdoc.service.customerservice.CustomerService;
+import org.ddocdoc.vo.communityvo.CommunityVO;
 import org.ddocdoc.vo.customervo.CustomerVO;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
 import org.ddocdoc.vo.hospitalvo.HospitalVO;
@@ -355,5 +356,56 @@ public class CustomerController {
 		
 	
 	}
+	
+	
+	@GetMapping("/comInsertForm")
+	public String comInsertForm(Model model){
+		CustomerVO customer = (CustomerVO)session.getAttribute("customer");
+		model.addAttribute("customer", customer);
+		return "/community/comInsert";
+	}
+	
+	@PostMapping("/comInsert")
+	public String comInsert(CommunityVO com){
+		service.comInsert(com);
+		return "redirect:/customer/comList";
+	}
+	
+	@GetMapping("/comList")
+	public String comList(Model model){
+		List<CommunityVO> list = service.comList();
+		model.addAttribute("list", list);
+		return "/community/comList";
+	}
+	
+	@GetMapping("/comDetail")
+	public String comDetail(@RequestParam("com_num") String com_num, Model model){
+		CommunityVO com = service.comDetail(com_num);
+		model.addAttribute("com", com);
+		return "/community/comDetail";
+	}
+	
+	@GetMapping("/comUpdateForm")
+	public String comUpdateForm(@RequestParam("com_num") String com_num, Model model){
+		CommunityVO com = service.comDetail(com_num);
+		model.addAttribute("com", com);
+		return "/community/comUpdateForm";
+	}
+	
+	@PostMapping("/comUpdate")
+	public String comUpdate(CommunityVO com, RedirectAttributes rttr){
+		service.comUpdate(com);
+		String com_num = com.getCom_num();
+		rttr.addAttribute("com_num", com_num);
+		return "redirect:/customer/comDetail";
+	}
+	
+	@GetMapping("/comDelete")
+	public String comDelete(@RequestParam("com_num") String com_num){
+		service.comDelete(com_num);
+		return "redirect:/customer/comList";
+	}
+	
+	
 	
 }

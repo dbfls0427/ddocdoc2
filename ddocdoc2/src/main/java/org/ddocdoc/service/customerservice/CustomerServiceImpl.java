@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.ddocdoc.controller.customercontroller.CustomerController;
 import org.ddocdoc.mapper.customermapper.CustomerMapper;
+import org.ddocdoc.vo.communityvo.CommunityVO;
 import org.ddocdoc.vo.customervo.CustomerAuthVO;
 import org.ddocdoc.vo.customervo.CustomerVO;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
@@ -214,6 +215,31 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public int deleteRes(String hos_res_num) {
 		return mapper.deleteRes(hos_res_num);
+	}
+
+	@Override
+	public int comInsert(CommunityVO com) {
+		return mapper.comInsert(com);
+	}
+
+	@Override
+	public List<CommunityVO> comList() {
+		return mapper.comList();
+	}
+
+	@Override
+	public CommunityVO comDetail(String com_num) {
+		return mapper.comDetail(com_num);
+	}
+
+	@Override
+	public int comDelete(String com_num) {
+		return mapper.comDelete(com_num);
+	}
+
+	@Override
+	public int comUpdate(CommunityVO com) {
+		return mapper.comUpdate(com);
 	}
 	
 	
