@@ -29,7 +29,6 @@ import lombok.extern.log4j.Log4j;
 public class InjectController {
 
 	private InjectService service;
-	
 	@GetMapping("/injectList")
 	public void injectList(@RequestParam("ch_num") String ch_num, Model model){
 		

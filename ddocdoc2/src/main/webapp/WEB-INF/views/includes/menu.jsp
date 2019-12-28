@@ -67,6 +67,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">똑닥뷰티<span class="caret"></span></a>
                                 <div class="dropdown-menu">
                                     <ul>
+                                        <li><a href="/live/liveList?cus_num=${customer.cus_num }">Live상담</a></li>
                                         <li><a href="/video/beautyVideo">뷰티TV</a></li>
                                     </ul>
                                 </div>
