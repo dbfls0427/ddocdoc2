@@ -6,8 +6,8 @@
 
 	<!-- 병원 정보 등록 -->
 	<insert id="hospitalInsert" parameterType="org.ddocdoc.vo.hospitalvo.HospitalVO">
-		insert into dd_hospital (hos_num, hos_name, hos_tel, hos_addr, hos_time, hos_info, hos_wait, hos_type, uuid, uploadPath, fileName) values('H00' || hospital_seq.nextval, #{hos_name, jdbcType=VARCHAR}, #{hos_tel, jdbcType=VARCHAR},
-			#{hos_addr, jdbcType=VARCHAR}, #{hos_time, jdbcType=VARCHAR}, #{hos_info, jdbcType=VARCHAR}, 0, #{hos_type, jdbcType=VARCHAR}, #{uuid, jdbcType=VARCHAR}, #{uploadPath, jdbcType=VARCHAR}, #{fileName, jdbcType=VARCHAR})
+		insert into dd_hospital (hos_num, hos_name, hos_tel, hos_addr, hos_time, hos_info, hos_wait, hos_type) values('H00' || hospital_seq.nextval, #{hos_name, jdbcType=VARCHAR}, #{hos_tel, jdbcType=VARCHAR},
+			#{hos_addr, jdbcType=VARCHAR}, #{hos_time, jdbcType=VARCHAR}, #{hos_info, jdbcType=VARCHAR}, 0, #{hos_type, jdbcType=VARCHAR})
 	</insert>
 	
 	
@@ -141,4 +141,10 @@
 		select hos_num from dd_notify where not_num = #{not_num}
 		
 	</select>
+	
+	<!-- img upload: insert -->
+	<insert id="imgInsert">
+		insert into dd_hos_attach (uuid, uploadPath, fileName, fileType, hos_num, image)
+		values (#{uuid, jdbcType=VARCHAR}, #{uploadPath, jdbcType=VARCHAR}, #{fileName, jdbcType=VARCHAR}, #{fileType, jdbcType=VARCHAR}, #{hos_num, jdbcType=VARCHAR}, #{image, jdbcType=VARCHAR})
+	</insert>
 </mapper>

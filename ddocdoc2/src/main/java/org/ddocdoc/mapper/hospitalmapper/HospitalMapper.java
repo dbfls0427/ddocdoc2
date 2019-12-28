@@ -2,6 +2,7 @@ package org.ddocdoc.mapper.hospitalmapper;
 
 import java.util.List;
 
+import org.ddocdoc.vo.hospitalAttachvo.HospitalAttachVO;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
 import org.ddocdoc.vo.hospitalvo.HospitalVO;
 import org.ddocdoc.vo.hospitalwaitvo.HospitalWaitVO;
@@ -27,56 +28,62 @@ public interface HospitalMapper {
 	// delete
 	int hospitalDelete(String hos_num);
 
-	// º´¿ø ¿¹¾à Á¤º¸ ¸®½ºÆ®
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	List<HospitalResVO> hosResList(String hos_num);
 
-	// º´¿ø ¿¹¾à Á¢¼ö
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	int booleanHosRes(String hos_res_num);
 
-	// ´ë±â¹øÈ£ Áõ°¡
+	// ï¿½ï¿½ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½
 	int increaseWait(String hos_num);
 
-	// ÇØ´ç º´¿ø ´ë±â¹øÈ£ ¹ß±Þ
+	// ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È£ ï¿½ß±ï¿½
 	int hospitalWait(String hos_num);
 
-	// ´ë±â¹øÈ£ µ¥ÀÌÅÍ ÀúÀå
+	// ï¿½ï¿½ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	int insertWaitData(HospitalWaitVO waitVO);
 
 	//
 	
-	// ¾à ¸®½ºÆ®
+	// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	List<MedicineVO> medicineList();
 
-	// Ã³¹æÀü ¸í¼¼ ÀÔ·Â
+	// Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ô·ï¿½
 	int insertPreDetail(PresDetailVO presDetail);
 
-	// Ã³¹æÀü ¾à ¸í¼¼ ¸®½ºÆ®
+	// Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	List<PresDetailVO> presDetailList(String pres_num);
 
-	// Ã³¹æÀü ¾à ¸í¼¼ ¾à ÀÌ¸§
+	// Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì¸ï¿½
 	List<String> presDetailMedName(String pres_num);
 
-	// Ã³¹æÀü ÀÔ·Â
+	// Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
 	int insertPres(PresVO presVO);
 
 	// presDetail
 	PresVO presDetail();
 	
-	// ¾Ë¸² ¸®½ºÆ®
+	// ï¿½Ë¸ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	List<String> notifyList();
 	
-	// ¾Ë¸² °¹¼ö
+	// ï¿½Ë¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 	int notifyCount();
 	
-	// ¾Ë¸² ³Ñ¹ö
+	// ï¿½Ë¸ï¿½ ï¿½Ñ¹ï¿½
 	List<String> notifyNumList();
 	
-	// ¾Ë¸² Å¬¸¯½Ã
+	// ï¿½Ë¸ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
 	void notifyUpdate(String not_num);
 	
-	// ¾Ë¶÷¿¡ º´¿ø ÀÌ¸§ ¶ß°ÔÇÏ±â
+	// ï¿½Ë¶ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ß°ï¿½ï¿½Ï±ï¿½
 	List<String> notifyHosNameList();
 	
-	// Ã¤ÆÃ¿¡ ³Ñ°ÜÁÙ hos_num
+	// Ã¤ï¿½Ã¿ï¿½ ï¿½Ñ°ï¿½ï¿½ï¿½ hos_num
 	String chatHosNum(String not_num);
+	
+	// img upload: insert
+	public void imgInsert(HospitalAttachVO hospitalAttachVO);
+	
+	
+	
 }
