@@ -8,7 +8,7 @@
 	<!-- notice: insert -->
 	<insert id="noticeInsert" parameterType="org.ddocdoc.vo.noticevo.NoticeVO">
 		insert into dd_notice (not_num, not_title, not_writer, not_content, not_date) 
-		values('NT00' || hospital_seq.nextval, #{not_title, jdbcType=VARCHAR}, #{not_writer, jdbcType=VARCHAR},
+		values('NT00' || not_seq.nextval, #{not_title, jdbcType=VARCHAR}, #{not_writer, jdbcType=VARCHAR},
 			#{not_content, jdbcType=VARCHAR}, sysdate)
 	</insert>
 	
