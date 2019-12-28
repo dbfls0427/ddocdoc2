@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.ddocdoc.vo.hospitalAttachvo.HospitalAttachVO;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
 import org.ddocdoc.vo.hospitalvo.HospitalVO;
 import org.ddocdoc.vo.hospitalwaitvo.HospitalWaitVO;
@@ -29,54 +30,58 @@ public interface HospitalService {
 	// delete
 	public int hospitalDelete(String hos_num);
 
-	// º´¿ø ¿¹¾à È¯ÀÚ ¸®½ºÆ®
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	public List<HospitalResVO> hosResList(String hos_num);
 
-	// º´¿ø ¿¹¾à Á¢¼ö
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public int booleanHosRes(String hos_res_num);
 
-	// ´ë±â¹øÈ£ Áõ°¡
+	// ï¿½ï¿½ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½
 	public int increaseWait(String hos_num);
 
-	// ÇØ´ç º´¿ø ´ë±â¹øÈ£ ¹ß±Þ
+	// ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È£ ï¿½ß±ï¿½
 	public int hospitalWait(String hos_num);
 
-	// ´ë±â¹øÈ£ µ¥ÀÌÅÍ ÀúÀå
+	// ï¿½ï¿½ï¿½ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public int insertWaitData(HospitalWaitVO waitVO);
 
-	// ¾à ¸®½ºÆ®
+	// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	public List<MedicineVO> medicineList();
 
-	// Ã³¹æÀü ¸í¼¼ ÀÔ·Â
+	// Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ô·ï¿½
 	public int insertPreDetail(PresDetailVO presDetail);
 
-	// Ã³¹æÀü ¾à ¸í¼¼ ¸®½ºÆ®
+	// Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	public List<PresDetailVO> presDetailList(String pres_num);
 
-	// Ã³¹æÀü ¾à ¸í¼¼ ¾à ÀÌ¸§
+	// Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì¸ï¿½
 	public List<String> presDetailMedName(String pres_num);
 
-	// Ã³¹æÀü ÀÔ·Â
+	// Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
 	public int insertPres(PresVO presVO);
 
 	// presDetail
 	public PresVO presDetail();
 	
-	// ¾Ë¸² ¸®½ºÆ®
+	// ï¿½Ë¸ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
 	public List<String> notifyList();
 		
-	// ¾Ë¸² °¹¼ö
+	// ï¿½Ë¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public int notifyCount();
 	
-	// ¾Ë¸² ³Ñ¹ö
+	// ï¿½Ë¸ï¿½ ï¿½Ñ¹ï¿½
 	public List<String> notifyNumList();
 		
-	// ¾Ë¸² Å¬¸¯½Ã
+	// ï¿½Ë¸ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
 	public void notifyUpdate(String not_num);
 	
-	// ¾Ë¶÷¿¡ º´¿ø ÀÌ¸§ ¶ß°ÔÇÏ±â
+	// ï¿½Ë¶ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ß°ï¿½ï¿½Ï±ï¿½
 	public List<String> notifyHosNameList();
 	
-	// Ã¤ÆÃ¿¡ ³Ñ°ÜÁÙ hos_num
+	// Ã¤ï¿½Ã¿ï¿½ ï¿½Ñ°ï¿½ï¿½ï¿½ hos_num
 	public String chatHosNum(String not_num);
+	
+	// img upload: insert
+	public void imgInsert(HospitalAttachVO hospitalAttachVO);
+	
 }
