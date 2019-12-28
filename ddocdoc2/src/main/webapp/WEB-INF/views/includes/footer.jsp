@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<script id="embeddedChatbot" data-botId="B1e44x" src="https://www.closer.ai/js/webchat.min.js"> </script>
 <!--
             ==================================================
             Footer Section Start
