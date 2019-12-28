@@ -75,15 +75,18 @@ public class LiveController {
 		String now_cus = ((CustomerVO)CustomerController.session.getAttribute("customer")).getCus_id();
 		String cus_num = ((CustomerVO)CustomerController.session.getAttribute("customer")).getCus_num();
 		int re = 0;
+		int re2 = 0;
 		//for view
 		String view ="";
 		
 		if(now_cus.equals("admin")){
 			re = service.liveStop(live_address);
+			re2 = service.cusStop(live_address);
 			view = "redirect:/hospital/admin";
 		}else{
 			System.out.println("어드민아닌디");
 			re = service.cusStop(live_address);
+			re2= service.liveStop(live_address);
 			view = "redirect:/live/liveList";
 		}
 		System.out.println("종료여부 : " +re);
