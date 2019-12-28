@@ -20,7 +20,7 @@
   <link href="${pageContext.request.contextPath }/resources/css/sb-admin-2.min.css" rel="stylesheet">
 	
 
-
+ 
 <style type="text/css">
 .bg-gradient-warning {
     background-color: #ffe208 !important;
@@ -51,37 +51,67 @@
 	width: 30%;
 }
 
- .alramSpan {
-   /*  font-size: .8em;
-    width: 1em;
-    border-radius: 3em;
-    padding: .1em  .2em;
-    line-height: 1.25em;
-    border: 1px solid red;
-    display: inline-block;
-    text-align: center;
-    background-color: red; */
-    width:18px;
- 	height:18px;
- 	border-radius:100px;
- 	-moz-border-radius : 100px;
- 	-webkit-border-radius : 100px;
- 	-ms-border-radius :100px;
- 	-khtml-border-radius : 100px;
- 	-o-border-radius :100px;
- 	background:red;
- 	color:#fff;
- 	text-align:center;
- 	font-size: 13px;
-  }
+.scroll-to-top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+
+
+.uploadResult {
+  width:100%;
+  background-color: gray;
+}
+.uploadResult ul{
+  display:flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+}
+.uploadResult ul li {
+  list-style: none;
+  padding: 10px;
+  align-content: center;
+  text-align: center;
+}
+.uploadResult ul li img{
+  width: 100px;
+}
+.uploadResult ul li span {
+  color:white;
+}
+.bigPictureWrapper {
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  top:0%;
+  width:100%;
+  height:100%;
+  background-color: gray; 
+  z-index: 100;
+  background:rgba(255,255,255,0.5);
+}
+.bigPicture {
+  position: relative;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bigPicture img {
+  width:600px;
+}
 
 </style>
 
 
-   <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
 	
 </head>
 <body id="page-top">
@@ -94,7 +124,7 @@
     <ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/hospital/admin">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/customer/admin">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -106,7 +136,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="/hospital/admin">
+        <a class="nav-link" href="/customer/admin">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -128,7 +158,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">병원정보:</h6>
-            <a class="collapse-item" href='/hospital/hospitalList?customer=${customer }'>병원목록</a>
+            <a class="collapse-item" href="/hospital/hospitalList?customer=${customer }">병원목록</a>
             <a class="collapse-item" href="/hospital/hospitalInsert">병원정보입력</a>
             <a class="collapse-item" href="/hospital/QRCode">QR CODE</a>
           </div>
@@ -158,40 +188,6 @@
         </div>
       </li>
 
-	      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Live 상담방</span>
-        </a>
-        <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Live 상담방: </h6>
-            <a class="collapse-item" href="https://192.168.35.69:3001/conference">상담방 만들기</a>
-          </div>
-        </div>
-      </li>
-      
-      <!-- Heading -->
-      <div class="sidebar-heading">
-			공지사항
-      </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages3" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>공지사항</span>
-        </a>
-        <div id="collapsePages3" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">공지사항정보:</h6>
-            <a class="collapse-item" href="/board/noticeList">공지사항목록</a>
-            <a class="collapse-item" href="/board/noticeInsert">공지사항입력</a>
-          </div>
-        </div>
-      </li>
-      
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
       
@@ -200,6 +196,7 @@
           <span>Go to UserMode</span></a>
       </li>
       <hr class="sidebar-divider d-none d-md-block">
+      
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
@@ -238,43 +235,8 @@
             </li>
 
             <!-- Nav Item - Alerts -->
-            <div class="topbar-divider d-none d-sm-block"></div>
             <li class="nav-item dropdown no-arrow mx-1">
-            	
-               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               	<div style="position: relative;">
-               	<span class= "alramSpan" style="position: absolute; margin-left: 20px; margin-top: 15px" >${count }</span>
-               	<img src = "/resources/images/Alram.png" width="28" height="28"/>
-   
-				</div>	               
-               </a>
-               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <!--  
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
-                <div class="dropdown-divider"></div>
-                -->
-                <c:forEach var="notifyvo" items="${notifyList }" varStatus="status">
-                <a class="dropdown-item" href="/hospital/alramClick?not_num=${notifyNumList[status.index] } ">
-                	
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  
-                  ${notifyvo}님이 ${notifyHosNameList[status.index] } 상담신청을 하셨습니다. 상담을 시작하시려면 클릭해주세요.
-                </a>
-                </c:forEach>
-                
-                
-              </div>
+              
             </li>
 
 
@@ -314,104 +276,52 @@
 
         </nav>
         <!-- End of Topbar -->
+		
+		<!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+	    	<div id="boxContent" style="padding:20px;">
+	    		
+				<h3>공지사항 상세보기</h3>
+				<div class="alert alert-warning" role="alert" style="background-color:#fff0c75c;">
+					<div class="table-responsive">
+						<table class="table">
+					
+							<tr>
+								<td>글번호</td>
+								<td><c:out value="${noticevo.not_num }"/></td>
+							</tr>
+							<tr>
+								<td>작성자</td>
+								<td><c:out value="${noticevo.not_writer }"/></td>
+							</tr>
+							<tr>
+								<td>작성시간</td>
+								<td><c:out value="${noticevo.not_date }"/></td>
+							</tr>
+							<tr>
+								<td>제목</td>
+								<td><c:out value="${noticevo.not_title }"/></td>
+							</tr>
+							<tr>
+								<td>내용</td>
+								<td><c:out value="${noticevo.not_content }"/></td>
+							</tr>
+								
+						</table>
+					</div>
+				</div>
 
+				<div style="display:flex;">
+					<a href="/board/noticeList" role="button" class="btn btn-warning btn-sm" style="width:10%;">리스트</a> <br>
+					<a role="button" class="btn btn-outline-secondary btn-sm" style="width: 5%; margin: 0 10px;" href='/board/noticeUpdate?not_num=<c:out value="${noticevo.not_num }" />'>수정</a> <br>
+					<a role="button" class="btn btn-outline-danger btn-sm" href='/board/noticeDelete?not_num=<c:out value="${noticevo.not_num }" />'>삭제</a> 
+				</div>
+			
+				
+	        
+              </div>
+	    	</div><!-- //boxContent -->
         
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
-
-          <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-
-          	
-          </div>
-
-          <!-- Content Row -->
-          <div class="row" style="margin-bottom: 30px;">
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-6">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">병원정보</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">
-	                      <a href="/hospital/hospitalList?customer=${customer }" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm tobtnfromicon">
-	                      	<i class="fas fa-ambulance"></i> 병원관리
-	                      </a>
-                      </div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Pending Requests Card Example -->
-            <div class="col-xl-6">
-              <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">약국정보</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">
-	                      <a href="/pharmacy/pharmacyList" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm tobtnfromicon">
-	                      	<i class="fas fa-clinic-medical"></i> 약국관리
-	                      </a>
-                      </div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-comments fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Content Row -->
-
-          <div class="row">
-
-            <!-- Area Chart -->
-            <div class="col-xl-12">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">똑닥 병원 어드민</h6>
-                  <div class="dropdown no-arrow">
-                  	<!-- 
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                     -->
-                  </div>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="chart-area" style="height:22.5rem;">
-                  	<img src="/resources/img/front_hos.jpg" alt="front" style="width: 100%;height: 100%;">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- //row -->
-
-        </div>
-        <!-- /.container-fluid -->
-
-      </div>
-      <!-- End of Main Content -->
 
 	
 	
@@ -454,6 +364,92 @@
       </div>
     </div>
   </div>
+  
+<script>
+
+$(document).ready(function(){
+  
+  (function(){
+  
+    var hos_num = '<c:out value="${hospitalvo.hos_num}"/>';
+    
+ 	console.log("before getjson");
+    $.ajax("/hospital/imgSelet", {hos_num: hos_num}, function(arr){
+ 	console.log("after getjson");
+        
+       console.log(arr);
+       
+       var str = "";
+       
+       $(arr).each(function(i, attach){
+       
+         //image type
+         if(attach.fileType){
+           var fileCallPath =  encodeURIComponent( attach.uploadPath+ "/s_"+attach.uuid +"_"+attach.fileName);
+           
+           str += "<li data-path='"+attach.uploadPath+"' data-uuid='"+attach.uuid+"' data-filename='"+attach.fileName+"' data-type='"+attach.fileType+"' ><div>";
+           str += "<img src='/display?fileName="+fileCallPath+"'>";
+           str += "</div>";
+           str +"</li>";
+         }else{
+             console.log("헐");
+          /*  str += "<li data-path='"+attach.uploadPath+"' data-uuid='"+attach.uuid+"' data-filename='"+attach.fileName+"' data-type='"+attach.fileType+"' ><div>";
+           str += "<span> "+ attach.fileName+"</span><br/>";
+           str += "<img src='/resources/img/attach.png'></a>";
+           str += "</div>";
+           str +"</li>"; */
+         }
+       });
+       
+       $(".uploadResult ul").html(str);
+       
+       
+     });//end getjson
+
+    
+  })();//end function
+  
+  $(".uploadResult").on("click","li", function(e){
+      
+    console.log("view image");
+    
+    var liObj = $(this);
+    
+    var path = encodeURIComponent(liObj.data("path")+"/" + liObj.data("uuid")+"_" + liObj.data("filename"));
+    
+    if(liObj.data("type")){
+      showImage(path.replace(new RegExp(/\\/g),"/"));
+    }else {
+      //download 
+      self.location ="/download?fileName="+path
+    }
+    
+    
+  });
+  
+  function showImage(fileCallPath){
+	    
+    alert(fileCallPath);
+    
+    $(".bigPictureWrapper").css("display","flex").show();
+    
+    $(".bigPicture")
+    .html("<img src='/display?fileName="+fileCallPath+"' >")
+    .animate({width:'100%', height: '100%'}, 1000);
+    
+  }
+
+  $(".bigPictureWrapper").on("click", function(e){
+    $(".bigPicture").animate({width:'0%', height: '0%'}, 1000);
+    setTimeout(function(){
+      $('.bigPictureWrapper').hide();
+    }, 1000);
+  });
+
+  
+}); 
+  
+</script>
 	
 
   <!-- Bootstrap core JavaScript-->

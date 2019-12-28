@@ -286,6 +286,18 @@
 	<update id="comUpdate" parameterType="org.ddocdoc.vo.communityvo.CommunityVO">
 		update dd_community set com_title = #{com_title}, com_content = #{com_content} where com_num = #{com_num}
 	</update>
+	
+	<!-- notice:list -->
+	<select id="noticeList" resultType="org.ddocdoc.vo.noticevo.NoticeVO">
+		select * from dd_notice
+	</select>
+	
+	<!-- notice:detail -->
+    <select id="noticeDetail" resultType="org.ddocdoc.vo.noticevo.NoticeVO" parameterType="String">
+         select * from dd_notice
+         where not_num = #{not_num, jdbcType=VARCHAR}
+    </select>
+	
 </mapper>
 
 

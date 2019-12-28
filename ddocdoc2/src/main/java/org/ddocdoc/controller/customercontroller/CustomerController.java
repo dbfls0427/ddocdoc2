@@ -15,6 +15,7 @@ import org.ddocdoc.vo.communityvo.CommunityVO;
 import org.ddocdoc.vo.customervo.CustomerVO;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
 import org.ddocdoc.vo.hospitalvo.HospitalVO;
+import org.ddocdoc.vo.noticevo.NoticeVO;
 import org.ddocdoc.vo.payvo.PayVO;
 import org.ddocdoc.vo.pharresvo.PharResVO;
 import org.ddocdoc.vo.presdetailvo.PresDetailVO;
@@ -405,6 +406,22 @@ public class CustomerController {
 		service.comDelete(com_num);
 		return "redirect:/customer/comList";
 	}
+	
+	@GetMapping("/noticeList")
+	public String noticeList(Model model){
+		List<NoticeVO> list = service.noticeList();
+		
+		model.addAttribute("list", list);
+		return "/service/noticeList";
+	}
+	
+	@GetMapping("/noticeDetail")
+	public String noticeDetail(@RequestParam("not_num") String not_num, Model model){
+		NoticeVO noticevo = service.noticeDetail(not_num);
+		model.addAttribute("noticevo", noticevo);
+		return "/service/noticeDetail";
+	}
+	
 	
 	
 	

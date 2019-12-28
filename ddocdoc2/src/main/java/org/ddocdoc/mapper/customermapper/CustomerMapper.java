@@ -9,6 +9,7 @@ import org.ddocdoc.vo.customervo.CustomerVO;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
 import org.ddocdoc.vo.hospitalvo.HospitalVO;
 import org.ddocdoc.vo.loginvo.LoginVO;
+import org.ddocdoc.vo.noticevo.NoticeVO;
 import org.ddocdoc.vo.payvo.PayVO;
 import org.ddocdoc.vo.pharresvo.PharResVO;
 import org.ddocdoc.vo.presdetailvo.PresDetailVO;
@@ -157,6 +158,12 @@ public interface CustomerMapper {
 	
 	// community update
 	int comUpdate(CommunityVO com);
+	
+	// notice list
+	List<NoticeVO> noticeList();
+
+	// notice detail
+	NoticeVO noticeDetail(String not_num);
 	
 	
 }

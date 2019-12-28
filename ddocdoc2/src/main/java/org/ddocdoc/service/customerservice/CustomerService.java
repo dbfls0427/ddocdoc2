@@ -8,6 +8,7 @@ import org.ddocdoc.vo.customervo.CustomerAuthVO;
 import org.ddocdoc.vo.customervo.CustomerVO;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
 import org.ddocdoc.vo.hospitalvo.HospitalVO;
+import org.ddocdoc.vo.noticevo.NoticeVO;
 import org.ddocdoc.vo.payvo.PayVO;
 import org.ddocdoc.vo.pharresvo.PharResVO;
 import org.ddocdoc.vo.presdetailvo.PresDetailVO;
@@ -129,5 +130,13 @@ public interface CustomerService {
 	
 	// community update
 	int comUpdate(CommunityVO com);
+	
+	// notice list
+	public List<NoticeVO> noticeList();
+
+	// notice detail
+	public NoticeVO noticeDetail(String not_num);
+	
+	
 	
 }

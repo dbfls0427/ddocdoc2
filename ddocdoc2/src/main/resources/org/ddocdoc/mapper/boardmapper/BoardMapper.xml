@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ddocdoc.mapper.boardmapper.BoardMapper">
+
+
+	<!-- notice: insert -->
+	<insert id="noticeInsert" parameterType="org.ddocdoc.vo.noticevo.NoticeVO">
+		insert into dd_notice (not_num, not_title, not_writer, not_content, not_date) 
+		values('NT00' || hospital_seq.nextval, #{not_title, jdbcType=VARCHAR}, #{not_writer, jdbcType=VARCHAR},
+			#{not_content, jdbcType=VARCHAR}, sysdate)
+	</insert>
+	
+	
+	<!-- notice:list -->
+	<select id="noticeList" resultType="org.ddocdoc.vo.noticevo.NoticeVO">
+		select * from dd_notice
+	</select>
+	
+	<!-- notice:detail -->
+    <select id="noticeDetail" resultType="org.ddocdoc.vo.noticevo.NoticeVO" parameterType="String">
+         select * from dd_notice
+         where not_num = #{not_num, jdbcType=VARCHAR}
+    </select>
+    
+    <!-- notice:update -->
+    <update id="noticeUpdate" parameterType="org.ddocdoc.vo.noticevo.NoticeVO">
+         update dd_notice
+         set  not_title = #{not_title, jdbcType=VARCHAR}, not_writer = #{not_writer, jdbcType=VARCHAR}, 
+         not_content = #{not_content, jdbcType=VARCHAR}
+         where not_num = #{not_num}
+    </update>
+	
+	<!-- notice:delete -->
+    <delete id="noticeDelete" parameterType="String">
+         delete from dd_notice
+         where not_num = #{not_num}
+    </delete>
+	
+	
+</mapper>

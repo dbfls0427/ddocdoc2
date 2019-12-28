@@ -79,6 +79,7 @@
                                         <li><a href="/health/healthList">건강정보</a></li>
                                         <li><a href="../Customer/reviewInsertForm.do">후기 작성</a></li>
                                         <li><a href="../Customer/reviewList.do">후기 목록</a></li>
+                                        <li><a href="/customer/noticeList">공지사항</a></li>
                                     </ul>
                                 </div>
                             </li>
