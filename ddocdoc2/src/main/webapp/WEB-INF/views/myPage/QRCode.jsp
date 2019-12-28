@@ -9,7 +9,7 @@
 <meta charset="utf-8">
 
 <title>:: jsQR 테스트 ::</title>
-<script type="text/javascript" src="./jsQR.js"></script>
+<script type="text/javascript" src="/resources/js/jsQR.js"></script>
 <style type="text/css">
 	main {
 		width:100%;
@@ -161,7 +161,7 @@
 	});
 	
 	function res() {
-		location.href='/DDOCDOC/hospital/adminResList.do?cus_num=' + afterResult;
+		location.href='/hospital/adminResList?cus_num=' + afterResult;
 		
 	};
 </script>

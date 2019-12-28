@@ -130,7 +130,7 @@
             <h6 class="collapse-header">병원정보:</h6>
             <a class="collapse-item" href='/hospital/hospitalList?customer=${customer }'>병원목록</a>
             <a class="collapse-item" href="/hospital/hospitalInsert">병원정보입력</a>
-            <a class="collapse-item" href="/QRCode.jsp">QR CODE</a>
+            <a class="collapse-item" href="/hospital/QRCode">QR CODE</a>
           </div>
         </div>
       </li>

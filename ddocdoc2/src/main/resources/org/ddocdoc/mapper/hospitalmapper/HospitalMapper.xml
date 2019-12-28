@@ -147,4 +147,8 @@
 		insert into dd_hos_attach (uuid, uploadPath, fileName, fileType, hos_num, image)
 		values (#{uuid, jdbcType=VARCHAR}, #{uploadPath, jdbcType=VARCHAR}, #{fileName, jdbcType=VARCHAR}, #{fileType, jdbcType=VARCHAR}, #{hos_num, jdbcType=VARCHAR}, #{image, jdbcType=VARCHAR})
 	</insert>
+	
+	<select id="customerDetail" parameterType="String" resultType="org.ddocdoc.vo.customervo.CustomerVO">
+		select * from dd_customer where cus_num=#{cus_num}
+	</select>
 </mapper>

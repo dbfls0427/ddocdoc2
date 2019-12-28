@@ -233,7 +233,7 @@ public class HospitalController {
 	@GetMapping("/QRCode")
 	public String QRCode(){
 		log.info("qr~~~~~~~~~~~~~~~~~~~~~~");
-		return "/QRCode";
+		return "/myPage/QRCode";
 	}
 	
 	// �삁�빟 �셿猷�
@@ -329,6 +329,26 @@ public class HospitalController {
 		@GetMapping("/chattingDoctor")
 		public String chattingDoctor(@RequestParam String hos_num){
 			return "/chatting/chatting";
+		}
+		
+		@GetMapping("/adminResList")
+		public String adminResList(@RequestParam String cus_num, Model model){
+			String[] split = cus_num.split(";");
+			String realCus_num = split[1];
+			List<HospitalVO> list = service.hospitalList();
+			
+			model.addAttribute("cus_num", realCus_num);
+			model.addAttribute("list", list);
+			return "/res/QrResList";
+		}
+		
+		@GetMapping("/adminRes")
+		public String adminRes(@RequestParam String cus_num, @RequestParam String hos_name, Model model){
+			CustomerVO cus = service.customerDetail(cus_num);
+			model.addAttribute("cus", cus);
+			model.addAttribute("hos_name", hos_name);
+			return "/res/QrRes";
+			
 		}
 	
 }

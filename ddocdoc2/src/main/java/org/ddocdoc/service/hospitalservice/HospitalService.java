@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.ddocdoc.vo.customervo.CustomerVO;
 import org.ddocdoc.vo.hospitalAttachvo.HospitalAttachVO;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
 import org.ddocdoc.vo.hospitalvo.HospitalVO;
@@ -81,7 +82,9 @@ public interface HospitalService {
 	// ä�ÿ� �Ѱ��� hos_num
 	public String chatHosNum(String not_num);
 	
-	// img upload: insert
-	public void imgInsert(HospitalAttachVO hospitalAttachVO);
+/*	// img upload: insert
+	public void imgInsert(HospitalAttachVO hospitalAttachVO);*/
+	
+	public CustomerVO customerDetail(String cus_num);
 	
 }

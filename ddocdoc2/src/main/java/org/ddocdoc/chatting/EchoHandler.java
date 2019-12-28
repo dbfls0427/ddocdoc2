@@ -19,9 +19,9 @@ public class EchoHandler extends TextWebSocketHandler {
 		if(sessionList.size() == 1){
 			session.sendMessage(new TextMessage("고객님이 입장하셨습니다."));
 		}else if(sessionList.size() == 2){
+			sessionList.get(0).sendMessage(new TextMessage("의사분이 입장하셨습니다."));
 			session.sendMessage(new TextMessage("의사분이 입장하셨습니다."));
 		}
-		System.out.println("after에서 : " + session.getId());
 	}
 	
 	@Override

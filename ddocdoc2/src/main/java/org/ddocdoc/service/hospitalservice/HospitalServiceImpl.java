@@ -5,6 +5,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.ddocdoc.mapper.hospitalmapper.HospitalMapper;
+import org.ddocdoc.vo.customervo.CustomerVO;
+import org.ddocdoc.vo.hospitalAttachvo.HospitalAttachVO;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
 import org.ddocdoc.vo.hospitalvo.HospitalVO;
 import org.ddocdoc.vo.hospitalwaitvo.HospitalWaitVO;
@@ -135,6 +137,17 @@ public class HospitalServiceImpl implements HospitalService {
 	@Override
 	public String chatHosNum(String not_num) {
 		return mapper.chatHosNum(not_num);
+	}
+
+	/*@Override
+	public void imgInsert(HospitalAttachVO hospitalAttachVO) {
+		// TODO Auto-generated method stub
+		
+	}*/
+
+	@Override
+	public CustomerVO customerDetail(String cus_num) {
+		return mapper.customerDetail(cus_num);
 	}
 	
 }

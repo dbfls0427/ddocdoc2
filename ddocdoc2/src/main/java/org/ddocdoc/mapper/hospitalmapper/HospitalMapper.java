@@ -2,6 +2,7 @@ package org.ddocdoc.mapper.hospitalmapper;
 
 import java.util.List;
 
+import org.ddocdoc.vo.customervo.CustomerVO;
 import org.ddocdoc.vo.hospitalAttachvo.HospitalAttachVO;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
 import org.ddocdoc.vo.hospitalvo.HospitalVO;
@@ -84,6 +85,6 @@ public interface HospitalMapper {
 	// img upload: insert
 	public void imgInsert(HospitalAttachVO hospitalAttachVO);
 	
-	
+	CustomerVO customerDetail(String cus_num);
 	
 }

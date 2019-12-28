@@ -259,7 +259,7 @@
 				}
 				
 				var str = '';
-				var inputButton = '<button class = "onlineRes" style="margin-top: 150px; margin-left: 600px;">예</button>';
+				var inputButton = '<button class = "onlineRes" style="margin-top: 210px; margin-left: 660px;">예</button>';
 				str += inputButton;
 				$(".customer").html(str);
 			});
