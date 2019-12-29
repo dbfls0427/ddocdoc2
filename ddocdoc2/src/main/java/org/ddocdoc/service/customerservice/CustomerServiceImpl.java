@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.ddocdoc.controller.customercontroller.CustomerController;
 import org.ddocdoc.mapper.customermapper.CustomerMapper;
+import org.ddocdoc.vo.askvo.AskVO;
 import org.ddocdoc.vo.communityvo.CommunityVO;
 import org.ddocdoc.vo.communityvo.Criteria;
 import org.ddocdoc.vo.customervo.CustomerAuthVO;
@@ -263,6 +264,12 @@ public class CustomerServiceImpl implements CustomerService {
 	public int getTotalCount(Criteria cri) {
 		return mapper.getTotalCount(cri);
 	}
+
+	@Override
+	public List<AskVO> askList() {
+		return mapper.askList();
+	}
+	
 	
 	
 	

@@ -37,6 +37,42 @@
          delete from dd_notice
          where not_num = #{not_num}
     </delete>
+    
+    
+    
+	<!-- Anq: insert -->
+	<insert id="askInsert" parameterType="org.ddocdoc.vo.askvo.AskVO">
+		insert into dd_ask (ask_num, ask_title, ask_content) 
+		values('ask00' || ask_seq.nextval, #{ask_title, jdbcType=VARCHAR}, #{ask_content, jdbcType=VARCHAR})
+	</insert>
+	
+	
+	<!-- Anq:list -->
+	<select id="askList" resultType="org.ddocdoc.vo.askvo.AskVO">
+		select * from dd_ask
+	</select>
+	
+	<!-- Anq:detail -->
+    <select id="askDetail" resultType="org.ddocdoc.vo.askvo.AskVO" parameterType="String">
+         select * from dd_ask
+         where ask_num = #{ask_num, jdbcType=VARCHAR}
+    </select>
+    
+    <!-- Anq:update -->
+    <update id="askUpdate" parameterType="org.ddocdoc.vo.askvo.AskVO">
+         update dd_ask
+         set  ask_title = #{ask_title, jdbcType=VARCHAR}, ask_content = #{ask_content, jdbcType=VARCHAR}
+         where ask_num = #{ask_num}
+    </update>
+	
+	<!-- Anq:delete -->
+    <delete id="askDelete" parameterType="String">
+         delete from dd_ask
+         where ask_num = #{ask_num}
+    </delete>
+    
+    
+    
 	
 	
 </mapper>

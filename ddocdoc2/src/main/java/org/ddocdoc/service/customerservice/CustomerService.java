@@ -3,6 +3,7 @@ package org.ddocdoc.service.customerservice;
 import java.util.HashMap;
 import java.util.List;
 
+import org.ddocdoc.vo.askvo.AskVO;
 import org.ddocdoc.vo.communityvo.CommunityVO;
 import org.ddocdoc.vo.communityvo.Criteria;
 import org.ddocdoc.vo.customervo.CustomerAuthVO;
@@ -142,5 +143,9 @@ public interface CustomerService {
 	
 	public int getTotalCount(Criteria cri);
 	
+	// AnQ list
+	public List<AskVO> askList();
+
+		
 	
 }

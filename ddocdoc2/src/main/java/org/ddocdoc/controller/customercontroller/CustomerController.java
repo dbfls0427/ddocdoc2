@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.ddocdoc.service.customerservice.CustomerService;
+import org.ddocdoc.vo.askvo.AskVO;
 import org.ddocdoc.vo.communityvo.CommunityVO;
 import org.ddocdoc.vo.communityvo.Criteria;
 import org.ddocdoc.vo.communityvo.PageDTO;
@@ -432,7 +433,13 @@ public class CustomerController {
 		return "/service/noticeDetail";
 	}
 	
-	
+	@GetMapping("/askList")
+	public String askList(Model model){
+		List<AskVO> list = service.askList();
+		
+		model.addAttribute("list", list);
+		return "/service/askList";
+	}
 	
 	
 }

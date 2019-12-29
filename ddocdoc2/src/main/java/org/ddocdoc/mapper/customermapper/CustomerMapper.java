@@ -3,6 +3,7 @@ package org.ddocdoc.mapper.customermapper;
 import java.util.HashMap;
 import java.util.List;
 
+import org.ddocdoc.vo.askvo.AskVO;
 import org.ddocdoc.vo.communityvo.CommunityVO;
 import org.ddocdoc.vo.communityvo.Criteria;
 import org.ddocdoc.vo.customervo.CustomerAuthVO;
@@ -169,5 +170,10 @@ public interface CustomerMapper {
 	List<CommunityVO> getListWithPaging(Criteria cri);
 	
 	int getTotalCount(Criteria cri);
+	
+	// AnQ list
+	List<AskVO> askList();
+
+		
 	
 }

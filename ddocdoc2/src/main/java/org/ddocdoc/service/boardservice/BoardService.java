@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.ddocdoc.vo.askvo.AskVO;
 import org.ddocdoc.vo.customervo.CustomerVO;
 import org.ddocdoc.vo.hospitalAttachvo.HospitalAttachVO;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
@@ -31,5 +32,20 @@ public interface BoardService {
 
 	// notice delete
 	public int noticeDelete(String not_num);
+	
+	// AnQ insert
+	public int askInsert(AskVO askVO);
+
+	// AnQ list
+	public List<AskVO> askList();
+
+	// AnQ detail
+	public AskVO askDetail(String ask_num);
+
+	// AnQ update
+	public int askUpdate(AskVO askVO);
+
+	// AnQ delete
+	public int askDelete(String ask_num);
 
 }

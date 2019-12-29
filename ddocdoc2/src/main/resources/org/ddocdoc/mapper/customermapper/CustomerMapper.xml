@@ -311,6 +311,11 @@
     	select count(*) from dd_community where com_num > 0
     
     </select>
+    
+   	<!-- Anq:list -->
+	<select id="askList" resultType="org.ddocdoc.vo.askvo.AskVO">
+		select * from dd_ask
+	</select>
 	
 </mapper>
 
