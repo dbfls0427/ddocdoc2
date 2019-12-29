@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.ddocdoc.vo.askvo.AskVO;
 import org.ddocdoc.vo.noticevo.NoticeVO;
+import org.ddocdoc.vo.termvo.Criteria;
+import org.ddocdoc.vo.termvo.TermVO;
 
 public interface BoardMapper {
 
@@ -36,7 +38,26 @@ public interface BoardMapper {
 
 	// AnQ delete
 	int askDelete(String ask_num);
-
 	
+	// term insert
+	int termInsert(TermVO termVO);
+
+	// term list
+	List<TermVO> termList();
+
+	// term detail
+	TermVO termDetail(String term_num);
+
+	// term  update
+	int termUpdate(TermVO termVO);
+
+	// term  delete
+	int termDelete(String term_num);
+
+	// term pagination
+	List<TermVO> getListWithPaging(Criteria cri);
+	
+	// term page
+	int getTotalCount(Criteria cri);
 	
 }

@@ -228,6 +228,29 @@
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
       
+      <!-- Heading -->
+      <div class="sidebar-heading">
+			의학용어
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages5" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>의학용어</span>
+        </a>
+        <div id="collapsePages5" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">의학용어정보:</h6>
+            <a class="collapse-item" href="/board/termList">의학용어목록</a>
+            <a class="collapse-item" href="/board/termInsert">의학용어입력</a>
+          </div>
+        </div>
+      </li>
+      
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+      
       
       <li class="nav-item" style="text-align:center;">
         <a class="btn btn-danger" href="/customer/loginSuccess" style="width:86%; padding-left: 6px;padding-right: 6px;">

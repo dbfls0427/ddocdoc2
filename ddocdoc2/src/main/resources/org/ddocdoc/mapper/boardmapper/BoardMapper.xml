@@ -72,7 +72,64 @@
     </delete>
     
     
+    <!-- term: insert -->
+	<insert id="termInsert" parameterType="org.ddocdoc.vo.termvo.TermVO">
+		insert into dd_term (term_num, term_title, term_content) 
+		values('TE00' || term_seq.nextval, #{term_title, jdbcType=VARCHAR}, #{term_content, jdbcType=VARCHAR})
+	</insert>
+	
+	
+	<!-- term:list -->
+	<select id="termList" resultType="org.ddocdoc.vo.termvo.TermVO">
+		select * from dd_term
+	</select>
+	
+	<!-- term:detail -->
+    <select id="termDetail" resultType="org.ddocdoc.vo.termvo.TermVO" parameterType="String">
+         select * from dd_term
+         where term_num = #{term_num, jdbcType=VARCHAR}
+    </select>
     
+    <!-- term:update -->
+    <update id="termUpdate" parameterType="org.ddocdoc.vo.termvo.TermVO">
+         update dd_term
+         set  term_title = #{term_title, jdbcType=VARCHAR}, 
+         term_content = #{term_content, jdbcType=VARCHAR}
+         where term_num = #{term_num}
+    </update>
+	
+	<!-- term:delete -->
+    <delete id="termDelete" parameterType="String">
+         delete from dd_term
+         where term_num = #{term_num}
+    </delete>
+    
+    <!-- term: pagination -->
+      
+    <select id="getListWithPaging" resultType="org.ddocdoc.vo.termvo.TermVO">
+    <!-- 
+	  <![CDATA[
+		select term_num, term_title, term_content 
+		from
+			(select /*+INDEX_DESC(dd_term term_pk) */ rownum rn, term_num, term_title, term_content 
+			from dd_term where rownum <= #{pageNum} * #{amount})
+			where rn > (#{pageNum} -1) * #{amount}
+		]]>
+		 -->
+		<![CDATA[
+		select term_num, term_title, term_content 
+		from
+			(select rownum rn, term_num, term_title, term_content 
+			from dd_term where rownum <= #{pageNum} * #{amount})
+			where rn > (#{pageNum} -1) * #{amount}
+		]]>
+		
+	  </select>
+
+
+	<select id="getTotalCount" resultType="int">
+		select count(*) from dd_term 
+	</select>
 	
 	
 </mapper>

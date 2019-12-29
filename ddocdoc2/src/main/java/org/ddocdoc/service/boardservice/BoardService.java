@@ -15,6 +15,8 @@ import org.ddocdoc.vo.noticevo.NoticeVO;
 import org.ddocdoc.vo.notifyvo.NotifyVO;
 import org.ddocdoc.vo.presdetailvo.PresDetailVO;
 import org.ddocdoc.vo.presvo.PresVO;
+import org.ddocdoc.vo.termvo.Criteria;
+import org.ddocdoc.vo.termvo.TermVO;
 
 public interface BoardService {
 
@@ -47,5 +49,25 @@ public interface BoardService {
 
 	// AnQ delete
 	public int askDelete(String ask_num);
+	
+	// term insert
+	public int termInsert(TermVO termVO);
+
+	// term list
+	//public List<TermVO> termList();
+	public List<TermVO> termList(Criteria cri);
+
+	// term detail
+	public TermVO termDetail(String term_num);
+
+	// term  update
+	public int termUpdate(TermVO termVO);
+
+	// term  delete
+	public int termDelete(String term_num);
+	
+	// term page
+	public int getTotalCount(Criteria cri);
+
 
 }

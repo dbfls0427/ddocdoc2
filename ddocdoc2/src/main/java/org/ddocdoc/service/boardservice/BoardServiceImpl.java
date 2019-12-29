@@ -5,6 +5,8 @@ import java.util.List;
 import org.ddocdoc.mapper.boardmapper.BoardMapper;
 import org.ddocdoc.vo.askvo.AskVO;
 import org.ddocdoc.vo.noticevo.NoticeVO;
+import org.ddocdoc.vo.termvo.Criteria;
+import org.ddocdoc.vo.termvo.TermVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -69,6 +71,50 @@ public class BoardServiceImpl implements BoardService {
 	public int askDelete(String ask_num) {
 		return mapper.askDelete(ask_num);
 	}
+
+	@Override
+	public int termInsert(TermVO termVO) {
+		return mapper.termInsert(termVO);
+	}
+
+	/*
+	@Override
+	public List<TermVO> termList() {
+		return mapper.termList();
+	}
+	*/
+	@Override
+	public List<TermVO> termList(Criteria cri) {
+		
+		log.info("get List with criteria: " + cri);
+		
+		return mapper.getListWithPaging(cri);
+	}
+	
+
+	@Override
+	public TermVO termDetail(String term_num) {
+		return mapper.termDetail(term_num);
+	}
+
+	@Override
+	public int termUpdate(TermVO termVO) {
+		return mapper.termUpdate(termVO);
+	}
+
+	@Override
+	public int termDelete(String term_num) {
+		return mapper.termDelete(term_num);
+	}
+
+	@Override
+	public int getTotalCount(Criteria cri) {
+		return mapper.getTotalCount(cri);
+	}
+
+
+	
+	
 
 	
 	

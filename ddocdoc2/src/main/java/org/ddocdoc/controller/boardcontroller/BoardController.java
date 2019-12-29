@@ -8,9 +8,13 @@ import org.ddocdoc.service.hospitalservice.HospitalService;
 import org.ddocdoc.vo.askvo.AskVO;
 import org.ddocdoc.vo.hospitalvo.HospitalVO;
 import org.ddocdoc.vo.noticevo.NoticeVO;
+import org.ddocdoc.vo.termvo.Criteria;
+import org.ddocdoc.vo.termvo.PageDTO;
+import org.ddocdoc.vo.termvo.TermVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -191,6 +195,112 @@ public class BoardController {
 		
 		return "redirect:/board/askList";
 	}
+	
+	// term list
+	/*
+	@GetMapping("/termList")
+	public String termList(Model model){
+		log.info("term list~~~~");
+		model.addAttribute("list", service.termList());
+		return "/term/termList";
+	}
+	*/
+	@GetMapping("/termList")
+	public String termList(Criteria cri, Model model){
+		log.info("list~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~: " + cri);
+		model.addAttribute("list", service.termList(cri));
+		//model.addAttribute("pageMaker", new PageDTO(cri, service.getTotalCount(cri)));
+		int total = service.getTotalCount(cri);
+		log.info("total:"+total);
+		
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
+		
+		return "/term/termList";
+	}
+	
+	// term insert form
+	@GetMapping("/termInsert")
+	public String termInsert(){
+		log.info("termInsert...form");
+		return "/term/termInsert";
+	}
+	
+	// term insert
+	@RequestMapping(value="/termInsert" , method = {RequestMethod.POST})
+	public String termInsert(TermVO termVO, RedirectAttributes rttr){
+		
+		log.info("=======================================");
+		log.info("insert~: "+ termVO);
+		
+		try {
+			service.termInsert(termVO);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		rttr.addAttribute("term_num", termVO.getTerm_num());
+		
+		return "redirect:/board/termList";
+		
+	}
+	
+	// term detail
+	@GetMapping("/termDetail")
+	public String termDetail(@RequestParam("term_num") String term_num, @ModelAttribute("cri") Criteria cri, Model model){
+		log.info("term Detail~~~~");
+		//model.addAttribute("cri", cri);
+		model.addAttribute("termvo", service.termDetail(term_num));
+		
+		return "/term/termDetail";
+	}
+	
+	// term update form
+	@GetMapping("/termUpdate")
+	public String termUpdate(@RequestParam("term_num") String term_num,
+			@ModelAttribute("cri") Criteria cri,
+			Model model){
+		
+		model.addAttribute("term_num", term_num);
+		model.addAttribute("termvo", service.termDetail(term_num));
+		//model.addAttribute("cri", cri);
+		
+		
+		return "/term/termUpdate";
+	}
+		
+		
+	// term  update
+	@RequestMapping(value="/termUpdate" , method = {RequestMethod.POST})
+	public String termUpdate(TermVO termVO, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr){
+		
+		try {
+			int re = service.termUpdate(termVO);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		rttr.addFlashAttribute("term_num", termVO.getTerm_num());
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
+		
+		return "redirect:/board/termList";
+	}
+		
+		
+	// term  delete
+	@GetMapping("/termDelete")
+	public String termDelete(@RequestParam("term_num") String term_num, 
+			@ModelAttribute("cri") Criteria cri, 
+			RedirectAttributes rttr){
+		
+		service.termDelete(term_num);
+		
+		rttr.addFlashAttribute("term_num", term_num);
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
+		
+		return "redirect:/board/termList";
+	}
+				
 				
 		
 	
