@@ -143,6 +143,7 @@
 			약국
       </div>
 
+		
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
@@ -158,6 +159,13 @@
         </div>
       </li>
 
+	  <!-- Divider -->
+      <hr class="sidebar-divider">
+	<!-- Heading -->
+      <div class="sidebar-heading">
+			Live상담방
+      </div>
+
 	      <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2" aria-expanded="true" aria-controls="collapsePages">
@@ -172,6 +180,8 @@
         </div>
       </li>
       
+        <!-- Divider -->
+      <hr class="sidebar-divider">
       <!-- Heading -->
       <div class="sidebar-heading">
 			공지사항
