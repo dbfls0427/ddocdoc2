@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.ddocdoc.vo.communityvo.CommunityVO;
+import org.ddocdoc.vo.communityvo.Criteria;
 import org.ddocdoc.vo.customervo.CustomerAuthVO;
 import org.ddocdoc.vo.customervo.CustomerVO;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
@@ -26,82 +27,82 @@ public interface CustomerMapper {
 	
 	String cusNumSelect(String cus_id);
 	
-	// 占쏙옙占쏙옙 占쏙옙호 占쏙옙占�
+	// �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�샇 �뜝�룞�삕�뜝占�
 	String selectHosNum(String hos_name);
 	
-	// 占쏙옙占쏙옙 占쏙옙占쏙옙 占쌉뤄옙
+	// �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕 �뜝�뙃琉꾩삕
 	int insertHospitalRes(HospitalResVO hospitalresVO);
 	
-	// 占쏙옙占쏙옙 占쏙옙占� 占쏙옙占쏙옙트
+	// �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝占� �뜝�룞�삕�뜝�룞�삕�듃
 	List<HospitalResVO> resList(String cus_num);
 	
-    // 占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙
+    // �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
 	HospitalVO detailHospital(String hos_num);
 	
-	// 占쏙옙占쏙옙 占싱몌옙 占쏙옙占쏙옙
+	// �뜝�룞�삕�뜝�룞�삕 �뜝�떛紐뚯삕 �뜝�룞�삕�뜝�룞�삕
 	List<String> detailNameHospital(String cus_num);
 	
-	//占쏙옙占쏙옙 占쏙옙 占쏙옙占쏙옙
+	//�뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
 	HospitalResVO detailRes(String hos_res_num);
 	
 	// Cancel Hospital Reservation
     int deleteRes(String hos_res_num);
 	
-	// 占쏙옙占쏙옙 占쏙옙占쏙옙占� 占쏙옙 占쏙옙占쏙옙호 占쏙옙占쏙옙
+	// �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕�뜝占� �뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕�샇 �뜝�룞�삕�뜝�룞�삕
 //	int decreaseWait(String hos_num);
 	
-	// 占쏙옙占쏙옙호 占쏙옙회
+	// �뜝�룞�삕�뜝�룞�삕�샇 �뜝�룞�삕�쉶
 	int detailWait(String hos_res_num);
 	
-	// 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙
+	// �뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
 	int customerUpdate(CustomerVO customer);
 	
-	// 회占쏙옙 탈占쏙옙
+	// �쉶�뜝�룞�삕 �깉�뜝�룞�삕
 	int customerDelete(String cus_num);
 	
-	// 처占쏙옙占쏙옙 占쏙옙占쏙옙
+	// 泥섇뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
 	PresVO presRealDetail(String hos_res_num);
 	
-	// 처占쏙옙占쏙옙 占쏙옙 占쏙옙 占쏙옙회 占쏙옙占쏙옙트
+	// 泥섇뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕 �뜝�룞�삕 �뜝�룞�삕�쉶 �뜝�룞�삕�뜝�룞�삕�듃
 	List<PresDetailVO> cusPresDetailList(String pres_num);
 	
-	// 처占쏙옙占쏙옙 占쏙옙 占쏙옙 占쏙옙 占싱몌옙
+	// 泥섇뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕 �뜝�룞�삕 �뜝�룞�삕 �뜝�떛紐뚯삕
 	List<String> cusPresDetailMedName(String pres_num);
 	
-	// 占쏙옙占쏙옙 占싹깍옙
+	// �뜝�룞�삕�뜝�룞�삕 �뜝�떦源띿삕
 	int insertPay(PayVO pay);
 	
-	// 占쏙옙占쏙옙占싹뤄옙
+	// �뜝�룞�삕�뜝�룞�삕�뜝�떦琉꾩삕
 	int updatePay(String pres_num);
 	
-	// 처占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙
+	// 泥섇뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
 	String selectPayCheck(String pres_num);
 	
-	// 占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙
+	// �뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
 	int selectPayPrice(String hos_res_num);
 	
-	//占썅국 占쏙옙호 占쏙옙占�
+	//�뜝�뛿援� �뜝�룞�삕�샇 �뜝�룞�삕�뜝占�
 	String selectPharNum(String phar_name);
 	
-	//占썅국 占쏙옙占쏙옙占싹깍옙
+	//�뜝�뛿援� �뜝�룞�삕�뜝�룞�삕�뜝�떦源띿삕
 	int insertPharRes(PharResVO pvo);
 	
-	//占썅국 占쏙옙占쏙옙 占쏙옙占쏙옙트
+	//�뜝�뛿援� �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕�듃
 	List<PharResVO> pharResList(String cus_num);
 	
-	//占썅국 占싱몌옙 占쏙옙占쏙옙占쏙옙占쏙옙
+	//�뜝�뛿援� �뜝�떛紐뚯삕 �뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕
 	List<String> detailNamePharmacy(String cus_num);
 	
-	// 占썅국 占쏙옙占쏙옙 占쏢세븝옙占쏙옙
+	// �뜝�뛿援� �뜝�룞�삕�뜝�룞�삕 �뜝�룫�꽭釉앹삕�뜝�룞�삕
 	PharResVO pharResDetail(String phar_res_num);
 	
-	// 占썅국 占싱몌옙 占쏙옙占쏙옙
+	// �뜝�뛿援� �뜝�떛紐뚯삕 �뜝�룞�삕�뜝�룞�삕
 	String selectPharmacyName(String phar_num);
 	
-	// 占썅국 占쏙옙占쏙옙호 占쏙옙占쏙옙
+	// �뜝�뛿援� �뜝�룞�삕�뜝�룞�삕�샇 �뜝�룞�삕�뜝�룞�삕
 	int increasePharResWait(String phar_res_num);
 	
-	// 占썅국 占쏙옙占쏙옙호 占쏙옙회
+	// �뜝�뛿援� �뜝�룞�삕�뜝�룞�삕�샇 �뜝�룞�삕�쉶
 	int detailPharWait(String phar_num);
 	
 	/*
@@ -120,28 +121,28 @@ public interface CustomerMapper {
 	//review delete
 	int reviewDelete(String rv_num);
 	
-	// 占쏙옙회 占쏙옙 占쏙옙占쏙옙
+	// �뜝�룞�삕�쉶 �뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
 	int increaseHits(String rv_num);
 	
-	// 占쌉시깍옙 占쏙옙회 占쏙옙 占쏙옙회
+	// �뜝�뙃�떆源띿삕 �뜝�룞�삕�쉶 �뜝�룞�삕 �뜝�룞�삕�쉶
 	int detailHits(String rv_num);
 	*/
-	// 占쏙옙占쏙옙 占쏙옙占쏙옙 확占쏙옙
+	// �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕 �솗�뜝�룞�삕
 	String checkResAcpt(String hos_res_num);
 	
-	// 회占쏙옙 占쏙옙占쏙옙占쏙옙
+	// �쉶�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕�뜝�룞�삕
 	CustomerVO customerDetail(String cus_num);
 	
-	// 占쏙옙占쏙옙 占쌉뤄옙
+	// �뜝�룞�삕�뜝�룞�삕 �뜝�뙃琉꾩삕
 	int symptomInsert(SymptomVO sym);
 	
-	// 占쏙옙占쏙옙 占싯삼옙 占쏙옙占�
+	// �뜝�룞�삕�뜝�룞�삕 �뜝�떙�궪�삕 �뜝�룞�삕�뜝占�
 	SymptomDetailVO symptomDetail(String cus_num);
 	
-	// 占싯몌옙占쏙옙占�
+	// �뜝�떙紐뚯삕�뜝�룞�삕�뜝占�
 	int notifyInsert(HashMap<String, String> map);
 	
-	// 占쏙옙占쏙옙占싱몌옙 占싼곤옙 占쏙옙占쏙옙
+	// �뜝�룞�삕�뜝�룞�삕�뜝�떛紐뚯삕 �뜝�떬怨ㅼ삕 �뜝�룞�삕�뜝�룞�삕
 	String hospitalOneName(String hos_num);
 	
 	// community insert
@@ -165,5 +166,8 @@ public interface CustomerMapper {
 	// notice detail
 	NoticeVO noticeDetail(String not_num);
 	
+	List<CommunityVO> getListWithPaging(Criteria cri);
+	
+	int getTotalCount(Criteria cri);
 	
 }

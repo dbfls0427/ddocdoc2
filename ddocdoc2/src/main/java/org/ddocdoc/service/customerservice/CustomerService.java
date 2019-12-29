@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.ddocdoc.vo.communityvo.CommunityVO;
+import org.ddocdoc.vo.communityvo.Criteria;
 import org.ddocdoc.vo.customervo.CustomerAuthVO;
 import org.ddocdoc.vo.customervo.CustomerVO;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
@@ -20,97 +21,97 @@ public interface CustomerService {
 
 	public void insertCustomer(CustomerVO customer);
 
-	// 占싸깍옙占쏙옙 占쏙옙占실넣깍옙
+	// �뜝�떥源띿삕�뜝�룞�삕 �뜝�룞�삕�뜝�떎�꽔源띿삕
 	public CustomerVO loginCustomer(String cus_id);
 
-	// 占쏙옙占쏙옙 占쏙옙호 占쏙옙占쏙옙占쏙옙占쏙옙
+	// �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�샇 �뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕
 	public String selectHosNum(String hos_name);
 
-	// 占쏙옙占쏙옙 占쏙옙占쏙옙
+	// �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
 	public void insertHospitalRes(HospitalResVO hospitalresVO);
 
-	// 占쏙옙占쏙옙 占쏙옙占쏙옙트
+	// �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕�듃
 	public List<HospitalResVO> resList(String cus_num);
 
-	// 占쏙옙占쏙옙 占싱몌옙 占쏙옙占쏙옙
+	// �뜝�룞�삕�뜝�룞�삕 �뜝�떛紐뚯삕 �뜝�룞�삕�뜝�룞�삕
 	public List<String> detailNameHospital(String cus_num);
 
-	// 占썅국 占쏙옙占쏙옙 占쏙옙占쏙옙트
+	// �뜝�뛿援� �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕�듃
 	public List<PharResVO> pharResList(String cus_num);
 
-	// 占썅국 占싱몌옙 占쏙옙占쏙옙占쏙옙占쏙옙
+	// �뜝�뛿援� �뜝�떛紐뚯삕 �뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕
 	public List<String> detailNamePharmacy(String cus_num);
 
-	// 占쏙옙占쏙옙 占쏙옙 占쏙옙占쏙옙
+	// �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
 	public HospitalResVO detailRes(String hos_res_num);
 
-	// 占쏙옙占쏙옙 占쏙옙占쏙옙 확占쏙옙
+	// �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕 �솗�뜝�룞�삕
 	public String checkResAcpt(String hos_res_num);
 
-	// 占쏙옙占쏙옙호 占쏙옙회
+	// �뜝�룞�삕�뜝�룞�삕�샇 �뜝�룞�삕�쉶
 	public int detailWait(String hos_res_num);
 
-	// 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙
+	// �뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
 	public int customerUpdate(CustomerVO customer);
 
-	// 회占쏙옙 탈占쏙옙
+	// �쉶�뜝�룞�삕 �깉�뜝�룞�삕
 	public int customerDelete(String cus_num);
 
-	// 회占쏙옙 占쏙옙
+	// �쉶�뜝�룞�삕 �뜝�룞�삕
 	public CustomerVO customerDetail(String cus_num);
 
-	// 처占쏙옙占쏙옙 占쏙옙占쏙옙
+	// 泥섇뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
 	public PresVO presRealDetail(String hos_res_num);
 
-	// 처占쏙옙占쏙옙 占쏙옙 占쏙옙 占쏙옙회 占쏙옙占쏙옙트
+	// 泥섇뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕 �뜝�룞�삕 �뜝�룞�삕�쉶 �뜝�룞�삕�뜝�룞�삕�듃
 	public List<PresDetailVO> cusPresDetailList(String pres_num);
 
-	// 처占쏙옙占쏙옙 占쏙옙 占쏙옙 占쏙옙 占싱몌옙
+	// 泥섇뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕 �뜝�룞�삕 �뜝�룞�삕 �뜝�떛紐뚯삕
 	public List<String> cusPresDetailMedName(String pres_num);
 
-	// 占쏙옙占쏙옙 占싹깍옙
+	// �뜝�룞�삕�뜝�룞�삕 �뜝�떦源띿삕
 	public int insertPay(PayVO pay);
 
-	// 占쏙옙占쏙옙占싹뤄옙
+	// �뜝�룞�삕�뜝�룞�삕�뜝�떦琉꾩삕
 	public int updatePay(String pres_num);
 
-	// 처占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙
+	// 泥섇뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
 	public String selectPayCheck(String pres_num);
 
-	// 占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙
+	// �뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
 	public int selectPayPrice(String hos_res_num);
 
-	// 占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙
+	// �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
 	public HospitalVO detailHospital(String hos_num);
 	
-	// 占쏙옙占쏙옙 占쌉뤄옙
+	// �뜝�룞�삕�뜝�룞�삕 �뜝�뙃琉꾩삕
 	public int symptomInsert(SymptomVO sym);
 	
-	// 占쏙옙占쏙옙 占싯삼옙 占쏙옙占�
+	// �뜝�룞�삕�뜝�룞�삕 �뜝�떙�궪�삕 �뜝�룞�삕�뜝占�
 	public SymptomDetailVO symptomDetail(String cus_num);
 	
-	//占썅국 占쏙옙호 占쏙옙占�
+	//�뜝�뛿援� �뜝�룞�삕�샇 �뜝�룞�삕�뜝占�
 	public String selectPharNum(String phar_name);
 	
-	//占썅국 占쏙옙占쏙옙占싹깍옙
+	//�뜝�뛿援� �뜝�룞�삕�뜝�룞�삕�뜝�떦源띿삕
 	int insertPharRes(PharResVO pvo);
 		
-	// 占썅국 占쏙옙占쏙옙 占쏢세븝옙占쏙옙
+	// �뜝�뛿援� �뜝�룞�삕�뜝�룞�삕 �뜝�룫�꽭釉앹삕�뜝�룞�삕
 	public PharResVO pharResDetail(String phar_res_num);
 	
-	// 占썅국 占싱몌옙 占쏙옙占쏙옙
+	// �뜝�뛿援� �뜝�떛紐뚯삕 �뜝�룞�삕�뜝�룞�삕
 	public String selectPharmacyName(String phar_num);
 	
-	// 占썅국 占쏙옙占쏙옙호 占쏙옙占쏙옙
+	// �뜝�뛿援� �뜝�룞�삕�뜝�룞�삕�샇 �뜝�룞�삕�뜝�룞�삕
 	public int increasePharResWait(String phar_res_num);
 	
-	// 占썅국 占쏙옙占쏙옙호 占쏙옙회
+	// �뜝�뛿援� �뜝�룞�삕�뜝�룞�삕�샇 �뜝�룞�삕�쉶
 	public int detailPharWait(String phar_num);
 	
-	// 占싯몌옙占쏙옙占�
+	// �뜝�떙紐뚯삕�뜝�룞�삕�뜝占�
 	public int notifyInsert(HashMap<String, String> map);
 	
-	// 占쏙옙占쏙옙占싱몌옙 占싼곤옙 占쏙옙占쏙옙
+	// �뜝�룞�삕�뜝�룞�삕�뜝�떛紐뚯삕 �뜝�떬怨ㅼ삕 �뜝�룞�삕�뜝�룞�삕
 	public String hospitalOneName(String hos_num);
 	
 	// Cancel Hospital Reservation
@@ -137,6 +138,9 @@ public interface CustomerService {
 	// notice detail
 	public NoticeVO noticeDetail(String not_num);
 	
+	public List<CommunityVO> getListWithPaging(Criteria cri);
+	
+	public int getTotalCount(Criteria cri);
 	
 	
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import org.ddocdoc.controller.customercontroller.CustomerController;
 import org.ddocdoc.mapper.customermapper.CustomerMapper;
 import org.ddocdoc.vo.communityvo.CommunityVO;
+import org.ddocdoc.vo.communityvo.Criteria;
 import org.ddocdoc.vo.customervo.CustomerAuthVO;
 import org.ddocdoc.vo.customervo.CustomerVO;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
@@ -251,6 +252,16 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public NoticeVO noticeDetail(String not_num) {
 		return mapper.noticeDetail(not_num);
+	}
+
+	@Override
+	public List<CommunityVO> getListWithPaging(Criteria cri) {
+		return mapper.getListWithPaging(cri);
+	}
+
+	@Override
+	public int getTotalCount(Criteria cri) {
+		return mapper.getTotalCount(cri);
 	}
 	
 	

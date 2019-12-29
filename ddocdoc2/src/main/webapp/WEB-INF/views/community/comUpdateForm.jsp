@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<form action="/customer/comUpdate" method="post">
+	<form action="/customer/comUpdate" method="post" role='form'>
 	글번호<br>
 	<input type="text" name="com_num" value = "${com.com_num }" readonly><br>
 	제목<br>
@@ -18,8 +18,21 @@
 	내용<br>
 	<input type="text" name="com_content" value = "${com.com_content }"><br>
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+	<input type="hidden" name="pageNum" value='${cri.pageNum }'>
+	<input type="hidden" name="amount" value='${cri.amount }'>
 	<input type="submit" value = "수정">
 	</form>
 	<button onclick="location.href='/customer/comList'">글 목록</button>
 </body>
+
+<script type="text/javascript">
+/* 	$(document).ready(function() {
+		var formObj = $("form");
+		
+		$('button')
+		
+		
+	}); */
+
+</script>
 </html>

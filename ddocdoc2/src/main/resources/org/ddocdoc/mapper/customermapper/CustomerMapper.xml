@@ -297,6 +297,20 @@
          select * from dd_notice
          where not_num = #{not_num, jdbcType=VARCHAR}
     </select>
+    
+    <select id="getListWithPaging" resultType="org.ddocdoc.vo.communityvo.CommunityVO" parameterType="org.ddocdoc.vo.communityvo.Criteria">
+		<![CDATA[
+			select com_num, com_title, com_writer, com_content, com_date, com_hits, com_up, com_down, cus_num from
+				(select /*+INDEX_DESC(dd_community COMMUNITY_PK) */ rownum rn, com_num, com_title, com_writer, com_content, com_date, com_hits, com_up, com_down, cus_num from dd_community where rownum <= #{pageNum} * #{amount})
+				where rn > (#{pageNum} -1) * #{amount}
+		
+		]]>
+	</select>
+    
+    <select id="getTotalCount" resultType="int">
+    	select count(*) from dd_community where com_num > 0
+    
+    </select>
 	
 </mapper>
 

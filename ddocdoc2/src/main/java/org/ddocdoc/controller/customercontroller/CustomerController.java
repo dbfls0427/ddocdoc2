@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import org.ddocdoc.service.customerservice.CustomerService;
 import org.ddocdoc.vo.communityvo.CommunityVO;
+import org.ddocdoc.vo.communityvo.Criteria;
+import org.ddocdoc.vo.communityvo.PageDTO;
 import org.ddocdoc.vo.customervo.CustomerVO;
 import org.ddocdoc.vo.hospitalresvo.HospitalResVO;
 import org.ddocdoc.vo.hospitalvo.HospitalVO;
@@ -27,6 +29,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -90,7 +93,7 @@ public class CustomerController {
 		return "/login/loginForm";
 	}
 	
-	//占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙
+	//�뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕
 	@GetMapping("/hospitalResForm")
 	public String hospitalResForm(@RequestParam String cus_num, @RequestParam String hos_name, Model model){
 		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
@@ -98,7 +101,7 @@ public class CustomerController {
 		return "/res/hos_res";
 	}
 	
-	//占쏙옙占쏙옙 占쏙옙占쏙옙
+	//�뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
 	@PostMapping("/hospitalRes")
 	public String hospitalRes(HospitalResVO hospitalresVO, @RequestParam String hos_name, Model model, RedirectAttributes rttr){
 		System.out.println(hos_name);
@@ -109,7 +112,7 @@ public class CustomerController {
 		return "redirect:/customer/hospitalResList";
 	}
 	
-	//占쏙옙占쏙옙 占쏙옙占쏙옙트
+	//�뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕�듃
 	@GetMapping("/hospitalResList")
 	public String hospitalResList(Model model){
 		System.out.println("dddd" + ((CustomerVO)session.getAttribute("customer")).getCus_num());
@@ -128,22 +131,22 @@ public class CustomerController {
 		
 	}
 	
-	//占쏙옙占쏙옙 占쏢세븝옙占쏙옙
+	//�뜝�룞�삕�뜝�룞�삕 �뜝�룫�꽭釉앹삕�뜝�룞�삕
 	@GetMapping("/hospitalResDetail")
 	public String hospitalResDetail(@RequestParam String hos_res_num, Model model,HttpServletResponse response) throws IOException{
 		HospitalResVO res = service.detailRes(hos_res_num);
 		String check = service.checkResAcpt(hos_res_num);
-		System.out.println("커占쏙옙占쏙옙占� 占쏙옙트占싼뤄옙占쏙옙占쏙옙 hos_res_num : " + hos_res_num);
+		System.out.println("而ㅵ뜝�룞�삕�뜝�룞�삕�뜝占� �뜝�룞�삕�듃�뜝�떬琉꾩삕�뜝�룞�삕�뜝�룞�삕 hos_res_num : " + hos_res_num);
 		System.out.println("check" + check);
 		
-		if(check.equals("예약 접수 대기 중")){
+		if(check.equals("�삁�빟 �젒�닔 ��湲� 以�")){
 			model.addAttribute("res", res);
 			model.addAttribute("hos_res_num", hos_res_num);
 			model.addAttribute("cus_name", ((CustomerVO)session.getAttribute("customer")).getCus_name());
 			response.setContentType("text/html; charset=UTF-8");
             PrintWriter out = response.getWriter();
-//            out.println("<script>alert('예약 접수가 아직 되지 않아 대기번호 발급이 안되었습니다. 접수가 완료될 때 까지 잠시만 기다려주세요.'); location.href='/customer/hospitalResList';</script>");
-            out.println("<script>alert('예약 접수가 아직 되지 않아 대기번호 발급이 안되었습니다. 접수가 완료될 때 까지 잠시만 기다려주세요.');</script>");
+//            out.println("<script>alert('�삁�빟 �젒�닔媛� �븘吏� �릺吏� �븡�븘 ��湲곕쾲�샇 諛쒓툒�씠 �븞�릺�뿀�뒿�땲�떎. �젒�닔媛� �셿猷뚮맆 �븣 源뚯� �옞�떆留� 湲곕떎�젮二쇱꽭�슂.'); location.href='/customer/hospitalResList';</script>");
+            out.println("<script>alert('�삁�빟 �젒�닔媛� �븘吏� �릺吏� �븡�븘 ��湲곕쾲�샇 諛쒓툒�씠 �븞�릺�뿀�뒿�땲�떎. �젒�닔媛� �셿猷뚮맆 �븣 源뚯� �옞�떆留� 湲곕떎�젮二쇱꽭�슂.');</script>");
             out.flush();
 //			return null;
 			return "/res/resDetail";
@@ -158,21 +161,21 @@ public class CustomerController {
 		
 	}
 	
-	// 占쏙옙占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙
+	// �뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕
 	@GetMapping("/myPageForm")
 	public String myPageForm(Model model){
 		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
 		return "/myPage/myPageForm";
 	}
 	
-	// 회占쏙옙 占쏙옙占쏙옙 占쏙옙
+	// �쉶�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕
 	@GetMapping("/myPageUpdateForm")
 	public String myPageUpdateForm(Model model){
 		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
 		return "/myPage/myPageUpdateForm";
 	}
 	
-	// 회占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙
+	// �쉶�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
 	@PostMapping("/myPageUpdate")
 	public String myPageUpdate(CustomerVO customer){
 		String pw = pwencoder.encode(customer.getCus_pw());
@@ -181,7 +184,7 @@ public class CustomerController {
 		return "/login/loginSuccess";
 	}
 	
-	// 회占쏙옙 탈占쏙옙
+	// �쉶�뜝�룞�삕 �깉�뜝�룞�삕
 	@GetMapping("/myPageDelete")
 	public String myPageDelete(@RequestParam String cus_num){
 		service.customerDelete(cus_num);
@@ -190,7 +193,7 @@ public class CustomerController {
 	
 	
 	
-	// 회占쏙옙 占쏙옙
+	// �쉶�뜝�룞�삕 �뜝�룞�삕
 	@GetMapping("/customerDetail")
 	public String customerDetail(@RequestParam String cus_num, Model model){
 		service.customerDetail(cus_num);
@@ -198,21 +201,21 @@ public class CustomerController {
 		return "/myPage/detailCustomer";
 	}
 	
-	// 회占쏙옙 占싸그아울옙
+	// �쉶�뜝�룞�삕 �뜝�떥洹몄븘�슱�삕
 	@GetMapping("/logout")
 	public String logout(){
 		return "/index/index";
 	}
 	
 	
-	// 처占쏙옙占쏙옙 占쏢세븝옙占쏙옙
+	// 泥섇뜝�룞�삕�뜝�룞�삕 �뜝�룫�꽭釉앹삕�뜝�룞�삕
 	@GetMapping("/presDetail")
 	public String presDetail(@RequestParam String hos_res_num, @RequestParam String hos_num, HttpServletResponse response, Model model) throws IOException{
 		PresVO pres = service.presRealDetail(hos_res_num);
 		if(pres == null) {
 			response.setContentType("text/html; charset=UTF-8");
 		     PrintWriter writer = response.getWriter();
-		     writer.println("<script>alert('예약 접수가 아직 되지 않아 대기번호 발급이 안되었습니다. 접수가 완료될 때 까지 잠시만 기다려주세요.'); location.href='/customer/hospitalResList';</script>");
+		     writer.println("<script>alert('�삁�빟 �젒�닔媛� �븘吏� �릺吏� �븡�븘 ��湲곕쾲�샇 諛쒓툒�씠 �븞�릺�뿀�뒿�땲�떎. �젒�닔媛� �셿猷뚮맆 �븣 源뚯� �옞�떆留� 湲곕떎�젮二쇱꽭�슂.'); location.href='/customer/hospitalResList';</script>");
 		     writer.flush();
 			return null;
 		}
@@ -302,7 +305,7 @@ public class CustomerController {
 		String hos_name = service.hospitalOneName(hos_num);
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter writer = response.getWriter();
-		 writer.println("<script>alert('"+ hos_name + " 병원에 사전 온라인 상담 예약 완료되었습니다. 담당 의사가 확인할 때까지 기다려주세요.');</script>");
+		 writer.println("<script>alert('"+ hos_name + " 蹂묒썝�뿉 �궗�쟾 �삩�씪�씤 �긽�떞 �삁�빟 �셿猷뚮릺�뿀�뒿�땲�떎. �떞�떦 �쓽�궗媛� �솗�씤�븷 �븣源뚯� 湲곕떎�젮二쇱꽭�슂.');</script>");
 	     writer.flush();
 		return "/chatting/chatting";
 	}
@@ -337,21 +340,21 @@ public class CustomerController {
 		String check = service.checkResAcpt(hos_res_num);
 		System.out.println("check" + check);
 		
-		if(check.equals("예약 접수 대기 중")){
-			log.info("2-111customerController에서  에약접수대중일때 hos_res_numhoS_RES_NUM: "+hos_res_num);
+		if(check.equals("�삁�빟 �젒�닔 ��湲� 以�")){
+			log.info("2-111customerController�뿉�꽌  �뿉�빟�젒�닔��以묒씪�븣 hos_res_numhoS_RES_NUM: "+hos_res_num);
 			response.setContentType("text/html; charset=UTF-8");
             PrintWriter out = response.getWriter();
-            out.println("<script>alert('예약을 취소합니다.');location.href='/customer/hospitalResList';</script>");
+            out.println("<script>alert('�삁�빟�쓣 痍⑥냼�빀�땲�떎.');location.href='/customer/hospitalResList';</script>");
             out.flush();
-            log.info("3-33customerController 예약접수대기중이면 삭제가 가능토록!");
+            log.info("3-33customerController �삁�빟�젒�닔��湲곗쨷�씠硫� �궘�젣媛� 媛��뒫�넗濡�!");
             service.deleteRes(hos_res_num);
             return null;
 		}else{
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();
-			writer.println("<script>alert('병원에 예약이 완료되었습니다. 병원예약 취소가 불가능합니다.');location.href='/customer/hospitalResList';</script>");
+			writer.println("<script>alert('蹂묒썝�뿉 �삁�빟�씠 �셿猷뚮릺�뿀�뒿�땲�떎. 蹂묒썝�삁�빟 痍⑥냼媛� 遺덇��뒫�빀�땲�떎.');location.href='/customer/hospitalResList';</script>");
 			writer.flush();
-			 log.info("customerController 예약취소불가라믄 아므것도 안일어나고 걍 리스트화면으로~");
+			 log.info("customerController �삁�빟痍⑥냼遺덇��씪誘� �븘誘�寃껊룄 �븞�씪�뼱�굹怨� 嫄� 由ъ뒪�듃�솕硫댁쑝濡�~");
 			return null;
 		}
 		
@@ -374,37 +377,43 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/comList")
-	public String comList(Model model){
-		List<CommunityVO> list = service.comList();
+	public String comList(Criteria cri, Model model){
+		List<CommunityVO> list = service.getListWithPaging(cri);
 		model.addAttribute("list", list);
+		model.addAttribute("pageMaker", new PageDTO(cri, service.getTotalCount(cri)));
 		return "/community/comList";
 	}
+
 	
 	@GetMapping("/comDetail")
-	public String comDetail(@RequestParam("com_num") String com_num, Model model){
+	public String comDetail(@RequestParam("com_num") String com_num, @ModelAttribute("cri") Criteria cri,Model model){
 		CommunityVO com = service.comDetail(com_num);
 		model.addAttribute("com", com);
 		return "/community/comDetail";
 	}
 	
 	@GetMapping("/comUpdateForm")
-	public String comUpdateForm(@RequestParam("com_num") String com_num, Model model){
+	public String comUpdateForm(@RequestParam("com_num") String com_num, @ModelAttribute("cri") Criteria cri, Model model){
 		CommunityVO com = service.comDetail(com_num);
 		model.addAttribute("com", com);
+		model.addAttribute("cri", cri);
 		return "/community/comUpdateForm";
 	}
 	
 	@PostMapping("/comUpdate")
-	public String comUpdate(CommunityVO com, RedirectAttributes rttr){
+	public String comUpdate(CommunityVO com, @ModelAttribute("cri") Criteria cri,RedirectAttributes rttr){
 		service.comUpdate(com);
-		String com_num = com.getCom_num();
-		rttr.addAttribute("com_num", com_num);
-		return "redirect:/customer/comDetail";
+		
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
+		return "redirect:/customer/comList";
 	}
 	
 	@GetMapping("/comDelete")
-	public String comDelete(@RequestParam("com_num") String com_num){
+	public String comDelete(@RequestParam("com_num") String com_num, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr){
 		service.comDelete(com_num);
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
 		return "redirect:/customer/comList";
 	}
 	
