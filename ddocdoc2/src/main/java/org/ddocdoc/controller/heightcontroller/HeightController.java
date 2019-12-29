@@ -35,6 +35,7 @@ public class HeightController {
 	public void heightList(ChildVO childVO, Model model){
 		System.out.println("childVO.gender" + childVO.getCh_gender());
 		String gender_tb = "";
+		System.out.println(childVO.getCh_gender());
 		if(childVO.getCh_gender().equals("남")){
 			gender_tb = "dd_boy_st_height";
 		}else{
@@ -48,6 +49,7 @@ public class HeightController {
 		
 		model.addAttribute("ch_num",childVO.getCh_num());
 		model.addAttribute("ch_name", childVO.getCh_name());
+		model.addAttribute("ch_gender", childVO.getCh_gender());
 		model.addAttribute("st_height", st_height);
 		model.addAttribute("customer", (CustomerVO) CustomerController.session.getAttribute("customer"));
 		System.out.println("controller v: " +childVO.getCh_num());

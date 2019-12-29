@@ -50,6 +50,7 @@ j(document).ready(function(){
 	var csrfName = '<c:out value="${_csrf.parameterName}"/>';
 	var st_height = '<c:out value="${st_height}"/>';
 	var ch_name = '<c:out value="${ch_name}"/>';
+	var ch_gender = '<c:out value="${ch_gender}"/>';
 	console.log("이름임" + ch_name);
 	
 	var height = "";
@@ -190,7 +191,6 @@ j(document).ready(function(){
 	modalRegisterBtn.click(function(){
 		
 		var queryString = j("#testForm").serialize();
-		alert(queryString);
 		
 		heightService.insert(queryString, function(result){
 			
@@ -199,7 +199,7 @@ j(document).ready(function(){
 			/* modal.modal("hide"); */
 			jQuery("#myModal").modal("hide");
 			
-			location.href="/height/heightList?ch_num=" + num;
+			location.href="/height/heightList?ch_num=" + num + "&ch_gender=" + ch_gender;
 			
 		});
 	});
@@ -217,9 +217,8 @@ j(document).ready(function(){
 		console.log("queryDecode : "+ queryDecode);
 		
 		heightService.update(queryDecode, function(result){
-			alert(result);
 			jQuery(".modal").modal("hide");
-			location.href="/height/heightList?ch_num=" + num;
+			location.href="/height/heightList?ch_num=" + num  + "&ch_gender=" + ch_gender;
 		})
 	})
 	
@@ -229,9 +228,8 @@ j(document).ready(function(){
 		console.log(he_num);
 		
 		heightService.remove(he_num, function(result){
-			alert(result);
 			jQuery(".modal").modal("hide");
-			location.href="/height/heightList?ch_num=" + num;
+			location.href="/height/heightList?ch_num=" + num  + "&ch_gender=" + ch_gender;
 		});
 	})
 
