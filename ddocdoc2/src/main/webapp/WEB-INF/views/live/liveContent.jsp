@@ -36,7 +36,34 @@ jQuery(document).ready(function(){
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
 }
-</style>
+hr{
+	margin-top : none;
+	margin-bottom : none;
+	border: 0;
+    border-top: 1px solid #804545;
+    border-width: 3px;
+}
+
+.labe{
+	font-size : 20px;
+	color : gray;
+}
+
+#bar{
+	color : #804545;
+	font-size : 25px;
+}
+
+.panel-title{
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 20px;
+    color: inherit;
+}
+
+.panel-body{
+	font-size : 17px;
+}
 </style>
 </head>
 <body>
@@ -66,21 +93,15 @@ jQuery(document).ready(function(){
 		</div>
 	</section>
 
-	<section class="company-description" id="wrapjoin" style="display: flex; padding-left : 15%">
-		<label>Live방송 제목 </label>
-	    <label style="font-size: 30px; margin-top: 16px;">${customer.cus_name }님의 상담 내역</label>
+	<section class="company-description" id="wrapjoin" style="padding-left : 30%; width : 1350px;">
+	    <label style="font-size: 30px; margin-top: 16px;">${customer.cus_name }님의 상담 내역</label>&nbsp &nbsp
+		<label id="bar">|</label><label class="labe">${live.live_name }</label>
+		<label id="bar">|</label><label class="labe">${live.live_hos }</label><label id="bar">|</label>
+	    <hr>
+	    <br>
 	</section>	
-	
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Panel title</h3>
-  </div>
-  <div class="panel-body">
-    Panel content
-  </div>
-</div>
 
-	<div id="test" class="class="panel panel-danger"> 
+	<div id="test" style="width:700px; margin-left : 30%; margin-top:10px; margin-bottom : 7%;"> 
 	
 	</div>
 	
