@@ -25,6 +25,7 @@ import lombok.extern.log4j.Log4j;
 public class LiveController {
 
 	private LiveService service;
+	static int count = 0;
 
 	@GetMapping("/mainLive")
 	public void mainLive(){
@@ -69,7 +70,9 @@ public class LiveController {
 	}
 	
 	@GetMapping("/liveStop")
-	public String liveStop(@RequestParam("hash") String hash, Model model, RedirectAttributes rttr){
+	public String liveStop(@RequestParam("hash") String hash, 
+			@RequestParam("content") String content, Model model, RedirectAttributes rttr){
+		
 		String live_address = "https://192.168.35.69:3001/conference/#"+hash;
 		System.out.println("넘오오는거보자 " +live_address);
 		String now_cus = ((CustomerVO)CustomerController.session.getAttribute("customer")).getCus_id();
@@ -78,14 +81,25 @@ public class LiveController {
 		int re2 = 0;
 		//for view
 		String view ="";
+		System.out.println("content" + content);
+		LiveVO live = new LiveVO();
+		live.setLive_address(live_address);
+		if(count % 2 ==0){
+			content = "<div class='panel panel-default'><div class='panel-heading'><h3 class='panel-title'>상담원</h3></div><div class='panel-body'>" + content +"</div></div>";
+			count++;
+		}else if(count % 2 ==1){
+			content = "<div class='panel panel-default'><div class='panel-heading'><h3 class='panel-title'>고객</h3></div><div class='panel-body'>" + content +"</div></div>";
+			count++;
+		}
+		live.setLive_content(content);
 		
 		if(now_cus.equals("admin")){
 			re = service.liveStop(live_address);
-			re2 = service.cusStop(live_address);
+			re2 = service.cusStop(live);
 			view = "redirect:/hospital/admin";
 		}else{
 			System.out.println("어드민아닌디");
-			re = service.cusStop(live_address);
+			re = service.cusStop(live);
 			re2= service.liveStop(live_address);
 			view = "redirect:/live/liveList";
 		}
@@ -93,5 +107,14 @@ public class LiveController {
 		
 		rttr.addAttribute("cus_num",cus_num);
 		return view;
+	}
+	
+	@GetMapping("/liveContent")
+	public void liveContent(@RequestParam("live_num") String live_num, Model model){
+		LiveVO live = service.liveContent(live_num);
+		System.out.println("여기는 liveContent");
+		System.out.println(live.getLive_content());
+		model.addAttribute("live", live);
+		model.addAttribute("customer" , (CustomerVO) CustomerController.session.getAttribute("customer"));
 	}
 }

@@ -116,7 +116,7 @@ var timer = new Date();
 		        <h3>${past.live_name }</h3>
 		        <p>${past.live_hos } | <i class="fas fa-user-friends"></i>${on.live_count}/2</p>
 		        <p id="clock">${past.live_start }</p>
-		        <p><a href="#" class="btn btn-default" role="button" id="clock1">상담내역보기</a></p>
+		        <p><a href="/live/liveContent?live_num=${past.live_num }" class="btn btn-default" role="button" id="clock1">상담내역보기</a></p>
 		      </div>
 		    </div>
 		  </div>

@@ -48,8 +48,13 @@ public class LiveServiceImpl implements LiveService {
 	}
 
 	@Override
-	public int cusStop(String live_address) {
-		return mapper.cusStop(live_address);
+	public int cusStop(LiveVO live) {
+		return mapper.cusStop(live);
+	}
+
+	@Override
+	public LiveVO liveContent(String live_num) {
+		return mapper.liveContent(live_num);
 	}
 
 }

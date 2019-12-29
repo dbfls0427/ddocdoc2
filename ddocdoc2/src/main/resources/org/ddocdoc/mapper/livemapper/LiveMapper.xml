@@ -14,7 +14,7 @@
 	
 	<!-- 라이브방송등록 -->
 	<insert id="insertLive" parameterType="org.ddocdoc.vo.livevo.LiveVO">
-		insert into dd_liveroom values(liveroom_seq.nextval, #{live_name}, 1 ,'dd',#{live_address}, #{live_hos}, to_char(sysdate,'yyyy-mm-dd hh24:mi:ss'),null, null)
+		insert into dd_liveroom values('li00' || liveroom_seq.nextval, #{live_name}, 1 ,null,#{live_address}, #{live_hos}, to_char(sysdate,'yyyy-mm-dd hh24:mi:ss'),null, null)
 	</insert>
 	
 	<!-- 현재 방송목록 불러오기 -->
@@ -39,11 +39,16 @@
 	</update>
 	
 	<!-- 고객이 상담종료 -->
-	<update id="cusStop" parameterType="String">
-		update dd_liveroom set live_count = live_count-1
+	<update id="cusStop" parameterType="org.ddocdoc.vo.livevo.LiveVO">
+		update dd_liveroom set live_count = live_count-1, live_content= live_content || #{live_content}
 		where live_address=#{live_address}
 	</update>
-
+	
+	<!-- 상담내용불러오기 -->
+	<select id="liveContent" parameterType="String" resultType="org.ddocdoc.vo.livevo.LiveVO">
+		select * from dd_liveroom
+		where live_num=#{live_num}
+	</select>
 </mapper>
 
 

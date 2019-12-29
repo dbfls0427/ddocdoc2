@@ -18,6 +18,8 @@ public interface LiveService {
 	
 	public int liveStop(String live_address);
 	
-	public int cusStop(String live_address);
+	public int cusStop(LiveVO live);
+	
+	public LiveVO liveContent(String live_num);
 
 }

@@ -25,6 +25,9 @@ public interface LiveMapper {
 	public int liveStop(String live_address);
 	
 	//고객이 상담종료시
-	public int cusStop(String live_address);
+	public int cusStop(LiveVO live);
+	
+	//상담내용
+	public LiveVO liveContent(String live_num);
 
 }
