@@ -31,7 +31,7 @@
 		});
 
 		var comNum = $(".comNumc").val();
-		var replyUL = $(".chat");
+		var replyUL = $("#chat");
 
 		
 
@@ -46,11 +46,31 @@
 
 			for (var i = 0, len = list.length || 0; i < len; i++) {
 				console.log(list.rep_num);
-				str += "<a>" + list[i].rep_num + "</a></br>";
+/* 				str += "<a>" + list[i].rep_num + "</a></br>";
 				str += "<a> " + list[i].rep_writer + " </a></br>";
 				str += "<a>" + list[i].rep_content + "</a></br>";
 				str += "<a>" + list[i].rep_date + "</a></br>";
-				str += "<button onclick='remove("+ list[i].rep_num +")'>댓글 삭제</button></br>";
+				str += "<button onclick='remove("+ list[i].rep_num +")'>댓글 삭제</button></br>"; */
+				replyUL.empty();
+				
+ 				str += '<div class="media" style="margin-bottom: 10px;">';
+				str += '<div class="media-left" style="padding-right:0">';
+				str += '<a href="#">';
+				str += '<img class="media-object" src="/resources/images/comment2.jpeg" alt="..." style="width:70px;">';
+				str += '</a>';
+				str += '</div>';
+				str += '<div class="media-body" class="chat" style="padding-top: 10px; padding-left: 10px;">';
+				str += '<div style="display: flex; justify-content : center;">';
+				str += '<div style=" width:400px">';
+				str += '<h5 class="media-heading">'+ list[i].rep_writer  +'</h5>';
+				str += '<a>' + list[i].rep_content +'</a>';
+				str += '</div>';
+				str += '<button onclick="remoe('+list[i].rep_num+')" class="btn btn-default">삭제</button>';
+				str += '</div>';
+				str += '</div>';
+				str += '</div>';
+		
+		
 
 			}
 
@@ -65,7 +85,7 @@
 			
 		 
 		 
-		 $(".replyInsert").on("click",function(e){
+		 $("#replyInsert").on("click",function(e){
 			 e.preventDefault();
 			 
 			 var span = document.getElementsByClassName("close")[0];
@@ -120,17 +140,34 @@
 						replyUL.html("");
 						return;
 					}
-
+					replyUL.empty();
 					for (var i = 0, len = list.length || 0; i < len; i++) {
 						console.log(list.rep_num);
-						str += "<a>" + list[i].rep_num + "</a></br>";
+/* 						str += "<a>" + list[i].rep_num + "</a></br>";
 						str += "<a> " + list[i].rep_writer + " </a></br>";
 						str += "<a>" + list[i].rep_content + "</a></br>";
 						str += "<a>" + list[i].rep_date + "</a></br>";
-						str += "<button onclick='remove("+ list[i].rep_num +")'>댓글 삭제</button></br>";
+						str += "<button onclick='remove("+ list[i].rep_num +")'>댓글 삭제</button></br>"; */
+						
+		 				str += '<div class="media" style="margin-bottom: 10px;">';
+						str += '<div class="media-left" style="padding-right:0">';
+						str += '<a href="#">';
+						str += '<img class="media-object" src="/resources/images/comment2.jpeg" alt="..." style="width:70px;">';
+						str += '</a>';
+						str += '</div>';
+						str += '<div class="media-body" class="chat" style="padding-top: 10px; padding-left: 10px;">';
+						str += '<div style="display: flex; justify-content : center;">';
+						str += '<div style=" width:440px">';
+						str += '<h5 class="media-heading">'+ list[i].rep_writer  +'</h5>';
+						str += '<a>' + list[i].rep_content +'</a>';
+						str += '</div>';
+						str += '<button onclick="remoe('+list[i].rep_num+')" class="btn btn-default">삭제</button>';
+						str += '</div>';
+						str += '</div>';
+						str += '</div>';
 					}
 
-					replyUL.html(str);
+					replyUL.append(str);
 				}); 
 			 
 			 }); 
@@ -280,6 +317,8 @@
 							str += "<a>" + list[i].rep_date + "</a></br>";
 							str += "<button onclick='remove("+ list[i].rep_num +")'>댓글 삭제</button></br>";
 
+							
+							
 						}
 
 						replyUL.html(str);
@@ -420,12 +459,43 @@
 				value='${cri.pageNum }'> <input type="hidden" name="amount"
 				value='${cri.amount }'>
 		</form>
+	<div style="display: flex; justify-content:center; margin-top: 50px;">
+		<div style="width: 600px;">
+			<div class="panel panel-default">
+			  <div class="panel-body" id="chat">
+			   
+			   		<!-- 댓글 -->
+<!-- 					<div class="media" style="margin-bottom: 10px;">
+							  <div class="media-left" style="padding-right:0">
+							    <a href="#">
+							      <img class="media-object" src="/resources/images/comment2.jpeg" alt="..." style="width:70px;">
+							    </a>
+							  </div>
+							<div class="media-body" class="chat" style="padding-top: 10px; padding-left: 10px;">
+							 	 <div style="display: flex; justify-content : center;">
+							 	 	<div style=" width:440px">
+								    <h5 class="media-heading">Media heading</h5>
+								    <a>ddfawefasefasdfasdfasefasf</a>
+							 	 	</div>
+								    <button class="btn btn-default">hey</button>
+								    <hr>
+								  </div>
+							  </div>
+					</div>	 -->
+						   
+			   
+			   
+			   
+			  </div>
+			</div>
+		</div>
+	</div>
 
 	
 
-		<div class="chat"></div>
-		<div>
-			<button class="replyInsert">댓글 작성</button>
+		<!-- <div class="chat"></div> -->
+		<div style="display: flex; justify-content:center; margin-left:500px">
+			<button id="replyInsert" class="btn btn-default">댓글 작성</button>
 		</div>
 
 	<!-- The Modal -->

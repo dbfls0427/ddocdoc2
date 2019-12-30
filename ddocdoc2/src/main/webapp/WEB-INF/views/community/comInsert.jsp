@@ -86,12 +86,6 @@
          </section>
 
 
-
-		
-
-
-
-
 	<%-- <form action="/customer/comInsert" method="post">
 		<input type="hidden" name="cus_num" value="${customer.cus_num }"/>
 		<input type="text" name="com_title"><br>
