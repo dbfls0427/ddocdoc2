@@ -365,7 +365,7 @@ a:hover {
   border-radius: 0;
 }
 
-#call-to-action {
+/* #call-to-action {
   background: #02bdd5;
   background-size: cover;
   background-attachment: fixed;
@@ -373,7 +373,7 @@ a:hover {
   text-align: center;
   position: relative;
   color: #fff;
-}
+} */
 
 #call-to-action .block {
   position: relative;

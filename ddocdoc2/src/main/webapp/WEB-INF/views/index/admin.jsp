@@ -175,7 +175,7 @@
         <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Live 상담방: </h6>
-            <a class="collapse-item" href="https://192.168.35.69:3001/conference">상담방 만들기</a>
+            <a class="collapse-item" href="https://192.168.0.105:3001/conference">상담방 만들기</a>
           </div>
         </div>
       </li>

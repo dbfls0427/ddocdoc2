@@ -73,7 +73,7 @@ public class LiveController {
 	public String liveStop(@RequestParam("hash") String hash, 
 			@RequestParam("content") String content, Model model, RedirectAttributes rttr){
 		
-		String live_address = "https://192.168.35.69:3001/conference/#"+hash;
+		String live_address = "https://192.168.0.105:3001/conference/#"+hash;
 		System.out.println("넘오오는거보자 " +live_address);
 		String now_cus = ((CustomerVO)CustomerController.session.getAttribute("customer")).getCus_id();
 		String cus_num = ((CustomerVO)CustomerController.session.getAttribute("customer")).getCus_num();

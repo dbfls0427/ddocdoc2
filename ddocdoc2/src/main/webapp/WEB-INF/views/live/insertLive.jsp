@@ -303,7 +303,7 @@
 			<h2>Live 신청</h2>
 			<form action="/live/insertLiveAction" method="POST">
 				<label>방송제목 : </label><input type="text" name="live_name"><br>
-				<input type="hidden" name = "live_address" value="https://192.168.35.69:3001/conference/${ind }">
+				<input type="hidden" name = "live_address" value="https://192.168.0.105:3001/conference/${ind }">
 				<label>소속병원 : </label>
 				<select id="sel1" name="live_hos">
 					<c:forEach var="i" items="${list }">
