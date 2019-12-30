@@ -33,6 +33,8 @@
 		<security:intercept-url pattern="/customer/noticeList" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
 		<security:intercept-url pattern="/customer/noticeDetail" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
 		<security:intercept-url pattern="/customer/askList" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/customer/termList" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/customer/termDetail" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
 
 	
 		
@@ -79,6 +81,34 @@
 		<!-- video -->
 		<security:intercept-url pattern="/video/beautyVideo" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
 		
+		<!-- Admin-hospital -->
+		<security:intercept-url pattern="/hospital/admin" access="hasAnyRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/hospital/hospitalList" access="hasAnyRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/hospital/hospitalInsert" access="hasAnyRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/hospital/hospitalDetail" access="hasAnyRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/hospital/hospitalUpdate" access="hasAnyRole('ROLE_ADMIN')"/>
+
+		<!-- Admin-pharmacy --> 
+		<security:intercept-url pattern="/pharmacy/pharmacyInsert" access="hasAnyRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/pharmacy/pharmacyList" access="hasAnyRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/pharmacy/pharmacyDetail" access="hasAnyRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/pharmacy/pharmacyUpdate" access="hasAnyRole('ROLE_ADMIN')"/>
+		
+		<!-- Admin-board --> 
+		<security:intercept-url pattern="/board/noticeList" access="hasAnyRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/board/noticeInsert" access="hasAnyRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/board/noticeDetail" access="hasAnyRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/board/noticeUpdate" access="hasAnyRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/board/askList" access="hasAnyRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/board/askInsert" access="hasAnyRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/board/askDetail" access="hasAnyRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/board/askUpdate" access="hasAnyRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/board/termList" access="hasAnyRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/board/termInsert" access="hasAnyRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/board/termDetail" access="hasAnyRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/board/termUpdate" access="hasAnyRole('ROLE_ADMIN')"/>
+		
+		 
 		<security:form-login login-page="/customer/loginForm" authentication-success-handler-ref="customLoginSuccess"/>
 		<security:logout logout-url="/customer/logout" invalidate-session="true"/>
 		<security:access-denied-handler error-page="/"/> <!-- 에러발생시 -->

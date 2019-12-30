@@ -331,7 +331,7 @@
 					    	<label for="exampleTextarea">병원정보사항</label>
 						    <textarea class="form-control" rows="3" name="hos_info"></textarea>
 						 </div>
-
+						<!--  
 						 <div class="form-group">
 					    	<label for="exampleTextarea">병원사진</label>
 			    		 	<div class='uploadDiv' style="display: flex;justify-content: space-between;">
@@ -346,7 +346,7 @@
 								</ul>
 							</div>
 						 </div>
-						 
+						 -->
 						 
 						 
 						<div style="display:flex;justify-content:center;" class='uploadDiv'>
