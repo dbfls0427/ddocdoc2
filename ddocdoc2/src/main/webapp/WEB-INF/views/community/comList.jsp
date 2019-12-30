@@ -125,8 +125,8 @@
 		
  
  
-	<div>
-		<ul>
+	<div style="display: flex; justify-content: center;">
+		<%-- <ul>
 			<c:if test="${pageMaker.prev }">
 				<li class="paginate_button previous"><a href="${pageMaker.startPage-1 }">Previous</a></li>
 			</c:if>
@@ -138,7 +138,29 @@
 			<c:if test="${pageMaker.next }">
 				<li class="paginate_button next"><a href = "${pageMaker.endPage+1 }">Next</a></li>
 			</c:if>
-		</ul>
+		</ul> --%>
+		
+		          
+                <nav aria-label="Page navigation example">
+               <ul class="pagination">
+                  <c:if test="${pageMaker.prev }">
+                     <li class="page-item paginate_button previous"><a class="page-link" href="${pageMaker.startPage-1 }">Previous</a></li>
+                  </c:if>
+               
+                  <c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
+                     <li class="page-item paginate_button ${pageMaker.cri.pageNum == num ? "active" : "" }"><a class="page-link" href="${num }">${num }</a></li>
+                  </c:forEach>
+                  
+                  <c:if test="${pageMaker.next }">
+                     <li class="page-item paginate_button next"><a class="page-link" href = "${pageMaker.endPage+1 }">Next</a></li>
+                  </c:if>
+               </ul>
+            </nav>
+        
+         <!--  end Pagination -->
+		
+		
+		
 		
 		<form action="/customer/comList" method="get" id="actionForm">
 			<input type="hidden" name="pageNum" value = "${pageMaker.cri.pageNum }">
@@ -147,7 +169,7 @@
 		</form>
 	
 	</div>
-	
+	<br><br><br>
 	<%@include file="../includes/footer.jsp" %>
 
 </body>

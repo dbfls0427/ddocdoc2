@@ -4,9 +4,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<%@include file="../includes/header.jsp" %>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 <meta name="_csrf" th:content="${_csrf.token}"/>
 <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <!-- <script type="text/javascript" src="/resources/js/reply.js"></script> -->
@@ -14,6 +17,12 @@
 	$(function() {
 		var operForm = $("#operForm");
 		var modal = document.getElementById('myModal');
+		
+		
+		/* $(".list").on("click", function() {
+			operForm.submit();
+			
+		}); */
 		
 		$(".modifyButton").on("click", function(e) {
 			e.preventDefault();
@@ -281,6 +290,9 @@
 	};
 	
 </script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous"></script>
 <style type="text/css">
 .modal {
 	display: none; /* Hidden by default */
@@ -319,6 +331,33 @@
 </head>
 <body>
 
+<%@include file="../includes/menu.jsp" %>
+
+<!-- 
+        ================================================== 
+            TITLE: Global Page Section Start
+        ================================================== -->
+        <section class="global-page-header" style="padding: 100px 0 10px 0;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="block">
+                            <h2 style="font-size: 35px;">커뮤니티</h2>
+                            <ol class="breadcrumb">
+                                <li>
+                                    <a href="../index.html">
+                                        <i class="ion-ios-home"></i>
+                                        Home
+                                    </a>
+                                </li>
+                               <!--  <li class="active">가까운 병원찾기</li> -->
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+	<section class="company-description" id="wrapjoin" style="display: flex; justify-content: center;">
 	글번호
 	<br>
 	<input type="text" class="comNumc" name="com_num"
@@ -346,7 +385,7 @@
 	<button
 		onclick="location.href='/customer/comDelete?com_num=${com.com_num}'">글
 		삭제</button>
-	<button onclick="location.href='/customer/comList'">글 목록</button>
+	<button class="list" onclick="location.href='/customer/comList'">글 목록</button>
 
 
 	<form method="get" id="operForm">
@@ -362,7 +401,7 @@
 	</div>
 	
 	
-	
+	</section>
 
 
 	<!-- The Modal -->
@@ -388,7 +427,7 @@
 
 	</div>
 
-
+	<%@include file="../includes/footer.jsp" %>
 </body>
 
 </html>
