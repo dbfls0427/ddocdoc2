@@ -137,19 +137,17 @@ public class CustomerController {
 	public String hospitalResDetail(@RequestParam String hos_res_num, Model model,HttpServletResponse response) throws IOException{
 		HospitalResVO res = service.detailRes(hos_res_num);
 		String check = service.checkResAcpt(hos_res_num);
-		System.out.println("而ㅵ뜝�룞�삕�뜝�룞�삕�뜝占� �뜝�룞�삕�듃�뜝�떬琉꾩삕�뜝�룞�삕�뜝�룞�삕 hos_res_num : " + hos_res_num);
 		System.out.println("check" + check);
 		
-		if(check.equals("�삁�빟 �젒�닔 ��湲� 以�")){
+		if(check.equals("예약 접수 대기 중") || service.detailWait(hos_res_num) == 0){
 			model.addAttribute("res", res);
 			model.addAttribute("hos_res_num", hos_res_num);
 			model.addAttribute("cus_name", ((CustomerVO)session.getAttribute("customer")).getCus_name());
 			response.setContentType("text/html; charset=UTF-8");
             PrintWriter out = response.getWriter();
 //            out.println("<script>alert('�삁�빟 �젒�닔媛� �븘吏� �릺吏� �븡�븘 ��湲곕쾲�샇 諛쒓툒�씠 �븞�릺�뿀�뒿�땲�떎. �젒�닔媛� �셿猷뚮맆 �븣 源뚯� �옞�떆留� 湲곕떎�젮二쇱꽭�슂.'); location.href='/customer/hospitalResList';</script>");
-            out.println("<script>alert('�삁�빟 �젒�닔媛� �븘吏� �릺吏� �븡�븘 ��湲곕쾲�샇 諛쒓툒�씠 �븞�릺�뿀�뒿�땲�떎. �젒�닔媛� �셿猷뚮맆 �븣 源뚯� �옞�떆留� 湲곕떎�젮二쇱꽭�슂.');</script>");
+            out.println("<script>alert('예약 접수가 아직 되지 않아 대기번호 발급이 안되었습니다. 접수가 완료될 때 까지 잠시만 기다려주세요.');</script>");
             out.flush();
-//			return null;
 			return "/res/resDetail";
 		}else{
 			int count = service.detailWait(hos_res_num);
@@ -205,6 +203,7 @@ public class CustomerController {
 	// �쉶�뜝�룞�삕 �뜝�떥洹몄븘�슱�삕
 	@GetMapping("/logout")
 	public String logout(){
+		session.removeAttribute("customer");
 		return "/index/index";
 	}
 	
@@ -216,7 +215,7 @@ public class CustomerController {
 		if(pres == null) {
 			response.setContentType("text/html; charset=UTF-8");
 		     PrintWriter writer = response.getWriter();
-		     writer.println("<script>alert('�삁�빟 �젒�닔媛� �븘吏� �릺吏� �븡�븘 ��湲곕쾲�샇 諛쒓툒�씠 �븞�릺�뿀�뒿�땲�떎. �젒�닔媛� �셿猷뚮맆 �븣 源뚯� �옞�떆留� 湲곕떎�젮二쇱꽭�슂.'); location.href='/customer/hospitalResList';</script>");
+		     writer.println("<script>alert('처방전이 등록되지 않았습니다. 진료 현황을 확인해주세요.'); location.href='/customer/hospitalResList';</script>");
 		     writer.flush();
 			return null;
 		}
@@ -341,21 +340,18 @@ public class CustomerController {
 		String check = service.checkResAcpt(hos_res_num);
 		System.out.println("check" + check);
 		
-		if(check.equals("�삁�빟 �젒�닔 ��湲� 以�")){
-			log.info("2-111customerController�뿉�꽌  �뿉�빟�젒�닔��以묒씪�븣 hos_res_numhoS_RES_NUM: "+hos_res_num);
+		if(check.equals("예약 접수 대기 중")){
 			response.setContentType("text/html; charset=UTF-8");
             PrintWriter out = response.getWriter();
-            out.println("<script>alert('�삁�빟�쓣 痍⑥냼�빀�땲�떎.');location.href='/customer/hospitalResList';</script>");
+            out.println("<script>alert('예약 취소가 완료되었습니다.');location.href='/customer/hospitalResList';</script>");
             out.flush();
-            log.info("3-33customerController �삁�빟�젒�닔��湲곗쨷�씠硫� �궘�젣媛� 媛��뒫�넗濡�!");
             service.deleteRes(hos_res_num);
             return null;
 		}else{
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter writer = response.getWriter();
-			writer.println("<script>alert('蹂묒썝�뿉 �삁�빟�씠 �셿猷뚮릺�뿀�뒿�땲�떎. 蹂묒썝�삁�빟 痍⑥냼媛� 遺덇��뒫�빀�땲�떎.');location.href='/customer/hospitalResList';</script>");
+			writer.println("<script>alert('대기번호가 이미 발급되어 예약 취소가 불가능합니다. 해당 병원에 문의하셔서 예약 취소를 해주세요.');location.href='/customer/hospitalResList';</script>");
 			writer.flush();
-			 log.info("customerController �삁�빟痍⑥냼遺덇��씪誘� �븘誘�寃껊룄 �븞�씪�뼱�굹怨� 嫄� 由ъ뒪�듃�솕硫댁쑝濡�~");
 			return null;
 		}
 		

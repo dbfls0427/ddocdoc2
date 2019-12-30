@@ -15,12 +15,27 @@
 		<security:intercept-url pattern="/customer/hospitalResForm" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
 		<security:intercept-url pattern="/customer/hospitalRes" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
 		<security:intercept-url pattern="/customer/hospitalResList" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/customer/loginSuccess" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/customer/hospitalResDetail" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/customer/myPageForm" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/customer/myPageUpdateForm" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/customer/customerDetail" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/customer/presDetail" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/customer/game" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/customer/pharSearch" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/customer/pharResForm" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/customer/pharResDetail" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/customer/chatting" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/customer/comInsertForm" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/customer/comList" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/customer/comDetail" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/customer/comUpdateForm" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/customer/noticeList" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/customer/noticeDetail" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/customer/askList" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
+
 	
-<!-- 		<security:intercept-url pattern="/customer/hosSearch" access="hasRole('ROLE_MEMBER')"/>
-		<security:intercept-url pattern="/customer/loginSuccess" access="hasRole('ROLE_MEMBER')"/>
-		<security:intercept-url pattern="/customer/hospitalResForm" access="hasRole('ROLE_MEMBER')"/>
-		<security:intercept-url pattern="/customer/hospitalRes" access="hasRole('ROLE_MEMBER')"/>
-		<security:intercept-url pattern="/customer/hospitalResList" access="hasRole('ROLE_MEMBER')"/> -->
+		
 		
 
 		

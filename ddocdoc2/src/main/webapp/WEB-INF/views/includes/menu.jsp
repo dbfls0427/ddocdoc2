@@ -82,10 +82,11 @@
                                         <li><a href="/customer/noticeList">공지사항</a></li>
                                         <li><a href="/customer/askList">자주묻는질문</a></li>
                                         <li><a href="/customer/comList">커뮤니티</a>
-                                        <li><a href="/customer/game">모의 진료</a>
+                                       
                                     </ul>
                                 </div>
                             </li>
+                             <li><a href="/customer/game">모의 진료</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">${customer.cus_name } 님 <span class="caret"></span></a>
                                 <div class="dropdown-menu">
