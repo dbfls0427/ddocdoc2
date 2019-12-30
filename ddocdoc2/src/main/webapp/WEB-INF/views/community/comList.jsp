@@ -111,7 +111,7 @@
  		<td style="text-align : center;">${com.com_up }</td>
  	</tr>
  	</c:forEach>
-
+	
  
  </table>
 		
@@ -122,7 +122,9 @@
 		
 		
 		
-		
+		<div style="display: flex; justify-content: right;">
+		<button onclick="location.href='/customer/comInsertForm'" class="btn btn-warning">글 작성</button>
+		</div>
  
  
 	<div style="display: flex; justify-content: center;">

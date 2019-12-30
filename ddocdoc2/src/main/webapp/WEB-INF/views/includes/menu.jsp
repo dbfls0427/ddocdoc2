@@ -81,6 +81,7 @@
                                         <li><a href="../Customer/reviewList.do">후기 목록</a></li>
                                         <li><a href="/customer/noticeList">공지사항</a></li>
                                         <li><a href="/customer/askList">자주묻는질문</a></li>
+                                        <li><a href="/customer/comList">커뮤니티</a>
                                     </ul>
                                 </div>
                             </li>
