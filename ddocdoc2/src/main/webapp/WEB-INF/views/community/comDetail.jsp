@@ -65,7 +65,7 @@
 				str += '<h5 class="media-heading">'+ list[i].rep_writer  +'</h5>';
 				str += '<a>' + list[i].rep_content +'</a>';
 				str += '</div>';
-				str += '<button onclick="remoe('+list[i].rep_num+')" class="btn btn-default">삭제</button>';
+				str += '<button onclick="remove('+list[i].rep_num+')" class="btn btn-default">삭제</button>';
 				str += '</div>';
 				str += '</div>';
 				str += '</div>';
@@ -157,11 +157,11 @@
 						str += '</div>';
 						str += '<div class="media-body" class="chat" style="padding-top: 10px; padding-left: 10px;">';
 						str += '<div style="display: flex; justify-content : center;">';
-						str += '<div style=" width:440px">';
+						str += '<div style=" width:400px">';
 						str += '<h5 class="media-heading">'+ list[i].rep_writer  +'</h5>';
 						str += '<a>' + list[i].rep_content +'</a>';
 						str += '</div>';
-						str += '<button onclick="remoe('+list[i].rep_num+')" class="btn btn-default">삭제</button>';
+						str += '<button onclick="remove('+list[i].rep_num+')" class="btn btn-default">삭제</button>';
 						str += '</div>';
 						str += '</div>';
 						str += '</div>';
@@ -220,6 +220,7 @@
 		
 		function list(param, callback, error) {
 			var comNum = param.com_num;
+			console.log("리스트에서 : " + comNum);
 			
 			$.getJSON("/reply/pages/" + comNum + ".json", function(data) {
 				if(callback){
@@ -295,7 +296,8 @@
 	function remove(rep_nums) {
 		  console.log(rep_nums);
 		  var comNum = $(".comNumc").val();
-		  var replyUL = $(".chat");
+		  console.log("dddd"+comNum);
+		  var replyUL = $("#chat");
 		  replyJs.remove(rep_nums, function(result) {
 			
 			if(result === "success"){
@@ -304,24 +306,40 @@
 						com_num : comNum
 					}, function(list) {
 						var str = "";
+						console.log("adfsfd");
 						if (list == null || list.length == 0) {
+							console.log(list);
 							replyUL.html("");
 							return;
 						}
-
+						console.log("여깅");
+						console.log(list);
+						
 						for (var i = 0, len = list.length || 0; i < len; i++) {
-							console.log(list.rep_num);
-							str += "<a>" + list[i].rep_num + "</a></br>";
-							str += "<a> " + list[i].rep_writer + " </a></br>";
-							str += "<a>" + list[i].rep_content + "</a></br>";
-							str += "<a>" + list[i].rep_date + "</a></br>";
-							str += "<button onclick='remove("+ list[i].rep_num +")'>댓글 삭제</button></br>";
+							console.log("포문");
+			 				str += '<div class="media" style="margin-bottom: 10px;">';
+							str += '<div class="media-left" style="padding-right:0">';
+							str += '<a href="#">';
+							str += '<img class="media-object" src="/resources/images/comment2.jpeg" alt="..." style="width:70px;">';
+							str += '</a>';
+							str += '</div>';
+							str += '<div class="media-body" class="chat" style="padding-top: 10px; padding-left: 10px;">';
+							str += '<div style="display: flex; justify-content : center;">';
+							str += '<div style=" width:400px">';
+							str += '<h5 class="media-heading">'+ list[i].rep_writer  +'</h5>';
+							str += '<a>' + list[i].rep_content +'</a>';
+							str += '</div>';
+							str += '<button onclick="remove('+list[i].rep_num+')" class="btn btn-default">삭제</button>';
+							str += '</div>';
+							str += '</div>';
+							str += '</div>';
 
 							
 							
 						}
-
-						replyUL.html(str);
+						
+						replyUL.empty();
+						replyUL.append(str);
 					}); 
 			}
 		}, function(err) {
