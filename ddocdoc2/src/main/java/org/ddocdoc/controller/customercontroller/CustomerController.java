@@ -140,17 +140,15 @@ public class CustomerController {
 		System.out.println("而ㅵ뜝�룞�삕�뜝�룞�삕�뜝占� �뜝�룞�삕�듃�뜝�떬琉꾩삕�뜝�룞�삕�뜝�룞�삕 hos_res_num : " + hos_res_num);
 		System.out.println("check" + check);
 		
-		if(check.equals("�삁�빟 �젒�닔 ��湲� 以�")){
+		if(check.equals("예약 접수 대기 중")){
 			model.addAttribute("res", res);
 			model.addAttribute("hos_res_num", hos_res_num);
 			model.addAttribute("cus_name", ((CustomerVO)session.getAttribute("customer")).getCus_name());
 			response.setContentType("text/html; charset=UTF-8");
             PrintWriter out = response.getWriter();
-//            out.println("<script>alert('�삁�빟 �젒�닔媛� �븘吏� �릺吏� �븡�븘 ��湲곕쾲�샇 諛쒓툒�씠 �븞�릺�뿀�뒿�땲�떎. �젒�닔媛� �셿猷뚮맆 �븣 源뚯� �옞�떆留� 湲곕떎�젮二쇱꽭�슂.'); location.href='/customer/hospitalResList';</script>");
-            out.println("<script>alert('�삁�빟 �젒�닔媛� �븘吏� �릺吏� �븡�븘 ��湲곕쾲�샇 諛쒓툒�씠 �븞�릺�뿀�뒿�땲�떎. �젒�닔媛� �셿猷뚮맆 �븣 源뚯� �옞�떆留� 湲곕떎�젮二쇱꽭�슂.');</script>");
+            out.println("<script>alert('예약 접수가 아직 되지 않아 대기번호 발급이 안되었습니다. 접수가 완료될 때 까지 잠시만 기다려주세요.'); location.href='/customer/hospitalResList';</script>");
             out.flush();
-//			return null;
-			return "/res/resDetail";
+			return null;
 		}else{
 			int count = service.detailWait(hos_res_num);
 			model.addAttribute("res", res);
@@ -223,6 +221,10 @@ public class CustomerController {
 		
 		String pres_num = pres.getPres_num();
 		List<PresDetailVO> list = service.cusPresDetailList(pres_num);
+		System.out.println("list 사이즈 : " + list.size());
+		for(int i = 0; i < list.size(); i++){
+			System.out.println("컨트롤에서 " + list.get(i).getMed_num());
+		}
 		List<String> list2 = service.cusPresDetailMedName(pres_num);
 		String check = service.selectPayCheck(pres_num);
 		int price = service.selectPayPrice(hos_res_num);
