@@ -42,10 +42,10 @@
 		crossorigin="anonymous"></script>
 <style type="text/css">
  #back{
-	background-image: url("http://image.sayup.co.kr/collection/55e643ef59fd6203005da061/0715046b1fa8e2d7540773a896476213.jpg");
+	background-image: url("http://image.sayup.co.kr/collection/undefined/704e3371a374b1594e6e3414d3a8b7af.jpg");
 	background-size: cover;
     background-repeat: no-repeat;
-    background-position: 50% 42%;
+    background-position: 50% 70%;
     
 }
 #back::before{
@@ -68,7 +68,7 @@
         ================================================== 
             TITLE: Global Page Section Start
         ================================================== -->
-        <section class="global-page-header" style="padding: 100px 0 10px 0;">
+        <section class="global-page-header" id="back">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -91,7 +91,11 @@
 
 
 
-		<section class="company-description" id="wrapjoin" style="display: flex; justify-content: center;">
+			<div style="display: flex; justify-content: center; margin-top: 50px;">
+			<button onclick="location.href='/customer/comInsertForm'" class="btn btn-warning" style="margin-left:800px;">글 작성</button>
+			</div>
+ 
+		<section class="company-description" id="wrapjoin" style="display: flex; justify-content: center; padding-left: 500px; padding-right: 500px; margin-top:30px;">
 		<table  class="table table-hover" id = "table1" style="font-size: 18px;">
  	<tr>
  		<td style="text-align : center;"> 글번호 </td>
@@ -117,15 +121,7 @@
 		
 		
 		</section>
-		
-		
-		
-		
-		
-		<div style="display: flex; justify-content: right;">
-		<button onclick="location.href='/customer/comInsertForm'" class="btn btn-warning">글 작성</button>
-		</div>
- 
+
  
 	<div style="display: flex; justify-content: center;">
 		<%-- <ul>
@@ -144,7 +140,7 @@
 		
 		          
                 <nav aria-label="Page navigation example">
-               <ul class="pagination">
+               <ul class="pagination" style="margin-top:250px;">
                   <c:if test="${pageMaker.prev }">
                      <li class="page-item paginate_button previous"><a class="page-link" href="${pageMaker.startPage-1 }">Previous</a></li>
                   </c:if>

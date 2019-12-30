@@ -327,7 +327,33 @@
 	text-decoration: none;
 	cursor: pointer;
 }
+
+ #back{
+	background-image: url("http://image.sayup.co.kr/collection/undefined/704e3371a374b1594e6e3414d3a8b7af.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 70%;
+    
+}
+#back::before{
+     content: " ";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+ }
 </style>
+
+<!-- Custom fonts for this template-->
+<link
+	href="${pageContext.request.contextPath }/resources/vendor/fontawesome-free/css/all.min.css"
+	rel="stylesheet" type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
 </head>
 <body>
 
@@ -337,7 +363,7 @@
         ================================================== 
             TITLE: Global Page Section Start
         ================================================== -->
-        <section class="global-page-header" style="padding: 100px 0 10px 0;">
+        <section class="global-page-header" id="back">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -357,52 +383,49 @@
                 </div>
             </div>
         </section>
-	<section class="company-description" id="wrapjoin" style="display: flex; justify-content: center;">
-	글번호
-	<br>
-	<input type="text" class="comNumc" name="com_num"
-		value="${com.com_num }" readonly>
-	<br> 제목
-	<br>
-	<input type="text" name="com_title" value="${com.com_title }" readonly>
-	<br> 작성자
-	<br>
-	<input type="text" name="com_writer" value="${com.com_writer }"
-		readonly>
-	<br> 작성날짜
-	<br>
-	<input type="text" name="com_date"
-		value="${fn:substring(com.com_date,0,10) }" readonly>
-	<br> 내용
-	<br>
-	<input type="text" name="com_content" value="${com.com_content }"
-		readonly>
-	<br> 추천 수 &nbsp ${com.com_up }&nbsp&nbsp&nbsp ${com.com_down }
-	&nbsp 비추천 수
-	<br>
+    
+		<section class="company-description" id="wrapjoin" style="display: flex; justify-content: center; font-size: 25px; margin-top: 60px;">
+			<div style="width: 700px;">
+				<label style="margin-left: 50%;">${com.com_title }</label>
+				<hr style=" border-top: 2px solid #908d8d;">
+			</div>
+		</section>
+	<section class="company-description" id="wrapjoin" style="display: flex; justify-content: center; margin-top:0;">
 
-	<button class="modifyButton">글 수정</button>
-	<button
-		onclick="location.href='/customer/comDelete?com_num=${com.com_num}'">글
-		삭제</button>
-	<button class="list" onclick="location.href='/customer/comList'">글 목록</button>
-
-
-	<form method="get" id="operForm">
-		<input type="hidden" id="com_num" name="com_num"
-			value='${com.com_num }' /> <input type="hidden" name="pageNum"
-			value='${cri.pageNum }'> <input type="hidden" name="amount"
-			value='${cri.amount }'>
-	</form>
-
-	<div class="chat"></div>
-	<div>
-		<button class="replyInsert">댓글 작성</button>
+		<div style="display: flex; justify-content:center; margin-left:528px; margin-bottom:30px;">
+			<label>글쓴이 : ${com.com_writer }</label> <label style="color:gray;">&nbsp(${fn:substring(com.com_date,0,10) }) </label>
+		</div>
+	</section>
+	
+	<div style="display: flex; justify-content: center; font-size:15px; margin-bottom:20px;">
+		<i class="far fa-thumbs-up fa-2x"></i>&nbsp<label>${com.com_up }</label> &nbsp&nbsp&nbsp&nbsp <i class="far fa-thumbs-down fa-2x"></i>&nbsp<label>${com.com_down }<label></label>
 	</div>
 	
-	
+	<section class="company-description" id="wrapjoin" style="display: flex; justify-content: center; margin-top:0;">
+		<div class="well well-lg" style="width:600px;">
+			${com.com_content }
+		</div>
 	</section>
+		
+	<div style="display: flex; justify-content: center; margin-left:380px;">
+	    <button class="btn btn-default"class="modifyButton" style="margin-right:5px;">글 수정</button>
+		<button class="btn btn-default" onclick="location.href='/customer/comDelete?com_num=${com.com_num}'" style="margin-right:5px;">글 삭제</button>
+		<button class="btn btn-default" class="list" onclick="location.href='/customer/comList'" style="margin-right:5px;">글 목록</button>
+   	</div>
 
+		<form method="get" id="operForm">
+			<input type="hidden" id="com_num" name="com_num"
+				value='${com.com_num }' /> <input type="hidden" name="pageNum"
+				value='${cri.pageNum }'> <input type="hidden" name="amount"
+				value='${cri.amount }'>
+		</form>
+
+	
+
+		<div class="chat"></div>
+		<div>
+			<button class="replyInsert">댓글 작성</button>
+		</div>
 
 	<!-- The Modal -->
 	<div id="myModal" class="modal">

@@ -6,6 +6,26 @@
  <%@include file="../includes/header.jsp" %>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<style type="text/css">
+ #back{
+	background-image: url("http://image.sayup.co.kr/collection/undefined/704e3371a374b1594e6e3414d3a8b7af.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 70%;
+    
+}
+#back::before{
+     content: " ";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+ }
+
+</style>
 </head>
 <body>
 <%@include file="../includes/menu.jsp" %>
