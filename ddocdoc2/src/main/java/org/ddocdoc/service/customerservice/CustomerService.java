@@ -17,6 +17,9 @@ import org.ddocdoc.vo.presdetailvo.PresDetailVO;
 import org.ddocdoc.vo.presvo.PresVO;
 import org.ddocdoc.vo.symptomdetailvo.SymptomDetailVO;
 import org.ddocdoc.vo.symptomvo.SymptomVO;
+import org.ddocdoc.vo.termvo.Criteria2;
+import org.ddocdoc.vo.termvo.TermVO;
+
 
 public interface CustomerService {
 
@@ -145,6 +148,17 @@ public interface CustomerService {
 	
 	// AnQ list
 	public List<AskVO> askList();
+	
+	// term list
+	public List<TermVO> termList(Criteria2 cri2);
+
+	// term detail
+	public TermVO termDetail(String term_num);
+	
+	// term page
+	public int getTotalCount2(Criteria2 cri2);
+	
+	
 
 		
 	

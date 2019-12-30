@@ -24,6 +24,9 @@ import org.ddocdoc.vo.payvo.PayVO;
 import org.ddocdoc.vo.pharresvo.PharResVO;
 import org.ddocdoc.vo.presdetailvo.PresDetailVO;
 import org.ddocdoc.vo.presvo.PresVO;
+import org.ddocdoc.vo.termvo.Criteria2;
+import org.ddocdoc.vo.termvo.PageDTO2;
+import org.ddocdoc.vo.termvo.TermVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -435,6 +438,26 @@ public class CustomerController {
 		
 		model.addAttribute("list", list);
 		return "/service/askList";
+	}
+	
+	@GetMapping("/termList")
+	public String termList(Criteria2 cri2, Model model){
+		List<TermVO> list = service.termList(cri2);
+		
+		int total = service.getTotalCount2(cri2);
+		
+		model.addAttribute("list", list);
+		model.addAttribute("pageMaker", new PageDTO2(cri2, total));
+		
+		
+		return "/service/termList";
+	}
+	
+	@GetMapping("/termDetail")
+	public String termDetail(@RequestParam("term_num") String term_num, Model model){
+		TermVO termvo = service.termDetail(term_num);
+		model.addAttribute("termvo", termvo);
+		return "/service/termDetail";
 	}
 	
 	

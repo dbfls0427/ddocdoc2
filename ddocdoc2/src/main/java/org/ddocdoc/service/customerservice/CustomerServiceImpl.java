@@ -19,6 +19,8 @@ import org.ddocdoc.vo.presdetailvo.PresDetailVO;
 import org.ddocdoc.vo.presvo.PresVO;
 import org.ddocdoc.vo.symptomdetailvo.SymptomDetailVO;
 import org.ddocdoc.vo.symptomvo.SymptomVO;
+import org.ddocdoc.vo.termvo.Criteria2;
+import org.ddocdoc.vo.termvo.TermVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -269,6 +271,24 @@ public class CustomerServiceImpl implements CustomerService {
 	public List<AskVO> askList() {
 		return mapper.askList();
 	}
+
+	@Override
+	public List<TermVO> termList(Criteria2 cri2) {
+		return mapper.getListWithPaging2(cri2);
+	}
+
+	@Override
+	public TermVO termDetail(String term_num) {
+		return mapper.termDetail(term_num);
+	}
+
+
+	@Override
+	public int getTotalCount2(Criteria2 cri2) {
+		return mapper.getTotalCount2(cri2);
+	}
+
+
 	
 	
 	

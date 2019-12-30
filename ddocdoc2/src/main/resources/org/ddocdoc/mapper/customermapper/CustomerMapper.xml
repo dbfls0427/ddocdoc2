@@ -317,6 +317,57 @@
 		select * from dd_ask
 	</select>
 	
+	<!-- term:list -->
+	<select id="termList" resultType="org.ddocdoc.vo.termvo.TermVO">
+		select * from dd_term
+	</select>
+	
+	<!-- term:detail -->
+    <select id="termDetail" resultType="org.ddocdoc.vo.termvo.TermVO" parameterType="String">
+         select * from dd_term
+         where term_num = #{term_num, jdbcType=VARCHAR}
+    </select>
+	
+    <!-- term: pagination -->
+    <sql id="criteria2">
+		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+			<foreach item='type' collection="typeArr">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'T'.toString()">
+							term_title like '%'||#{keyword}||'%'
+						</when>
+						<when test="type == 'C'.toString()">
+							term_content like '%'||#{keyword}||'%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+      
+    <select id="getListWithPaging2" resultType="org.ddocdoc.vo.termvo.TermVO">
+		<![CDATA[
+		select term_num, term_title, term_content 
+		from
+			(select rownum rn, term_num, term_title, term_content 
+			from dd_term 
+			where 
+		]]>
+		<include refid="criteria2"></include>
+			
+		<![CDATA[
+			 rownum <= #{pageNum} * #{amount})
+			where rn > (#{pageNum} -1) * #{amount}
+		]]>
+	  </select>
+
+
+	<select id="getTotalCount2" resultType="int">
+		select count(*) from dd_term 
+	</select>
+	
+	
 </mapper>
 
 

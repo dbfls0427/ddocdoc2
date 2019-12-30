@@ -18,6 +18,8 @@ import org.ddocdoc.vo.presdetailvo.PresDetailVO;
 import org.ddocdoc.vo.presvo.PresVO;
 import org.ddocdoc.vo.symptomdetailvo.SymptomDetailVO;
 import org.ddocdoc.vo.symptomvo.SymptomVO;
+import org.ddocdoc.vo.termvo.Criteria2;
+import org.ddocdoc.vo.termvo.TermVO;
 
 public interface CustomerMapper {
 	int insertCustomer(CustomerVO customer);
@@ -173,6 +175,18 @@ public interface CustomerMapper {
 	
 	// AnQ list
 	List<AskVO> askList();
+	
+	// term list
+	List<TermVO> termList();
+
+	// term detail
+	TermVO termDetail(String term_num);
+	
+	// term pagination
+	List<TermVO> getListWithPaging2(Criteria2 cri2);
+		
+	// term page
+	int getTotalCount2(Criteria2 cri2);
 
 		
 	
