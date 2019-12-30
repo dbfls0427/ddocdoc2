@@ -206,16 +206,18 @@ img{ max-width:100%;}
 		            str +='</div>';
 		            str += '</div>';
 		            $(".msg_history").append(str);
-		            console.log(count);
+
 				}else{
 				    var str = '<div class="outgoing_msg">';
 		            str += '<div class="sent_msg">';
 		            str += '<p>' + e.data + '</p>';
 		            str += '</div>';
 		            $(".msg_history").append(str);
-		            console.log(count);
+
 				}
 			}
+			
+			
 			
 			sock.onclose = function() {
 				/* $("#chat").append("연결 종료"); */
@@ -225,7 +227,7 @@ img{ max-width:100%;}
 				e.preventDefault();
 				sock.send($(".write_msg").val());
 				$(".write_msg").val('').focus();
-				count++;
+				
 				console.log(count);
 			});
 			

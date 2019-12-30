@@ -210,6 +210,8 @@
 			            modal.style.display = "none";
 			        }
 				
+			}else if(menuNum == '2'){
+				location.href = "/customer/machine";
 			}
 			
 			
@@ -507,6 +509,28 @@
         		<option value="구내염">구내염</option>
         		<option value="천식">천식</option>
         		<option value="어지럼증">어지럼증</option>
+        		
+        		<!--  -->
+        		<option value="크론병">크론병</option>
+        		<option value="수두">수두</option>
+        		<option value="갑상선결절">갑상선결절</option>
+        		<option value="볼거리">볼거리</option>
+        		<option value="종기">종기</option>
+        		<option value="피부암">피부암</option>
+        		<option value="봉와직염">봉와직염</option>
+        		<option value="혓바늘">혓바늘</option>
+        		<option value="결절">결절</option>
+        		<option value="습진">습진</option>
+        		<option value="하지정맥류">하지정맥류</option>
+        		<option value="아나필락시스">아나필락시스</option>
+        		<option value="모공각화증">모공각화증</option>
+        		<option value="홍반">홍반</option>
+        		<option value="쯔쯔가무시">쯔쯔가무시</option>
+        		<option value="사랑니">사랑니</option>
+        		<option value="원형탈모증">원형탈모증</option>
+        		<option value="어루러기">어루러기</option>
+        		<option value="각막염">각막염</option>
+        		
         		
         	</select>
         	<input type="text" name = "detailSymptom" class = "detailSymptom" placeholder = "세부증상을 입력해주세요.">

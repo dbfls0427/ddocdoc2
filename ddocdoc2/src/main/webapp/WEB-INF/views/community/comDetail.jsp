@@ -17,7 +17,7 @@
 	$(function() {
 		var operForm = $("#operForm");
 		var modal = document.getElementById('myModal');
-		
+		var span = document.getElementsByClassName("close")[0];
 		
 		/* $(".list").on("click", function() {
 			operForm.submit();
@@ -88,9 +88,12 @@
 		 $("#replyInsert").on("click",function(e){
 			 e.preventDefault();
 			 
-			 var span = document.getElementsByClassName("close")[0];
+			 
 			 modal.style.display = "block";
 			 
+			 span.onclick = function() {
+		            modal.style.display = "none";
+		        }
 			 
 		 });
 		 

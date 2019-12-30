@@ -460,5 +460,9 @@ public class CustomerController {
 		return "/service/termDetail";
 	}
 	
+	@GetMapping("/machine")
+	public String machine(){
+		return "/teachableMachine/teachable";
+	}
 	
 }
