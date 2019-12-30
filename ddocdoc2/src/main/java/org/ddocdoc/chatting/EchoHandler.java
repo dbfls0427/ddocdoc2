@@ -17,10 +17,10 @@ public class EchoHandler extends TextWebSocketHandler {
 		sessionList.add(session);
 		oneName = sessionList.get(0).getId();
 		if(sessionList.size() == 1){
-			session.sendMessage(new TextMessage("������ �����ϼ̽��ϴ�."));
+			session.sendMessage(new TextMessage("고객님이 입장하셨습니다."));
 		}else if(sessionList.size() == 2){
-			sessionList.get(0).sendMessage(new TextMessage("�ǻ���� �����ϼ̽��ϴ�."));
-			session.sendMessage(new TextMessage("�ǻ���� �����ϼ̽��ϴ�."));
+			sessionList.get(0).sendMessage(new TextMessage("의사분이 입장하셨습니다."));
+			session.sendMessage(new TextMessage("의사분이 입장하셨습니다."));
 		}
 	}
 	
@@ -28,13 +28,13 @@ public class EchoHandler extends TextWebSocketHandler {
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 			if(session.getId().equals(oneName)){
 				for(WebSocketSession sess : sessionList){
-					sess.sendMessage(new TextMessage("����" + " : " + message.getPayload()));
+					sess.sendMessage(new TextMessage("고객님" + " : " + message.getPayload()));
 					System.out.println(session.getId());
 				}
 				return;
 			}else{
 				for(WebSocketSession sess : sessionList){
-					sess.sendMessage(new TextMessage("�ǻ�" + " : " + message.getPayload()));
+					sess.sendMessage(new TextMessage("의사" + " : " + message.getPayload()));
 					System.out.println(session.getId());
 				}
 			}
