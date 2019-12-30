@@ -136,9 +136,11 @@
 	<section>
 	
 	</section>
-	
+
+
+
 	<section class="company-description paddingSide">
-		<!-- search -->
+		<!-- search 
 		<div class='row'> 	
 			<div class="col-lg-12">
 				<form id='searchForm' action="/customer/termList" method='get'>
@@ -160,10 +162,34 @@
 				</form>
 			</div>
 		</div>
-		<!-- //search -->
+		 //search -->
 		
-		
-          <div class="row">
+		<div style="display:flex;justify-content:center;">
+          <div class="row" style="width:60%;">
+          		<!-- search -->
+				<div class='row'> 	
+					<div class="col-lg-12" style="display: flex;justify-content: center;">
+						<form id='searchForm' action="/customer/termList" method='get' style="display:flex;">
+							<select name='type' class="form-control" style="width:30%;">
+								<option value=""
+									<c:out value="${pageMaker.cri2.type == null?'selected':''}"/>>--</option>
+								<option value="T"
+									<c:out value="${pageMaker.cri2.type eq 'T'?'selected':''}"/>>제목</option>
+								<option value="C"
+									<c:out value="${pageMaker.cri2.type eq 'C'?'selected':''}"/>>내용</option>
+								<option value="TC"
+									<c:out value="${pageMaker.cri2.type eq 'TC'?'selected':''}"/>>제목or내용</option>
+							</select> 
+							<input class="form-control" style="width:100%;" type='text' name='keyword' value='<c:out value="${pageMaker.cri2.keyword}"/>' /> 
+							<input type='hidden' name='pageNum' value='<c:out value="${pageMaker.cri2.pageNum}"/>' /> 
+							<input type='hidden' name='amount' value='<c:out value="${pageMaker.cri2.amount}"/>' />
+							<button class='btn btn-default'>Search</button>
+						</form>
+					</div>
+				</div>
+				<!-- //search -->
+          
+          
 	          <!-- DataTales Example -->
 	          <div class="card shadow mb-4">
 	            <div class="card-header py-3">
@@ -173,7 +199,7 @@
 	              <div class="table-responsive">
 	              	<table class="table table-hover">
 					   <tr>
-							<td>의학용어 번호</td>
+							<td style="width:270px;">의학용어 번호</td>
 							<td>의학용어 제목</td>
 						</tr>
 						<c:forEach var="termvo" items="${list}">
@@ -190,9 +216,10 @@
 			
            </div>
           <!-- Content Row -->
+       </div> 
           
 		<!-- pagination -->	
-		<div class=''>
+		<div style="display: flex;justify-content: center;">
 			<nav aria-label="Page navigation example">
 				<ul class="pagination">
 					<c:if test="${pageMaker.prev }">
