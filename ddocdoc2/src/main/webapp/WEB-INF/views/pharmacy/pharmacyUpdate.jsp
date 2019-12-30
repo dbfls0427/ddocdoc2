@@ -222,25 +222,60 @@
 
         </nav>
         <!-- End of Topbar -->
-
-<h1>약국 정보 수정</h1>
-<form action="/pharmacy/pharmacyUpdate" method="post">
+<!-- Content Row -->
+          <div class="row" style="margin-left:30px;"s>
+          	<h3>약국 정보 수정</h3>
+          	</div>
+          	
+ <div class="row" style="margin-left:30px;">
+	          <!-- DataTales Example -->
+	          <div class="card shadow mb-4" style="width:60%;">
+	            <div class="card-header py-3">
+	              <h6 class="m-0 font-weight-bold text-primary">병원 수정</h6>
+	            </div>
+	            <div class="card-body">
+	              <div class="table-responsive">          	
+<form action="/pharmacy/pharmacyUpdate" method="post" class="form-group">
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				
 	<input type="hidden" value="${pharmacyvo.phar_num}" name="phar_num"><br>
 
-	약국이름 <input type="text" value="${pharmacyvo.phar_name}" name="phar_name"><br>
-	약국전화번호 <input type="text" value="${pharmacyvo.phar_tel}" name="phar_tel"><br>
-	약국주소 <input type="text" value="${pharmacyvo.phar_addr}" name="phar_addr"><br>
-	약국운영시간 <input type="text" value="${pharmacyvo.phar_time}" name="phar_time"><br> 
-	약국정보사항 <textarea rows="5" cols="12" name="phar_info">${pharmacyvo.phar_info}</textarea> 
+
+	 <div class="form-group">
+    	<label>약국이름</label>
+    	<input type="text" name="phar_name" class="form-control" 
+    	value="${pharmacyvo.phar_name}">
+  	</div>
+	<div class="form-group">
+    	<label>약국전화번호</label>
+    	<input type="text" name="phar_tel" class="form-control" 
+    	value="${pharmacyvo.phar_tel}">
+  	</div>
+ 	<div class="form-group">
+    	<label>약국주소</label>
+    	<input type="text" class="form-control" 
+    	value="${pharmacyvo.phar_addr}" name="phar_addr">
+  	</div>
+ 	<div class="form-group">
+    	<label>약국운영시간</label>
+    	<input type="text" class="form-control" 
+    	value="${pharmacyvo.phar_time}" name="phar_time">
+  	</div>
+  	<div class="form-group">
+    	<label for="exampleTextarea">약국정보사항</label>
+	    <textarea class="form-control" rows="3"  name="phar_info">${pharmacyvo.phar_info}</textarea>
+	</div>
 	
 
-	&nbsp;&nbsp;<input type="submit" value="저장">    
-	<br><br><br><a href="/pharmacy/pharmacyList">목록</a> <br>
-</form>
-<br>
 
+	<div style="display:flex;justify-content:center;">
+		<input type="submit" value="저장" class="btn btn-primary" style="width:25%;">
+	</div>
+</form>
+</div>
+			  </div>
+		   </div>
+		</div>
 
 	
 	

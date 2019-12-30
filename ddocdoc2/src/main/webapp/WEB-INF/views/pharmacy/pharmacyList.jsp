@@ -235,11 +235,26 @@
  <!-- Begin Page Content -->
         <div class="container-fluid">
 
+ <!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+</div>
 
-<h1>약국 목록</h1>
-<a href="/pharmacy/pharmacyInsert">약국정보 입력</a><br>
+<!-- Content Row -->
+<div class="row" style="display: flex;justify-content: space-between;padding-bottom: 20px;">
+       	<h3>약국 목록</h3>
+<a href="/pharmacy/pharmacyInsert" class="btn btn-secondary" role="button">약국정보 입력</a><br>
+</div>
 
-<table class="table" id="phartable">
+
+<div class="row">
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4" style="width:60%;">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">등록된 약국 리스트</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+<table class="table" >
 
 	<tr>
 		<td>약국번호</td>
@@ -255,6 +270,9 @@
 		</c:forEach>
 
 </table>
+</div>
+        </div>
+      </div>
 
 </div>
 	

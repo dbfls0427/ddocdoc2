@@ -229,10 +229,15 @@
 
         </nav>
         <!-- End of Topbar -->
+<!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+	    	<div id="boxContent" style="padding:20px;">
+	    		
+				<h3>약국 상세보기</h3>
 
-
-<h1>약국 상세보기</h1>
-<table border="1">
+<div class="alert alert-warning" role="alert" style="background-color:#fff0c75c;">
+					<div class="table-responsive">
+<table class="table">
 
 	<tr>
 		<td>약국번호</td>
@@ -252,18 +257,20 @@
 			<td><c:out value="${pharmacyvo.phar_info }"/></td>
 		</tr>
 </table>
-
-<a href="/pharmacy/pharmacyList">목록</a> <br>
+</div>
+				</div>
+<div style="display:flex;">
+<a href="/pharmacy/pharmacyList" class="btn btn-warning btn-sm" style="width:10%;">리스트</a> <br>
  
-<a href="/pharmacy/pharmacyUpdate?phar_num=${pharmacyvo.phar_num }">수정</a> <br>
+<a href="/pharmacy/pharmacyUpdate?phar_num=${pharmacyvo.phar_num }" class="btn btn-outline-secondary btn-sm" style="width: 5%; margin: 0 10px;">수정</a> <br>
 
 
-<a href="/pharmacy/pharmacyDelete?phar_num=${pharmacyvo.phar_num }">삭제</a> 
+<a href="/pharmacy/pharmacyDelete?phar_num=${pharmacyvo.phar_num }" class="btn btn-outline-danger btn-sm">삭제</a> 
+
+</div>
 
 
-
-
-
+<div style="height:400px;"></div>
 	 <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">

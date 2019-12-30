@@ -225,19 +225,50 @@
 
         </nav>
         <!-- End of Topbar -->
-<h1>약국 정보 등록</h1>
-<form action="/pharmacy/pharmacyInsert" method="post">
+        
+<!-- Content Row -->
+<div class="row" style="margin-left:30px;"s>
+<h3>약국 정보 등록</h3>
+</div>
+
+<div class="row" style="margin-left:30px;">
+	          <!-- DataTales Example -->
+	          <div class="card shadow mb-4" style="width:60%;">
+	            <div class="card-header py-3">
+	              <h6 class="m-0 font-weight-bold text-primary">병원 등록</h6>
+	            </div>
+	            <div class="card-body">
+	              <div class="table-responsive">
+
+<form action="/pharmacy/pharmacyInsert" method="post" class="form-group" >
 	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-						
-	약국이름 <input type="text" name="phar_name"><br>
-	약국전화번호 <input type="text" name="phar_tel"><br>
-	약국주소 <input type="text" name="phar_addr"><br>
-	약국운영시간 <input type="text" name="phar_time"><br>
-	약국정보 <textarea rows="4" cols="10" name="phar_info"></textarea>
+	
+	<div class="form-group">
+    	<label>약국이름</label>
+    	<input type="text" name="phar_name" class="form-control" placeholder="약국이름">
+  	</div>	
+  	<div class="form-group">
+    	<label>약국전화번호</label>
+    	<input type="text" name="phar_tel" class="form-control" placeholder="약국전화번호">
+  	</div>	
+  	<div class="form-group">
+    	<label>약국주소</label>
+    	<input type="text" name="phar_addr" class="form-control" placeholder="약국주소">
+  	</div>	
+  	<div class="form-group">
+    	<label>약국운영시간</label>
+    	<input type="text" name="phar_time" class="form-control" placeholder="약국운영시간">
+  	</div>		
+  	<div class="form-group">
+	   	<label for="exampleTextarea">약국정보</label>
+	    <textarea class="form-control" rows="3" name="phar_info"></textarea>
+	 </div>		
 
 
-	<input type="submit" value="저장">
 
+<div style="display:flex;justify-content:center;" class='uploadDiv'>
+	<input type="submit" value="저장" class="btn btn-primary" style="width:25%;">
+</div>
 
 
 
@@ -247,7 +278,10 @@
 
 
 </form>
-
+</div>
+			  </div>
+		   </div>
+		</div>
 
 
 	 <!-- Footer -->
