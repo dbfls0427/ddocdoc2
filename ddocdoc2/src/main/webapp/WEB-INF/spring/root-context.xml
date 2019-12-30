@@ -47,6 +47,7 @@
 	<context:component-scan base-package="org.ddocdoc.service.checkupservice"/>
 	<context:component-scan base-package="org.ddocdoc.service.liveservice"/>
 	<context:component-scan base-package="org.ddocdoc.service.boardservice"/>
+	<context:component-scan base-package="org.ddocdoc.service.replyservice"/>
 	
 	<!-- 매퍼 -->
 	<mybatis-spring:scan base-package="org.ddocdoc.mapper.childmapper"/>
@@ -59,7 +60,7 @@
 	<mybatis-spring:scan base-package="org.ddocdoc.mapper.livemapper"/>
 	<mybatis-spring:scan base-package="org.ddocdoc.mapper.hospitalAttachmapper"/>
 	<mybatis-spring:scan base-package="org.ddocdoc.mapper.boardmapper"/>
-	
+	<mybatis-spring:scan base-package="org.ddocdoc.mapper.replymapper"/>
 	
 	
 	<bean id="echoHandler" class="org.ddocdoc.chatting.EchoHandler"/>

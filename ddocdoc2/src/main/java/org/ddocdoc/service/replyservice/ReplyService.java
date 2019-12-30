@@ -12,7 +12,7 @@ public interface ReplyService {
 	
 	public int replyDelete(int rep_num);
 	
-	public int replyUpdate(int rep_num);
+	public int replyUpdate(ReplyVO rep);
 	
 	public List<ReplyVO> replyList(String com_num);
 }

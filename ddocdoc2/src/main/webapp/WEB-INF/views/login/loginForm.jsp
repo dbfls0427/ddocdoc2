@@ -180,7 +180,7 @@
 						</div>
 						<div class="form-group">
 							<label>Password</label>
-							<input type = "text" name = "password" class="form-control input-lg" placeholder="Password">
+							<input type = "password" name = "password" class="form-control input-lg" placeholder="Password">
 						</div>
 						
 						<div id="btnsubWrap">

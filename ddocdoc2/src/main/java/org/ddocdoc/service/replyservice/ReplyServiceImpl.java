@@ -38,8 +38,8 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public int replyUpdate(int rep_num) {
-		return mapper.replyUpdate(rep_num);
+	public int replyUpdate(ReplyVO rep) {
+		return mapper.replyUpdate(rep);
 	}
 
 	@Override

@@ -128,10 +128,10 @@
 						<label>이메일</label>
 						<input type = "text" name = "cus_email" class="form-control input-lg" placeholder="이메일">
 					</div>
-					<div class="form-group">
+					<!-- <div class="form-group">
 						<label>생년월일</label>
 						<input type = "text" name = "cus_birth" class="form-control input-lg" placeholder="생년월일">
-					</div>
+					</div> -->
 					<div class="wrapbtnform">
 						<!-- <a class="btn btn-default active" href="javascript:joinMember()">인증번호</a> -->
 					</div>
@@ -141,6 +141,7 @@
 						<input type = "submit" class="btn btn-warning" value = "가입">
 					</div>
 				</form>
+				
 				
 				
         	</div>

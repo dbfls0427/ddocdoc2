@@ -47,6 +47,7 @@
    <context:component-scan base-package="org.ddocdoc.controller.checkupController" />
    <context:component-scan base-package="org.ddocdoc.controller.livecontroller" />
    <context:component-scan base-package="org.ddocdoc.controller.boardcontroller" />
+   <context:component-scan base-package="org.ddocdoc.controller.replycontroller"></context:component-scan>
    
    <!-- 파일첨부 -->
     <beans:bean id="multipartResolver"

@@ -12,7 +12,7 @@ public interface ReplyMapper {
 	
 	int replyDelete(int rep_num);
 	
-	int replyUpdate(int rep_num);
+	int replyUpdate(ReplyVO rep);
 	
 	List<ReplyVO> replyList(String com_num);
 

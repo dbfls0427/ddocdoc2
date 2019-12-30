@@ -5,7 +5,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<%@include file="../includes/header.jsp" %>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
@@ -33,31 +37,93 @@
 	
 
 </script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous"></script>
+<style type="text/css">
+ #back{
+	background-image: url("http://image.sayup.co.kr/collection/55e643ef59fd6203005da061/0715046b1fa8e2d7540773a896476213.jpg");
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 42%;
+    
+}
+#back::before{
+     content: " ";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+ }
+
+</style>
 </head>
 <body>
+<%@include file="../includes/menu.jsp" %>
 
- <table>
+<!-- 
+        ================================================== 
+            TITLE: Global Page Section Start
+        ================================================== -->
+        <section class="global-page-header" style="padding: 100px 0 10px 0;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="block">
+                            <h2 style="font-size: 35px;">커뮤니티</h2>
+                            <ol class="breadcrumb">
+                                <li>
+                                    <a href="../index.html">
+                                        <i class="ion-ios-home"></i>
+                                        Home
+                                    </a>
+                                </li>
+                               <!--  <li class="active">가까운 병원찾기</li> -->
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+		<section class="company-description" id="wrapjoin" style="display: flex; justify-content: center;">
+		<table  class="table table-hover" id = "table1" style="font-size: 18px;">
  	<tr>
- 		<td> 글번호 </td>
- 		<td> 제목 </td>
- 		<td> 작성자 </td>
- 		<td> 작성날짜 </td>
- 		<td> 조회수 </td>
- 		<td> 추천수 </td>
+ 		<td style="text-align : center;"> 글번호 </td>
+ 		<td style="text-align : center;"> 제목 </td>
+ 		<td style="text-align : center;"> 작성자 </td>
+ 		<td style="text-align : center;"> 작성날짜 </td>
+ 		<td style="text-align : center;"> 조회수 </td>
+ 		<td style="text-align : center;"> 추천수 </td>
  	</tr>
  	<c:forEach var="com" items="${list }">
  	<tr>
- 		<td>${com.com_num }</td>
- 		<td><a class="move" href="${com.com_num }">${com.com_title }</a></td>
- 		<td>${com.com_writer }</td>
- 		<td>${fn:substring(com.com_date,0,10) }</td>
- 		<td>${com.com_hits }</td>
- 		<td>${com.com_up }</td>
+ 		<td style="text-align : center;">${com.com_num }</td>
+ 		<td style="text-align : center;"><a class="move" href="${com.com_num }">${com.com_title }</a></td>
+ 		<td style="text-align : center;">${com.com_writer }</td>
+ 		<td style="text-align : center;">${fn:substring(com.com_date,0,10) }</td>
+ 		<td style="text-align : center;">${com.com_hits }</td>
+ 		<td style="text-align : center;">${com.com_up }</td>
  	</tr>
  	</c:forEach>
 
  
  </table>
+		
+		
+		</section>
+		
+		
+		
+		
+		
+		
+ 
  
 	<div>
 		<ul>
@@ -82,7 +148,7 @@
 	
 	</div>
 	
-	
+	<%@include file="../includes/footer.jsp" %>
 
 </body>
 </html>
