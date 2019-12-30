@@ -100,6 +100,7 @@
 			 console.log(inputContent.val());
 			 var inputComNum = $(".replyInsertForm").find("input[name=com_num]");
 			 console.log(inputComNum.val());
+			 alert($(".cumm").val());
 			  const form = $("form[name=replyInsertForm]").serializeObject(); 
 			  var reply = {
 					 rep_writer : inputWriter.val(),
@@ -415,7 +416,7 @@
 
 		<form method="get" id="operForm">
 			<input type="hidden" id="com_num" name="com_num"
-				value='${com.com_num }' /> <input type="hidden" name="pageNum"
+				value='${com.com_num }' class="comNumc" /> <input type="hidden" name="pageNum"
 				value='${cri.pageNum }'> <input type="hidden" name="amount"
 				value='${cri.amount }'>
 		</form>
@@ -436,7 +437,7 @@
 			<form method="post" class="replyInsertForm" name = "replyInsertForm">
 				작성자 : <input type="text" name="rep_writer" value="fff" readonly><br>
 				내용 : <input type="text" name="rep_content"><br>
-				<input type="hidden" name="com_num" value="${com.com_num }">
+				<input type="hidden" name="com_num" value="${com.com_num }" class="cumm">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 				<button class="replyInsertButton">댓글입력</button>
 			
