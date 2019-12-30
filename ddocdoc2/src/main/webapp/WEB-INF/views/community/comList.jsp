@@ -92,7 +92,7 @@
 
 
 			<div style="display: flex; justify-content: center; margin-top: 50px;">
-			<button onclick="location.href='/customer/comInsertForm'" class="btn btn-warning" style="margin-left:800px;">글 작성</button>
+			<button onclick="location.href='/customer/comInsertForm'" class="btn btn-default" style="margin-left:800px;">글 작성</button>
 			</div>
  
 		<section class="company-description" id="wrapjoin" style="display: flex; justify-content: center; padding-left: 500px; padding-right: 500px; margin-top:30px;">

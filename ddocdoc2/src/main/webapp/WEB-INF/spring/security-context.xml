@@ -69,7 +69,15 @@
 		<security:intercept-url pattern="/checkup/checkupInsert" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
 		<security:intercept-url pattern="/checkup/checkupDetail" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
 		
+		<!-- live -->
+		<security:intercept-url pattern="/live/insertLive" access="hasAnyRole('ROLE_ADMIN')"/>
+		<security:intercept-url pattern="/live/liveList" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
 
+		<!-- health -->
+		<security:intercept-url pattern="/health/healthList" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
+		
+		<!-- video -->
+		<security:intercept-url pattern="/video/beautyVideo" access="hasAnyRole('ROLE_MEMBER, ROLE_ADMIN')"/>
 		
 		<security:form-login login-page="/customer/loginForm" authentication-success-handler-ref="customLoginSuccess"/>
 		<security:logout logout-url="/customer/logout" invalidate-session="true"/>
