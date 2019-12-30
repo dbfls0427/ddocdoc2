@@ -17,10 +17,10 @@ public class EchoHandler extends TextWebSocketHandler {
 		sessionList.add(session);
 		oneName = sessionList.get(0).getId();
 		if(sessionList.size() == 1){
-			session.sendMessage(new TextMessage("°í°´´ÔÀÌ ÀÔÀåÇÏ¼Ì½À´Ï´Ù."));
+			session.sendMessage(new TextMessage("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼Ì½ï¿½ï¿½Ï´ï¿½."));
 		}else if(sessionList.size() == 2){
-			sessionList.get(0).sendMessage(new TextMessage("ÀÇ»çºÐÀÌ ÀÔÀåÇÏ¼Ì½À´Ï´Ù."));
-			session.sendMessage(new TextMessage("ÀÇ»çºÐÀÌ ÀÔÀåÇÏ¼Ì½À´Ï´Ù."));
+			sessionList.get(0).sendMessage(new TextMessage("ï¿½Ç»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼Ì½ï¿½ï¿½Ï´ï¿½."));
+			session.sendMessage(new TextMessage("ï¿½Ç»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼Ì½ï¿½ï¿½Ï´ï¿½."));
 		}
 	}
 	
@@ -28,13 +28,13 @@ public class EchoHandler extends TextWebSocketHandler {
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 			if(session.getId().equals(oneName)){
 				for(WebSocketSession sess : sessionList){
-					sess.sendMessage(new TextMessage("°í°´´Ô" + " : " + message.getPayload()));
+					sess.sendMessage(new TextMessage("ï¿½ï¿½ï¿½ï¿½" + " : " + message.getPayload()));
 					System.out.println(session.getId());
 				}
 				return;
 			}else{
 				for(WebSocketSession sess : sessionList){
-					sess.sendMessage(new TextMessage("ÀÇ»ç" + " : " + message.getPayload()));
+					sess.sendMessage(new TextMessage("ï¿½Ç»ï¿½" + " : " + message.getPayload()));
 					System.out.println(session.getId());
 				}
 			}
