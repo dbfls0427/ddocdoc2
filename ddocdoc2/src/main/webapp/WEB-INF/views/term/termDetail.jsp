@@ -127,6 +127,8 @@ crossorigin="anonymous"></script>
 		
 	});
 </script>
+
+
 	
 </head>
 <body id="page-top">
@@ -317,9 +319,26 @@ crossorigin="anonymous"></script>
 						</table>
 					</div>
 				</div>
+				
+			   	<form method="get" id="operForm" action="/board/termUpdate">
+		    		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+					<input type="hidden" id="term_num" name="term_num" value='<c:out value="${termvo.term_num }"/>'>
+					<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum }"/>'>
+					<input type="hidden" name="amount" value='<c:out value="${cri.amount }"/>'>
+				</form>
+				
+		    	<form method="get" id="operForm" action="/board/termList">
+		    		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+					<input type="hidden" id="term_num" name="term_num" value='<c:out value="${termvo.term_num }"/>'>
+					<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum }"/>'>
+					<input type="hidden" name="amount" value='<c:out value="${cri.amount }"/>'>
+				</form>
 
 				<div style="display:flex;">
+					<!-- 
 					<a href="/board/termList" role="button" class="btn btn-warning btn-sm" style="width:10%;">리스트</a> <br>
+					-->
+					<a role="button" class="btn btn-warning btn-sm" style="width:10%;" href='/board/termList?pageNum=${cri.pageNum}&amount=${cri.amount }'>리스트</a> <br>
 					<a role="button" class="btn btn-outline-secondary btn-sm" style="width: 5%; margin: 0 10px;" href='/board/termUpdate?term_num=<c:out value="${termvo.term_num }" />'>수정</a> <br>
 					<a role="button" class="btn btn-outline-danger btn-sm" href='/board/termDelete?term_num=<c:out value="${termvo.term_num }" />'>삭제</a> 
 				</div>
@@ -329,19 +348,7 @@ crossorigin="anonymous"></script>
               </div>
 	    	</div><!-- //boxContent -->
 	    	
-	    	<form method="get" id="operForm" action="/board/termUpdate">
-	    		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-				<input type="hidden" id="term_num" name="term_num" value='<c:out value="${termvo.term_num }"/>'>
-				<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum }"/>'>
-				<input type="hidden" name="amount" value='<c:out value="${cri.amount }"/>'>
-			</form>
-			
-	    	<form method="get" id="operForm" action="/board/termList">
-	    		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-				<input type="hidden" id="term_num" name="term_num" value='<c:out value="${termvo.term_num }"/>'>
-				<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum }"/>'>
-				<input type="hidden" name="amount" value='<c:out value="${cri.amount }"/>'>
-			</form>
+	 
         
 
 	

@@ -260,64 +260,69 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
-          <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-          </div>
-          
-          <!-- Content Row -->
-          <div class="row" style="display: flex;justify-content: space-between;padding-bottom: 20px;">
-          	<h3>의학용어</h3>
-        	<a href="/board/termInsert" class="btn btn-secondary" role="button">의학용어 입력</a><br>
-          </div>
-          
-          <div class="row">
-	          <!-- DataTales Example -->
-	          <div class="card shadow mb-4" style="width:60%;">
-	            <div class="card-header py-3">
-	              <h6 class="m-0 font-weight-bold text-primary">의학용어 리스트</h6>
-	            </div>
-	            <div class="card-body">
-	              <div class="table-responsive">
-	              	<table class="table table-hover">
-					   <tr>
-							<td>의학용어 번호</td>
-							<td>의학용어 제목</td>
-						</tr>
-						<c:forEach var="termvo" items="${list}">
-							<tr>
-								<td>${termvo.term_num }</td>
-								<td><a class="move" href='${termvo.term_num }'>${termvo.term_title }</a></td>
-								
-							</tr>
-						</c:forEach>
-					</table>
-	              </div>
-	            </div>
+			<div style="height:650px;">
+	          <!-- Page Heading -->
+	          <div class="d-sm-flex align-items-center justify-content-between mb-4">
 	          </div>
-           </div>
-         <form id="actionForm" action="/board/termList" method="get">
-			<input type="hidden" name="pageNum" value = "${pageMaker.cri.pageNum }">
-			<input type="hidden" name="amount" value = "${pageMaker.cri.amount}">
-		</form>
-          <!-- Content Row -->
-          <div class='pull-right'>
-			<ul class="pagination">
-				<c:if test="${pageMaker.prev }">
-					<li class="paginate_button previous"><a href="${pageMaker.startPage-1 }">Previous</a></li>
-				</c:if>
+	          
+	          <!-- Content Row -->
+	          <div class="row" style="display: flex;justify-content: space-between;padding-bottom: 20px;">
+	          	<h3>의학용어</h3>
+	        	<a href="/board/termInsert" class="btn btn-secondary" role="button">의학용어 입력</a><br>
+	          </div>
+	          
+	          <div class="row">
+		          <!-- DataTales Example -->
+		          <div class="card shadow mb-4" style="width:60%;">
+		            <div class="card-header py-3">
+		              <h6 class="m-0 font-weight-bold text-primary">의학용어 리스트</h6>
+		            </div>
+		            <div class="card-body">
+		              <div class="table-responsive">
+		              	<table class="table table-hover">
+						   <tr>
+								<td>의학용어 번호</td>
+								<td>의학용어 제목</td>
+							</tr>
+							<c:forEach var="termvo" items="${list}">
+								<tr>
+									<td>${termvo.term_num }</td>
+									<td><a class="move" href='${termvo.term_num }'>${termvo.term_title }</a></td>
+									
+								</tr>
+							</c:forEach>
+						</table>
+		              </div>
+		            </div>
+		          </div>
+	           </div>
+	         <form id="actionForm" action="/board/termList" method="get">
+				<input type="hidden" name="pageNum" value = "${pageMaker.cri.pageNum }">
+				<input type="hidden" name="amount" value = "${pageMaker.cri.amount}">
+			</form>
+	          <!-- Content Row -->
 			
-				<c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
-					<li class="paginate_button ${pageMaker.cri.pageNum == num ? "active" : "" }"><a href="${num }">${num }</a></li>
-				</c:forEach>
-				
-				<c:if test="${pageMaker.next }">
-					<li class="paginate_button next"><a href = "${pageMaker.endPage+1 }">Next</a></li>
-				</c:if>
-			</ul>
+          <div class='pull-right'>
+		          <nav aria-label="Page navigation example">
+					<ul class="pagination">
+						<c:if test="${pageMaker.prev }">
+							<li class="page-item paginate_button previous"><a class="page-link" href="${pageMaker.startPage-1 }">Previous</a></li>
+						</c:if>
+					
+						<c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
+							<li class="page-item paginate_button ${pageMaker.cri.pageNum == num ? "active" : "" }"><a class="page-link" href="${num }">${num }</a></li>
+						</c:forEach>
+						
+						<c:if test="${pageMaker.next }">
+							<li class="page-item paginate_button next"><a class="page-link" href = "${pageMaker.endPage+1 }">Next</a></li>
+						</c:if>
+					</ul>
+				</nav>
+			</div>
+			<!--  end Pagination -->
+			
+			
 		</div>
-		<!--  end Pagination -->
-		
 
 
 
