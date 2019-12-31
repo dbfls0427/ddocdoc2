@@ -45,6 +45,7 @@
 
 .paddingSide{
 	padding: 0 200px;
+	min-height: 400px;
 }
 </style>
 
@@ -108,12 +109,11 @@
           <!-- Content Row -->
 	
 	</section>
-	
-	
+
 	
 	
 <!-- footer module -->
-<%@include file="../includes/footer.jsp" %>
+<%@include file="../includes/footer2.jsp" %>
 <!-- end footer module -->	
 </body>
 </html>
