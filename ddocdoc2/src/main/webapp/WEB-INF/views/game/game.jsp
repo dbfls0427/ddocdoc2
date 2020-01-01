@@ -23,8 +23,11 @@
 		
 		typingTxt=typingTxt.split("");
 		var audio = new Audio();
+		var audio2 = new Audio();
 		audio.src = "/resources/game/main.mp3";
+		audio2.src = "/resources/game/back.mp3";
 		audio.play();
+		audio2.play();
 		
 		if(typingBool==false){
 			typingBool=true;
