@@ -27,6 +27,7 @@
 		audio.src = "/resources/game/main.mp3";
 		audio2.src = "/resources/game/back.mp3";
 		audio.play();
+		audio2.volume = 0.3;
 		audio2.play();
 		
 		if(typingBool==false){
