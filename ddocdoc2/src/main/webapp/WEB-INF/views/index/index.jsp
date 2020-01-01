@@ -553,7 +553,7 @@ Portfolio Section Start
                             <div class="block">
                                 <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">접수 / 예약 똑닥 서비스 추천하기</h1>
                                 <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms" style="margin-left:50px;">건강이 편해지는 똑닥을 지금 만나보세요!</p>
-                                <a href="/DDOCDOC/Customer/loginForm.do" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms" style="margin-left:100px;">Join Us</a>
+                                <a href="/customer/loginForm" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms" style="margin-left:100px;">Join Us</a>
                             </div>
                         </div>
                         
