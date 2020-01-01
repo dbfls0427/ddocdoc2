@@ -297,7 +297,7 @@ crossorigin="anonymous"></script>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content-wrapper" class="d-flex flex-column" >
 
       <!-- Main Content -->
       <div id="content">
@@ -368,7 +368,7 @@ crossorigin="anonymous"></script>
         <!-- End of Topbar -->
 		
 		<!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content-wrapper" class="d-flex flex-column" style="min-height: 680px;">
 	    	<div id="boxContent" style="padding:20px;">
 	    		
 				<h3>자주묻는질문 상세보기</h3>

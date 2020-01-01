@@ -400,7 +400,7 @@
 
 	
 	 <!-- Footer -->
-      <footer class="sticky-footer bg-white">
+      <footer class="sticky-footer bg-white"  style="margin-top:250px;">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Copyright &copy; <a href="mailto:amydreamsu@gmail.com">LEE MINHYE</a> 2019</span>

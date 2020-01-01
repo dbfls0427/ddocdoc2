@@ -369,7 +369,7 @@ crossorigin="anonymous"></script>
 		
 		<!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-	    	<div id="boxContent" style="padding:20px;">
+	    	<div id="boxContent" style="padding:20px;min-height:680px;">
 	    		
 				<h3>공지사항 상세보기</h3>
 				<div class="alert alert-warning" role="alert" style="background-color:#fff0c75c;">

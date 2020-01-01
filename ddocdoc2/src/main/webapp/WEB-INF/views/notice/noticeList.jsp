@@ -337,36 +337,37 @@
         	<a href="/board/noticeInsert" class="btn btn-secondary" role="button">공지사항 입력</a><br>
           </div>
           
-          <div class="row">
-	          <!-- DataTales Example -->
-	          <div class="card shadow mb-4" style="width:60%;">
-	            <div class="card-header py-3">
-	              <h6 class="m-0 font-weight-bold text-primary">공지사항 리스트</h6>
-	            </div>
-	            <div class="card-body">
-	              <div class="table-responsive">
-	              	<table class="table table-hover">
-					   <tr>
-							<td>공지사항 번호</td>
-							<td>공지사항 제목</td>
-							<td>공지사항 날짜</td>
-						</tr>
-						<c:forEach var="noticevo" items="${list}">
-							<tr>
-								<td>${noticevo.not_num }</td>
-								<td><a href='/board/noticeDetail?not_num=${noticevo.not_num }'>${noticevo.not_title }</a></td>
-								<td>${fn:substring(noticevo.not_date,0,10) }</td>
-								
+          <div style="min-height:580px;">
+	          <div class="row">
+		          <!-- DataTales Example -->
+		          <div class="card shadow mb-4" style="width:60%;">
+		            <div class="card-header py-3">
+		              <h6 class="m-0 font-weight-bold text-primary">공지사항 리스트</h6>
+		            </div>
+		            <div class="card-body">
+		              <div class="table-responsive">
+		              	<table class="table table-hover">
+						   <tr>
+								<td>공지사항 번호</td>
+								<td>공지사항 제목</td>
+								<td>공지사항 날짜</td>
 							</tr>
-						</c:forEach>
-					</table>
-	              </div>
-	            </div>
-	          </div>
-			
-           </div>
+							<c:forEach var="noticevo" items="${list}">
+								<tr>
+									<td>${noticevo.not_num }</td>
+									<td><a href='/board/noticeDetail?not_num=${noticevo.not_num }'>${noticevo.not_title }</a></td>
+									<td>${fn:substring(noticevo.not_date,0,10) }</td>
+									
+								</tr>
+							</c:forEach>
+						</table>
+		              </div>
+		            </div>
+		          </div>
+				
+	           </div>
           <!-- Content Row -->
-
+		 </div>
 
 	
 	 <!-- Footer -->

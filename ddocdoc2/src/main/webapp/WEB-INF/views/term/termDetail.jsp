@@ -385,7 +385,7 @@ crossorigin="anonymous"></script>
         <!-- End of Topbar -->
 		
 		<!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content-wrapper" class="d-flex flex-column" style="min-height: 680px;">
 	    	<div id="boxContent" style="padding:20px;">
 	    		
 				<h3>의학용어 상세보기</h3>
