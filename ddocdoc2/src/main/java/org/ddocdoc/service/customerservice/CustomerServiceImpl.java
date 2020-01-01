@@ -288,6 +288,21 @@ public class CustomerServiceImpl implements CustomerService {
 		return mapper.getTotalCount2(cri2);
 	}
 
+	@Override
+	public int increaseComHits(String com_num) {
+		return mapper.increaseComHits(com_num);
+	}
+
+	@Override
+	public int increaseComUp(String com_num) {
+		return mapper.increaseComUp(com_num);
+	}
+
+	@Override
+	public int increaseComDown(String com_num) {
+		return mapper.increaseComDown(com_num);
+	}
+
 
 	
 	

@@ -45,7 +45,7 @@
 		}
 		
 		function selectOne() {
-			audio.src = "/resources/game/result.mp3";
+			audio.src = "/resources/game/menuone.mp3";
 			audio.play();
 
 
@@ -91,7 +91,7 @@
 			if(menuNum == '1'){
 				clear();
 				audio.pause();
-				audio.src = "/resources/game/menu1.mp3";
+				audio.src = "/resources/game/menutwo.mp3";
 				audio.play();
 				typingTxt = '증상 검색을 선택하셨습니다. 어떤 메뉴를 선택하시겠습니까? \n 1. 증상을 통한 검색 2. 영상으로 간단히 증상 검색';
 				typingBool = false;
@@ -173,7 +173,7 @@
 						var modal = document.getElementById('myModal');
 						modal.style.display = "none";
 						audio.pause();
-						audio.src = "/resources/game/symptom.mp3";
+						audio.src = "/resources/game/menuthree.mp3";
 						audio.play();
 						var selectSymptom = $(".symptom").val();
 						var detailSymptom = $(".detailSymptom").val();
@@ -247,6 +247,8 @@
 			
 			gameAjax.symptomDetail(cus_num, function(data) {
 				
+				audio.src = "/resources/game/menufour.mp3";
+				audio.play();
 				/* 음성 파일 for문으로 돌려서 재생하기 */
 				console.log(data.symptomexampledetail);
 				typingTxt = "고객님의 예상 증상입니다. ";
@@ -559,6 +561,6 @@
 
 
 
-	<%@include file="../includes/footer.jsp" %>
+	<%@include file="../includes/footer3.jsp" %>
  	</body>
 </html>

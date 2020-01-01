@@ -44,7 +44,7 @@
 <button type="button" onclick="init()" class="btn btn-default">영상으로 증상 확인하기</button>
 </div>
 <div id="webcam-container" style="display: flex; justify-content: center; padding-left: 500px; padding-right: 500px; margin-top:30px;"></div>
-<div id="label-container" style="display: flex; justify-content: center; padding-left: 500px; padding-right: 500px; margin-top:30px;"></div>
+<div id="label-container" style="display: flex; justify-content: center; padding-left: 500px; padding-right: 500px; margin-top:30px; padding-bottom: 50px;"></div>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
 <script type="text/javascript">
@@ -70,7 +70,7 @@
 
         // Convenience function to setup a webcam
         const flip = true; // whether to flip the webcam
-        webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+        webcam = new tmImage.Webcam(400, 400, flip); // width, height, flip
         await webcam.setup(); // request access to the webcam
         await webcam.play();
         window.requestAnimationFrame(loop);
@@ -94,23 +94,23 @@
         // predict can take in an image, video or canvas html element
         const prediction = await model.predict(webcam.canvas);
        	if( prediction[0].className == "hong" && prediction[0].probability.toFixed(2) > 0.7){
-       		labelContainer.childNodes[0].innerHTML = "보이는 증상으로는 홍역과 비슷합니다.";
+       		labelContainer.childNodes[0].innerHTML = "<h3>보이는 증상으로는 홍역과 비슷합니다.</h3>";
        	}else if( prediction[1].className == "ddod" && prediction[1].probability.toFixed(2) > 0.7){
-       		labelContainer.childNodes[0].innerHTML = "보이는 증상으로는 두드러기와 비슷합니다.";
+       		labelContainer.childNodes[0].innerHTML = "<h3>보이는 증상으로는 두드러기와 비슷합니다.</h3>";
        	}else if( prediction[2].className == "gunae" && prediction[2].probability.toFixed(2) > 0.7){
-       		labelContainer.childNodes[0].innerHTML = "보이는 증상으로는 구내염과 비슷합니다.";
+       		labelContainer.childNodes[0].innerHTML = "<h3>보이는 증상으로는 구내염과 비슷합니다.</h3>";
        	}else if( prediction[3].className == "darae" && prediction[3].probability.toFixed(2) > 0.7){
-       		labelContainer.childNodes[0].innerHTML = "보이는 증상으로는 다래끼와 비슷합니다.";
+       		labelContainer.childNodes[0].innerHTML = "<h3>보이는 증상으로는 다래끼와 비슷합니다.</h3>";
        	}else if( prediction[4].className == "distortion" && prediction[4].probability.toFixed(2) > 0.7){
-       		labelContainer.childNodes[0].innerHTML = "보이는 증상으로는 염좌와 비슷합니다.";
+       		labelContainer.childNodes[0].innerHTML = "<h3>보이는 증상으로는 염좌와 비슷합니다.</h3>";
        	}else if( prediction[5].className == "eyedisease" && prediction[5].probability.toFixed(2) > 0.6){
-       		labelContainer.childNodes[0].innerHTML = "보이는 증상으로는 눈병과 비슷합니다.";
+       		labelContainer.childNodes[0].innerHTML = "<h3>보이는 증상으로는 눈병과 비슷합니다.</h3>";
        	}else if( prediction[6].className == "sujokgu" && prediction[6].probability.toFixed(2) > 0.7){
-       		labelContainer.childNodes[0].innerHTML = "보이는 증상으로는 수족구와 비슷합니다.";
+       		labelContainer.childNodes[0].innerHTML = "<h3>보이는 증상으로는 수족구와 비슷합니다.</h3>";
        	}else if( prediction[7].className == "hajijeongmac" && prediction[7].probability.toFixed(2) > 0.7){
-       		labelContainer.childNodes[0].innerHTML = "보이는 증상으로는 하지정맥과 비슷합니다.";
+       		labelContainer.childNodes[0].innerHTML = "<h3>보이는 증상으로는 하지정맥과 비슷합니다.</h3>";
        	}else{
-       		labelContainer.childNodes[0].innerHTML = "좀 더 정확한 증상을 보여주세요.";
+       		labelContainer.childNodes[0].innerHTML = "<h3>좀 더 정확한 증상을 보여주세요.</h3>";
        	}
         
         

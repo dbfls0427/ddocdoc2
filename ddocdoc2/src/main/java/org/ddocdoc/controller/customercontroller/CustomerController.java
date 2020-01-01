@@ -388,6 +388,9 @@ public class CustomerController {
 	@GetMapping("/comDetail")
 	public String comDetail(@RequestParam("com_num") String com_num, @ModelAttribute("cri") Criteria cri,Model model){
 		CommunityVO com = service.comDetail(com_num);
+		CustomerVO customer = (CustomerVO)session.getAttribute("customer");
+		service.increaseComHits(com_num);
+		model.addAttribute("customer", customer);
 		model.addAttribute("com", com);
 		return "/community/comDetail";
 	}
@@ -463,6 +466,29 @@ public class CustomerController {
 	@GetMapping("/machine")
 	public String machine(){
 		return "/teachableMachine/teachable";
+	}
+	
+	@GetMapping("/comUp")
+	public String comUp(@RequestParam String com_num, RedirectAttributes rttr){
+		service.increaseComUp(com_num);
+		rttr.addAttribute("com_num", com_num);
+		return "redirect:/customer/comIncreaseDetail";
+	}
+	
+	@GetMapping("/comDown")
+	public String comDown(@RequestParam String com_num, RedirectAttributes rttr){
+		service.increaseComDown(com_num);
+		rttr.addAttribute("com_num", com_num);
+		return "redirect:/customer/comIncreaseDetail";
+	}
+	
+	@GetMapping("/comIncreaseDetail")
+	public String comIncreaseDetail(@RequestParam String com_num, Model model){
+		CommunityVO com = service.comDetail(com_num);
+		CustomerVO customer = (CustomerVO)session.getAttribute("customer");
+		model.addAttribute("com", com);
+		model.addAttribute("customer", customer);
+		return "/community/comDetail";
 	}
 	
 }

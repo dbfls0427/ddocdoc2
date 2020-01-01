@@ -459,7 +459,7 @@
 	</section>
 	
 	<div style="display: flex; justify-content: center; font-size:15px; margin-bottom:20px;">
-		<i class="far fa-thumbs-up fa-2x"></i>&nbsp<label>${com.com_up }</label> &nbsp&nbsp&nbsp&nbsp <i class="far fa-thumbs-down fa-2x"></i>&nbsp<label>${com.com_down }<label></label>
+		<a href = "/customer/comUp?com_num=${com.com_num }"><i class="far fa-thumbs-up fa-2x"></i>&nbsp</a><label>${com.com_up }</label> &nbsp&nbsp&nbsp&nbsp <a href = "/customer/comDown?com_num=${com.com_num }"><i class="far fa-thumbs-down fa-2x"></i>&nbsp</a><label>${com.com_down }</label>
 	</div>
 	
 	<section class="company-description" id="wrapjoin" style="display: flex; justify-content: center; margin-top:0;">
@@ -528,7 +528,7 @@
 		<div class="modal-content">
 			<span class="close">&times;</span>
 			<form method="post" class="replyInsertForm" name = "replyInsertForm">
-				작성자 : <input type="text" name="rep_writer" value="fff" readonly><br>
+				작성자 : <input type="text" name="rep_writer" value="${customer.cus_name }" readonly><br>
 				내용 : <input type="text" name="rep_content"><br>
 				<input type="hidden" name="com_num" value="${com.com_num }" class="cumm">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

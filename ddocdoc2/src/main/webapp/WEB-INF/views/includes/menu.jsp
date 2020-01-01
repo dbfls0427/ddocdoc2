@@ -5,6 +5,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.btnlogout{
+	background-color: #fff;
+    border: none;
+    padding-top: 15px;
+    color: #222;
+}
+.btnlogout:hover{
+	color: #02bdd5;
+}
+</style>
 </head>
 <body>
 <!--
@@ -96,7 +107,13 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li><a href="/customer/logout">로그아웃</a></li>
+                            <li>
+	                            <form action = "/customer/logout" method="post">
+		                            <input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
+		                            <button class="btnlogout">로그아웃</button>
+	                            </form>
+                            </li>
+                            <!-- <li><a href="/customer/logout">로그아웃</a></li> -->
                         </ul>
                     </div>
                 </nav>

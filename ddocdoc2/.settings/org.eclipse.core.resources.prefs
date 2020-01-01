@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/main/java/org/ddocdoc/controller/customercontroller/CustomerController.java=UTF-8
+encoding//src/main/java/org/ddocdoc/mapper/customermapper/CustomerMapper.java=UTF-8
+encoding//src/main/java/org/ddocdoc/service/customerservice/CustomerService.java=UTF-8
 encoding//src/test/java/org/ddocdoc/mapper/childmapper/ChildMapperTest.java=UTF-8

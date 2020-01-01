@@ -188,6 +188,13 @@ public interface CustomerMapper {
 	// term page
 	int getTotalCount2(Criteria2 cri2);
 
-		
+	// community hits
+	int increaseComHits(String com_num);
+	
+	// community up
+	int increaseComUp(String com_num);
+	
+	// community down
+	int increaseComDown(String com_num);
 	
 }

@@ -367,6 +367,23 @@
 		select count(*) from dd_term 
 	</select>
 	
+	<!-- 커뮤니티 조회 수 증가 -->
+	<update id="increaseComHits" parameterType="String" >
+		update dd_community set com_hits = com_hits +1
+		where com_num = #{com_num}
+	</update>
+	
+	<!-- 커뮤니티 추천 -->
+	<update id="increaseComUp" parameterType="String" >
+		update dd_community set com_up = com_up +1
+		where com_num = #{com_num}
+	</update>
+	
+	<!-- 커뮤니티 반대 -->
+	<update id="increaseComDown" parameterType="String" >
+		update dd_community set com_down = com_down +1
+		where com_num = #{com_num}
+	</update>
 	
 </mapper>
 
