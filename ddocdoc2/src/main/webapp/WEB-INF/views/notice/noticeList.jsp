@@ -76,12 +76,12 @@
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-    <!-- Sidebar -->
+<!-- Sidebar -->
     <!--<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar"> -->
     <ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/customer/admin">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/hospital/admin">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -93,7 +93,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="/customer/admin">
+        <a class="nav-link" href="/hospital/admin">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -130,6 +130,7 @@
 			약국
       </div>
 
+		
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
@@ -145,15 +146,104 @@
         </div>
       </li>
 
+	  <!-- Divider -->
+      <hr class="sidebar-divider">
+	<!-- Heading -->
+      <div class="sidebar-heading">
+			Live상담방
+      </div>
+
+	      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Live 상담방</span>
+        </a>
+        <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Live 상담방: </h6>
+            <a class="collapse-item" href="https://192.168.0.105:3001/conference">상담방 만들기</a>
+          </div>
+        </div>
+      </li>
+      
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+      <!-- Heading -->
+      <div class="sidebar-heading">
+			공지사항
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages3" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>공지사항</span>
+        </a>
+        <div id="collapsePages3" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">공지사항정보:</h6>
+            <a class="collapse-item" href="/board/noticeList">공지사항목록</a>
+            <a class="collapse-item" href="/board/noticeInsert">공지사항입력</a>
+          </div>
+        </div>
+      </li>
+      
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
+      
+      <!-- Heading -->
+      <div class="sidebar-heading">
+			자주묻는질문
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages4" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>자주묻는질문</span>
+        </a>
+        <div id="collapsePages4" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">자주묻는질문정보:</h6>
+            <a class="collapse-item" href="/board/askList">자주묻는질문목록</a>
+            <a class="collapse-item" href="/board/askInsert">자주묻는질문입력</a>
+          </div>
+        </div>
+      </li>
+      
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+      
+      <!-- Heading -->
+      <div class="sidebar-heading">
+			의학용어
+      </div>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages5" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>의학용어</span>
+        </a>
+        <div id="collapsePages5" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">의학용어정보:</h6>
+            <a class="collapse-item" href="/board/termList">의학용어목록</a>
+            <a class="collapse-item" href="/board/termInsert">의학용어입력</a>
+          </div>
+        </div>
+      </li>
+      
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+      
       
       <li class="nav-item" style="text-align:center;">
         <a class="btn btn-danger" href="/customer/loginSuccess" style="width:86%; padding-left: 6px;padding-right: 6px;">
           <span>Go to UserMode</span></a>
       </li>
       <hr class="sidebar-divider d-none d-md-block">
-      
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
