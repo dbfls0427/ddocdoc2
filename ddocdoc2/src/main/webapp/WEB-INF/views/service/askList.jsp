@@ -102,7 +102,7 @@
 		</div>
 	</section>
 	
-	<section class="company-description paddingSide">
+	<section class="company-description paddingSide" style="min-height: 450px;padding-bottom: 100px;">
 		<div class="accrdionBox">
 			<div class="accordion width60" id="accordionExample">
 			  	<c:forEach var="askvo" items="${list}">

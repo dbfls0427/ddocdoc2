@@ -76,7 +76,7 @@
 		</div>
 	</section>
 	
-	<section class="company-description paddingSide">
+	<section class="company-description paddingSide" style="min-height:450px;">
           <div class="row">
 	          <!-- DataTales Example -->
 	          <div class="card shadow mb-4">

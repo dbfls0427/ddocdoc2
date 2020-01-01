@@ -139,7 +139,7 @@
 
 
 
-	<section class="company-description paddingSide">
+	<section class="company-description paddingSide" style="min-height:450px;">
 		<!-- search 
 		<div class='row'> 	
 			<div class="col-lg-12">
