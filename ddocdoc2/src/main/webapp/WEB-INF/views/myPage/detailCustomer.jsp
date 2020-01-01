@@ -65,7 +65,7 @@ hr {
 	</div>
 	</section>
 	
-	<section class="company-description" id="wrapjoin" style="display: flex; justify-content: center; margin-bottom: 60px;">
+	<section class="company-description" id="wrapjoin" style="display: flex; justify-content: center; margin-bottom: 60px; min-height:370px;">
 	
 		<div>
 			<p class = "p">Info</p>

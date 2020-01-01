@@ -418,7 +418,7 @@ function removeAllChildNods(el) {
 </script>
 
  <!-- menu module -->
-<%@include file="../includes/footer.jsp" %>
+<%@include file="../includes/footer3.jsp" %>
 <!-- end menu module -->
 	
 </body>

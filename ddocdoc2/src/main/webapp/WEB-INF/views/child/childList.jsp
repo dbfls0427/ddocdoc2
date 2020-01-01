@@ -138,7 +138,7 @@ tr:nth-child(2n) {
 		이름을 눌러 건강피드를 관리해보세요!</label>
 	<br>
 	<section class="company-description"
-		style="display: flex; justify-content: center; margin-top: 15px; margin-bottom: 80px;">
+		style="display: flex; justify-content: center; margin-top: 15px; margin-bottom: 80px; min-height:350px;">
 		<div>
 			<div style="display: flex;">
 			<a href="/child/childInsert" style="margin-left: 80%; ">

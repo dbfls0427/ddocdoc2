@@ -74,7 +74,7 @@
 	</section>
 
 
-	<section class="company-description" id="wrapjoin">
+	<section class="company-description" id="wrapjoin" style="padding-bottom: 50px;">
 	<div id="joinformdiv">
 		<form action="/customer/myPageUpdate" method="post">
 			<input type="hidden" name="cus_num" value="${customer.cus_num }"><br>

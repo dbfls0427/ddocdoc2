@@ -113,7 +113,7 @@
 	
 	
 <!-- footer module -->
-<%@include file="../includes/footer2.jsp" %>
+<%@include file="../includes/footer.jsp" %>
 <!-- end footer module -->	
 </body>
 </html>

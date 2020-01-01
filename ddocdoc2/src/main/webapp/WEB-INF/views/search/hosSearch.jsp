@@ -482,6 +482,6 @@ function removeAllChildNods(el) {
 }
 </script>
 
-<%@include file="../includes/footer.jsp" %>
+<%@include file="../includes/footer3.jsp" %>
 </body>
 </html>

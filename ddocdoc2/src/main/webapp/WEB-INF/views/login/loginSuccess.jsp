@@ -478,6 +478,6 @@ Portfolio Section Start
                 </div>
             </section>
 
-     <%@include file="../includes/footer.jsp" %>
+     <%@include file="../includes/footer3.jsp" %>
  	</body>
 </html>

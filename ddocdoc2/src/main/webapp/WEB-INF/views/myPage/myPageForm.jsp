@@ -72,7 +72,7 @@
     Works Section Start
 ================================================== -->
 	<section class="works service-page"
-		style="display: flex; justify-content: center;">
+		style="display: flex; justify-content: center;  min-height:464px; padding-top: 150px;">
 
 		<div class="btn-group" role="group" aria-label="...">
 

@@ -119,10 +119,13 @@ font-family: 'Sunflower', sans-serif;
         </section>
 
 		<br>
-		<section id="btn" class="company-description" style="display: flex; justify-content: flex-end; padding-right: 700px; margin-top: 0; margin-bottom: 100px;">
-			<button class="btn btn-default"><a href="/child/childUpdate?ch_num=${childVO.ch_num}" style="font-size: 18px;">수정</a></button>&nbsp
-			<button class="btn btn-default"><a href="/child/childDelete?ch_num=${childVO.ch_num}" style="font-size: 18px;">삭제</a></button>
-		</section>
+		<div style=" min-height:350px;">
+			<section id="btn" class="company-description" style="display: flex; justify-content: flex-end; padding-right: 700px; margin-top: 0; margin-bottom: 100px; ">
+				<button class="btn btn-default"><a href="/child/childUpdate?ch_num=${childVO.ch_num}" style="font-size: 18px;">수정</a></button>&nbsp
+				<button class="btn btn-default"><a href="/child/childDelete?ch_num=${childVO.ch_num}" style="font-size: 18px;">삭제</a></button>
+			</section>
+		
+		</div>
 		
 
 <!-- menu module -->
