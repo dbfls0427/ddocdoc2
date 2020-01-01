@@ -58,9 +58,9 @@
 	</style>
     </head>
     <body>
-        <!--
+  <!--
         ==================================================
-        Header Section Start
+       MENU: Header Section Start
         ================================================== -->
         <header id="top-bar" class="navbar-fixed-top animated-header">
             <div class="container">
@@ -76,13 +76,13 @@
                     
                     <!-- logo -->
                     <div class="navbar-brand">
-                        <a href="index.html" >
+                        <a href="/customer/loginSuccess" >
                             <img src="/resources/images/logo.png" alt="">
                         </a>
                     </div>
                     <!-- /logo -->
                 </div>
- 				<!-- main menu -->
+                <!-- main menu -->
                 <nav class="collapse navbar-collapse navbar-right" role="navigation">
                     <div class="main-menu">
                         <ul class="nav navbar-nav navbar-right">
@@ -110,7 +110,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">QR코드 <span class="caret"></span></a>
                                 <div class="dropdown-menu">
                                     <ul>
-                                        <li><a href="/DDOCDOC/Customer/detailCustomer.do">QR코드 발급</a></li>
+                                        <li><a href="/customer/customerDetail?cus_num=${customer.cus_num }">QR코드 발급</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -118,6 +118,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">똑닥뷰티<span class="caret"></span></a>
                                 <div class="dropdown-menu">
                                     <ul>
+                                        <li><a href="/live/liveList?cus_num=${customer.cus_num }">Live상담</a></li>
                                         <li><a href="/video/beautyVideo">뷰티TV</a></li>
                                     </ul>
                                 </div>
@@ -127,12 +128,19 @@
                                 <div class="dropdown-menu">
                                     <ul>
                                         <li><a href="/health/healthList">건강정보</a></li>
-                                        <li><a href="../Customer/reviewInsertForm.do">후기 작성</a></li>
-                                        <li><a href="../Customer/reviewList.do">후기 목록</a></li>
+                                        <li><a href="/customer/termList">의학용어</a></li>
+<!--                                         <li><a href="../Customer/reviewInsertForm.do">후기 작성</a></li>
+                                        <li><a href="../Customer/reviewList.do">후기 목록</a></li> -->
+                                        <li><a href="/customer/noticeList">공지사항</a></li>
+                                        <li><a href="/customer/askList">자주묻는질문</a></li>
+                                        <li><a href="/customer/comList">커뮤니티</a>
+                                       
                                     </ul>
                                 </div>
                             </li>
-                             <li><a href="/customer/loginForm">로그인</a></li>
+                             <li><a href="/customer/game">모의 진료</a></li>
+
+                            <li><a href="/customer/loginForm">로그인</a></li>
                         </ul>
                     </div>
                 </nav>
