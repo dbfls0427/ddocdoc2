@@ -515,8 +515,10 @@
 	
 
 		<!-- <div class="chat"></div> -->
-		<div style="display: flex; justify-content:center; margin-left:500px">
-			<button id="replyInsert" class="btn btn-default">댓글 작성</button>
+		<div style="min-height:350px;">
+			<div style="display: flex; justify-content:center; margin-left:500px">
+				<button id="replyInsert" class="btn btn-default">댓글 작성</button>
+			</div>
 		</div>
 
 	<!-- The Modal -->
