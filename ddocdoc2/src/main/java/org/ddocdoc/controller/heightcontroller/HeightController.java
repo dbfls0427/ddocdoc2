@@ -46,7 +46,7 @@ public class HeightController {
 		map.put("gender_tb", gender_tb);
 		Float st_height = service.selectStHeight(map);
 		System.out.println("st _height : " + st_height);
-		
+		System.out.println("아이이름!!!!! " + childVO.getCh_name());
 		model.addAttribute("ch_num",childVO.getCh_num());
 		model.addAttribute("ch_name", childVO.getCh_name());
 		model.addAttribute("ch_gender", childVO.getCh_gender());

@@ -59,6 +59,7 @@ public class CustomerController {
 	private PasswordEncoder pwencoder;
 	
 	public static HttpSession session;
+	
 		
 	
 	@GetMapping("/index")
@@ -210,6 +211,12 @@ public class CustomerController {
 		return "/index/index";
 	}
 	
+	@GetMapping("/adminlogout")
+	public String adminlogout(){
+		session.removeAttribute("admin");
+		return "/index/index";
+	}
+	
 	
 	// 泥섇뜝�룞�삕�뜝�룞�삕 �뜝�룫�꽭釉앹삕�뜝�룞�삕
 	@GetMapping("/presDetail")
@@ -308,7 +315,7 @@ public class CustomerController {
 		String hos_name = service.hospitalOneName(hos_num);
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter writer = response.getWriter();
-		 writer.println("<script>alert('"+ hos_name + " 蹂묒썝�뿉 �궗�쟾 �삩�씪�씤 �긽�떞 �삁�빟 �셿猷뚮릺�뿀�뒿�땲�떎. �떞�떦 �쓽�궗媛� �솗�씤�븷 �븣源뚯� 湲곕떎�젮二쇱꽭�슂.');</script>");
+		 writer.println("<script>alert('"+ hos_name + " 병원에 상담신청이 완료되었습니다. 해당 병원에서 상담신청을 완료할 때 까지 기다려주세요.');</script>");
 	     writer.flush();
 		return "/chatting/chatting";
 	}

@@ -75,7 +75,6 @@ public class LiveController {
 		
 		String live_address = "https://192.168.0.105:3001/conference/#"+hash;
 		System.out.println("넘오오는거보자 " +live_address);
-		String now_cus = ((CustomerVO)CustomerController.session.getAttribute("customer")).getCus_id();
 		String cus_num = ((CustomerVO)CustomerController.session.getAttribute("customer")).getCus_num();
 		int re = 0;
 		int re2 = 0;
@@ -93,7 +92,7 @@ public class LiveController {
 		}
 		live.setLive_content(content);
 		
-		if(now_cus.equals("admin")){
+		if(((CustomerVO)CustomerController.session.getAttribute("admin")) != null){
 			re = service.liveStop(live_address);
 			re2 = service.cusStop(live);
 			view = "redirect:/hospital/admin";

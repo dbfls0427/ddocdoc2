@@ -37,7 +37,8 @@
 		var searchKey = '팔로우미';
 		Service.startGet(searchKey);
 		jQuery("#youSearch").on("click" , function(e){
-			 searchKey = jQuery("div").find("input").val();
+			/* alert($("#search").val()); */
+			 searchKey = $("#search").val();
 			 jQuery("#content").empty();
 			 Service.startGet(searchKey);
 		});
@@ -98,7 +99,7 @@
       <h1 class="jumbotron-heading"></h1>
       <p class="lead text-muted">궁금한 뷰티 키워드를 검색해보세요!</p>
       <div class="input-group mb-3">
-	        <input type="text" name="searchText" class="form-control" aria-label="Username" placeholder="ex) 코성형 , 눈매 교정" style="width: 380px;">
+	        <input type="text" name="searchText" class="form-control" aria-label="Username" placeholder="ex) 코성형 , 눈매 교정" style="width: 380px;" id="search">
       </div>
       <p style="margin-top: 20px;">
         <button class="btn btn-primary my-2" id="youSearch" style="width : 200px;">검색하기</button>

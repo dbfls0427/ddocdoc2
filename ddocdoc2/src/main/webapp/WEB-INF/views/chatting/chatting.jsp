@@ -227,7 +227,7 @@ img{ max-width:100%;}
 				e.preventDefault();
 				sock.send($(".write_msg").val());
 				$(".write_msg").val('').focus();
-				
+				count++;
 				console.log(count);
 			});
 			

@@ -29,8 +29,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication auth)
 			throws IOException, ServletException {
 		CustomerController.session = request.getSession();
-		CustomerVO customer = service.loginCustomer(request.getParameter("username"));
-		CustomerController.session.setAttribute("customer", customer);
+		
 		
 		List<String> roleNames = new ArrayList<>();
 		
@@ -43,10 +42,14 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 		
 		if(roleNames.contains("ROLE_MEMBER")){
 //			request.setAttribute("cus_id", request.getParameter("username"));
+			CustomerVO customer = service.loginCustomer(request.getParameter("username"));
+			CustomerController.session.setAttribute("customer", customer);
 			response.sendRedirect("/customer/loginSuccess");
 			return;
 		}
 		if(roleNames.contains("ROLE_ADMIN")){
+			CustomerVO customer = service.loginCustomer(request.getParameter("username"));
+			CustomerController.session.setAttribute("admin", customer);
 			response.sendRedirect("/hospital/admin");
 			return;
 		} 
