@@ -78,12 +78,6 @@ public class CustomerController {
 		return "/search/hosSearch";
 	}
 	
-	@GetMapping("/loginSuccess")
-	public String loginSuccess( Model model){
-		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
-		return "/login/loginSuccess";
-	}
-	
 	@GetMapping("/joinForm")
 	public String joinForm(){
 		return "/login/joinForm";
@@ -98,13 +92,6 @@ public class CustomerController {
 		return "/login/loginForm";
 	}
 	
-	//�뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕
-	@GetMapping("/hospitalResForm")
-	public String hospitalResForm(@RequestParam String cus_num, @RequestParam String hos_name, Model model){
-		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
-		model.addAttribute("hos_name", hos_name);
-		return "/res/hos_res";
-	}
 	
 	//�뜝�룞�삕�뜝�룞�삕 �뜝�룞�삕�뜝�룞�삕
 	@PostMapping("/hospitalRes")
@@ -249,12 +236,6 @@ public class CustomerController {
 		
 		
 		return "/pres/presDetail";
-	}
-	
-	@GetMapping("/game")
-	public String game(Model model){
-		model.addAttribute("customer", (CustomerVO)session.getAttribute("customer"));
-		return "/game/game";
 	}
 	
 	// map pharmacy
@@ -470,11 +451,6 @@ public class CustomerController {
 		return "/service/termDetail";
 	}
 	
-	@GetMapping("/machine")
-	public String machine(){
-		return "/teachableMachine/teachable";
-	}
-	
 	@GetMapping("/comUp")
 	public String comUp(@RequestParam String com_num, RedirectAttributes rttr){
 		service.increaseComUp(com_num);
@@ -487,15 +463,6 @@ public class CustomerController {
 		service.increaseComDown(com_num);
 		rttr.addAttribute("com_num", com_num);
 		return "redirect:/customer/comIncreaseDetail";
-	}
-	
-	@GetMapping("/comIncreaseDetail")
-	public String comIncreaseDetail(@RequestParam String com_num, Model model){
-		CommunityVO com = service.comDetail(com_num);
-		CustomerVO customer = (CustomerVO)session.getAttribute("customer");
-		model.addAttribute("com", com);
-		model.addAttribute("customer", customer);
-		return "/community/comDetail";
 	}
 	
 }

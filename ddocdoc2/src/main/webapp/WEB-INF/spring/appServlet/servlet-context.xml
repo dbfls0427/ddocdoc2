@@ -31,21 +31,15 @@
       <beans:property name="suffix" value=".jsp" />
    </beans:bean>
    
-   <!-- 톰캣이 알아서 뷰 처리 -->
-   <mvc:annotation-driven />
-   <mvc:default-servlet-handler />
-   
    <!-- 컨트롤러 -->
    <context:component-scan base-package="org.ddocdoc.controller" />
    <context:component-scan base-package="org.ddocdoc.controller.childcontroller" />
    <context:component-scan base-package="org.ddocdoc.controller.hospitalcontroller" />
    <context:component-scan base-package="org.ddocdoc.controller.heightcontroller" />
-   <context:component-scan base-package="org.ddocdoc.controller.customercontroller"></context:component-scan>
    <context:component-scan base-package="org.ddocdoc.controller.gamecontroller"></context:component-scan>
    <context:component-scan base-package="org.ddocdoc.controller.injectController" />
    <context:component-scan base-package="org.ddocdoc.video" />
    <context:component-scan base-package="org.ddocdoc.controller.checkupController" />
-   <context:component-scan base-package="org.ddocdoc.controller.livecontroller" />
    <context:component-scan base-package="org.ddocdoc.controller.boardcontroller" />
    <context:component-scan base-package="org.ddocdoc.controller.replycontroller"></context:component-scan>
    
